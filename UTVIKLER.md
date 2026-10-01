@@ -12,6 +12,7 @@ Ren HTML, CSS og JavaScript. Ingen byggesteg, ingen rammeverk. Alle filer ligger
 | `sprak-en.js`, `sprak-pl.js` | Oversettelser fra norsk | Ja |
 | `sprak-no.js` | Oversettelse til norsk for sider skrevet på engelsk (lytteguiden) | Sjelden |
 | `lyd.js` | Lydmotor for spill-knappene (piano, gitar, strykere) | Nesten aldri |
+| `lyd/piano/` | Pianoopptakene (Steinway fra University of Iowa), ett for hver tangent fra C1 til C7, stemt nøyaktig (A4 = 440 Hz). Brukes av `lyd.js` og gehørleksene. Filene må ikke endres | Aldri |
 | `Fraunces-Variable.ttf`, `Fraunces-OFL.txt`, `Lora-Variable.ttf`, `Lora-Italic-Variable.ttf`, `Lora-OFL.txt` | Skriftene til Akkordhefte, med lisensene som skal følge med. Filene må ikke endres | Aldri |
 | `index.html` og innholdssidene | Bare innhold. Ingen `<style>` i sidene | Ja |
 

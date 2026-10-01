@@ -1,6 +1,8 @@
 /* © 2026 Verdens Beste Musikkskole. Alle rettigheter forbeholdt. Verk-ID: VBM-K7Q4-KCX8. Signatur: bf337bfd3ba9686ea01e757a1996aa9c1cffd86425fb5f5115cfe4cf5e7d08e9 */
 /* Verdens Beste Musikkskole – felles lydmotor for juksebøkene.
    Ekte opptak av piano, akustisk gitar og strykere (fiolin + cello).
+   Pianoet er en Steinway B fra University of Iowa, med ett opptak for hver tangent
+   fra C1 til C7 (mappen lyd/piano/). Tonene spilles uten strekking.
    Bare én lyd spiller om gangen: et nytt trykk stopper den forrige,
    og et nytt trykk på samme knapp stopper lyden.
    Hvis lydfilene ikke kan lastes, brukes den innebygde synthen. */
@@ -22,7 +24,7 @@
      delay = forsinkelse i sekunder, range = hvor langt et opptak kan strekkes. */
   var B = window.VBM_LYD_BASE || {};
   var CDN = 'https://cdn.jsdelivr.net/npm/';
-  var pianoNotes = []; for (var m = 21; m <= 108; m += 3) pianoNotes.push(m);
+  var pianoNotes = []; for (var m = 24; m <= 96; m++) pianoNotes.push(m);   // C1 til C7, hver tangent
   var GUITAR = names('D2 Ds2 E2 F2 Fs2 G2 Gs2 A2 As2 B2 C3 Cs3 D3 Ds3 E3 F3 Fs3 G3 Gs3 A3 As3 B3 ' +
                      'C4 Cs4 D4 Ds4 E4 F4 Fs4 G4 Gs4 A4 As4 B4 C5 Cs5 D5');
   var VIOLIN = names('G3 A3 C4 E4 G4 A4 C5 E5 G5 A5 C6 E6 G6 A6 C7');
@@ -31,7 +33,7 @@
 
   var INSTR = {
     piano: { label: 'Piano', attack: 0.005, release: 0.35, layers: [
-      { base: B.piano || 'https://tonejs.github.io/audio/salamander/', notes: pianoNotes, level: 0.9 }
+      { base: B.piano || 'lyd/piano/', notes: pianoNotes, level: 0.9 }
     ]},
     /* Gitar klinger en oktav lavere enn den er notert – slik som en ekte gitar. */
     gitar: { label: 'Gitar', attack: 0.005, release: 0.35, layers: [

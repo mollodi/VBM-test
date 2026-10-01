@@ -174,13 +174,15 @@
 
   /* =================== Lyd =================== */
   var B = window.VBM_LYD_BASE || {};
-  var PIANO = B.piano || 'https://tonejs.github.io/audio/salamander/';
+  var PIANO = B.piano || 'lyd/piano/';
   var PC = ['C','Cs','D','Ds','E','F','Fs','G','Gs','A','As','B'];
   function nameOf(m){ return PC[m % 12] + (Math.floor(m / 12) - 1); }
   function hz(m){ return 440 * Math.pow(2, (m - 69) / 12); }
-  /* Opptakene finnes for hver tredje halvtone (A, C, Diss, Fiss). Øvelsene bruker bare disse,
-     så pianoklangen strekkes så lite som mulig. */
+  /* Pianoet har et eget opptak for hver tangent fra C1 til C7, stemt nøyaktig (A4 = 440 Hz).
+     Hver tone bruker opptaket som ligger nærmest, så den bare justeres med de centene øvelsen trenger.
+     Øvelsene starter på disse tonene: */
   var SAMPLES = [57, 60, 63, 66, 69, 72];   // A3, C4, Diss4, Fiss4, A4, C5
+  function opptak(m){ return Math.max(24, Math.min(96, Math.round(m))); }
 
   var T = window.VBM_T || function(t, v){ return t.replace(/\{(\w+)\}/g, function(m, k){ return v && v[k] != null ? v[k] : m; }); };
   var LYDER = { sinus: T('Sinustoner'), piano: T('Piano') };
@@ -283,6 +285,7 @@
         if (my === token && activeBtn === btn) { btn.classList.remove('playing'); activeBtn = null; }
       }, (slutt + 0.1) * 1000);
     }
+    toner.forEach(function(n){ n.s = opptak(n.m); });   // nærmeste opptak for hver tone
     if (mode === 'piano') {
       btn.classList.add('loading');
       Promise.all(toner.map(function(n){ return load(n.s); })).then(start).catch(function(){

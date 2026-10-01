@@ -23,7 +23,7 @@ Gratis undervisningsmateriell i musikkteori for elever og lærere. Juksebøkene 
 ## Lyd
 I juksebøkene kan du velge mellom **piano**, **gitar** og **strykere** med knappen nederst til høyre. Når du trykker på en ny spill-knapp, stopper lyden som spiller. Trykk på samme knapp igjen for å stoppe.
 
-- Piano: Salamander Grand Piano av Alexander Holm, CC BY 3.0
+- Piano: Steinway-piano fra [University of Iowa Electronic Music Studios](https://theremin.music.uiowa.edu/MISpiano.html), med ett opptak for hver tangent fra C1 til C7, stemt nøyaktig (A4 = 440 Hz)
 - Gitar og strykere: akustisk gitar, fiolin og cello fra [tonejs-instruments](https://github.com/nbrosowsky/tonejs-instruments) av Nicholas Brosowsky, CC BY 3.0
 
 ## Språk
