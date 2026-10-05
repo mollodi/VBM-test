@@ -1,8 +1,6 @@
 /* © 2026 Verdens Beste Musikkskole. Alle rettigheter forbeholdt. Verk-ID: VBM-K7Q4-KCX8. Signatur: bf337bfd3ba9686ea01e757a1996aa9c1cffd86425fb5f5115cfe4cf5e7d08e9 */
 /* Verdens Beste Musikkskole – felles lydmotor for juksebøkene.
    Ekte opptak av piano, akustisk gitar og strykere (fiolin + cello).
-   Pianoet er en Steinway B fra University of Iowa, med ett opptak for hver tangent
-   fra C1 til C7 (mappen lyd/piano/). Tonene spilles uten strekking.
    Bare én lyd spiller om gangen: et nytt trykk stopper den forrige,
    og et nytt trykk på samme knapp stopper lyden.
    Hvis lydfilene ikke kan lastes, brukes den innebygde synthen. */
@@ -24,7 +22,7 @@
      delay = forsinkelse i sekunder, range = hvor langt et opptak kan strekkes. */
   var B = window.VBM_LYD_BASE || {};
   var CDN = 'https://cdn.jsdelivr.net/npm/';
-  var pianoNotes = []; for (var m = 24; m <= 96; m++) pianoNotes.push(m);   // C1 til C7, hver tangent
+  var pianoNotes = []; for (var m = 21; m <= 108; m += 3) pianoNotes.push(m);
   var GUITAR = names('D2 Ds2 E2 F2 Fs2 G2 Gs2 A2 As2 B2 C3 Cs3 D3 Ds3 E3 F3 Fs3 G3 Gs3 A3 As3 B3 ' +
                      'C4 Cs4 D4 Ds4 E4 F4 Fs4 G4 Gs4 A4 As4 B4 C5 Cs5 D5');
   var VIOLIN = names('G3 A3 C4 E4 G4 A4 C5 E5 G5 A5 C6 E6 G6 A6 C7');
@@ -33,7 +31,7 @@
 
   var INSTR = {
     piano: { label: 'Piano', attack: 0.005, release: 0.35, layers: [
-      { base: B.piano || 'lyd/piano/', notes: pianoNotes, level: 0.9 }
+      { base: B.piano || 'https://tonejs.github.io/audio/salamander/', notes: pianoNotes, level: 0.9 }
     ]},
     /* Gitar klinger en oktav lavere enn den er notert – slik som en ekte gitar. */
     gitar: { label: 'Gitar', attack: 0.005, release: 0.35, layers: [
@@ -146,18 +144,24 @@
     track(osc, g);
   }
 
-  /* Opp, ned, og til slutt alle tonene samtidig – som før. */
-  function schedule(notes, voiceFn){
-    var t = ctx.currentTime + 0.05, n = notes.length;
-    notes.forEach(function(m, i){ voiceFn(m, t + i * STEP, NOTE, false, n); });
-    var t2 = t + n * STEP + GAP1, rev = notes.slice().reverse();
-    rev.forEach(function(m, i){ voiceFn(m, t2 + i * STEP, NOTE, false, n); });
-    var t3 = t2 + n * STEP + GAP2;
-    notes.forEach(function(m){ voiceFn(m, t3, CHORD, true, n); });
-    return (t3 + CHORD + 0.7) - ctx.currentTime;
+  /* Opp, ned, og til slutt alle tonene samtidig – som før.
+     ganger = hvor mange ganger det hele spilles (vanligvis 1, 3 i prøvemodus i gehørquizen). */
+  var MELLOM = 1.2;   // sekunder mellom hver gang
+  function schedule(notes, voiceFn, ganger){
+    var t = ctx.currentTime + 0.05, n = notes.length, slutt = t;
+    for (var k = 0; k < (ganger || 1); k++) {
+      if (k) t = slutt + MELLOM;
+      notes.forEach(function(m, i){ voiceFn(m, t + i * STEP, NOTE, false, n); });
+      var t2 = t + n * STEP + GAP1, rev = notes.slice().reverse();
+      rev.forEach(function(m, i){ voiceFn(m, t2 + i * STEP, NOTE, false, n); });
+      var t3 = t2 + n * STEP + GAP2;
+      notes.forEach(function(m){ voiceFn(m, t3, CHORD, true, n); });
+      slutt = t3 + CHORD;
+    }
+    return (slutt + 0.7) - ctx.currentTime;
   }
 
-  function play(notes, btn){
+  function play(notes, btn, ganger){
     stopAll();
     var my = token, inst = INSTR[current];
     activeBtn = btn; btn.classList.add('playing', 'loading');
@@ -178,12 +182,12 @@
           var rate = Math.pow(2, (p - s) / 12 + L.cents / 1200);
           sampleVoice(inst, got[urlFor(L, s)], rate, t0 + L.delay, dur, L.level * 0.62 * mix);
         });
-      }), my);
+      }, ganger), my);
     }).catch(function(){
       if (my !== token) return;
       btn.classList.remove('loading');
       var peak = Math.min(0.20, 0.85 / notes.length);
-      finish(schedule(notes, function(m, t0, dur, chord){ synthVoice(m, t0, dur, chord ? peak * 0.9 : peak); }), my);
+      finish(schedule(notes, function(m, t0, dur, chord){ synthVoice(m, t0, dur, chord ? peak * 0.9 : peak); }, ganger), my);
     });
   }
   function finish(total, my){
@@ -226,5 +230,14 @@
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', buildPicker); else buildPicker();
 
+  /* For sider som styrer lyden selv (gehørquizen):
+     VBM_LYD_SPILL(toner, knapp, ganger) spiller, eller stopper hvis knappen allerede spiller.
+     VBM_LYD_STOPP() stopper all lyd. Begge må kalles direkte fra et trykk (iOS). */
+  window.VBM_LYD_SPILL = function(notes, btn, ganger){
+    ensureCtx();
+    if (btn === activeBtn) { stopAll(); return; }
+    play(notes, btn, ganger);
+  };
+  window.VBM_LYD_STOPP = stopAll;
   window.__vbmLyd = { voices: function(){ return voices.length; }, instrument: function(){ return current; } };
 })();

@@ -84,6 +84,15 @@ window.VBM = {
       lagtTil: "2026-09-30"
     },
     {
+      seksjon: "oretrening",
+      merke: "Gehørquiz",
+      tittel: "Gehørquiz: intervaller",
+      beskrivelse: "Hør et intervall og finn navnet, i øvemodus eller som en prøve med 20 oppgaver.",
+      fil: "gehorquiz.html",
+      svartHvitt: false,
+      lagtTil: "2026-10-02"
+    },
+    {
       seksjon: "elevhefter",
       merke: "Treklanger",
       tittel: "Akkordhefte",

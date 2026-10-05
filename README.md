@@ -16,6 +16,7 @@ Gratis undervisningsmateriell i musikkteori for elever og lærere. Juksebøkene 
 - **Intervaller & sanger**: hvert intervall oppover og nedover, med kjente sanger og Spotify-lenker.
 - **Dominant- og majorakkorder med septim og none**: lytteguide til septim- og nonakkorder hos Chopin, Debussy, Hendrix, James Brown og flere.
 - **Gehørlekser med mikrointervaller**: seks øvelser i små forskjeller i tonehøyde, med sinustoner eller piano, som forberedelse til opptaksprøven på pianostemmerutdanningen ved NMH.
+- **Gehørquiz: intervaller**: hør et intervall og finn navnet, i øvemodus eller som en prøve med 20 oppgaver der hvert lydeksempel spilles tre ganger, slik som på opptaksprøver i gehør.
 
 ### Elevhefter
 - **Akkordhefte**: treklanger, trinnakkorder og diatonisk harmoni, med harmonisk moll.
@@ -23,7 +24,7 @@ Gratis undervisningsmateriell i musikkteori for elever og lærere. Juksebøkene 
 ## Lyd
 I juksebøkene kan du velge mellom **piano**, **gitar** og **strykere** med knappen nederst til høyre. Når du trykker på en ny spill-knapp, stopper lyden som spiller. Trykk på samme knapp igjen for å stoppe.
 
-- Piano: Steinway-piano fra [University of Iowa Electronic Music Studios](https://theremin.music.uiowa.edu/MISpiano.html), med ett opptak for hver tangent fra C1 til C7, stemt nøyaktig (A4 = 440 Hz)
+- Piano: Salamander Grand Piano av Alexander Holm, CC BY 3.0
 - Gitar og strykere: akustisk gitar, fiolin og cello fra [tonejs-instruments](https://github.com/nbrosowsky/tonejs-instruments) av Nicholas Brosowsky, CC BY 3.0
 
 ## Språk
