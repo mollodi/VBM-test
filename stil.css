@@ -1661,7 +1661,21 @@ html:where([data-side="index.html"]) {
   :where(html[data-stil="ovelse"]) .btn:focus-visible { outline: 2px solid Highlight; }
 }
 
+/* ---------- Bare Gehørlekser: like høye kort i hver rad, tallene nederst ---------- */
+:where(html[data-side="gehorlekser-mikrointervaller.html"]) main { align-items: stretch; }
+:where(html[data-side="gehorlekser-mikrointervaller.html"]) .card { display: flex; flex-direction: column; }
+:where(html[data-side="gehorlekser-mikrointervaller.html"]) .card > * { flex-shrink: 0; }
+:where(html[data-side="gehorlekser-mikrointervaller.html"]) .card .stats { margin-top: auto; }
+
 /* ---------- Bare gehørquizene (sider med data-quiz) ---------- */
+/* PC: oppgaven og fremgangen til venstre, valg av akkorder/intervaller til høyre. */
+@media (min-width: 760px) {
+  :where(html[data-quiz]) main { grid-template-columns: 1fr 1fr; grid-template-rows: auto auto 1fr; }
+  :where(html[data-quiz]) #ov-oppgave { grid-column: 1; grid-row: 2; }
+  :where(html[data-quiz]) #ov-fremgang-kort { grid-column: 1; grid-row: 3; }
+  :where(html[data-quiz]) #ov-valg { grid-column: 2; grid-row: 2 / span 2; }
+  :where(html[data-quiz]) #prove { grid-row: 2; }
+}
 :where(html[data-quiz]) .modus-kort,
 :where(html[data-quiz]) .prove-kort { grid-column: 1 / -1; }
 :where(html[data-quiz]) [hidden] { display: none !important; }
