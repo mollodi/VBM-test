@@ -34,7 +34,9 @@ window.VBM = {
     { id: "oretrening", overskrift: "Øretrening", tittel: "Hør og", uthevet: "lytt",
       ingress: "Kjente sanger og verk som viser lyden av intervaller og akkorder." },
     { id: "elevhefter", overskrift: "Elevhefter", tittel: "Hefter til", uthevet: "timen",
-      ingress: "Arbeidshefter til bruk i undervisningen." }
+      ingress: "Arbeidshefter til bruk i undervisningen." },
+    { id: "quiz", overskrift: "Quiz", tittel: "Øv og", uthevet: "test deg",
+      ingress: "Gehørquizer med øvemodus i eget tempo og prøvemodus slik som på opptaksprøver." }
   ],
 
   materialer: [
@@ -84,15 +86,6 @@ window.VBM = {
       lagtTil: "2026-09-30"
     },
     {
-      seksjon: "oretrening",
-      merke: "Gehørquiz",
-      tittel: "Gehørquiz: intervaller",
-      beskrivelse: "Hør et intervall og finn navnet, i øvemodus eller som en prøve med 20 oppgaver.",
-      fil: "gehorquiz.html",
-      svartHvitt: false,
-      lagtTil: "2026-10-02"
-    },
-    {
       seksjon: "elevhefter",
       merke: "Treklanger",
       tittel: "Akkordhefte",
@@ -100,6 +93,15 @@ window.VBM = {
       fil: "akkordhefte.html",
       svartHvitt: false,
       lagtTil: ""
+    },
+    {
+      seksjon: "quiz",
+      merke: "Intervaller",
+      tittel: "Gehørquiz: intervaller",
+      beskrivelse: "Hør et intervall og finn navnet, i øvemodus eller som en prøve med 20 oppgaver.",
+      fil: "gehorquiz.html",
+      svartHvitt: false,
+      lagtTil: "2026-10-02"
     }
   ]
 
