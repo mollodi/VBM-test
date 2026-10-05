@@ -33,6 +33,8 @@ window.VBM = {
       ingress: "Oppslagsverk med ekte noter i C. Trykk på spill-knappen for å høre, på piano, gitar eller strykere." },
     { id: "oretrening", overskrift: "Øretrening", tittel: "Hør og", uthevet: "lytt",
       ingress: "Kjente sanger og verk som viser lyden av intervaller og akkorder." },
+    { id: "teori", overskrift: "Musikkteori", tittel: "Lær og", uthevet: "forstå",
+      ingress: "Interaktive leksjoner i musikkteori, med ekte noter og lyd." },
     { id: "elevhefter", overskrift: "Elevhefter", tittel: "Hefter til", uthevet: "timen",
       ingress: "Arbeidshefter til bruk i undervisningen." },
     { id: "quiz", overskrift: "Quiz", tittel: "Øv og", uthevet: "test deg",
@@ -83,7 +85,7 @@ window.VBM = {
       beskrivelse: "Seks øvelser i små forskjeller i tonehøyde, som forberedelse til pianostemmerutdanningen ved NMH.",
       fil: "gehorlekser-mikrointervaller.html",
       svartHvitt: false,
-      lagtTil: "2026-09-30"
+      lagtTil: ""
     },
     {
       seksjon: "elevhefter",
@@ -93,6 +95,15 @@ window.VBM = {
       fil: "akkordhefte.html",
       svartHvitt: false,
       lagtTil: ""
+    },
+    {
+      seksjon: "teori",
+      merke: "Tonearter",
+      tittel: "Kvintsirkelen",
+      beskrivelse: "Alle dur- og molltonearter med fortegn, rekkefølgen på kryss og b-er, og lyd for hver toneart.",
+      fil: "kvintsirkelen.html",
+      svartHvitt: false,
+      lagtTil: "2026-10-05"
     },
     {
       seksjon: "quiz",
@@ -109,6 +120,15 @@ window.VBM = {
       tittel: "Gehørquiz: akkorder",
       beskrivelse: "Alle 34 akkordene fra Den ultimate jukseboka, i øvemodus eller som en prøve med 20 oppgaver.",
       fil: "gehorquiz-akkorder.html",
+      svartHvitt: false,
+      lagtTil: "2026-10-05"
+    },
+    {
+      seksjon: "quiz",
+      merke: "Tonearter",
+      tittel: "Teoriquiz: kvintsirkelen",
+      beskrivelse: "Les fortegnene og finn tonearten, eller finn fortegnene til en toneart.",
+      fil: "quiz-kvintsirkelen.html",
       svartHvitt: false,
       lagtTil: "2026-10-05"
     }

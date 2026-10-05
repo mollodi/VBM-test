@@ -1347,6 +1347,8 @@ html:where([data-side="index.html"]) {
 :root:where([data-side="gehorlekser-mikrointervaller.html"]) { --vbm-verk: "K7Q4-J9W5"; }
 :root:where([data-side="gehorquiz.html"]) { --vbm-verk: "K7Q4-R3MD"; }
 :root:where([data-side="gehorquiz-akkorder.html"]) { --vbm-verk: "K7Q4-AKQZ"; }
+:root:where([data-side="kvintsirkelen.html"]) { --vbm-verk: "K7Q4-KVSK"; }
+:root:where([data-side="quiz-kvintsirkelen.html"]) { --vbm-verk: "K7Q4-QKVS"; }
 :root:where([data-stil="ovelse"]) {
   --ink: #12151A;
   --ink-soft: #1B2027;
@@ -1752,6 +1754,81 @@ html:where([data-side="index.html"]) {
 }
 @media print {
   :where(html[data-quiz]) .lytt { display: none; }
+}
+
+
+/* ---------- Bare Kvintsirkelen (kvintsirkelen.html) ---------- */
+:where(html[data-side="kvintsirkelen.html"]) .sirkel-kort,
+:where(html[data-side="kvintsirkelen.html"]) .ovelse-kort { grid-column: 1 / -1; }
+:where(html[data-side="kvintsirkelen.html"]) main { align-items: stretch; }   /* like høye kort i hver rad */
+:where(html[data-side="kvintsirkelen.html"]) .sirkel-oppsett {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 20px;
+  align-items: start;
+}
+@media (min-width: 760px) {
+  :where(html[data-side="kvintsirkelen.html"]) .sirkel-oppsett { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); }
+}
+:where(html[data-side="kvintsirkelen.html"]) .sirkel-bilde svg { display: block; width: 100%; max-width: 440px; height: auto; margin: 0 auto; }
+:where(html[data-side="kvintsirkelen.html"]) .plass { cursor: pointer; outline: none; }
+:where(html[data-side="kvintsirkelen.html"]) .plass .ring-dur { fill: #FFFFFF; stroke: var(--text-on-paper); stroke-width: 1.2; }
+:where(html[data-side="kvintsirkelen.html"]) .plass .ring-moll { fill: #EFE7D6; stroke: var(--text-on-paper); stroke-width: 1.2; }
+:where(html[data-side="kvintsirkelen.html"]) .plass text { fill: var(--text-on-paper); text-anchor: middle; pointer-events: none; }
+:where(html[data-side="kvintsirkelen.html"]) .plass .navn-dur { font-family: Charter, "Iowan Old Style", "Palatino Linotype", Georgia, serif; font-weight: 700; font-size: 19px; }
+:where(html[data-side="kvintsirkelen.html"]) .plass .navn-moll { font-size: 14.5px; }
+:where(html[data-side="kvintsirkelen.html"]) .plass .navn-dur.liten { font-size: 14.5px; }
+:where(html[data-side="kvintsirkelen.html"]) .plass .navn-moll.liten { font-size: 12px; }
+:where(html[data-side="kvintsirkelen.html"]) .plass:hover .ring-dur, :where(html[data-side="kvintsirkelen.html"]) .plass:hover .ring-moll { fill: #F3E6C8; }
+:where(html[data-side="kvintsirkelen.html"]) .plass.valgt .ring-dur { fill: var(--text-on-paper); }
+:where(html[data-side="kvintsirkelen.html"]) .plass.valgt .ring-moll { fill: #3E3A32; }
+:where(html[data-side="kvintsirkelen.html"]) .plass.valgt text { fill: var(--paper); }
+:where(html[data-side="kvintsirkelen.html"]) .plass:focus-visible .ring-dur { stroke: var(--brass); stroke-width: 3; }
+:where(html[data-side="kvintsirkelen.html"]) .midt { fill: var(--paper); stroke: var(--text-on-paper); stroke-width: 1.2; }
+:where(html[data-side="kvintsirkelen.html"]) .midt-dur, :where(html[data-side="kvintsirkelen.html"]) .midt-moll { fill: var(--text-on-paper); text-anchor: middle; }
+:where(html[data-side="kvintsirkelen.html"]) .midt-dur { font-family: Charter, "Iowan Old Style", "Palatino Linotype", Georgia, serif; font-weight: 700; font-size: 26px; }
+:where(html[data-side="kvintsirkelen.html"]) .midt-moll { font-size: 17px; }
+:where(html[data-side="kvintsirkelen.html"]) .toneart-navn {
+  font-family: Charter, "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  font-size: 22px;
+  margin: 0 0 10px;
+}
+:where(html[data-side="kvintsirkelen.html"]) .toneart-fortegn { font-size: 15px; margin: 0 0 8px; }
+:where(html[data-side="kvintsirkelen.html"]) .noter { color: var(--text-on-paper); margin: 0 0 12px; }
+:where(html[data-side="kvintsirkelen.html"]) .noter svg { display: block; width: 100%; max-width: 360px; height: auto; }
+:where(html[data-side="kvintsirkelen.html"]) .lytt-rad .btn { flex: 1 1 150px; justify-content: center; }
+:where(html[data-side="kvintsirkelen.html"]) .del-tittel {
+  font-family: Charter, "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  font-size: 17px;
+  margin: 18px 0 8px;
+}
+:where(html[data-side="kvintsirkelen.html"]) a.btn { text-decoration: none; }
+@media (forced-colors: active) {
+  :where(html[data-side="kvintsirkelen.html"]) .sirkel-bilde svg { forced-color-adjust: none; }
+  :where(html[data-side="kvintsirkelen.html"]) .plass .ring-dur, :where(html[data-side="kvintsirkelen.html"]) .plass .ring-moll, :where(html[data-side="kvintsirkelen.html"]) .midt { fill: Canvas; stroke: CanvasText; }
+  :where(html[data-side="kvintsirkelen.html"]) .plass text, :where(html[data-side="kvintsirkelen.html"]) .midt-dur, :where(html[data-side="kvintsirkelen.html"]) .midt-moll { fill: CanvasText; }
+  :where(html[data-side="kvintsirkelen.html"]) .plass:hover .ring-dur, :where(html[data-side="kvintsirkelen.html"]) .plass:hover .ring-moll { fill: Canvas; }
+  :where(html[data-side="kvintsirkelen.html"]) .plass.valgt .ring-dur, :where(html[data-side="kvintsirkelen.html"]) .plass.valgt .ring-moll { fill: Highlight; }
+  :where(html[data-side="kvintsirkelen.html"]) .plass.valgt text { fill: HighlightText; }
+  :where(html[data-side="kvintsirkelen.html"]) .plass:focus-visible .ring-dur { stroke: Highlight; stroke-width: 4; }
+  :where(html[data-side="kvintsirkelen.html"]) .noter { color: CanvasText; }
+}
+
+/* ---------- Bare Teoriquiz: kvintsirkelen (quiz-kvintsirkelen.html) ---------- */
+:where(html[data-side="quiz-kvintsirkelen.html"]) .noter { border-top: none; padding-top: 0; margin: 0 0 12px; }
+:where(html[data-side="quiz-kvintsirkelen.html"]) .noter svg { max-width: 360px; margin: 0; }
+:where(html[data-side="quiz-kvintsirkelen.html"]) #ov-fasit { border-top: 1px solid var(--rule); padding-top: 8px; }
+:where(html[data-side="quiz-kvintsirkelen.html"]) .stor-toneart, :where(html[data-side="quiz-kvintsirkelen.html"]) .prove-sporsmal {
+  font-family: Charter, "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  margin: 0 0 12px;
+}
+:where(html[data-side="quiz-kvintsirkelen.html"]) .stor-toneart { font-size: 30px; font-weight: 700; }
+:where(html[data-side="quiz-kvintsirkelen.html"]) .prove-sporsmal { font-size: 18px; font-weight: 700; }
+@media (min-width: 760px) {
+  :where(html[data-side="quiz-kvintsirkelen.html"]) #ov-fremgang-kort { grid-column: 2; grid-row: 2; }
+}
+@media (forced-colors: active) {
+  :where(html[data-side="quiz-kvintsirkelen.html"]) #ov-fasit { border-color: CanvasText; }
 }
 
 /* =====================================================================

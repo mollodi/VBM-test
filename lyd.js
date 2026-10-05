@@ -176,12 +176,25 @@
     return (slutt + 0.7) - ctx.currentTime;
   }
 
-  function play(notes, btn, ganger, kadens, samlet){
+  /* sekvens = en liste med steg som spilles etter hverandre, hvert steg én eller flere toner
+     (kvintsirkelen bruker dette til skalaer). Siste steg klinger lenger. */
+  var S_STEG = 0.5, S_TONE = 0.9, S_SISTE = 2.2;
+  function planSekvens(sekvens, voiceFn){
+    var t = ctx.currentTime + 0.05;
+    sekvens.forEach(function(steg, i){
+      var siste = i === sekvens.length - 1;
+      steg.forEach(function(m){ voiceFn(m, t + i * S_STEG, siste ? S_SISTE : S_TONE, steg.length > 1, steg.length); });
+    });
+    return (t + (sekvens.length - 1) * S_STEG + S_SISTE + 0.7) - ctx.currentTime;
+  }
+
+  function play(notes, btn, ganger, kadens, samlet, sekvens){
+    function plan(voiceFn){ return sekvens ? planSekvens(sekvens, voiceFn) : schedule(notes, voiceFn, ganger, kadens, samlet); }
     stopAll();
     var my = token, inst = INSTR[current];
     activeBtn = btn; btn.classList.add('playing', 'loading');
     var urls = {};
-    var alle = notes.concat.apply(notes, kadens || []);
+    var alle = notes.concat.apply(notes, (kadens || []).concat(sekvens || []));
     inst.layers.forEach(function(L){
       alle.forEach(function(m){ var s = nearest(L, m + L.shift); if (s !== null) urls[urlFor(L, s)] = true; });
     });
@@ -190,7 +203,7 @@
       if (my !== token) return;
       var got = {}; list.forEach(function(u, i){ got[u] = bufs[i]; });
       btn.classList.remove('loading');
-      finish(schedule(notes, function(m, t0, dur, chord, n){
+      finish(plan(function(m, t0, dur, chord, n){
         var mix = chord ? Math.min(1, 3 / n) : 1;
         inst.layers.forEach(function(L){
           var p = m + L.shift, s = nearest(L, p);
@@ -198,12 +211,12 @@
           var rate = Math.pow(2, (p - s) / 12 + L.cents / 1200);
           sampleVoice(inst, got[urlFor(L, s)], rate, t0 + L.delay, dur, L.level * 0.62 * mix);
         });
-      }, ganger, kadens, samlet), my);
+      }), my);
     }).catch(function(){
       if (my !== token) return;
       btn.classList.remove('loading');
-      var peak = Math.min(0.20, 0.85 / notes.length);
-      finish(schedule(notes, function(m, t0, dur, chord){ synthVoice(m, t0, dur, chord ? peak * 0.9 : peak); }, ganger, kadens, samlet), my);
+      var peak = Math.min(0.20, 0.85 / Math.max(1, sekvens ? 3 : notes.length));
+      finish(plan(function(m, t0, dur, chord){ synthVoice(m, t0, dur, chord ? peak * 0.9 : peak); }), my);
     });
   }
   function finish(total, my){
@@ -253,6 +266,12 @@
     ensureCtx();
     if (btn === activeBtn) { stopAll(); return; }
     play(notes, btn, ganger, kadens, samlet);
+  };
+  /* VBM_LYD_SEKVENS(steg, knapp): spiller stegene etter hverandre, f.eks. en skala [[60],[62],[64]...]. */
+  window.VBM_LYD_SEKVENS = function(sekvens, btn){
+    ensureCtx();
+    if (btn === activeBtn) { stopAll(); return; }
+    play([], btn, 1, null, false, sekvens);
   };
   window.VBM_LYD_STOPP = stopAll;
   window.__vbmLyd = { voices: function(){ return voices.length; }, instrument: function(){ return current; } };
