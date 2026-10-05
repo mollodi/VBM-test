@@ -106,6 +106,15 @@ window.VBM = {
       lagtTil: "2026-10-05"
     },
     {
+      seksjon: "teori",
+      merke: "Skalaer",
+      tittel: "Skalaer og modi",
+      beskrivelse: "Dur, moll, de sju modiene, pentatonikk, blues, heltone og jazzskalaer, i alle tonearter, med lyd og sangeksempler.",
+      fil: "skalaer.html",
+      svartHvitt: false,
+      lagtTil: "2026-10-05"
+    },
+    {
       seksjon: "quiz",
       merke: "Intervaller",
       tittel: "Gehørquiz: intervaller",
@@ -129,6 +138,15 @@ window.VBM = {
       tittel: "Teoriquiz: kvintsirkelen",
       beskrivelse: "Les fortegnene og finn tonearten, eller finn fortegnene til en toneart.",
       fil: "quiz-kvintsirkelen.html",
+      svartHvitt: false,
+      lagtTil: "2026-10-05"
+    },
+    {
+      seksjon: "quiz",
+      merke: "Skalaer",
+      tittel: "Skalaquiz: skalaer og modi",
+      beskrivelse: "Hør en skala eller les den på notelinjen, og finn navnet.",
+      fil: "quiz-skalaer.html",
       svartHvitt: false,
       lagtTil: "2026-10-05"
     }
