@@ -30,7 +30,8 @@ Ren HTML, CSS og JavaScript. Ingen byggesteg, ingen rammeverk. Alle filer ligger
 
 - `lang`: språket siden er skrevet på (`no` eller `en`).
 - `data-side`: filnavnet. Brukes både av stil.css og av ordbøkene.
-- `data-stil` (valgfri): `bok` gir utseendet til juksebøkene, `mork` utseendet til de mørke lyttesidene, `ovelse` utseendet til øvingssidene (gehørlekser og gehørquiz).
+- `data-stil` (valgfri): `bok` gir utseendet til juksebøkene, `mork` utseendet til de mørke lyttesidene, `ovelse` utseendet til øvingssidene (gehørlekser og gehørquizene).
+- `data-quiz` (valgfri): gir en øvingsside quiz-utseendet (svarknapper, noter, prøveresultat). Brukes av alle gehørquizene.
 - `data-svart-hvitt` (valgfri): gir knappene Farger | Svart-hvitt.
 
 ## Oppskrifter

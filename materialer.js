@@ -102,6 +102,15 @@ window.VBM = {
       fil: "gehorquiz.html",
       svartHvitt: false,
       lagtTil: "2026-10-02"
+    },
+    {
+      seksjon: "quiz",
+      merke: "Akkorder",
+      tittel: "Gehørquiz: akkorder",
+      beskrivelse: "Alle 34 akkordene fra Den ultimate jukseboka, i øvemodus eller som en prøve med 20 oppgaver.",
+      fil: "gehorquiz-akkorder.html",
+      svartHvitt: false,
+      lagtTil: "2026-10-05"
     }
   ]
 

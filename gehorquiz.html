@@ -6,7 +6,7 @@
   Verk-ID: VBM-K7Q4-R3MD
   Signatur: bf337bfd3ba9686ea01e757a1996aa9c1cffd86425fb5f5115cfe4cf5e7d08e9
 -->
-<html lang="no" data-side="gehorquiz.html" data-stil="ovelse" data-vbm="K7Q4-R3MD">
+<html lang="no" data-side="gehorquiz.html" data-stil="ovelse" data-quiz data-vbm="K7Q4-R3MD">
 <head>
 <meta charset="UTF-8">
 <meta name="robots" content="noindex, nofollow">
@@ -146,6 +146,8 @@
   ];
   /* Navnet på valgt språk. På norsk og polsk står det engelske navnet i parentes der det er nyttig. */
   function navn(iv){ return T(iv.navn); }
+  /* Liten forbokstav midt i en setning (ikke på engelsk, der f.eks. «Perfect» står fint etter kolon). */
+  function smaa(t){ return SPRAK === 'en' ? t : t.replace(/^./, function(c){ return c.toLowerCase(); }); }
   function navnMedEng(iv){ return SPRAK === 'en' ? T(iv.navn) : T(iv.navn) + ' (' + iv.eng + ')'; }
 
   /* =================== Tonene =================== */
@@ -284,8 +286,8 @@
       else if (paRad === 10) m = T('Ti riktige på rad. Imponerende!');
     } else { paRad = 0; m = T(tilfeldig(FEIL_MELDINGER)); }
     var tekst = riktig
-      ? '<strong class="ok">' + T('Riktig.') + '</strong> ' + T('Det var {navn}, fra {a} til {b}.', { navn: navnMedEng(o.iv).replace(/^./, function(c){ return c.toLowerCase(); }), a: tonenavn(o.under), b: tonenavn(o.over) })
-      : '<strong class="nei">' + T('Feil.') + '</strong> ' + T('Det var {navn}, fra {a} til {b}.', { navn: navnMedEng(o.iv).replace(/^./, function(c){ return c.toLowerCase(); }), a: tonenavn(o.under), b: tonenavn(o.over) });
+      ? '<strong class="ok">' + T('Riktig.') + '</strong> ' + T('Det var {navn}, fra {a} til {b}.', { navn: smaa(navnMedEng(o.iv)), a: tonenavn(o.under), b: tonenavn(o.over) })
+      : '<strong class="nei">' + T('Feil.') + '</strong> ' + T('Det var {navn}, fra {a} til {b}.', { navn: smaa(navnMedEng(o.iv)), a: tonenavn(o.under), b: tonenavn(o.over) });
     fb.innerHTML = tekst + (m ? '<span class="motiv">' + m + '</span>' : '');
     noter.innerHTML = noterSvg(o); noter.hidden = false;
     nesteBtn.hidden = false;
