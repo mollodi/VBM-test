@@ -150,14 +150,18 @@
   /* kadens = en liste med akkorder som spilles etterpå, én etter én (gehørquizen bruker
      dette for akkorder som bare kan høres i sammenheng, f.eks. tysk sekst). */
   var K_STEG = 1.25, K_AKK = 1.1, K_SISTE = 2.6;
-  function schedule(notes, voiceFn, ganger, kadens){
+  /* samlet = true: bare alle tonene samtidig, uten opp og ned (superavansert i gehørquizene). */
+  function schedule(notes, voiceFn, ganger, kadens, samlet){
     var t = ctx.currentTime + 0.05, n = notes.length, slutt = t;
     for (var k = 0; k < (ganger || 1); k++) {
       if (k) t = slutt + MELLOM;
-      notes.forEach(function(m, i){ voiceFn(m, t + i * STEP, NOTE, false, n); });
-      var t2 = t + n * STEP + GAP1, rev = notes.slice().reverse();
-      rev.forEach(function(m, i){ voiceFn(m, t2 + i * STEP, NOTE, false, n); });
-      var t3 = t2 + n * STEP + GAP2;
+      var t3 = t;
+      if (!samlet) {
+        notes.forEach(function(m, i){ voiceFn(m, t + i * STEP, NOTE, false, n); });
+        var t2 = t + n * STEP + GAP1, rev = notes.slice().reverse();
+        rev.forEach(function(m, i){ voiceFn(m, t2 + i * STEP, NOTE, false, n); });
+        t3 = t2 + n * STEP + GAP2;
+      }
       notes.forEach(function(m){ voiceFn(m, t3, CHORD, true, n); });
       slutt = t3 + CHORD;
       if (kadens && kadens.length) {
@@ -172,7 +176,7 @@
     return (slutt + 0.7) - ctx.currentTime;
   }
 
-  function play(notes, btn, ganger, kadens){
+  function play(notes, btn, ganger, kadens, samlet){
     stopAll();
     var my = token, inst = INSTR[current];
     activeBtn = btn; btn.classList.add('playing', 'loading');
@@ -194,12 +198,12 @@
           var rate = Math.pow(2, (p - s) / 12 + L.cents / 1200);
           sampleVoice(inst, got[urlFor(L, s)], rate, t0 + L.delay, dur, L.level * 0.62 * mix);
         });
-      }, ganger, kadens), my);
+      }, ganger, kadens, samlet), my);
     }).catch(function(){
       if (my !== token) return;
       btn.classList.remove('loading');
       var peak = Math.min(0.20, 0.85 / notes.length);
-      finish(schedule(notes, function(m, t0, dur, chord){ synthVoice(m, t0, dur, chord ? peak * 0.9 : peak); }, ganger, kadens), my);
+      finish(schedule(notes, function(m, t0, dur, chord){ synthVoice(m, t0, dur, chord ? peak * 0.9 : peak); }, ganger, kadens, samlet), my);
     });
   }
   function finish(total, my){
@@ -243,12 +247,12 @@
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', buildPicker); else buildPicker();
 
   /* For sider som styrer lyden selv (gehørquizen):
-     VBM_LYD_SPILL(toner, knapp, ganger, kadens) spiller, eller stopper hvis knappen allerede spiller.
+     VBM_LYD_SPILL(toner, knapp, ganger, kadens, samlet) spiller, eller stopper hvis knappen allerede spiller.
      VBM_LYD_STOPP() stopper all lyd. Begge må kalles direkte fra et trykk (iOS). */
-  window.VBM_LYD_SPILL = function(notes, btn, ganger, kadens){
+  window.VBM_LYD_SPILL = function(notes, btn, ganger, kadens, samlet){
     ensureCtx();
     if (btn === activeBtn) { stopAll(); return; }
-    play(notes, btn, ganger, kadens);
+    play(notes, btn, ganger, kadens, samlet);
   };
   window.VBM_LYD_STOPP = stopAll;
   window.__vbmLyd = { voices: function(){ return voices.length; }, instrument: function(){ return current; } };

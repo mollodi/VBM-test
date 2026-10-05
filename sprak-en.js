@@ -768,7 +768,7 @@ VBM_ORDBOK("en", {
         "Øretrening": "Ear training",
         "Gehør<em>quiz</em>: intervaller": "Ear <em>quiz</em>: intervals",
         "Hør et intervall og finn navnet. Øv i ditt eget tempo, eller ta en prøve med 20 oppgaver slik som på opptaksprøver i gehør: hvert lydeksempel spilles tre ganger uten pause.": "Hear an interval and find its name. Practice at your own pace, or take a test with 20 questions like in ear-training admission tests: each sound example plays three times without a pause.",
-        "Intervallet spilles først opp, så ned, og til slutt begge tonene samtidig. Velg piano, gitar eller strykere nederst til høyre.": "The interval plays first upwards, then downwards, and finally both notes together. Choose piano, guitar or strings at the bottom right.",
+        "Intervallet spilles først opp, så ned, og til slutt begge tonene samtidig. På superavansert nivå spilles bare samklangen. Velg piano, gitar eller strykere nederst til høyre.": "The interval plays first upwards, then downwards, and finally both notes together. On the super advanced level, only the notes together are played. Choose piano, guitar or strings at the bottom right.",
         "Velg hvilke intervaller du vil øve på. Du kan høre hvert intervall så mange ganger du vil, og får svaret med en gang.": "Choose which intervals you want to practice. You can hear each interval as many times as you like, and you get the answer right away.",
         "20 oppgaver med alle intervallene fra ren prim til ren oktav. Hvert lydeksempel spilles tre ganger uten pause, og du får resultatet til slutt.": "20 questions with all the intervals from unison to perfect octave. Each sound example plays three times without a pause, and you get the result at the end.",
         "Hvilket intervall hører du?": "Which interval do you hear?",
@@ -785,7 +785,12 @@ VBM_ORDBOK("en", {
         "Bra. Øv litt mer på intervallene du bommet på.": "Good. Practice a little more on the intervals you missed.",
         "Du er på god vei. Bruk øvemodus på intervallene du bommet på, og prøv igjen.": "You’re on the right track. Use practice mode on the intervals you missed, and try again.",
         "Ikke gi opp. Begynn i øvemodus med noen få intervaller, og legg til flere etter hvert.": "Don’t give up. Start in practice mode with a few intervals, and add more as you go.",
-        "Sammenlign med en sang du kjenner, det hjelper.": "Compare it with a song you know, it helps."
+        "Sammenlign med en sang du kjenner, det hjelper.": "Compare it with a song you know, it helps.",
+        "Avspilling": "Playback",
+        "Opp, ned og samlet": "Up, down and together",
+        "Bare samlet (superavansert)": "Together only (super advanced)",
+        "Tonene spilles først hver for seg, opp og ned, og til slutt samtidig. Det er best for å lære.": "The notes play one at a time first, up and down, and finally together. This is best for learning.",
+        "Begge tonene spilles bare samtidig, slik som på mange opptaksprøver. Du hører ikke bevegelsen mellom dem, så det er mye vanskeligere.": "Both notes play only together, like in many admission tests. You can't hear the movement between them, so it is much harder."
       },
     "gehorquiz-akkorder.html": {
         "Modus": "Mode",
@@ -828,7 +833,7 @@ VBM_ORDBOK("en", {
         "Quiz": "Quiz",
         "Gehør<em>quiz</em>: akkorder": "Ear <em>quiz</em>: chords",
         "Hør en akkord og finn navnet. Alle 34 akkordene fra Den ultimate jukseboka for akkorder og intervaller, i de samme fire kapitlene. Øv med C som grunntone slik som i boka, eller velg alle tonearter for et avansert nivå.": "Hear a chord and find its name. All 34 chords from The Ultimate Cheat Book for Chords and Intervals, in the same four chapters. Practice with C as the root like in the book, or choose all keys for an advanced level.",
-        "Akkorden spilles først tone for tone opp og ned, og til slutt samlet. Akkordene fra kapittel 4 som bare kan høres i sammenheng, spilles i tillegg i en kort kadens i moll. Velg piano, gitar eller strykere nederst til høyre.": "The chord first plays note by note, up and down, and finally all together. The chapter 4 chords that can only be heard in context also play in a short cadence in minor. Choose piano, guitar or strings at the bottom right.",
+        "Akkorden spilles først tone for tone opp og ned, og til slutt samlet, eller bare samlet på superavansert nivå. Akkordene fra kapittel 4 som bare kan høres i sammenheng, spilles i tillegg i en kort kadens i moll. Velg piano, gitar eller strykere nederst til høyre.": "The chord first plays note by note, up and down, and finally all together, or only together on the super advanced level. The chapter 4 chords that can only be heard in context also play in a short cadence in minor. Choose piano, guitar or strings at the bottom right.",
         "Velg hvilke akkorder du vil øve på. Du kan høre hver akkord så mange ganger du vil, og får svaret med en gang.": "Choose which chords you want to practice. You can hear each chord as many times as you like, and you get the answer right away.",
         "Velg kapitlene du vil prøves i. 20 oppgaver, hvert lydeksempel spilles tre ganger uten pause, og du får resultatet til slutt.": "Choose the chapters you want to be tested on. 20 questions, each sound example plays three times without a pause, and you get the result at the end.",
         "Grunntone": "Root",
@@ -893,7 +898,12 @@ VBM_ORDBOK("en", {
         "Fransk sekst": "French 6th",
         "Tysk sekst": "German 6th",
         "Forstørret septimakkord": "Augmented 7th chord",
-        "Forstørret majorseptimakkord": "Augmented major 7th chord"
+        "Forstørret majorseptimakkord": "Augmented major 7th chord",
+        "Avspilling": "Playback",
+        "Opp, ned og samlet": "Up, down and together",
+        "Bare samlet (superavansert)": "Together only (super advanced)",
+        "Akkorden spilles først tone for tone, opp og ned, og til slutt samlet. Det er best for å lære.": "The chord plays note by note first, up and down, and finally together. This is best for learning.",
+        "Akkorden spilles bare samlet, slik som på mange opptaksprøver. Kadensen i kapittel 4 spilles fortsatt etterpå. Det er mye vanskeligere.": "The chord plays only together, like in many admission tests. The chapter 4 cadence still plays afterwards. This is much harder."
       }
   }
 });

@@ -818,7 +818,7 @@ VBM_ORDBOK("pl", {
         "Øretrening": "Kształcenie słuchu",
         "Gehør<em>quiz</em>: intervaller": "<em>Quiz</em> słuchowy: interwały",
         "Hør et intervall og finn navnet. Øv i ditt eget tempo, eller ta en prøve med 20 oppgaver slik som på opptaksprøver i gehør: hvert lydeksempel spilles tre ganger uten pause.": "Posłuchaj interwału i znajdź jego nazwę. Ćwicz we własnym tempie albo zrób test z 20 zadaniami, tak jak na egzaminach wstępnych ze słuchu: każdy przykład dźwiękowy zabrzmi trzy razy bez przerwy.",
-        "Intervallet spilles først opp, så ned, og til slutt begge tonene samtidig. Velg piano, gitar eller strykere nederst til høyre.": "Interwał zabrzmi najpierw w górę, potem w dół, a na końcu oba dźwięki razem. Wybierz fortepian, gitarę lub smyczki w prawym dolnym rogu.",
+        "Intervallet spilles først opp, så ned, og til slutt begge tonene samtidig. På superavansert nivå spilles bare samklangen. Velg piano, gitar eller strykere nederst til høyre.": "Interwał zabrzmi najpierw w górę, potem w dół, a na końcu oba dźwięki razem. Na poziomie bardzo zaawansowanym zabrzmi tylko współbrzmienie. Wybierz fortepian, gitarę lub smyczki w prawym dolnym rogu.",
         "Velg hvilke intervaller du vil øve på. Du kan høre hvert intervall så mange ganger du vil, og får svaret med en gang.": "Wybierz interwały, które chcesz ćwiczyć. Każdy interwał możesz usłyszeć dowolną liczbę razy, a odpowiedź dostajesz od razu.",
         "20 oppgaver med alle intervallene fra ren prim til ren oktav. Hvert lydeksempel spilles tre ganger uten pause, og du får resultatet til slutt.": "20 zadań ze wszystkimi interwałami od prymy czystej do oktawy czystej. Każdy przykład dźwiękowy zabrzmi trzy razy bez przerwy, a wynik dostajesz na końcu.",
         "Hvilket intervall hører du?": "Jaki interwał słyszysz?",
@@ -835,7 +835,12 @@ VBM_ORDBOK("pl", {
         "Bra. Øv litt mer på intervallene du bommet på.": "Dobrze. Poćwicz jeszcze interwały, które sprawiły trudność.",
         "Du er på god vei. Bruk øvemodus på intervallene du bommet på, og prøv igjen.": "Jesteś na dobrej drodze. Poćwicz w trybie ćwiczeń interwały, które sprawiły trudność, i spróbuj ponownie.",
         "Ikke gi opp. Begynn i øvemodus med noen få intervaller, og legg til flere etter hvert.": "Nie poddawaj się. Zacznij w trybie ćwiczeń od kilku interwałów i stopniowo dodawaj kolejne.",
-        "Sammenlign med en sang du kjenner, det hjelper.": "Porównaj z piosenką, którą znasz, to pomaga."
+        "Sammenlign med en sang du kjenner, det hjelper.": "Porównaj z piosenką, którą znasz, to pomaga.",
+        "Avspilling": "Odtwarzanie",
+        "Opp, ned og samlet": "W górę, w dół i razem",
+        "Bare samlet (superavansert)": "Tylko razem (bardzo zaawansowane)",
+        "Tonene spilles først hver for seg, opp og ned, og til slutt samtidig. Det er best for å lære.": "Dźwięki zabrzmią najpierw osobno, w górę i w dół, a na końcu razem. To najlepsze do nauki.",
+        "Begge tonene spilles bare samtidig, slik som på mange opptaksprøver. Du hører ikke bevegelsen mellom dem, så det er mye vanskeligere.": "Oba dźwięki zabrzmią tylko razem, jak na wielu egzaminach wstępnych. Nie słychać ruchu między nimi, więc jest dużo trudniej."
       },
     "gehorquiz-akkorder.html": {
         "Modus": "Tryb",
@@ -878,7 +883,7 @@ VBM_ORDBOK("pl", {
         "Quiz": "Quiz",
         "Gehør<em>quiz</em>: akkorder": "<em>Quiz</em> słuchowy: akordy",
         "Hør en akkord og finn navnet. Alle 34 akkordene fra Den ultimate jukseboka for akkorder og intervaller, i de samme fire kapitlene. Øv med C som grunntone slik som i boka, eller velg alle tonearter for et avansert nivå.": "Posłuchaj akordu i znajdź jego nazwę. Wszystkie 34 akordy z Najlepszej ściągi z akordów i interwałów, w tych samych czterech rozdziałach. Ćwicz z C jako dźwiękiem podstawowym, tak jak w książce, albo wybierz wszystkie tonacje na poziomie zaawansowanym.",
-        "Akkorden spilles først tone for tone opp og ned, og til slutt samlet. Akkordene fra kapittel 4 som bare kan høres i sammenheng, spilles i tillegg i en kort kadens i moll. Velg piano, gitar eller strykere nederst til høyre.": "Akord zabrzmi najpierw dźwięk po dźwięku w górę i w dół, a na końcu w całości. Akordy z rozdziału 4, które można rozpoznać tylko w kontekście, zabrzmią dodatkowo w krótkiej kadencji molowej. Wybierz fortepian, gitarę lub smyczki w prawym dolnym rogu.",
+        "Akkorden spilles først tone for tone opp og ned, og til slutt samlet, eller bare samlet på superavansert nivå. Akkordene fra kapittel 4 som bare kan høres i sammenheng, spilles i tillegg i en kort kadens i moll. Velg piano, gitar eller strykere nederst til høyre.": "Akord zabrzmi najpierw dźwięk po dźwięku w górę i w dół, a na końcu w całości, albo tylko w całości na poziomie bardzo zaawansowanym. Akordy z rozdziału 4, które można rozpoznać tylko w kontekście, zabrzmią dodatkowo w krótkiej kadencji molowej. Wybierz fortepian, gitarę lub smyczki w prawym dolnym rogu.",
         "Velg hvilke akkorder du vil øve på. Du kan høre hver akkord så mange ganger du vil, og får svaret med en gang.": "Wybierz akordy, które chcesz ćwiczyć. Każdy akord możesz usłyszeć dowolną liczbę razy, a odpowiedź dostajesz od razu.",
         "Velg kapitlene du vil prøves i. 20 oppgaver, hvert lydeksempel spilles tre ganger uten pause, og du får resultatet til slutt.": "Wybierz rozdziały do testu. 20 zadań, każdy przykład dźwiękowy zabrzmi trzy razy bez przerwy, a wynik dostajesz na końcu.",
         "Grunntone": "Dźwięk podstawowy",
@@ -943,7 +948,12 @@ VBM_ORDBOK("pl", {
         "Fransk sekst": "Sekstakord francuski",
         "Tysk sekst": "Sekstakord niemiecki",
         "Forstørret septimakkord": "Zwiększony akord septymowy",
-        "Forstørret majorseptimakkord": "Zwiększony akord septymowy z septymą wielką"
+        "Forstørret majorseptimakkord": "Zwiększony akord septymowy z septymą wielką",
+        "Avspilling": "Odtwarzanie",
+        "Opp, ned og samlet": "W górę, w dół i razem",
+        "Bare samlet (superavansert)": "Tylko razem (bardzo zaawansowane)",
+        "Akkorden spilles først tone for tone, opp og ned, og til slutt samlet. Det er best for å lære.": "Akord zabrzmi najpierw dźwięk po dźwięku, w górę i w dół, a na końcu w całości. To najlepsze do nauki.",
+        "Akkorden spilles bare samlet, slik som på mange opptaksprøver. Kadensen i kapittel 4 spilles fortsatt etterpå. Det er mye vanskeligere.": "Akord zabrzmi tylko w całości, jak na wielu egzaminach wstępnych. Kadencja z rozdziału 4 nadal zabrzmi potem. Jest dużo trudniej."
       }
   }
 });

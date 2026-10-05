@@ -25,7 +25,7 @@
   <div class="eyebrow">Quiz</div>
   <h1>Gehør<em>quiz</em>: akkorder</h1>
   <p class="lede">Hør en akkord og finn navnet. Alle 34 akkordene fra Den ultimate jukseboka for akkorder og intervaller, i de samme fire kapitlene. Øv med C som grunntone slik som i boka, eller velg alle tonearter for et avansert nivå.</p>
-  <p class="lede">Akkorden spilles først tone for tone opp og ned, og til slutt samlet. Akkordene fra kapittel 4 som bare kan høres i sammenheng, spilles i tillegg i en kort kadens i moll. Velg piano, gitar eller strykere nederst til høyre.</p>
+  <p class="lede">Akkorden spilles først tone for tone opp og ned, og til slutt samlet, eller bare samlet på superavansert nivå. Akkordene fra kapittel 4 som bare kan høres i sammenheng, spilles i tillegg i en kort kadens i moll. Velg piano, gitar eller strykere nederst til høyre.</p>
 </header>
 
 <main>
@@ -48,6 +48,13 @@
     </div>
     <p class="task grunn-tekst" data-for="c">Alle akkordene har C som grunntone, slik som i boka.</p>
     <p class="task grunn-tekst" data-for="alle" hidden>Hver akkord får en tilfeldig grunntone, med riktig stavemåte på notelinjen. Akkordene fra kapittel 4 spilles i en tilfeldig molltoneart.</p>
+    <p class="label" id="avsp-label">Avspilling</p>
+    <div class="row answers" role="group" aria-labelledby="avsp-label">
+      <button type="button" class="btn" data-avsp="alle" aria-pressed="true">Opp, ned og samlet</button>
+      <button type="button" class="btn" data-avsp="samlet" aria-pressed="false">Bare samlet (superavansert)</button>
+    </div>
+    <p class="task avsp-tekst" data-for="alle">Akkorden spilles først tone for tone, opp og ned, og til slutt samlet. Det er best for å lære.</p>
+    <p class="task avsp-tekst" data-for="samlet" hidden>Akkorden spilles bare samlet, slik som på mange opptaksprøver. Kadensen i kapittel 4 spilles fortsatt etterpå. Det er mye vanskeligere.</p>
   </section>
 
   <!-- ===== Øvemodus ===== -->
@@ -136,7 +143,7 @@
   function $(id){ return document.getElementById(id); }
   function tilfeldig(a){ return a[Math.floor(Math.random() * a.length)]; }
   function blandet(a){ a = a.slice(); for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)), x = a[i]; a[i] = a[j]; a[j] = x; } return a; }
-  function spill(v, knapp, ganger){ if (window.VBM_LYD_SPILL) window.VBM_LYD_SPILL(v.toner, knapp, ganger, v.kadens); }
+  function spill(v, knapp, ganger){ if (window.VBM_LYD_SPILL) window.VBM_LYD_SPILL(v.toner, knapp, ganger, v.kadens, bareSamlet); }
   function stopp(){ if (window.VBM_LYD_STOPP) window.VBM_LYD_STOPP(); }
   function lag(tag, klasse, tekst){ var e = document.createElement(tag); if (klasse) e.className = klasse; if (tekst != null) e.textContent = tekst; return e; }
 
@@ -314,6 +321,22 @@
     [].forEach.call(document.querySelectorAll('.modus-tekst'), function(el){ el.hidden = el.getAttribute('data-for') !== m; });
   }
   modusKnapper.forEach(function(b){ b.addEventListener('click', function(){ velgModus(b.getAttribute('data-modus')); }); });
+  /* Avspilling: opp, ned og samlet (vanlig) eller bare samlet (superavansert). */
+  var AKEY = 'vbm-quiz-akkorder-avspilling', bareSamlet = false;
+  try { bareSamlet = localStorage.getItem(AKEY) === 'samlet'; } catch(e){}
+  var avspKnapper = [].slice.call(document.querySelectorAll('[data-avsp]'));
+  function visAvsp(){
+    avspKnapper.forEach(function(b){ b.setAttribute('aria-pressed', (b.getAttribute('data-avsp') === 'samlet') === bareSamlet ? 'true' : 'false'); });
+    [].forEach.call(document.querySelectorAll('.avsp-tekst'), function(el){ el.hidden = (el.getAttribute('data-for') === 'samlet') !== bareSamlet; });
+  }
+  avspKnapper.forEach(function(b){ b.addEventListener('click', function(){
+    var ny = b.getAttribute('data-avsp') === 'samlet';
+    if (ny === bareSamlet) return;
+    bareSamlet = ny; stopp(); visAvsp();
+    try { localStorage.setItem(AKEY, ny ? 'samlet' : 'alle'); } catch(e){}
+  }); });
+  visAvsp();
+
   var grunnKnapper = [].slice.call(document.querySelectorAll('[data-grunn]'));
   function visGrunn(){
     grunnKnapper.forEach(function(b){ b.setAttribute('aria-pressed', (b.getAttribute('data-grunn') === 'alle') === alleTonearter ? 'true' : 'false'); });
