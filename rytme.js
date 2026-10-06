@@ -199,7 +199,8 @@ window.VBM_RYTME = (function(){
 
   /* ---------- Avspilling ----------
      tempo = slag per minutt (firedel i enkel takt, punktert firedel i sammensatt, åttendel i 7/8).
-     inntelling: én takt med metronom først. metronom: klikk på hvert slag under rytmen. */
+     inntelling: én takt med metronom først. metronom: klikk på hvert slag under rytmen.
+     ganger: hvor mange ganger rytmen spilles etter hverandre (i en løkke, uten pause). */
   function hendelser(takter, takt, tempo, valg){
     valg = valg || {};
     var T = TAKTER[takt], sekPerTikk = 60 / (tempo * T.puls), liste = [], t = 0, i = 0, m = valg.tone || 72;
@@ -214,7 +215,9 @@ window.VBM_RYTME = (function(){
       T.grupper.forEach(function(g, k){ klikk(acc0 * sekPerTikk, k === 0); acc0 += g; });
       t = T.tikk * sekPerTikk;
     }
-    takter.forEach(function(takt2){
+    var runder = []; for (var r = 0; r < (valg.ganger || 1); r++) runder = runder.concat(takter);
+    runder.forEach(function(takt2, ti){
+      if (ti % takter.length === 0) i = 0;   // samme noter lyser opp hver gang rytmen gjentas
       var pos = 0;
       if (valg.metronom) { var acc = 0; T.grupper.forEach(function(g, k){ liste.push({ t: t + acc * sekPerTikk, lyd: 'klikk', v: k === 0 ? 0.6 : 0.35 }); acc += g; }); }
       takt2.forEach(function(e){

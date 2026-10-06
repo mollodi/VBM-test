@@ -92,16 +92,46 @@
       if (p && p.then) p.then(res, rej);
     });
   }
+  /* Lyd som ligger inne i siden (data:-adresser, brukt i forhåndsvisninger) pakkes ut direkte.
+     fetch() ville blitt stoppet av sikkerhetsreglene på sider som bare tillater kjente adresser. */
+  function fraData(url){
+    var b64 = url.slice(url.indexOf(',') + 1), bin = atob(b64), buf = new Uint8Array(bin.length);
+    for (var i = 0; i < bin.length; i++) buf[i] = bin.charCodeAt(i);
+    return Promise.resolve(buf.buffer);
+  }
   function load(url){
     if (!cache[url]) {
-      cache[url] = fetch(url)
-        .then(function(r){ if (!r.ok) throw new Error(r.status); return r.arrayBuffer(); })
+      cache[url] = (url.indexOf('data:') === 0 ? fraData(url) : fetch(url)
+        .then(function(r){ if (!r.ok) throw new Error(r.status); return r.arrayBuffer(); }))
         .then(decode);
       cache[url].catch(function(){ delete cache[url]; });
     }
     return cache[url];
   }
   function urlFor(L, s){ return L.base + nameOf(s) + '.mp3'; }
+
+  /* ---------- fargelegging i takt med lyden ----------
+     Fargene styres av lydklokken (ctx.currentTime), som sjekkes hvert 15. millisekund. Hver sjekk leser
+     klokken på nytt, så en sjekk som kommer litt sent, gir ikke feil som hoper seg opp.
+     (requestAnimationFrame brukes ikke: den stoppes eller bremses i innebygde rammer, som forhåndsvisninger.)
+     Forsinkelsen fra lydkortet til høyttaleren eller hodetelefonene (ctx.outputLatency, ofte stor med
+     Bluetooth) trekkes fra, slik at fargen kommer når tonen høres. */
+  var planlagt = [], rafId = null;
+  /* Forsinkelsen begrenses til 0,5 s, i tilfelle en nettleser rapporterer en urimelig verdi */
+  function forsinkelse(){ var f = ctx ? (ctx.outputLatency || ctx.baseLatency || 0) : 0; return Math.min(Math.max(f, 0), 0.5); }
+  function tikk(){
+    rafId = null;
+    if (!ctx) return;
+    var na = ctx.currentTime - forsinkelse(), klare = [], rest = [];
+    planlagt.forEach(function(p){ (p.t <= na ? klare : rest).push(p); });
+    planlagt = rest;
+    klare.sort(function(a, b){ return a.t - b.t; }).forEach(function(p){ try { p.fn(); } catch(e){} });
+    if (planlagt.length) rafId = setTimeout(tikk, 15);
+  }
+  function planlegg(tCtx, fn){
+    planlagt.push({ t: tCtx, fn: fn });
+    if (!rafId) rafId = setTimeout(tikk, 15);
+  }
 
   /* ---------- aktive stemmer, slik at alt kan stoppes ---------- */
   var voices = [], activeBtn = null, timer = null, token = 0;
@@ -121,6 +151,7 @@
     voices = [];
     if (timer) { clearTimeout(timer); timer = null; }
     stegTimere.forEach(clearTimeout); stegTimere = [];
+    planlagt = []; if (rafId) { clearTimeout(rafId); rafId = null; }
     if (aktivVedSteg) { var v = aktivVedSteg; aktivVedSteg = null; try { v(-1); } catch(e){} }
     if (activeBtn) { activeBtn.classList.remove('playing', 'loading'); activeBtn = null; }
   }
@@ -203,11 +234,10 @@
     });
     if (vedSteg) {
       aktivVedSteg = vedSteg;
-      var start = (t - ctx.currentTime) * 1000;
       sekvens.forEach(function(steg, i){
-        stegTimere.push(setTimeout(function(){ if (my === token) vedSteg(i); }, Math.max(0, start + i * S_STEG * 1000)));
+        planlegg(t + i * S_STEG, function(){ if (my === token) vedSteg(i); });
       });
-      stegTimere.push(setTimeout(function(){ if (my === token) { aktivVedSteg = null; vedSteg(-1); } }, start + ((sekvens.length - 1) * S_STEG + S_SISTE) * 1000));
+      planlegg(t + (sekvens.length - 1) * S_STEG + S_SISTE, function(){ if (my === token) { aktivVedSteg = null; vedSteg(-1); } });
     }
     return (t + (sekvens.length - 1) * S_STEG + S_SISTE + 0.7) - ctx.currentTime;
   }
@@ -340,12 +370,11 @@
       });
       if (vedSteg) {
         aktivVedSteg = vedSteg;
-        var start = (t - ctx.currentTime) * 1000;
         hendelser.forEach(function(h){
           if (h.i == null) return;
-          stegTimere.push(setTimeout(function(){ if (my === token) vedSteg(h.i); }, Math.max(0, start + h.t * 1000)));
+          planlegg(t + h.t, function(){ if (my === token) vedSteg(h.i); });
         });
-        stegTimere.push(setTimeout(function(){ if (my === token) { aktivVedSteg = null; vedSteg(-1); } }, start + slutt * 1000));
+        planlegg(t + slutt, function(){ if (my === token) { aktivVedSteg = null; vedSteg(-1); } });
       }
       finish((t - ctx.currentTime) + slutt + 0.3, my);
     }).catch(function(){
@@ -358,6 +387,15 @@
         synthVoice(m, t + h.t, 0.18, 0.18 * (h.v == null ? 1 : h.v));
         slutt = Math.max(slutt, h.t + 0.2);
       });
+      /* Notene farges også når reservelyden brukes */
+      if (vedSteg) {
+        aktivVedSteg = vedSteg;
+        hendelser.forEach(function(h){
+          if (h.i == null) return;
+          planlegg(t + h.t, function(){ if (my === token) vedSteg(h.i); });
+        });
+        planlegg(t + slutt, function(){ if (my === token) { aktivVedSteg = null; vedSteg(-1); } });
+      }
       finish((t - ctx.currentTime) + slutt + 0.3, my);
     });
   }
