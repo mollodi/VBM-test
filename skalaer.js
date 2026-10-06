@@ -155,6 +155,7 @@ window.VBM_SKALAER = (function(){
     + '<g id="acc-dflat"><use href="#acc-flat" x="-4.4"/><use href="#acc-flat" x="4.4"/></g>'
     + '<g id="acc-dsharp"><rect x="-0.85" y="-5.2" width="1.7" height="10.4" transform="rotate(45)"/><rect x="-0.85" y="-5.2" width="1.7" height="10.4" transform="rotate(-45)"/><rect x="-4.9" y="-4.9" width="3" height="3"/><rect x="1.9" y="-4.9" width="3" height="3"/><rect x="-4.9" y="1.9" width="3" height="3"/><rect x="1.9" y="1.9" width="3" height="3"/></g>'
     + '<g id="fclef"><path d="M10.5,183.5 C9.8,175.5 15.5,169.2 23.2,169.2 C31.6,169.2 37.4,175.4 37.4,184.6 C37.4,199.2 26.4,211.8 9.4,219.6 L8.6,217.9 C21.6,210.6 30.3,199.4 30.3,185.2 C30.3,176.6 27.4,171.4 22.6,171.4 C18.4,171.4 15.6,174.2 15.2,177.6 Z"/><circle cx="14.2" cy="181.6" r="4.6"/><circle cx="43.4" cy="176.5" r="2.3"/><circle cx="43.4" cy="189.5" r="2.3"/></g>'
+    + '<g id="cclef"><rect x="0" y="86.5" width="5.2" height="55"/><rect x="7.6" y="86.5" width="1.8" height="55"/><path d="M9.4,114 L13.2,104.5 C14.6,108.6 16.4,110.6 18.6,110.6 C21.2,110.6 22.2,107.4 22.2,101.6 C22.2,94.6 20.6,90.6 17.6,90.6 C15.6,90.6 14.6,91.8 14.6,93 C14.6,94.4 16.6,94.8 16.6,97 C16.6,99 15,100.4 13,100.4 C10.6,100.4 9.6,98.4 9.6,96.2 C9.6,91.4 13.8,88.2 18.4,88.2 C24.8,88.2 29,93.6 29,100.6 C29,107.6 24.4,112.2 19.2,112.2 C17.2,112.2 15.4,111.4 14.2,110 L12.6,114 L14.2,118 C15.4,116.6 17.2,115.8 19.2,115.8 C24.4,115.8 29,120.4 29,127.4 C29,134.4 24.8,139.8 18.4,139.8 C13.8,139.8 9.6,136.6 9.6,131.8 C9.6,129.6 10.6,127.6 13,127.6 C15,127.6 16.6,129 16.6,131 C16.6,133.2 14.6,133.6 14.6,135 C14.6,136.2 15.6,137.4 17.6,137.4 C20.6,137.4 22.2,133.4 22.2,126.4 C22.2,120.6 21.2,117.4 18.6,117.4 C16.4,117.4 14.6,119.4 13.2,123.5 Z"/></g>'
     + '<g id="acc-natural"><rect x="-3.1" y="-10.5" width="1.2" height="15.6"/><rect x="1.9" y="-5.1" width="1.2" height="15.6"/><path d="M-3.1,-2.4L3.1,-4.2L3.1,-1.7L-3.1,0.1Z"/><path d="M-3.1,3.3L3.1,1.5L3.1,4L-3.1,5.8Z"/></g>'
     + '</defs></svg>';
   function sikreDefs(){
@@ -309,6 +310,66 @@ window.VBM_SKALAER = (function(){
     return '<svg viewBox="0 ' + topp + ' ' + bredde + ' ' + (bunn - topp) + '" role="img" aria-label="' + (etikett || '') + '">' + s + '</svg>';
   }
 
+  /* ---------- Én notelinje med valgfri nøkkel ----------
+     G-nøkkel (diskant), F-nøkkel (bass), altnøkkel og tenornøkkel (C-nøkler).
+     ref = diatonisk tonetrinn (oktav * 7 + bokstav) og y-posisjonen til nøkkelens referanselinje. */
+  var NOKLER = {
+    G:     { ref: 32, y: 127 },   // G-nøkkelen omslutter 2. linje: g¹ (G4)
+    F:     { ref: 24, y: 101 },   // F-nøkkelens prikker står rundt 4. linje: f (F3)
+    alt:   { ref: 28, y: 114 },   // C-nøkkel på 3. linje: c¹ (C4)
+    tenor: { ref: 28, y: 101 }    // C-nøkkel på 4. linje: c¹ (C4)
+  };
+  function yNokkel(nk, d){ var k = NOKLER[nk]; return k.y - (d - k.ref) * 6.5; }
+  /* Tonetrinnet som står på nederste og øverste linje i nøkkelen */
+  function linjeområde(nk){ var k = NOKLER[nk]; return { bunn: k.ref - Math.round((140 - k.y) / 6.5), topp: k.ref + Math.round((k.y - 88) / 6.5) }; }
+  function nokkelTegn(nk){
+    if (nk === 'G') return '<use href="#gclef" transform="translate(6 139.04) scale(0.0767 -0.0767)" fill="currentColor"/>';
+    if (nk === 'F') return '<use href="#fclef" transform="translate(4 ' + (101 - 183) + ')" fill="currentColor"/>';
+    return '<use href="#cclef" transform="translate(8 ' + (NOKLER[nk].y - 114) + ')" fill="currentColor"/>';
+  }
+  /* noter: liste med {b, f, oktav}. valg.klikk = { fra, til } gir trykkflater (data-d) for hvert tonetrinn,
+     valg.bredde gir fast bredde, valg.ekstra er ekstra svg (for eksempel en forhåndsvisningsnote). */
+  function enStav(nk, noter, valg){
+    sikreDefs();
+    valg = valg || {};
+    var bredde = valg.bredde || 220, x0 = valg.x0 || 140, sp = 44, s = '', l;
+    for (var i = 0; i < 5; i++) s += '<line x1="4" y1="' + (88 + i * 13) + '" x2="' + (bredde - 4) + '" y2="' + (88 + i * 13) + '" stroke="currentColor" stroke-width="1.3"/>';
+    s += nokkelTegn(nk);
+    var ys = [];
+    noter.forEach(function(n, i){
+      var d = n.oktav * 7 + n.b, y = yNokkel(nk, d), x = x0 + (i - (noter.length - 1) / 2) * sp;
+      ys.push(y);
+      for (l = 153; l <= y + 0.1; l += 13) s += '<line x1="' + (x - 13) + '" y1="' + l + '" x2="' + (x + 13) + '" y2="' + l + '" stroke="currentColor" stroke-width="1.3"/>';
+      for (l = 75; l >= y - 0.1; l -= 13) s += '<line x1="' + (x - 13) + '" y1="' + l + '" x2="' + (x + 13) + '" y2="' + l + '" stroke="currentColor" stroke-width="1.3"/>';
+      if (n.f) {
+        var id = { '-2': 'acc-dflat', '-1': 'acc-flat', '1': 'acc-sharp', '2': 'acc-dsharp' }[n.f];
+        s += '<use href="#' + id + '" transform="translate(' + (x - (n.f === -2 ? 18 : 14)) + ' ' + y + ')" fill="currentColor"/>';
+      }
+      s += '<ellipse class="' + (n.klasse || '') + '" cx="' + x + '" cy="' + y + '" rx="7.2" ry="5.6" fill="currentColor" transform="rotate(-18 ' + x + ' ' + y + ')"/>';
+    });
+    var topp = 46, hoyde = 136;
+    if (ys.length) { topp = Math.min(46, Math.min.apply(null, ys) - 16); hoyde = Math.max(46 + 136, Math.max.apply(null, ys) + 16) - topp; }
+    if (valg.klikk) {
+      for (var d = valg.klikk.fra; d <= valg.klikk.til; d++) {
+        var y2 = yNokkel(nk, d);
+        s += '<rect class="trykkflate" data-d="' + d + '" x="44" y="' + (y2 - 3.25) + '" width="' + (bredde - 48) + '" height="6.5" fill="transparent"/>';
+      }
+    }
+    if (valg.ekstra) s += valg.ekstra;
+    return '<svg viewBox="0 ' + topp + ' ' + bredde + ' ' + hoyde + '" role="img" aria-label="' + (valg.etikett || '') + '">' + s + '</svg>';
+  }
+
+  /* ---------- Oktavnavn ----------
+     Helmholtz-navn slik de brukes i Norge og Polen (c¹ = enstrøken c = midtre C på pianoet),
+     og vitenskapelig navn (C4) slik det brukes på engelsk. */
+  var OKTAVNAVN = ['subkontraoktav', 'kontraoktav', 'store oktav', 'lille oktav', 'enstrøken oktav', 'tostrøken oktav', 'trestrøken oktav', 'firestrøken oktav', 'femstrøken oktav'];
+  function oktavInfo(n){
+    var navn = K.tone(n), o = n.oktav;
+    var helm = (o >= 3 ? navn.charAt(0).toLowerCase() + navn.slice(1) : navn) + (o >= 4 ? '¹²³⁴⁵'.charAt(o - 4) : o === 1 ? '₁' : o === 0 ? '₂' : '');
+    var sci = 'CDEFGAB'.charAt(n.b) + ({ '1': '♯', '-1': '♭', '2': '𝄪', '-2': '𝄫' }[n.f] || '') + o;
+    return { helm: helm, sci: sci, oktav: OKTAVNAVN[o] || '' };
+  }
+
   /* Lyd: opp og ned, hver tone for seg. */
   function lyd(liste, ned){
     var opp = liste.map(midi), vei = ned ? ned.map(midi) : opp;
@@ -316,7 +377,7 @@ window.VBM_SKALAER = (function(){
   }
 
   var DUR_SKALA = { trinn: DUR };
-  return { GRUPPER: GRUPPER, ALLE: ALLE, GRUNN: GRUNN, DUR: DUR, toner: toner, modusIDur: modusIDur, rotFor: rotFor, akkordrekke: akkordrekke, storSats: storSats,
+  return { GRUPPER: GRUPPER, ALLE: ALLE, GRUNN: GRUNN, DUR: DUR, toner: toner, modusIDur: modusIDur, rotFor: rotFor, akkordrekke: akkordrekke, storSats: storSats, enStav: enStav, NOKLER: NOKLER, yNokkel: yNokkel, linjeomrade: linjeområde, oktavInfo: oktavInfo, OKTAVNAVN: OKTAVNAVN,
            durRot: function(nr){ return rotFor(nr, DUR_SKALA); },
            fortegnFor: fortegnFor, noter: noter, lyd: lyd, midi: midi, T: T };
 })();

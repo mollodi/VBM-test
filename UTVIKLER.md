@@ -13,7 +13,7 @@ Ren HTML, CSS og JavaScript. Ingen byggesteg, ingen rammeverk. Alle filer ligger
 | `sprak-no.js` | Oversettelse til norsk for sider skrevet på engelsk (lytteguiden) | Sjelden |
 | `lyd.js` | Lydmotor for spill-knappene (piano, gitar, strykere) | Nesten aldri |
 | `tonearter.js` | Tonearter, fortegn og tonenavn på tre språk, brukt av kvintsirkelen, skalaene og quizene deres | Sjelden |
-| `skalaer.js` | Alle skalaene (trinn, tekster, sangeksempler), noter for skalaer, akkorder side om side og firstemmig sats på to notelinjer, brukt av skalaleksjonen, skalaquizen, kvintsirkelen, omvendingene og harmonilæren | Sjelden |
+| `skalaer.js` | Alle skalaene (trinn, tekster, sangeksempler), noter for skalaer, akkorder side om side, firstemmig sats på to notelinjer og enkeltnoter i fire nøkler, brukt av skalaleksjonen, skalaquizen, kvintsirkelen, omvendingene, harmonilæren og notelesingen | Sjelden |
 | `harmoni.js` | Firstemmige akkorder for funksjoner, kadenser, kvartsekstakkorder, beliggenhet og skråstrekakkorder, brukt av harmonilæren og quizen | Sjelden |
 | `Fraunces-Variable.ttf`, `Fraunces-OFL.txt`, `Lora-Variable.ttf`, `Lora-Italic-Variable.ttf`, `Lora-OFL.txt` | Skriftene til Akkordhefte, med lisensene som skal følge med. Filene må ikke endres | Aldri |
 | `index.html` og innholdssidene | Bare innhold. Ingen `<style>` i sidene | Ja |

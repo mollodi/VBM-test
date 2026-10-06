@@ -1355,6 +1355,8 @@ html:where([data-side="index.html"]) {
 :root:where([data-side="gehorquiz-omvendinger.html"]) { --vbm-verk: "K7Q4-QOMV"; }
 :root:where([data-side="harmonilaere.html"]) { --vbm-verk: "K7Q4-HARM"; }
 :root:where([data-side="gehorquiz-harmoni.html"]) { --vbm-verk: "K7Q4-QHRM"; }
+:root:where([data-side="notelesing.html"]) { --vbm-verk: "K7Q4-NOTL"; }
+:root:where([data-side="quiz-notelesing.html"]) { --vbm-verk: "K7Q4-QNOT"; }
 :root:where([data-stil="ovelse"]) {
   --ink: #12151A;
   --ink-soft: #1B2027;
@@ -2016,6 +2018,64 @@ html.sh .viktig strong { color: var(--ink) !important; }
 @media (forced-colors: active) {
   :where(html[data-side="gehorquiz-harmoni.html"]) .noter svg { forced-color-adjust: none; color: CanvasText; }
   :where(html[data-side="gehorquiz-harmoni.html"]) .noter .spilles { fill: LinkText; stroke: LinkText; stroke-width: 3; }
+}
+
+
+/* ---------- Bare Notelesing (notelesing.html) ---------- */
+:where(html[data-side="notelesing.html"]) main { align-items: stretch; }
+:where(html[data-side="notelesing.html"]) .bred { grid-column: 1 / -1; }
+:where(html[data-side="notelesing.html"]) .noter { color: var(--text-on-paper); }
+:where(html[data-side="notelesing.html"]) .noter svg { display: block; width: 100%; height: auto; }
+:where(html[data-side="notelesing.html"]) .stav-og-navn { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin: 6px 0 4px; }
+:where(html[data-side="notelesing.html"]) .stav-og-navn .noter { flex: 1 1 220px; max-width: 300px; }
+:where(html[data-side="notelesing.html"]) .tonenavn { font-family: Charter, "Iowan Old Style", "Palatino Linotype", Georgia, serif; font-size: 22px; font-weight: 700; margin: 0; min-width: 9ch; }
+:where(html[data-side="notelesing.html"]) .piano-rad { display: flex; align-items: center; gap: 8px; margin: 8px 0 12px; }
+:where(html[data-side="notelesing.html"]) .piano { flex: 1 1 0; min-width: 0; max-width: 560px; }
+:where(html[data-side="notelesing.html"]) .piano svg { display: block; width: 100%; height: auto; }
+:where(html[data-side="notelesing.html"]) .piano-pil { flex-shrink: 0; min-width: 34px; padding: 8px 6px; justify-content: center; }
+:where(html[data-side="notelesing.html"]) .tangent { cursor: pointer; stroke: var(--ink, #1E1E1A); stroke-width: 1; }
+:where(html[data-side="notelesing.html"]) .tangent.hvit { fill: #FFFDF8; }
+:where(html[data-side="notelesing.html"]) .tangent.svart { fill: #1E1E1A; }
+:where(html[data-side="notelesing.html"]) .tangent.valgt { fill: var(--brass); }
+:where(html[data-side="notelesing.html"]) .tangent:focus-visible { outline: none; stroke: var(--brass); stroke-width: 3; }
+:where(html[data-side="notelesing.html"]) .c-merke { font-size: 11px; fill: #6B6A62; pointer-events: none; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+:where(html[data-side="notelesing.html"]) .fire-stav { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 16px; }
+@media (min-width: 760px) { :where(html[data-side="notelesing.html"]) .fire-stav { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+:where(html[data-side="notelesing.html"]) .liten-stav { margin: 0; }
+:where(html[data-side="notelesing.html"]) .liten-stav figcaption { font-size: 14px; text-align: center; margin-top: 2px; }
+:where(html[data-side="notelesing.html"]) .oktaver { list-style: none; margin: 6px 0 0; padding: 0; }
+:where(html[data-side="notelesing.html"]) .oktaver li { display: flex; justify-content: space-between; gap: 12px; padding: 7px 0; border-top: 1px solid var(--rule); }
+:where(html[data-side="notelesing.html"]) .okt-navn { font-weight: 600; }
+:where(html[data-side="notelesing.html"]) .okt-toner { font-family: Charter, "Iowan Old Style", "Palatino Linotype", Georgia, serif; font-size: 16px; }
+:where(html[data-side="notelesing.html"]) .viktig { margin: 0 0 10px; }
+:where(html[data-side="notelesing.html"]) a.btn { text-decoration: none; }
+@media (forced-colors: active) {
+  :where(html[data-side="notelesing.html"]) .noter { color: CanvasText; }
+  :where(html[data-side="notelesing.html"]) .noter svg, :where(html[data-side="notelesing.html"]) .piano svg { forced-color-adjust: none; }
+  :where(html[data-side="notelesing.html"]) .tangent { stroke: CanvasText; }
+  :where(html[data-side="notelesing.html"]) .tangent.hvit { fill: Canvas; }
+  :where(html[data-side="notelesing.html"]) .tangent.svart { fill: CanvasText; }
+  :where(html[data-side="notelesing.html"]) .tangent.valgt { fill: Highlight; }
+  :where(html[data-side="notelesing.html"]) .c-merke { fill: CanvasText; }
+  :where(html[data-side="notelesing.html"]) .oktaver li { border-color: CanvasText; }
+}
+
+
+/* ---------- Bare Teoriquiz: notelesing (quiz-notelesing.html) ---------- */
+:where(html[data-side="quiz-notelesing.html"]) #ov-stav, :where(html[data-side="quiz-notelesing.html"]) #prove-stav { border-top: none; padding-top: 0; margin: 0 0 10px; }
+:where(html[data-side="quiz-notelesing.html"]) #ov-stav svg, :where(html[data-side="quiz-notelesing.html"]) #prove-stav svg { max-width: 420px; }
+:where(html[data-side="quiz-notelesing.html"]) #ov-fasit svg { max-width: 360px; }
+:where(html[data-side="quiz-notelesing.html"]) .noter .forslag { fill: var(--brass); }
+:where(html[data-side="quiz-notelesing.html"]) .noter .fasit { fill: var(--green-dk); }
+:where(html[data-side="quiz-notelesing.html"]) .noter .trykkflate { cursor: pointer; }
+:where(html[data-side="quiz-notelesing.html"]) .noter .trykkflate:hover { fill: color-mix(in srgb, var(--brass) 18%, transparent); }
+:where(html[data-side="quiz-notelesing.html"]) .bokstaver .btn, :where(html[data-side="quiz-notelesing.html"]) .fortegn-rad .btn { min-width: 46px; justify-content: center; font-size: 17px; }
+:where(html[data-side="quiz-notelesing.html"]) .prove-sporsmal { font-family: Charter, "Iowan Old Style", "Palatino Linotype", Georgia, serif; font-size: 18px; font-weight: 700; margin: 0 0 12px; }
+@media (forced-colors: active) {
+  :where(html[data-side="quiz-notelesing.html"]) .noter svg { forced-color-adjust: none; color: CanvasText; }
+  :where(html[data-side="quiz-notelesing.html"]) .noter .forslag { fill: Highlight; }
+  :where(html[data-side="quiz-notelesing.html"]) .noter .fasit { fill: LinkText; }
+  :where(html[data-side="quiz-notelesing.html"]) .noter .trykkflate:hover { fill: transparent; stroke: Highlight; }
 }
 
 /* =====================================================================

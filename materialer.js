@@ -100,6 +100,15 @@ window.VBM = {
     },
     {
       seksjon: "teori",
+      merke: "Noter",
+      tittel: "Notelesing",
+      beskrivelse: "Notelinjen, G-nøkkel, F-nøkkel, alt- og tenornøkkel, og oktavnavnene, med et piano som viser hver tone.",
+      fil: "notelesing.html",
+      svartHvitt: false,
+      lagtTil: "2026-10-06"
+    },
+    {
+      seksjon: "teori",
       merke: "Tonearter",
       tittel: "Kvintsirkelen",
       beskrivelse: "Alle dur- og molltonearter med fortegn, rekkefølgen på kryss og b-er, og lyd for hver toneart.",
@@ -151,6 +160,15 @@ window.VBM = {
       fil: "gehorquiz-akkorder.html",
       svartHvitt: false,
       lagtTil: "2026-10-05"
+    },
+    {
+      seksjon: "teoriquiz",
+      merke: "Noter",
+      tittel: "Teoriquiz: notelesing",
+      beskrivelse: "Les en note og finn navnet, eller finn en tone på notelinjen, i fire nøkler.",
+      fil: "quiz-notelesing.html",
+      svartHvitt: false,
+      lagtTil: "2026-10-06"
     },
     {
       seksjon: "teoriquiz",

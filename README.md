@@ -18,6 +18,7 @@ Gratis undervisningsmateriell i musikkteori for elever og lærere. Juksebøkene 
 - **Gehørlekser med mikrointervaller**: seks øvelser i små forskjeller i tonehøyde, med sinustoner eller piano, som forberedelse til opptaksprøven på pianostemmerutdanningen ved NMH.
 
 ### Musikkteori
+- **Notelesing**: notelinjen, G-nøkkel, F-nøkkel, altnøkkel og tenornøkkel, oktavnavnene (Helmholtz og vitenskapelige navn), og et piano som viser hver tone på notelinjen i valgt nøkkel.
 - **Kvintsirkelen**: interaktiv kvintsirkel med alle dur- og molltonearter, fortegnene på ekte notelinje, rekkefølgen på kryss og b-er, enharmoniske tonearter, og skala og treklang for hver toneart.
 - **Skalaer og modi**: dur, moll (naturlig, harmonisk og melodisk), de sju modiene, pentatonikk, blues, heltone, kromatisk og jazzskalaer, i alle tonearter, med noter, lyd og sangeksempler. Modiene vises både fra samme grunntone og som trinn i durskalaen.
 - **Omvendinger**: alle stillingene til treklanger og septimakkorder, fra sekstakkord til sekundakkord, med besifring, skråstreknavn og intervallene over bassen, i alle tonearter. Forklarer også at sekstakkord betyr to ting.
@@ -34,6 +35,7 @@ Gratis undervisningsmateriell i musikkteori for elever og lærere. Juksebøkene 
 - **Gehørquiz: kadenser og funksjoner**: hør en kadens og finn typen, eller hør en akkord etter tonika og finn funksjonen.
 
 ### Teoriquiz
+- **Teoriquiz: notelesing**: les en note og finn navnet, med eller uten fortegn, eller trykk der en tone står på notelinjen, i G-, F-, alt- og tenornøkkel.
 - **Teoriquiz: kvintsirkelen**: les fortegnene og finn tonearten, eller finn fortegnene til en toneart, i dur og moll, med opptil 4 eller alle 7 fortegn.
 - **Teoriquiz: skalaer og modi**: les en skala på notelinjen og finn navnet. Samme side, åpnet med «Les» valgt (quiz-skalaer.html?type=les).
 
