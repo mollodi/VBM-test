@@ -84,7 +84,9 @@
   function skalaNavn(rot, s){ return T('{tone} {skala}', { tone: K.tone(rot), skala: SPRAK === 'en' ? T(s.navn) : T(s.navn).toLowerCase() }); }
   function kort(s){
     var rot = S.rotFor(rotNr, s), liste = S.toner(rot, s.trinn, s), ned = s.ned ? S.toner(rot, s.ned, s) : null, id = 'spill-' + s.id;
-    spillbare[id] = S.lyd(liste, ned);
+    spillbare[id] = { lyd: S.lyd(liste, ned), antall: liste.length, oppOgNed: !!ned };
+    /* Melodisk moll endrer seg på vei ned, så den vises både opp og ned på notelinjen. */
+    if (ned) liste = liste.concat(ned.slice(0, -1).reverse());
     var tittelSkala = skalaNavn(rot, s);
     var h = '<article class="card skala-kort" id="' + s.id + '">'
       + '<div class="card-head"><div class="step-label">' + esc(T(gruppeNavn[s.gruppe])) + '</div>'
@@ -93,7 +95,7 @@
       + '<p class="formel"><span class="label">' + esc(T('Avstander')) + '</span> ' + monster(s) + '</p>';
     if (s.modus) {
       var durRot = S.durRot(rotNr), foreldre = S.modusIDur(durRot, s.modus), idR = id + '-i-dur';
-      spillbare[idR] = S.lyd(foreldre);
+      spillbare[idR] = { lyd: S.lyd(foreldre), antall: foreldre.length, oppOgNed: false };
       h += '<div class="to-noter">'
         + '<div class="noter-blokk"><p class="label">' + esc(T('Fra {tone}', { tone: K.tone(rot) })) + ': ' + esc(tittelSkala) + '</p>'
         + '<div class="noter">' + S.noter(liste, 0, s.kjenne, tittelSkala) + '</div>'
@@ -132,9 +134,20 @@
     });
     $('skalaer').innerHTML = h;
   }
+  /* Fargelegger tonen som spilles. Skalaen spilles opp og ned; på vei ned lyser de samme tonene
+     baklengs, unntatt melodisk moll, der nedturen har egne toner på notelinjen. */
   $('skalaer').addEventListener('click', function(e){
     var b = e.target.closest && e.target.closest('[data-spill]');
-    if (b && window.VBM_LYD_SEKVENS) window.VBM_LYD_SEKVENS(spillbare[b.getAttribute('data-spill')], b);
+    if (!b || !window.VBM_LYD_SEKVENS) return;
+    var info = spillbare[b.getAttribute('data-spill')];
+    var blokk = b.closest('.noter-blokk') || b.closest('.skala-kort'), svg = blokk.querySelector('.noter svg');
+    function vedSteg(k){
+      [].forEach.call(svg.querySelectorAll('.spilles'), function(x){ x.classList.remove('spilles'); });
+      if (k < 0) return;
+      var i = info.oppOgNed || k < info.antall ? k : 2 * info.antall - 2 - k;
+      var n = svg.querySelector('[data-i="' + i + '"]'); if (n) n.classList.add('spilles');
+    }
+    window.VBM_LYD_SEKVENS(info.lyd, b, vedSteg);
   });
   tegn();
 })();

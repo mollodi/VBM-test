@@ -833,7 +833,7 @@ VBM_ORDBOK("pl", {
         "Hør et intervall og finn navnet. Øv i ditt eget tempo, eller ta en prøve med 20 oppgaver slik som på opptaksprøver i gehør: hvert lydeksempel spilles tre ganger uten pause.": "Posłuchaj interwału i znajdź jego nazwę. Ćwicz we własnym tempie albo zrób test z 20 zadaniami, tak jak na egzaminach wstępnych ze słuchu: każdy przykład dźwiękowy zabrzmi trzy razy bez przerwy.",
         "Intervallet spilles først opp, så ned, og til slutt begge tonene samtidig. På superavansert nivå spilles bare samklangen. Velg piano, gitar eller strykere nederst til høyre.": "Interwał zabrzmi najpierw w górę, potem w dół, a na końcu oba dźwięki razem. Na poziomie bardzo zaawansowanym zabrzmi tylko współbrzmienie. Wybierz fortepian, gitarę lub smyczki w prawym dolnym rogu.",
         "Velg hvilke intervaller du vil øve på. Du kan høre hvert intervall så mange ganger du vil, og får svaret med en gang.": "Wybierz interwały, które chcesz ćwiczyć. Każdy interwał możesz usłyszeć dowolną liczbę razy, a odpowiedź dostajesz od razu.",
-        "20 oppgaver med alle intervallene fra ren prim til ren oktav. Hvert lydeksempel spilles tre ganger uten pause, og du får resultatet til slutt.": "20 zadań ze wszystkimi interwałami od prymy czystej do oktawy czystej. Każdy przykład dźwiękowy zabrzmi trzy razy bez przerwy, a wynik dostajesz na końcu.",
+        "20 oppgaver med alle intervallene i valgt omfang. Hvert lydeksempel spilles tre ganger uten pause, og du får resultatet til slutt.": "20 zadań ze wszystkimi interwałami w wybranym zakresie. Każdy przykład dźwiękowy zabrzmi trzy razy bez przerwy, a wynik dostajesz na końcu.",
         "Hvilket intervall hører du?": "Jaki interwał słyszysz?",
         "Spill intervallet": "Odtwórz interwał",
         "Intervaller du øver på": "Interwały, które ćwiczysz",
@@ -853,7 +853,12 @@ VBM_ORDBOK("pl", {
         "Opp, ned og samlet": "W górę, w dół i razem",
         "Bare samlet (superavansert)": "Tylko razem (bardzo zaawansowane)",
         "Tonene spilles først hver for seg, opp og ned, og til slutt samtidig. Det er best for å lære.": "Dźwięki zabrzmią najpierw osobno, w górę i w dół, a na końcu razem. To najlepsze do nauki.",
-        "Begge tonene spilles bare samtidig, slik som på mange opptaksprøver. Du hører ikke bevegelsen mellom dem, så det er mye vanskeligere.": "Oba dźwięki zabrzmią tylko razem, jak na wielu egzaminach wstępnych. Nie słychać ruchu między nimi, więc jest dużo trudniej."
+        "Begge tonene spilles bare samtidig, slik som på mange opptaksprøver. Du hører ikke bevegelsen mellom dem, så det er mye vanskeligere.": "Oba dźwięki zabrzmią tylko razem, jak na wielu egzaminach wstępnych. Nie słychać ruchu między nimi, więc jest dużo trudniej.",
+        "Omfang": "Zakres",
+        "Innen én oktav": "W obrębie oktawy",
+        "Opptil to oktaver (avansert)": "Do dwóch oktaw (zaawansowane)",
+        "Innen oktaven": "W obrębie oktawy",
+        "Over oktaven": "Powyżej oktawy"
       },
     "gehorquiz-akkorder.html": {
         "Modus": "Tryb",
@@ -916,7 +921,7 @@ VBM_ORDBOK("pl", {
         "Hør en akkord og finn navnet. Alle 34 akkordene fra Den ultimate jukseboka, i øvemodus og prøvemodus.": "Posłuchaj akordu i znajdź jego nazwę. Wszystkie 34 akordy z Najlepszej ściągi, w trybie ćwiczeń i trybie testu.",
         "{navn} på notelinjen": "{navn} na pięciolinii",
         "Formel: {f}.": "Wzór: {f}.",
-        "Kadensen i {toneart}: {toneart}, {navn}, kvartsekstakkord, {dominant} (dominanten) og {toneart}.": "Kadencja w {toneart}: {toneart}, {navn}, kwartsekstakord kadencyjny, {dominant} (dominanta) i {toneart}.",
+        "Kadensen i {toneart}: {toneart}, {navn}, {toneart} med {bass} i bassen, {dominant} (dominanten) og {toneart}.": "Kadencja w {toneart}: {toneart}, {navn}, {toneart} z {bass} w basie, {dominant} (dominanta) i {toneart}.",
         "i {toneart}": "w {toneart}",
         "på {tone}": "od {tone}",
         "Det var {navn} {hvor}.": "Odpowiedź: {navn} {hvor}.",

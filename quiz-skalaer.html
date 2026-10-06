@@ -28,6 +28,16 @@
 </header>
 
 <main>
+  <!-- Fremgangen står øverst, slik som i gehørleksene med mikrointervaller. -->
+  <section class="card" id="ov-fremgang-kort" data-modus-del="ov" aria-live="polite">
+    <div class="card-head">
+      <div class="step-label">Øvemodus</div>
+      <h2>Din fremgang</h2>
+    </div>
+    <p class="task">Målet er fem riktige svar på rad. Resultatet nullstilles når du laster siden på nytt.</p>
+    <ul class="fremgang" id="ov-fremgang"></ul>
+    <p class="total" id="ov-total"></p>
+  </section>
   <section class="card modus-kort">
     <div class="card-head">
       <div class="step-label">Modus</div>
@@ -58,16 +68,15 @@
       <div class="step-label">Øvemodus</div>
       <h2 id="ov-sporsmal"></h2>
     </div>
-    <div class="row" id="ov-spillrad">
-      <button type="button" class="btn" id="ov-spill" aria-label="Spill skalaen">&#9658;&#xFE0E; <span>spill</span></button>
-    </div>
     <div class="noter" id="ov-bilde"></div>
-    <div class="svar-grupper" id="ov-svar"></div>
-    <p class="feedback" id="ov-fb" aria-live="polite"></p>
-    <div class="noter" id="ov-fasit" hidden></div>
-    <div class="row">
+    <div class="row" id="ov-knapper">
+      <button type="button" class="btn" id="ov-spill" aria-label="Spill skalaen">&#9658;&#xFE0E; <span>spill</span></button>
       <button type="button" class="btn" id="ov-neste" hidden>Neste oppgave</button>
     </div>
+    <!-- Svaret og notene står rett under «Neste oppgave», over svarknappene. -->
+    <p class="feedback" id="ov-fb" aria-live="polite"></p>
+    <div class="noter" id="ov-fasit" hidden></div>
+    <div class="svar-grupper" id="ov-svar"></div>
   </section>
 
   <section class="card" id="ov-valg" data-modus-del="ov">
@@ -82,15 +91,6 @@
     </div>
   </section>
 
-  <section class="card" id="ov-fremgang-kort" data-modus-del="ov" aria-live="polite">
-    <div class="card-head">
-      <div class="step-label">Øvemodus</div>
-      <h2>Din fremgang</h2>
-    </div>
-    <p class="task">Målet er fem riktige svar på rad. Resultatet nullstilles når du laster siden på nytt.</p>
-    <ul class="fremgang" id="ov-fremgang"></ul>
-    <p class="total" id="ov-total"></p>
-  </section>
 
   <!-- ===== Prøvemodus ===== -->
   <section class="card prove-kort" id="prove" data-modus-del="prove" hidden>
@@ -259,7 +259,7 @@
     do { s = tilfeldig(mulige); } while (mulige.length > 2 && s === forrige && Math.random() < 0.7);
     ov = { o: lagOppgave(s), besvart: false };
     $('ov-sporsmal').textContent = sporsmal(ov.o);
-    $('ov-spillrad').hidden = ov.o.type !== 'hor';
+    $('ov-spill').hidden = ov.o.type !== 'hor';
     $('ov-bilde').innerHTML = ov.o.type === 'les' ? notelinje(ov.o, false) : '';
     $('ov-bilde').hidden = ov.o.type !== 'les';
     knapper = svarKnapper($('ov-svar'), mulige, svarOv);
@@ -289,7 +289,7 @@
       + T('Det var {navn} {hvor}.', { navn: smaa(navnMedEng(o.s)), hvor: hvor(o) }) + ogsa(o.s)
       + (m ? '<span class="motiv">' + m + '</span>' : '');
     $('ov-fasit').innerHTML = notelinje(o, true); $('ov-fasit').hidden = false;
-    $('ov-spillrad').hidden = false;
+    $('ov-spill').hidden = false;
     $('ov-neste').hidden = false;
     visFremgang();
   }

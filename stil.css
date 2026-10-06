@@ -1672,13 +1672,14 @@ html:where([data-side="index.html"]) {
 :where(html[data-side="gehorlekser-mikrointervaller.html"]) .card .stats { margin-top: auto; }
 
 /* ---------- Bare gehørquizene (sider med data-quiz) ---------- */
-/* PC: oppgaven og fremgangen til venstre, valg av akkorder/intervaller til høyre. */
+/* Fremgangen øverst over hele bredden. PC: oppgaven til venstre, valgene til høyre. */
+:where(html[data-quiz]) #ov-fremgang-kort { grid-column: 1 / -1; }
 @media (min-width: 760px) {
-  :where(html[data-quiz]) main { grid-template-columns: 1fr 1fr; grid-template-rows: auto auto 1fr; }
-  :where(html[data-quiz]) #ov-oppgave { grid-column: 1; grid-row: 2; }
-  :where(html[data-quiz]) #ov-fremgang-kort { grid-column: 1; grid-row: 3; }
-  :where(html[data-quiz]) #ov-valg { grid-column: 2; grid-row: 2 / span 2; }
-  :where(html[data-quiz]) #prove { grid-row: 2; }
+  :where(html[data-quiz]) main { grid-template-columns: 1fr 1fr; }
+  :where(html[data-quiz]) #ov-oppgave { grid-column: 1; }
+  :where(html[data-quiz]) #ov-valg { grid-column: 2; }
+  :where(html[data-quiz]) .fremgang { columns: 2; column-gap: 32px; }
+  :where(html[data-quiz]) .fremgang li { break-inside: avoid; }
 }
 :where(html[data-quiz]) .modus-kort,
 :where(html[data-quiz]) .prove-kort { grid-column: 1 / -1; }
@@ -1798,6 +1799,7 @@ html:where([data-side="index.html"]) {
 :where(html[data-side="kvintsirkelen.html"]) .toneart-fortegn { font-size: 15px; margin: 0 0 8px; }
 :where(html[data-side="kvintsirkelen.html"]) .noter { color: var(--text-on-paper); margin: 0 0 12px; }
 :where(html[data-side="kvintsirkelen.html"]) .noter svg { display: block; width: 100%; max-width: 360px; height: auto; }
+:where(html[data-side="kvintsirkelen.html"]) #valgt-noter svg { max-width: 460px; }
 :where(html[data-side="kvintsirkelen.html"]) .lytt-rad .btn { flex: 1 1 150px; justify-content: center; }
 :where(html[data-side="kvintsirkelen.html"]) .del-tittel {
   font-family: Charter, "Iowan Old Style", "Palatino Linotype", Georgia, serif;
@@ -1805,6 +1807,7 @@ html:where([data-side="index.html"]) {
   margin: 18px 0 8px;
 }
 :where(html[data-side="kvintsirkelen.html"]) a.btn { text-decoration: none; }
+:where(html[data-side="kvintsirkelen.html"]) #valgt-enharm[hidden] { display: none; }   /* bare to knapper der tonearten har to navn */
 @media (forced-colors: active) {
   :where(html[data-side="kvintsirkelen.html"]) .sirkel-bilde svg { forced-color-adjust: none; }
   :where(html[data-side="kvintsirkelen.html"]) .plass .ring-dur, :where(html[data-side="kvintsirkelen.html"]) .plass .ring-moll, :where(html[data-side="kvintsirkelen.html"]) .midt { fill: Canvas; stroke: CanvasText; }
@@ -1826,9 +1829,7 @@ html:where([data-side="index.html"]) {
 }
 :where(html[data-side="quiz-kvintsirkelen.html"]) .stor-toneart { font-size: 30px; font-weight: 700; }
 :where(html[data-side="quiz-kvintsirkelen.html"]) .prove-sporsmal { font-size: 18px; font-weight: 700; }
-@media (min-width: 760px) {
-  :where(html[data-side="quiz-kvintsirkelen.html"]) #ov-fremgang-kort { grid-column: 2; grid-row: 2; }
-}
+:where(html[data-side="quiz-kvintsirkelen.html"]) #ov-oppgave { grid-column: 1 / -1; }
 @media (forced-colors: active) {
   :where(html[data-side="quiz-kvintsirkelen.html"]) #ov-fasit { border-color: CanvasText; }
 }
@@ -1853,6 +1854,7 @@ html:where([data-side="index.html"]) {
 :where(html[data-side="skalaer.html"]) .noter { color: var(--text-on-paper); margin: 8px 0 10px; }
 :where(html[data-side="skalaer.html"]) .noter svg { display: block; width: 100%; max-width: 460px; height: auto; }
 :where(html[data-side="skalaer.html"]) .noter .kjenne { fill: var(--brass); }
+:where(html[data-side="skalaer.html"]) .noter .spilles, :where(html[data-side="kvintsirkelen.html"]) .noter .spilles { fill: var(--green-dk); stroke: var(--green-dk); stroke-width: 2.5; }
 :where(html[data-side="skalaer.html"]) .to-noter { display: grid; grid-template-columns: minmax(0, 1fr); gap: 6px 18px; }
 :where(html[data-side="skalaer.html"]) .noter-blokk { border-top: 1px solid var(--rule); padding-top: 8px; margin-top: 4px; }
 :where(html[data-side="skalaer.html"]) .noter-blokk .label { margin: 0; }
@@ -1871,6 +1873,7 @@ html:where([data-side="index.html"]) {
   :where(html[data-side="skalaer.html"]) .noter svg { forced-color-adjust: none; }
   :where(html[data-side="skalaer.html"]) .noter svg line, :where(html[data-side="skalaer.html"]) .noter svg use, :where(html[data-side="skalaer.html"]) .noter svg ellipse { color: CanvasText; }
   :where(html[data-side="skalaer.html"]) .noter .kjenne { fill: Highlight; }
+  :where(html[data-side="skalaer.html"]) .noter .spilles, :where(html[data-side="kvintsirkelen.html"]) .noter .spilles { fill: LinkText; stroke: LinkText; stroke-width: 3; }
   :where(html[data-side="skalaer.html"]) .noter-blokk, :where(html[data-side="skalaer.html"]) .sanger li { border-color: CanvasText; }
   :where(html[data-side="skalaer.html"]) .spotify-link { border-color: LinkText; color: LinkText; }
 }

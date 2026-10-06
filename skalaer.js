@@ -187,7 +187,7 @@ window.VBM_SKALAER = (function(){
         iTakt[nokkel] = n.f;
       }
       var klasse = kjenne && kjenne.indexOf(i) >= 0 ? ' class="kjenne"' : '';
-      s += '<ellipse' + klasse + ' cx="' + x + '" cy="' + y + '" rx="7.2" ry="5.6" fill="currentColor" transform="rotate(-18 ' + x + ' ' + y + ')"/>';
+      s += '<ellipse' + klasse + ' data-i="' + i + '" cx="' + x + '" cy="' + y + '" rx="7.2" ry="5.6" fill="currentColor" transform="rotate(-18 ' + x + ' ' + y + ')"/>';
     });
     return '<svg viewBox="0 ' + topp + ' ' + bredde + ' ' + (bunn - topp) + '" role="img" aria-label="' + (etikett || '') + '">' + s + '</svg>';
   }

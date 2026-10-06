@@ -25,7 +25,7 @@ Gratis undervisningsmateriell i musikkteori for elever og lærere. Juksebøkene 
 - **Akkordhefte**: treklanger, trinnakkorder og diatonisk harmoni, med harmonisk moll.
 
 ### Quiz
-- **Gehørquiz: intervaller**: hør et intervall og finn navnet, i øvemodus eller som en prøve med 20 oppgaver der hvert lydeksempel spilles tre ganger, slik som på opptaksprøver i gehør.
+- **Gehørquiz: intervaller**: hør et intervall og finn navnet, innen én oktav eller opptil to oktaver (avansert), i øvemodus eller som en prøve med 20 oppgaver der hvert lydeksempel spilles tre ganger, slik som på opptaksprøver i gehør.
 - **Gehørquiz: akkorder**: alle 34 akkordene fra Den ultimate jukseboka, i de samme fire kapitlene, med C som grunntone eller i alle tonearter (avansert). Akkordene som bare kan høres i sammenheng (napolitansk, italiensk, fransk og tysk sekst), spilles også i en kort kadens i c-moll.
 - **Teoriquiz: kvintsirkelen**: les fortegnene og finn tonearten, eller finn fortegnene til en toneart, i dur og moll, med opptil 4 eller alle 7 fortegn.
 - **Skalaquiz: skalaer og modi**: hør en skala eller les den på notelinjen, og finn navnet, med C eller alle tonearter.

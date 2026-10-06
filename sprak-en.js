@@ -783,7 +783,7 @@ VBM_ORDBOK("en", {
         "Hør et intervall og finn navnet. Øv i ditt eget tempo, eller ta en prøve med 20 oppgaver slik som på opptaksprøver i gehør: hvert lydeksempel spilles tre ganger uten pause.": "Hear an interval and find its name. Practice at your own pace, or take a test with 20 questions like in ear-training admission tests: each sound example plays three times without a pause.",
         "Intervallet spilles først opp, så ned, og til slutt begge tonene samtidig. På superavansert nivå spilles bare samklangen. Velg piano, gitar eller strykere nederst til høyre.": "The interval plays first upwards, then downwards, and finally both notes together. On the super advanced level, only the notes together are played. Choose piano, guitar or strings at the bottom right.",
         "Velg hvilke intervaller du vil øve på. Du kan høre hvert intervall så mange ganger du vil, og får svaret med en gang.": "Choose which intervals you want to practice. You can hear each interval as many times as you like, and you get the answer right away.",
-        "20 oppgaver med alle intervallene fra ren prim til ren oktav. Hvert lydeksempel spilles tre ganger uten pause, og du får resultatet til slutt.": "20 questions with all the intervals from unison to perfect octave. Each sound example plays three times without a pause, and you get the result at the end.",
+        "20 oppgaver med alle intervallene i valgt omfang. Hvert lydeksempel spilles tre ganger uten pause, og du får resultatet til slutt.": "20 questions with all the intervals in the chosen range. Each sound example plays three times without a pause, and you get the result at the end.",
         "Hvilket intervall hører du?": "Which interval do you hear?",
         "Spill intervallet": "Play the interval",
         "Intervaller du øver på": "Intervals you practice",
@@ -803,7 +803,12 @@ VBM_ORDBOK("en", {
         "Opp, ned og samlet": "Up, down and together",
         "Bare samlet (superavansert)": "Together only (super advanced)",
         "Tonene spilles først hver for seg, opp og ned, og til slutt samtidig. Det er best for å lære.": "The notes play one at a time first, up and down, and finally together. This is best for learning.",
-        "Begge tonene spilles bare samtidig, slik som på mange opptaksprøver. Du hører ikke bevegelsen mellom dem, så det er mye vanskeligere.": "Both notes play only together, like in many admission tests. You can't hear the movement between them, so it is much harder."
+        "Begge tonene spilles bare samtidig, slik som på mange opptaksprøver. Du hører ikke bevegelsen mellom dem, så det er mye vanskeligere.": "Both notes play only together, like in many admission tests. You can't hear the movement between them, so it is much harder.",
+        "Omfang": "Range",
+        "Innen én oktav": "Within one octave",
+        "Opptil to oktaver (avansert)": "Up to two octaves (advanced)",
+        "Innen oktaven": "Within the octave",
+        "Over oktaven": "Above the octave"
       },
     "gehorquiz-akkorder.html": {
         "Modus": "Mode",
@@ -866,7 +871,7 @@ VBM_ORDBOK("en", {
         "Hør en akkord og finn navnet. Alle 34 akkordene fra Den ultimate jukseboka, i øvemodus og prøvemodus.": "Hear a chord and find its name. All 34 chords from The Ultimate Cheat Book, in practice mode and test mode.",
         "{navn} på notelinjen": "{navn} on the staff",
         "Formel: {f}.": "Formula: {f}.",
-        "Kadensen i {toneart}: {toneart}, {navn}, kvartsekstakkord, {dominant} (dominanten) og {toneart}.": "The cadence in {toneart}: {toneart}, {navn}, cadential 6/4 chord, {dominant} (the dominant) and {toneart}.",
+        "Kadensen i {toneart}: {toneart}, {navn}, {toneart} med {bass} i bassen, {dominant} (dominanten) og {toneart}.": "The cadence in {toneart}: {toneart}, {navn}, {toneart} with {bass} in the bass, {dominant} (the dominant) and {toneart}.",
         "i {toneart}": "in {toneart}",
         "på {tone}": "on {tone}",
         "Det var {navn} {hvor}.": "Answer: {navn} {hvor}.",
