@@ -174,6 +174,9 @@
     }
   } catch(e){}
   function lagre(){ try { localStorage.setItem(NOKKEL, JSON.stringify({ type: valg.type, grunn: valg.grunn, valgt: valgt })); } catch(e){} }
+  /* Fra startsiden: Gehørquiz-kortet åpner med «Hør», Teoriquiz-kortet med «Les». */
+  var fraLenke = (/[?&]type=(hor|les)\b/.exec(location.search) || [])[1];
+  if (fraLenke) { valg.type = fraLenke; lagre(); }
   var valgKnapper = [].slice.call(document.querySelectorAll('[data-valg]'));
   function visValg(){ valgKnapper.forEach(function(b){ b.setAttribute('aria-pressed', valg[b.getAttribute('data-valg')] === b.getAttribute('data-verdi') ? 'true' : 'false'); }); }
   valgKnapper.forEach(function(b){ b.addEventListener('click', function(){

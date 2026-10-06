@@ -154,6 +154,7 @@ window.VBM_SKALAER = (function(){
   var EKSTRA = '<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>'
     + '<g id="acc-dflat"><use href="#acc-flat" x="-4.4"/><use href="#acc-flat" x="4.4"/></g>'
     + '<g id="acc-dsharp"><rect x="-0.85" y="-5.2" width="1.7" height="10.4" transform="rotate(45)"/><rect x="-0.85" y="-5.2" width="1.7" height="10.4" transform="rotate(-45)"/><rect x="-4.9" y="-4.9" width="3" height="3"/><rect x="1.9" y="-4.9" width="3" height="3"/><rect x="-4.9" y="1.9" width="3" height="3"/><rect x="1.9" y="1.9" width="3" height="3"/></g>'
+    + '<g id="fclef"><path d="M10.5,183.5 C9.8,175.5 15.5,169.2 23.2,169.2 C31.6,169.2 37.4,175.4 37.4,184.6 C37.4,199.2 26.4,211.8 9.4,219.6 L8.6,217.9 C21.6,210.6 30.3,199.4 30.3,185.2 C30.3,176.6 27.4,171.4 22.6,171.4 C18.4,171.4 15.6,174.2 15.2,177.6 Z"/><circle cx="14.2" cy="181.6" r="4.6"/><circle cx="43.4" cy="176.5" r="2.3"/><circle cx="43.4" cy="189.5" r="2.3"/></g>'
     + '<g id="acc-natural"><rect x="-3.1" y="-10.5" width="1.2" height="15.6"/><rect x="1.9" y="-5.1" width="1.2" height="15.6"/><path d="M-3.1,-2.4L3.1,-4.2L3.1,-1.7L-3.1,0.1Z"/><path d="M-3.1,3.3L3.1,1.5L3.1,4L-3.1,5.8Z"/></g>'
     + '</defs></svg>';
   function sikreDefs(){
@@ -242,6 +243,72 @@ window.VBM_SKALAER = (function(){
     return '<svg viewBox="0 ' + topp + ' ' + bredde + ' ' + (bunn - topp + 10) + '" role="img" aria-label="' + (etikett || '') + '">' + s + '</svg>';
   }
 
+  /* ---------- Firstemmig sats på to notelinjer ----------
+     akkorder: liste med { noter: [bass, tenor, alt, sopran], tall: ['I', 'T'] }.
+     Sopran og alt står i G-nøkkel, tenor og bass i F-nøkkel. Hver akkord står i sin egen takt,
+     med toneartens fortegn foran og bare de fortegnene som trengs i tillegg. */
+  var BASS_TOPP = 186, BASS_BUNN = 238;
+  function yBass(b, okt){ return BASS_BUNN - (okt * 7 + b - 18) * 6.5; }
+  function storSats(akkorder, fortegn, etikett){
+    sikreDefs();
+    var antall = Math.abs(fortegn || 0), sig = fortegn > 0 ? KRYSS.slice(0, antall) : BER.slice(0, antall);
+    var X0 = 92 + antall * 12, SP = 92, bredde = X0 + (akkorder.length - 1) * SP + 60, s = '';
+    var yT = [], yB = [];
+    akkorder.forEach(function(a){ a.noter.forEach(function(n, v){ (v < 2 ? yB : yT).push(v < 2 ? yBass(n.b, n.oktav) : yAv(n.b, n.oktav)); }); });
+    var topp = Math.min(62, Math.min.apply(null, yT) - 22), bassLav = Math.max(BASS_BUNN, Math.max.apply(null, yB));
+    var maxTall = Math.max.apply(null, akkorder.map(function(a){ return (a.tall || []).length; }));
+    var bunn = bassLav + 30 + maxTall * 19;
+    var i;
+    for (i = 0; i < 5; i++) {
+      s += '<line x1="6" y1="' + (88 + i * 13) + '" x2="' + (bredde - 6) + '" y2="' + (88 + i * 13) + '" stroke="currentColor" stroke-width="1.3"/>';
+      s += '<line x1="6" y1="' + (BASS_TOPP + i * 13) + '" x2="' + (bredde - 6) + '" y2="' + (BASS_TOPP + i * 13) + '" stroke="currentColor" stroke-width="1.3"/>';
+    }
+    s += '<line x1="6" y1="88" x2="6" y2="' + BASS_BUNN + '" stroke="currentColor" stroke-width="1.6"/>';
+    s += '<use href="#gclef" transform="translate(10 139.04) scale(0.0767 -0.0767)" fill="currentColor"/>';
+    s += '<use href="#fclef" transform="translate(4 16)" fill="currentColor"/>';
+    sig.forEach(function(p, k){
+      var id = fortegn > 0 ? 'acc-sharp' : 'acc-flat';
+      s += '<use href="#' + id + '" transform="translate(' + (66 + k * 12) + ' ' + yAv(p[0], p[1]) + ')" fill="currentColor"/>';
+      s += '<use href="#' + id + '" transform="translate(' + (66 + k * 12) + ' ' + yBass(p[0], p[1] - 2) + ')" fill="currentColor"/>';
+    });
+    var gjeldende = {}; sig.forEach(function(p){ gjeldende[p[0]] = fortegn > 0 ? 1 : -1; });
+    akkorder.forEach(function(a, ai){
+      var X = X0 + ai * SP;
+      if (ai) {
+        var xs = X - SP / 2 + 4;
+        s += '<line x1="' + xs + '" y1="88" x2="' + xs + '" y2="140" stroke="currentColor" stroke-width="1"/>';
+        s += '<line x1="' + xs + '" y1="' + BASS_TOPP + '" x2="' + xs + '" y2="' + BASS_BUNN + '" stroke="currentColor" stroke-width="1"/>';
+      }
+      [[a.noter[2], a.noter[3], 2], [a.noter[0], a.noter[1], 0]].forEach(function(par){
+        var diskant = par[2] === 2;
+        var noter = [par[0], par[1]].map(function(n, k){ return { n: n, v: par[2] + k, y: diskant ? yAv(n.b, n.oktav) : yBass(n.b, n.oktav), d: n.oktav * 7 + n.b, hoyre: false }; })
+          .sort(function(p, q){ return p.d - q.d; });
+        if (noter[1].d - noter[0].d === 1) noter[1].hoyre = true;
+        var lav = Math.max(noter[0].y, noter[1].y), hoy = Math.min(noter[0].y, noter[1].y), l;
+        var under = diskant ? 153 : BASS_BUNN + 13, over = diskant ? 75 : BASS_TOPP - 13;
+        for (l = under; l <= lav + 0.1; l += 13) s += '<line x1="' + (X - 14) + '" y1="' + l + '" x2="' + (X + 14) + '" y2="' + l + '" stroke="currentColor" stroke-width="1.3"/>';
+        for (l = over; l >= hoy - 0.1; l -= 13) s += '<line x1="' + (X - 14) + '" y1="' + l + '" x2="' + (X + 14) + '" y2="' + l + '" stroke="currentColor" stroke-width="1.3"/>';
+        var takt = {}, kol = 0;
+        noter.slice().reverse().forEach(function(p){
+          var nokkel = p.n.b + '-' + p.n.oktav, forrige = nokkel in takt ? takt[nokkel] : (gjeldende[p.n.b] || 0);
+          if (p.n.f !== forrige) {
+            var id = { '-2': 'acc-dflat', '-1': 'acc-flat', '0': 'acc-natural', '1': 'acc-sharp', '2': 'acc-dsharp' }[p.n.f];
+            s += '<use href="#' + id + '" transform="translate(' + (X - 22 - kol * 13) + ' ' + p.y + ')" fill="currentColor"/>';
+            takt[nokkel] = p.n.f; kol++;
+          }
+        });
+        noter.forEach(function(p){
+          var x = X + (p.hoyre ? 16 : 0);
+          s += '<ellipse data-a="' + ai + '" data-i="' + p.v + '" cx="' + x + '" cy="' + p.y + '" rx="7.2" ry="5.6" fill="currentColor" transform="rotate(-18 ' + x + ' ' + p.y + ')"/>';
+        });
+      });
+      (a.tall || []).forEach(function(t, ti){
+        s += '<text x="' + (X + 4) + '" y="' + (bassLav + 30 + ti * 19) + '" class="besifring" text-anchor="middle">' + t + '</text>';
+      });
+    });
+    return '<svg viewBox="0 ' + topp + ' ' + bredde + ' ' + (bunn - topp) + '" role="img" aria-label="' + (etikett || '') + '">' + s + '</svg>';
+  }
+
   /* Lyd: opp og ned, hver tone for seg. */
   function lyd(liste, ned){
     var opp = liste.map(midi), vei = ned ? ned.map(midi) : opp;
@@ -249,7 +316,7 @@ window.VBM_SKALAER = (function(){
   }
 
   var DUR_SKALA = { trinn: DUR };
-  return { GRUPPER: GRUPPER, ALLE: ALLE, GRUNN: GRUNN, DUR: DUR, toner: toner, modusIDur: modusIDur, rotFor: rotFor, akkordrekke: akkordrekke,
+  return { GRUPPER: GRUPPER, ALLE: ALLE, GRUNN: GRUNN, DUR: DUR, toner: toner, modusIDur: modusIDur, rotFor: rotFor, akkordrekke: akkordrekke, storSats: storSats,
            durRot: function(nr){ return rotFor(nr, DUR_SKALA); },
            fortegnFor: fortegnFor, noter: noter, lyd: lyd, midi: midi, T: T };
 })();
