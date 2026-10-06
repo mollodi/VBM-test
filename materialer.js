@@ -53,9 +53,9 @@ window.VBM = {
     },
     {
       seksjon: "jukseboker",
-      merke: "34 akkorder",
+      merke: "47 akkorder",
       tittel: "Den ultimate jukseboka for akkorder og intervaller",
-      beskrivelse: "Fire kapitler, fra treklanger til 13-akkorder, kvartalakkorder og mer.",
+      beskrivelse: "Seks kapitler, fra treklanger til jazzakkorder, med omvendingene i et eget kapittel.",
       fil: "akkorder-og-intervaller.html",
       svartHvitt: true,
       lagtTil: ""
@@ -115,6 +115,15 @@ window.VBM = {
       lagtTil: "2026-10-05"
     },
     {
+      seksjon: "teori",
+      merke: "Omvendinger",
+      tittel: "Omvendinger",
+      beskrivelse: "Alle stillingene til treklanger og septimakkorder, fra sekstakkord til sekundakkord, i alle tonearter.",
+      fil: "omvendinger.html",
+      svartHvitt: false,
+      lagtTil: "2026-10-06"
+    },
+    {
       seksjon: "quiz",
       merke: "Intervaller",
       tittel: "Gehørquiz: intervaller",
@@ -127,7 +136,7 @@ window.VBM = {
       seksjon: "quiz",
       merke: "Akkorder",
       tittel: "Gehørquiz: akkorder",
-      beskrivelse: "Alle 34 akkordene fra Den ultimate jukseboka, i øvemodus eller som en prøve med 20 oppgaver.",
+      beskrivelse: "Alle akkordene fra Den ultimate jukseboka, også omvendingene, i øvemodus eller som en prøve med 20 oppgaver.",
       fil: "gehorquiz-akkorder.html",
       svartHvitt: false,
       lagtTil: "2026-10-05"
@@ -149,6 +158,15 @@ window.VBM = {
       fil: "quiz-skalaer.html",
       svartHvitt: false,
       lagtTil: "2026-10-05"
+    },
+    {
+      seksjon: "quiz",
+      merke: "Omvendinger",
+      tittel: "Gehørquiz: omvendinger",
+      beskrivelse: "Hør en akkord og finn stillingen, fra grunnstilling til sekundakkord.",
+      fil: "gehorquiz-omvendinger.html",
+      svartHvitt: false,
+      lagtTil: "2026-10-06"
     }
   ]
 
