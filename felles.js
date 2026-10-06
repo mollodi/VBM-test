@@ -26,7 +26,11 @@
   var NAVN  = { no: 'Norsk', en: 'English', pl: 'Polski' };
   var ANDRE = 'en';                                      // språk for alle andre land
   var NOKKEL = 'vbm-sprak';                              // lagret valg i nettleseren
-  var ORIGINAL = 'https://mollodi.github.io/Verdens-Beste-Musikkskole/';
+  var ORIGINAL = 'https://verdensbestemusikkskole.no/';
+  /* Adressene som er originalen. Alle andre steder viser sidene et banner med lenke hit.
+     mollodi.github.io er eierens egen GitHub (den gamle adressen sender videre til domenet,
+     og testsiden VBM-test ligger der). */
+  var EGNE = ['verdensbestemusikkskole.no', 'www.verdensbestemusikkskole.no', 'mollodi.github.io'];
 
   /* Bunnteksten. Navnene står alltid på norsk. De andre delene oversettes
      i sprak-XX.js, så husk å endre dem der også hvis du endrer dem her. */
@@ -38,7 +42,8 @@
   /* Lydkreditter. Siden velger med <footer data-lyd="alle"> eller data-lyd="piano". */
   var LYD = {
     alle: 'Lyd: Salamander Grand Piano av Alexander Holm (CC BY 3.0). Gitar, fiolin og cello fra tonejs-instruments av Nicholas Brosowsky (CC BY 3.0).',
-    piano: 'Lyd: Salamander Grand Piano av Alexander Holm (CC BY 3.0).'
+    piano: 'Lyd: Salamander Grand Piano av Alexander Holm (CC BY 3.0).',
+    rytme: 'Lyd: trommer fra Versilian Community Sample Library (CC0). Piano: Salamander Grand Piano av Alexander Holm (CC BY 3.0). Gitar, fiolin og cello fra tonejs-instruments av Nicholas Brosowsky (CC BY 3.0).'
   };
 
   /* ==================== 2. Språk ==================== */
@@ -238,7 +243,7 @@
 
   /* ==================== 7. Lenke til originalen ==================== */
   function byggOriginal(){
-    if (location.hostname === 'mollodi.github.io') return;
+    if (EGNE.indexOf(location.hostname) >= 0) return;
     var d = document.createElement('div');
     d.className = 'vbm-original'; d.setAttribute('role', 'note');
     d.innerHTML = T('Originalen av denne siden finnes på ')
