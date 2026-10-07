@@ -123,7 +123,9 @@ VBM_ORDBOK("pl", {
     "Spill av Forstørret sekst": "Odtwórz: seksta zwiększona",
     "Trommer": "Perkusja",
     "Lyd: trommer fra Versilian Community Sample Library (CC0). Piano: Salamander Grand Piano av Alexander Holm (CC BY 3.0). Gitar, fiolin og cello fra tonejs-instruments av Nicholas Brosowsky (CC BY 3.0).": "Dźwięk: perkusja z Versilian Community Sample Library (CC0). Fortepian: Salamander Grand Piano, Alexander Holm (CC BY 3.0). Gitara, skrzypce i wiolonczela z tonejs-instruments, Nicholas Brosowsky (CC BY 3.0).",
-    "Meny": "Menu"
+    "Meny": "Menu",
+    "Original": "Oryginał",
+    "Hopp til innholdet": "Przejdź do treści"
   },
   sider: {
     "index.html": {
@@ -648,7 +650,8 @@ VBM_ORDBOK("pl", {
         "Spill av Stor septim oppover": "Odtwórz: septyma wielka w górę",
         "Spill av Stor septim nedover": "Odtwórz: septyma wielka w dół",
         "Spill av Ren oktav oppover": "Odtwórz: oktawa czysta w górę",
-        "Spill av Ren oktav nedover": "Odtwórz: oktawa czysta w dół"
+        "Spill av Ren oktav nedover": "Odtwórz: oktawa czysta w dół",
+        "Innstillinger": "Ustawienia"
       },
     "gehorlekser-mikrointervaller.html": {
         "Gehørlekser med mikrointervaller: forberedelse til pianostemmerutdanningen": "Ćwiczenia słuchowe z mikrointerwałami: przygotowanie do nauki strojenia fortepianów",
@@ -854,7 +857,8 @@ VBM_ORDBOK("pl", {
         "Diatoniske treklanger i A harmonisk moll": "Trójdźwięki diatoniczne w a-moll harmonicznym",
         "Det hevede 7. trinnet gjør to viktige ting: det skaper en forstørret treklang på <strong>III</strong> (den ene diatoniske plassen forstørrede treklanger faktisk finnes), og det gjør at <strong>v blir V</strong> (moll blir dur), som skaper en ledetone med sterkt drag mot grunntonen.": "Podwyższony VII stopień robi dwie ważne rzeczy: tworzy trójdźwięk zwiększony na <strong>III</strong> (jedyne miejsce diatoniczne, gdzie trójdźwięki zwiększone naprawdę występują), a także sprawia, że <strong>v staje się V</strong> (moll staje się durem), co tworzy dźwięk prowadzący z silnym ciążeniem do toniki.",
         "<span class=\"label\">Lytt til forskjellen</span> Sammenlign V i naturlig moll (E–G–H, moll) med V i harmonisk moll (E–G♯–H, dur). Draget mot tonika er lett å høre. Det er derfor komponister bruker harmonisk moll.": "<span class=\"label\">Posłuchaj różnicy</span> Porównaj V w molu naturalnym (E–G–H, molowy) z V w molu harmonicznym (E–G♯–H, durowy). Ciążenie do toniki łatwo usłyszeć. Dlatego kompozytorzy używają molu harmonicznego.",
-        "↑ Til innholdet": "↑ Do spisu treści"
+        "↑ Til innholdet": "↑ Do spisu treści",
+        "Vis fasit": "Pokaż odpowiedź"
       },
     "lytteguide-septim-og-nonakkorder.html": {
         "Dominant & Major 7th & 9th Chords": "Akordy dominantowe i maj z septymą i noną",
@@ -904,7 +908,8 @@ VBM_ORDBOK("pl", {
         "Play Fmaj7": "Odtwórz: Fmaj7",
         "Play Gmaj9": "Odtwórz: Gmaj9",
         "Play D♭maj9": "Odtwórz: D♭maj9",
-        "Play E♭maj9": "Odtwórz: E♭maj9"
+        "Play E♭maj9": "Odtwórz: E♭maj9",
+        "Settings": "Ustawienia"
       },
     "gehorquiz.html": {
         "Modus": "Tryb",
@@ -2077,7 +2082,9 @@ VBM_ORDBOK("pl", {
         "Kapitler": "Rozdziały",
         "Hør taktarten": "Posłuchaj metrum",
         "{n} kryss": function(v){ var n = v.n; return n + (n >= 2 && n <= 4 ? ' krzyżyki' : ' krzyżyków'); },
-        "{n} b-er": function(v){ var n = v.n; return n + (n >= 2 && n <= 4 ? ' bemole' : ' bemoli'); }
+        "{n} b-er": function(v){ var n = v.n; return n + (n >= 2 && n <= 4 ? ' bemole' : ' bemoli'); },
+        "åttendelstriol": "triola ósemkowa",
+        "firedelstriol": "triola ćwierćnutowa"
       },
     "quiz-rytme.html": {
         "Modus": "Tryb",
@@ -2186,7 +2193,9 @@ VBM_ORDBOK("pl", {
         "{n} kryss": function(v){ var n = v.n; return n + (n >= 2 && n <= 4 ? ' krzyżyki' : ' krzyżyków'); },
         "{n} b-er": function(v){ var n = v.n; return n + (n >= 2 && n <= 4 ? ' bemole' : ' bemoli'); },
         "Takten varer {n} firedeler, så taktarten er {takt}.": function(v){ var n = v.n, f = n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14); return 'Takt trwa ' + n + (f ? ' ćwierćnuty' : ' ćwierćnut') + ', więc metrum to ' + v.takt + '.'; },
-        "Takten varer {n} åttendeler, så taktarten er {takt}.": function(v){ var n = v.n, f = n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14); return 'Takt trwa ' + n + (f ? ' ósemki' : ' ósemek') + ', więc metrum to ' + v.takt + '.'; }
+        "Takten varer {n} åttendeler, så taktarten er {takt}.": function(v){ var n = v.n, f = n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14); return 'Takt trwa ' + n + (f ? ' ósemki' : ' ósemek') + ', więc metrum to ' + v.takt + '.'; },
+        "åttendelstriol": "triola ósemkowa",
+        "firedelstriol": "triola ćwierćnutowa"
       }
   }
 });

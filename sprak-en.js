@@ -123,7 +123,9 @@ VBM_ORDBOK("en", {
     "Spill av Forstørret sekst": "Play Augmented 6th",
     "Trommer": "Drums",
     "Lyd: trommer fra Versilian Community Sample Library (CC0). Piano: Salamander Grand Piano av Alexander Holm (CC BY 3.0). Gitar, fiolin og cello fra tonejs-instruments av Nicholas Brosowsky (CC BY 3.0).": "Sound: drums from the Versilian Community Sample Library (CC0). Piano: Salamander Grand Piano by Alexander Holm (CC BY 3.0). Guitar, violin and cello from tonejs-instruments by Nicholas Brosowsky (CC BY 3.0).",
-    "Meny": "Menu"
+    "Meny": "Menu",
+    "Original": "Original",
+    "Hopp til innholdet": "Skip to content"
   },
   sider: {
     "index.html": {
@@ -648,7 +650,8 @@ VBM_ORDBOK("en", {
         "Spill av Stor septim oppover": "Play major 7th up",
         "Spill av Stor septim nedover": "Play major 7th down",
         "Spill av Ren oktav oppover": "Play perfect octave up",
-        "Spill av Ren oktav nedover": "Play perfect octave down"
+        "Spill av Ren oktav nedover": "Play perfect octave down",
+        "Innstillinger": "Settings"
       },
     "gehorlekser-mikrointervaller.html": {
         "Gehørlekser med mikrointervaller: forberedelse til pianostemmerutdanningen": "Ear training homework with microintervals: preparation for piano tuning studies",
@@ -854,7 +857,8 @@ VBM_ORDBOK("en", {
         "Diatoniske treklanger i A harmonisk moll": "Diatonic triads in A harmonic minor",
         "Det hevede 7. trinnet gjør to viktige ting: det skaper en forstørret treklang på <strong>III</strong> (den ene diatoniske plassen forstørrede treklanger faktisk finnes), og det gjør at <strong>v blir V</strong> (moll blir dur), som skaper en ledetone med sterkt drag mot grunntonen.": "The raised 7th degree does two important things: it creates an augmented triad on <strong>III</strong> (the one diatonic place where augmented triads actually occur), and it makes <strong>v become V</strong> (minor becomes major), which creates a leading tone with a strong pull toward the tonic.",
         "<span class=\"label\">Lytt til forskjellen</span> Sammenlign V i naturlig moll (E–G–H, moll) med V i harmonisk moll (E–G♯–H, dur). Draget mot tonika er lett å høre. Det er derfor komponister bruker harmonisk moll.": "<span class=\"label\">Listen to the difference</span> Compare V in natural minor (E–G–B, minor) with V in harmonic minor (E–G♯–B, major). The pull toward the tonic is easy to hear. That is why composers use harmonic minor.",
-        "↑ Til innholdet": "↑ Back to contents"
+        "↑ Til innholdet": "↑ Back to contents",
+        "Vis fasit": "Show answer"
       },
     "gehorquiz.html": {
         "Modus": "Mode",
@@ -2027,7 +2031,9 @@ VBM_ORDBOK("en", {
         "Kapitler": "Chapters",
         "Hør taktarten": "Hear the time signature",
         "{n} kryss": function(v){ return v.n + ' sharps'; },
-        "{n} b-er": function(v){ return v.n + ' flats'; }
+        "{n} b-er": function(v){ return v.n + ' flats'; },
+        "åttendelstriol": "eighth-note triplet",
+        "firedelstriol": "quarter-note triplet"
       },
     "quiz-rytme.html": {
         "Modus": "Mode",
@@ -2136,7 +2142,9 @@ VBM_ORDBOK("en", {
         "{n} kryss": function(v){ return v.n + ' sharps'; },
         "{n} b-er": function(v){ return v.n + ' flats'; },
         "Takten varer {n} firedeler, så taktarten er {takt}.": "The bar lasts {n} quarter notes, so the time signature is {takt}.",
-        "Takten varer {n} åttendeler, så taktarten er {takt}.": "The bar lasts {n} eighth notes, so the time signature is {takt}."
+        "Takten varer {n} åttendeler, så taktarten er {takt}.": "The bar lasts {n} eighth notes, so the time signature is {takt}.",
+        "åttendelstriol": "eighth-note triplet",
+        "firedelstriol": "quarter-note triplet"
       }
   }
 });

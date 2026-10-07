@@ -208,7 +208,7 @@
     g.setAttribute('translate', 'no');
     SPRAK.forEach(function(k){
       var b = knapp(k.toUpperCase());
-      b.setAttribute('lang', k); b.setAttribute('title', NAVN[k]); b.setAttribute('aria-label', NAVN[k]);
+      b.setAttribute('lang', k); b.setAttribute('title', NAVN[k]); b.setAttribute('aria-label', k.toUpperCase() + ', ' + NAVN[k]);
       b.setAttribute('aria-pressed', k === sprak ? 'true' : 'false');
       b.addEventListener('click', function(){
         if (k === sprak) return;
@@ -246,7 +246,7 @@
   function byggOriginal(){
     if (EGNE.indexOf(location.hostname) >= 0) return;
     var d = document.createElement('div');
-    d.className = 'vbm-original'; d.setAttribute('role', 'note');
+    d.className = 'vbm-original'; d.setAttribute('role', 'region'); d.setAttribute('aria-label', T('Original'));
     d.innerHTML = T('Originalen av denne siden finnes på ')
       + '<a href="' + ORIGINAL + side + '">' + T('Verdens Beste Musikkskole') + '</a>.';
     document.body.insertBefore(d, document.body.firstChild);
@@ -376,7 +376,44 @@
     });
   }
 
-  /* ==================== 10. Oppstart ==================== */
+  /* ==================== 10. Tilgjengelighet for skjermlesere ====================
+     «Hopp til innholdet» først på siden, spill-knapper som sier hva de spiller, og noter
+     som har fått et for generelt navn («Noter»), får navnet til kortet de står i. */
+  function hoppLenke(){
+    if (document.querySelector('.vbm-hopp')) return;
+    var mal = document.querySelector('main') || document.querySelector('.sheet') || document.querySelector('.wrap');
+    if (!mal) return;
+    if (!mal.id) mal.id = 'innholdet';
+    if (!mal.hasAttribute('tabindex')) mal.setAttribute('tabindex', '-1');
+    var a = document.createElement('a'); a.className = 'vbm-hopp'; a.href = '#' + mal.id; a.textContent = T('Hopp til innholdet');
+    document.body.insertBefore(a, document.body.firstChild);
+  }
+  var SPILL = /(spill|play|odtwórz|►)/i;
+  function kortNavn(el, unntak){
+    var k = el.closest('.rytme-eks, .sats, .delblokk, .chord, .interval, .song, .card, section, li, article');
+    if (!k) return '';
+    var svg = [].filter.call(k.querySelectorAll('svg[aria-label]'), function(x){ return x !== unntak && !x.closest('button') && !/^(Noter|Notes|Nuty)$/.test(x.getAttribute('aria-label')); })[0];
+    if (svg) return svg.getAttribute('aria-label');
+    var h = k.querySelector('h3, h2, .song-title, .chord-name, .name, .card-head h2');
+    return h ? h.textContent.replace(/\s+/g, ' ').trim() : '';
+  }
+  function tilgjengelig(rot){
+    if (!rot || rot.nodeType !== 1) return;
+    [].forEach.call(rot.querySelectorAll('button'), function(b){
+      if (b.getAttribute('aria-label') || !SPILL.test(b.textContent)) return;
+      var tekst = b.textContent.replace(/[►▶︎\uFE0E]/g, '').replace(/\s+/g, ' ').trim();
+      /* Bare knapper med en generell tekst («spill») trenger navnet til kortet; «Durskalaen» sier selv hva den gjør */
+      if (tekst && !/^(spill|play|odtwórz)$/i.test(tekst)) return;
+      var navn = kortNavn(b); if (!navn) return;
+      b.setAttribute('aria-label', (tekst || T('spill')) + ': ' + navn.slice(0, 90));
+    });
+    [].forEach.call(rot.querySelectorAll('svg[aria-label]'), function(svg){
+      if (!/^(Noter|Notes|Nuty)$/.test(svg.getAttribute('aria-label'))) return;
+      var navn = kortNavn(svg, svg); if (navn) svg.setAttribute('aria-label', svg.getAttribute('aria-label') + ': ' + navn);
+    });
+  }
+
+  /* ==================== 11. Oppstart ==================== */
   var obs = null;
   function start(){
     if (!document.body) return;
@@ -387,9 +424,11 @@
     byggBunn();
     tre(document.body);
     lenkInn(document.body);
+    tilgjengelig(document.body);
+    hoppLenke();
     obs = new MutationObserver(function(rec){
       rec.forEach(function(r){
-        if (r.type === 'childList') { for (var i = 0; i < r.addedNodes.length; i++) { tre(r.addedNodes[i]); lenkInn(r.addedNodes[i]); } }
+        if (r.type === 'childList') { for (var i = 0; i < r.addedNodes.length; i++) { tre(r.addedNodes[i]); lenkInn(r.addedNodes[i]); tilgjengelig(r.addedNodes[i]); } }
         else if (r.type === 'characterData') { ferdig.delete(r.target); tekstNode(r.target); }
         else if (r.type === 'attributes' && r.target.nodeType === 1 && !hopp(r.target)) attributter(r.target);
       });

@@ -191,6 +191,9 @@ window.VBM_SKALAER = (function(){
       var klasse = kjenne && kjenne.indexOf(i) >= 0 ? ' class="kjenne"' : '';
       s += '<ellipse' + klasse + ' data-i="' + i + '" cx="' + x + '" cy="' + y + '" rx="7.2" ry="5.6" fill="currentColor" transform="rotate(-18 ' + x + ' ' + y + ')"/>';
     });
+    /* Skjermlesere får tonenavnene, ikke bare navnet på skalaen */
+    var tonene = liste.map(function(n){ return K.tone(n); }).join(', ');
+    etikett = (etikett ? etikett + ': ' : '') + tonene;
     return '<svg viewBox="0 ' + topp + ' ' + bredde + ' ' + (bunn - topp) + '" role="img" aria-label="' + (etikett || '') + '">' + s + '</svg>';
   }
   /* ---------- Akkorder side om side ----------

@@ -1964,7 +1964,8 @@ html.sh .viktig strong { color: var(--ink) !important; }
   padding: 10px 14px;
   border-radius: 0 6px 6px 0;
 }
-:where([data-stil="ovelse"]) .viktig strong { color: var(--brass-dim); }
+:where([data-stil="ovelse"]) .viktig strong { color: #6B4708; }
+:where([data-stil="ovelse"]) .viktig a { --lenke: #6B4708; }   /* mørkere enn messingen, så kontrasten holder WCAG AA */
 :where([data-stil="ovelse"]) div.viktig > p:last-child { margin-bottom: 0; }
 :where(html[data-side="akkordhefte.html"]) .til-toppen { margin: 22px 0 0; font-size: 14px; }
 :where(html[data-side="akkordhefte.html"]) .til-toppen a { color: var(--gold-ink); text-underline-offset: 3px; }
@@ -2647,3 +2648,11 @@ html:where([data-side="akkordhefte.html"])[lang="pl"] details.answer[open] summa
   :where(html[data-side="akkordhefte.html"]) details.answer .inner { display: block !important; }
   :where(html[data-side="akkordhefte.html"]) details.answer:not([open]) .inner { display: block; }
 }
+
+/* ---------- Tilgjengelighet ---------- */
+/* «Hopp til innholdet»: usynlig til den får fokus med tastaturet */
+.vbm-hopp { position: absolute; left: 12px; top: -60px; z-index: 100; padding: 10px 16px; border-radius: 999px;
+  background: #12151A; color: #F5EFE3; font: 600 15px/1 -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; text-decoration: none; }
+.vbm-hopp:focus { top: 10px; outline: 2px solid #E8B866; outline-offset: 2px; }
+main:focus, .sheet:focus { outline: none; }
+@media (forced-colors: active) { .vbm-hopp { background: Canvas; color: LinkText; border: 2px solid LinkText; } }
