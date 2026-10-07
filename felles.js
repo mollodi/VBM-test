@@ -413,7 +413,101 @@
     });
   }
 
-  /* ==================== 11. Oppstart ==================== */
+  /* ==================== 11. Tonefarger og tonenavn ====================
+     Notehoder med data-f (farge) og data-navn får fargen sin mens de spilles, og navnene vises
+     i en lapp over notelinjen. Quizene farger notene, men viser ingen navn. */
+  /* På for hele nettstedet. Juksebøkene (data-stil="bok") kobles på i neste steg. */
+  var TONEFARGER = root.getAttribute('data-stil') !== 'bok';
+  /* Navnet på tonen som klinger vises i en knappeformet lapp øverst til høyre over notelinjen, i tonens farge.
+     Plassen over notelinjen er alltid satt av (fast minstehøyde), så ingenting flytter seg når lappen kommer.
+     Bare når én tone klinger (skalaer, melodier); når en akkord klinger, vises ikke noe navn. Quizene viser ingen navn. */
+  function synkFarger(svg){
+    if (root.hasAttribute('data-quiz') || svg.closest('[data-uten-navn]')) return;
+    var holder = svg.parentNode, lapp = holder.querySelector(':scope > .tn-knapp');
+    if (!lapp) { lapp = document.createElement('span'); lapp.className = 'tn-knapp tn-tom'; lapp.setAttribute('aria-hidden', 'true'); holder.appendChild(lapp); }
+    var klinger = {}, liste = [];
+    [].forEach.call(svg.querySelectorAll('.spilles[data-f]'), function(n){
+      var k = n.getAttribute('data-navn') + '|' + n.getAttribute('data-f');
+      if (!klinger[k]) { klinger[k] = true; liste.push(n); }
+    });
+    if (liste.length === 1) {
+      lapp.textContent = liste[0].getAttribute('data-navn');
+      lapp.setAttribute('data-f', liste[0].getAttribute('data-f'));
+      lapp.classList.remove('tn-tom');
+    } else { lapp.classList.add('tn-tom'); }
+  }
+  /* Har linjen over notelinjen ledig plass til høyre for lappen? Hvis ikke (for eksempel kromatisk skala
+     på mobil, der «Trinn» fyller hele bredden), får denne notelinjen en egen fast stripe. Sjekkes når siden
+     lastes og når skjermen endrer størrelse, aldri mens noe spilles, så ingenting flytter seg da. */
+  function plassSjekk(holder){
+    var lapp = holder.querySelector(':scope > .tn-knapp');
+    if (!lapp) { lapp = document.createElement('span'); lapp.className = 'tn-knapp tn-tom'; lapp.setAttribute('aria-hidden', 'true'); lapp.textContent = 'Giss'; holder.appendChild(lapp); }
+    holder.classList.remove('tn-plass');
+    var a = lapp.getBoundingClientRect(), kort = holder.closest('article, section, .card, .rytme-eks') || holder.parentNode, kolliderer = false;
+    var w = document.createTreeWalker(kort, NodeFilter.SHOW_TEXT), n;
+    while (!kolliderer && (n = w.nextNode())) {
+      if (!n.nodeValue.trim() || holder.contains(n)) continue;
+      var rg = document.createRange(); rg.selectNodeContents(n);
+      [].forEach.call(rg.getClientRects(), function(r){ if (r.right > a.left - 6 && r.left < a.right && r.bottom > a.top && r.top < a.bottom) kolliderer = true; });
+    }
+    if (!kolliderer) [].forEach.call(kort.querySelectorAll('svg, button, img'), function(e){
+      if (holder.contains(e)) return;
+      var r = e.getBoundingClientRect(); if (r.right > a.left && r.left < a.right && r.bottom > a.top && r.top < a.bottom) kolliderer = true;
+    });
+    holder.classList.toggle('tn-plass', kolliderer);
+  }
+  var plassTimer = null;
+  window.addEventListener('resize', function(){
+    clearTimeout(plassTimer);
+    plassTimer = setTimeout(function(){ [].forEach.call(document.querySelectorAll('.har-tn'), plassSjekk); }, 200);
+  });
+  function tonefarger(rot){
+    if (!TONEFARGER || !rot || rot.nodeType !== 1) return;
+    var quiz = root.hasAttribute('data-quiz');
+    var svgs = [].slice.call(rot.querySelectorAll('svg')); if (rot.tagName === 'svg') svgs.push(rot);
+    svgs.forEach(function(svg){
+      if (!svg.querySelector('[data-f]') || svg.getAttribute('data-tn')) return;
+      svg.setAttribute('data-tn', '1');
+      /* data-uten-navn: siden viser navnet selv (Notelesing), så bare fargen brukes */
+      if (!quiz && !svg.closest('[data-uten-navn]')) { svg.parentNode.classList.add('har-tn'); plassSjekk(svg.parentNode); }
+      new MutationObserver(function(){ synkFarger(svg); }).observe(svg, { attributes: true, subtree: true, attributeFilter: ['class'] });
+    });
+  }
+
+  /* ==================== 12. Innstillinger ====================
+     Tannhjulet i menylinjen: Farger eller Svart-hvitt (for fargeblinde og for deg med kromestesi).
+     Valget gjelder hele nettstedet og huskes. Flere innstillinger kommer her senere. */
+  var VISNING = 'vbm-visning';
+  function brukVisning(){ var v = ''; try { v = localStorage.getItem(VISNING) || ''; } catch(e){} root.classList.toggle('sh', v === 'sh'); return v; }
+  function byggInnstillinger(){
+    if (!TONEFARGER) return;
+    var nav = document.querySelector('.vbm-back'); if (!nav || nav.querySelector('.vbm-inst-knapp')) return;
+    var b = document.createElement('button'); b.type = 'button'; b.className = 'vbm-inst-knapp';
+    b.setAttribute('aria-expanded', 'false'); b.setAttribute('aria-controls', 'vbm-inst');
+    b.innerHTML = '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M19.4 13a7.5 7.5 0 0 0 0-2l2-1.6-2-3.4-2.4 1a7.6 7.6 0 0 0-1.7-1L15 3.5h-4l-.4 2.5a7.6 7.6 0 0 0-1.7 1l-2.4-1-2 3.4 2 1.6a7.5 7.5 0 0 0 0 2l-2 1.6 2 3.4 2.4-1a7.6 7.6 0 0 0 1.7 1l.4 2.5h4l.4-2.5a7.6 7.6 0 0 0 1.7-1l2.4 1 2-3.4zM13 15.5A3.5 3.5 0 1 1 13 8.5a3.5 3.5 0 0 1 0 7z" transform="translate(-1 0)"/></svg><span>' + T('Innstillinger') + '</span>';
+    var panel = document.createElement('div'); panel.id = 'vbm-inst'; panel.className = 'vbm-inst'; panel.hidden = true;
+    panel.innerHTML = '<p class="vbm-meny-tittel">' + T('Visning') + '</p>'
+      + '<div class="vbm-pille vbm-inst-valg" role="group" aria-label="' + T('Visning') + '">'
+      + '<button type="button" data-visning=""><span>' + T('Farger') + '</span></button><button type="button" data-visning="sh"><span>' + T('Svart-hvitt') + '</span></button></div>'
+      + '<p class="vbm-inst-tekst">' + T('Svart-hvitt er for deg som er fargeblind, eller som har kromestesi og ser egne farger når du hører toner. Notene og navnene vises da i svart, hvitt og grått, på hele nettstedet.') + '</p>';
+    var meny = nav.querySelector('.vbm-meny-knapp');
+    nav.insertBefore(b, meny ? meny.nextSibling : nav.firstChild);
+    nav.appendChild(panel);
+    function vis(){ var v = brukVisning(); [].forEach.call(panel.querySelectorAll('[data-visning]'), function(k){ k.setAttribute('aria-pressed', k.getAttribute('data-visning') === v ? 'true' : 'false'); }); }
+    panel.addEventListener('click', function(e){
+      var k = e.target.closest && e.target.closest('[data-visning]'); if (!k) return;
+      try { localStorage.setItem(VISNING, k.getAttribute('data-visning')); } catch(e2){}
+      vis();
+    });
+    b.addEventListener('click', function(){
+      var apen = panel.hidden; panel.hidden = !apen; b.setAttribute('aria-expanded', apen ? 'true' : 'false'); vis();
+      var m = document.getElementById('vbm-meny'); if (apen && m && !m.hidden) { var mk = nav.querySelector('.vbm-meny-knapp'); if (mk) mk.click(); }
+    });
+    document.addEventListener('click', function(e){ if (!panel.hidden && !nav.contains(e.target)) { panel.hidden = true; b.setAttribute('aria-expanded', 'false'); } });
+  }
+  if (TONEFARGER) { brukVisning(); root.classList.add('vbm-tonefarger'); }
+
+  /* ==================== 13. Oppstart ==================== */
   var obs = null;
   function start(){
     if (!document.body) return;
@@ -425,10 +519,11 @@
     tre(document.body);
     lenkInn(document.body);
     tilgjengelig(document.body);
+    tonefarger(document.body);
     hoppLenke();
     obs = new MutationObserver(function(rec){
       rec.forEach(function(r){
-        if (r.type === 'childList') { for (var i = 0; i < r.addedNodes.length; i++) { tre(r.addedNodes[i]); lenkInn(r.addedNodes[i]); tilgjengelig(r.addedNodes[i]); } }
+        if (r.type === 'childList') { for (var i = 0; i < r.addedNodes.length; i++) { tre(r.addedNodes[i]); lenkInn(r.addedNodes[i]); tilgjengelig(r.addedNodes[i]); tonefarger(r.addedNodes[i]); } }
         else if (r.type === 'characterData') { ferdig.delete(r.target); tekstNode(r.target); }
         else if (r.type === 'attributes' && r.target.nodeType === 1 && !hopp(r.target)) attributter(r.target);
       });
@@ -437,6 +532,7 @@
     obs.observe(document.body, { childList: true, subtree: true, characterData: true, attributes: true, attributeFilter: ATTR });
     byggKnapper();                                       // etter oversettelsen, så knappene ikke forstyrrer den
     byggMeny();
+    byggInnstillinger();
     root.classList.remove('vbm-oversetter');
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();

@@ -2656,3 +2656,123 @@ html:where([data-side="akkordhefte.html"])[lang="pl"] details.answer[open] summa
 .vbm-hopp:focus { top: 10px; outline: 2px solid #E8B866; outline-offset: 2px; }
 main:focus, .sheet:focus { outline: none; }
 @media (forced-colors: active) { .vbm-hopp { background: Canvas; color: LinkText; border: 2px solid LinkText; } }
+
+/* =====================================================================
+   Tonefarger og tonenavn (på hele nettstedet, juksebøkene kobles på i neste steg)
+   Fargene er de samme som i juksebøkene: Newtons regnbue, ♯ lysere, ♭ mørkere.
+   ===================================================================== */
+:root {
+  --nf-red: #AD2534; --nt-red: #FFFFFF;
+  --nf-red-dk: #7A1822; --nt-red-dk: #FFFFFF;
+  --nf-red-lt: #D9707B; --nt-red-lt: #1E1E1A;
+  --nf-orange: #D06730; --nt-orange: #1E1E1A;
+  --nf-orange-dk: #9E4A1C; --nt-orange-dk: #FFFFFF;
+  --nf-orange-lt: #E9A177; --nt-orange-lt: #1E1E1A;
+  --nf-yellow: #C79A1E; --nt-yellow: #1E1E1A;
+  --nf-yellow-dk: #8F6B12; --nt-yellow-dk: #FFFFFF;
+  --nf-yellow-lt: #E6C764; --nt-yellow-lt: #1E1E1A;
+  --nf-green: #42945E; --nt-green: #1E1E1A;
+  --nf-green-dk: #2C6B42; --nt-green-dk: #FFFFFF;
+  --nf-green-lt: #86C79B; --nt-green-lt: #1E1E1A;
+  --nf-blue: #3579B0; --nt-blue: #FFFFFF;
+  --nf-blue-dk: #24567F; --nt-blue-dk: #FFFFFF;
+  --nf-blue-lt: #7FB3DB; --nt-blue-lt: #1E1E1A;
+  --nf-indigo: #3F4B9E; --nt-indigo: #FFFFFF;
+  --nf-indigo-dk: #2A3470; --nt-indigo-dk: #FFFFFF;
+  --nf-indigo-lt: #8590CF; --nt-indigo-lt: #1E1E1A;
+  --nf-violet: #7650A6; --nt-violet: #FFFFFF;
+  --nf-violet-dk: #563A7C; --nt-violet-dk: #FFFFFF;
+  --nf-violet-lt: #B49AD4; --nt-violet-lt: #1E1E1A;
+}
+/* Notehodet som spilles får tonens farge */
+html.vbm-tonefarger [data-f="red"].spilles { fill: var(--nf-red) !important; stroke: var(--nf-red) !important; }
+html.vbm-tonefarger [data-f="red-dk"].spilles { fill: var(--nf-red-dk) !important; stroke: var(--nf-red-dk) !important; }
+html.vbm-tonefarger [data-f="red-lt"].spilles { fill: var(--nf-red-lt) !important; stroke: var(--nf-red-lt) !important; }
+html.vbm-tonefarger [data-f="orange"].spilles { fill: var(--nf-orange) !important; stroke: var(--nf-orange) !important; }
+html.vbm-tonefarger [data-f="orange-dk"].spilles { fill: var(--nf-orange-dk) !important; stroke: var(--nf-orange-dk) !important; }
+html.vbm-tonefarger [data-f="orange-lt"].spilles { fill: var(--nf-orange-lt) !important; stroke: var(--nf-orange-lt) !important; }
+html.vbm-tonefarger [data-f="yellow"].spilles { fill: var(--nf-yellow) !important; stroke: var(--nf-yellow) !important; }
+html.vbm-tonefarger [data-f="yellow-dk"].spilles { fill: var(--nf-yellow-dk) !important; stroke: var(--nf-yellow-dk) !important; }
+html.vbm-tonefarger [data-f="yellow-lt"].spilles { fill: var(--nf-yellow-lt) !important; stroke: var(--nf-yellow-lt) !important; }
+html.vbm-tonefarger [data-f="green"].spilles { fill: var(--nf-green) !important; stroke: var(--nf-green) !important; }
+html.vbm-tonefarger [data-f="green-dk"].spilles { fill: var(--nf-green-dk) !important; stroke: var(--nf-green-dk) !important; }
+html.vbm-tonefarger [data-f="green-lt"].spilles { fill: var(--nf-green-lt) !important; stroke: var(--nf-green-lt) !important; }
+html.vbm-tonefarger [data-f="blue"].spilles { fill: var(--nf-blue) !important; stroke: var(--nf-blue) !important; }
+html.vbm-tonefarger [data-f="blue-dk"].spilles { fill: var(--nf-blue-dk) !important; stroke: var(--nf-blue-dk) !important; }
+html.vbm-tonefarger [data-f="blue-lt"].spilles { fill: var(--nf-blue-lt) !important; stroke: var(--nf-blue-lt) !important; }
+html.vbm-tonefarger [data-f="indigo"].spilles { fill: var(--nf-indigo) !important; stroke: var(--nf-indigo) !important; }
+html.vbm-tonefarger [data-f="indigo-dk"].spilles { fill: var(--nf-indigo-dk) !important; stroke: var(--nf-indigo-dk) !important; }
+html.vbm-tonefarger [data-f="indigo-lt"].spilles { fill: var(--nf-indigo-lt) !important; stroke: var(--nf-indigo-lt) !important; }
+html.vbm-tonefarger [data-f="violet"].spilles { fill: var(--nf-violet) !important; stroke: var(--nf-violet) !important; }
+html.vbm-tonefarger [data-f="violet-dk"].spilles { fill: var(--nf-violet-dk) !important; stroke: var(--nf-violet-dk) !important; }
+html.vbm-tonefarger [data-f="violet-lt"].spilles { fill: var(--nf-violet-lt) !important; stroke: var(--nf-violet-lt) !important; }
+
+/* Navnet på tonen som klinger: en lapp med samme form som spill-knappen, rett ved siden av den.
+   Lappen har tonens farge, og navnet er hvitt eller mørkt, det som synes best på fargen. */
+/* Fast plass over notelinjen (like høy som lappen), så siden aldri flytter seg */
+/* Lappen løftes ut av notebildet, opp i den tomme høyre delen av linjen over notelinjen
+   (for eksempel «Fra C: C dorisk» eller «Trinn»/«Avstander»). Da kan den aldri dekke noter,
+   og notelinjen trenger ingen ekstra plass. */
+html.vbm-tonefarger .har-tn { position: relative; }
+/* Når linjen over er full (sjelden), får notelinjen en egen stripe like høy som lappen */
+html.vbm-tonefarger .har-tn.tn-plass { padding-top: 50px; }
+html.vbm-tonefarger .har-tn.tn-plass > .tn-knapp { bottom: auto; top: 0; margin-bottom: 0; }
+html.vbm-tonefarger .tn-knapp {
+  position: absolute; bottom: 100%; right: 0; margin-bottom: 2px;
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 46px; min-width: 76px; padding: 0 20px; box-sizing: border-box;
+  border-radius: 999px; border: 1.5px solid transparent;
+  font: 700 20px/1 -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  background: var(--farge); color: var(--tekst); border-color: var(--farge); pointer-events: none;
+}
+html.vbm-tonefarger .tn-knapp.tn-tom { visibility: hidden; }
+html.vbm-tonefarger .tn-knapp[data-f="red"] { --farge: var(--nf-red); --tekst: var(--nt-red); }
+html.vbm-tonefarger .tn-knapp[data-f="red-dk"] { --farge: var(--nf-red-dk); --tekst: var(--nt-red-dk); }
+html.vbm-tonefarger .tn-knapp[data-f="red-lt"] { --farge: var(--nf-red-lt); --tekst: var(--nt-red-lt); }
+html.vbm-tonefarger .tn-knapp[data-f="orange"] { --farge: var(--nf-orange); --tekst: var(--nt-orange); }
+html.vbm-tonefarger .tn-knapp[data-f="orange-dk"] { --farge: var(--nf-orange-dk); --tekst: var(--nt-orange-dk); }
+html.vbm-tonefarger .tn-knapp[data-f="orange-lt"] { --farge: var(--nf-orange-lt); --tekst: var(--nt-orange-lt); }
+html.vbm-tonefarger .tn-knapp[data-f="yellow"] { --farge: var(--nf-yellow); --tekst: var(--nt-yellow); }
+html.vbm-tonefarger .tn-knapp[data-f="yellow-dk"] { --farge: var(--nf-yellow-dk); --tekst: var(--nt-yellow-dk); }
+html.vbm-tonefarger .tn-knapp[data-f="yellow-lt"] { --farge: var(--nf-yellow-lt); --tekst: var(--nt-yellow-lt); }
+html.vbm-tonefarger .tn-knapp[data-f="green"] { --farge: var(--nf-green); --tekst: var(--nt-green); }
+html.vbm-tonefarger .tn-knapp[data-f="green-dk"] { --farge: var(--nf-green-dk); --tekst: var(--nt-green-dk); }
+html.vbm-tonefarger .tn-knapp[data-f="green-lt"] { --farge: var(--nf-green-lt); --tekst: var(--nt-green-lt); }
+html.vbm-tonefarger .tn-knapp[data-f="blue"] { --farge: var(--nf-blue); --tekst: var(--nt-blue); }
+html.vbm-tonefarger .tn-knapp[data-f="blue-dk"] { --farge: var(--nf-blue-dk); --tekst: var(--nt-blue-dk); }
+html.vbm-tonefarger .tn-knapp[data-f="blue-lt"] { --farge: var(--nf-blue-lt); --tekst: var(--nt-blue-lt); }
+html.vbm-tonefarger .tn-knapp[data-f="indigo"] { --farge: var(--nf-indigo); --tekst: var(--nt-indigo); }
+html.vbm-tonefarger .tn-knapp[data-f="indigo-dk"] { --farge: var(--nf-indigo-dk); --tekst: var(--nt-indigo-dk); }
+html.vbm-tonefarger .tn-knapp[data-f="indigo-lt"] { --farge: var(--nf-indigo-lt); --tekst: var(--nt-indigo-lt); }
+html.vbm-tonefarger .tn-knapp[data-f="violet"] { --farge: var(--nf-violet); --tekst: var(--nt-violet); }
+html.vbm-tonefarger .tn-knapp[data-f="violet-dk"] { --farge: var(--nf-violet-dk); --tekst: var(--nt-violet-dk); }
+html.vbm-tonefarger .tn-knapp[data-f="violet-lt"] { --farge: var(--nf-violet-lt); --tekst: var(--nt-violet-lt); }
+/* ---------- Svart-hvitt (fargeblinde og kromestesi): bare svart eller hvitt og en gråtone ---------- */
+/* Svart-hvitt: ingen grått. Alt følger sidens blekk (svart på lys bakgrunn, hvitt på mørk).
+   Tonen som spilles blir en hul note med tydelig kant, og navnelappen får kant i samme blekk. */
+html.vbm-tonefarger.sh [data-f].spilles { fill: transparent !important; stroke: currentColor !important; stroke-width: 2.2px; }
+html.vbm-tonefarger.sh .tn-knapp { background: transparent !important; border: 2.5px solid currentColor !important; color: currentColor !important; }
+@media (forced-colors: active) {
+  html.vbm-tonefarger .tn-knapp { forced-color-adjust: none; background: Highlight !important; color: HighlightText !important; border-color: Highlight !important; }
+  html.vbm-tonefarger [data-f].spilles { fill: Highlight !important; stroke: Highlight !important; }
+}
+
+/* ---------- Innstillinger (tannhjulet i menylinjen) ---------- */
+.vbm-back .vbm-inst-knapp {
+  display: inline-flex; align-items: center; gap: 7px; order: 2;
+  font: 600 14px/1 -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  color: inherit; background: transparent; cursor: pointer;
+  border: 1.5px solid color-mix(in srgb, currentColor 45%, transparent); border-radius: 999px; padding: 8px 12px;
+}
+.vbm-back .vbm-inst-knapp:hover, .vbm-back .vbm-inst-knapp[aria-expanded="true"] { border-color: var(--lenke-mork); }
+.vbm-inst { order: 4; flex: 1 1 100%; padding: 10px 2px 8px; border-top: 1px solid color-mix(in srgb, currentColor 18%, transparent); }
+.vbm-inst[hidden] { display: none; }
+.vbm-inst-valg { display: inline-flex; margin: 2px 0 8px; }
+.vbm-inst-valg button { padding: 7px 14px; font-weight: 600; }
+.vbm-inst-valg button + button { border-left: 1px solid currentColor; }
+.vbm-inst-tekst { margin: 0; max-width: 60ch; font: 14px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; opacity: .85; }
+@media (max-width: 520px) {
+  .vbm-back .vbm-inst-knapp { padding: 7px 9px; font-size: 13px; }
+  .vbm-back .vbm-inst-knapp span { display: none; }   /* bare tannhjulet på mobil, så linjen holder én rad */
+}
+@media (forced-colors: active) { .vbm-back .vbm-inst-knapp { border-color: CanvasText; color: LinkText; } }

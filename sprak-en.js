@@ -125,7 +125,10 @@ VBM_ORDBOK("en", {
     "Lyd: trommer fra Versilian Community Sample Library (CC0). Piano: Salamander Grand Piano av Alexander Holm (CC BY 3.0). Gitar, fiolin og cello fra tonejs-instruments av Nicholas Brosowsky (CC BY 3.0).": "Sound: drums from the Versilian Community Sample Library (CC0). Piano: Salamander Grand Piano by Alexander Holm (CC BY 3.0). Guitar, violin and cello from tonejs-instruments by Nicholas Brosowsky (CC BY 3.0).",
     "Meny": "Menu",
     "Original": "Original",
-    "Hopp til innholdet": "Skip to content"
+    "Hopp til innholdet": "Skip to content",
+    "Innstillinger": "Settings",
+    "Visning": "Display",
+    "Svart-hvitt er for deg som er fargeblind, eller som har kromestesi og ser egne farger når du hører toner. Notene og navnene vises da i svart, hvitt og grått, på hele nettstedet.": "Black and white is for you if you are colour-blind, or have chromesthesia and see your own colours when you hear notes. The notes and names are then shown in black, white and grey across the whole site."
   },
   sider: {
     "index.html": {

@@ -125,7 +125,10 @@ VBM_ORDBOK("pl", {
     "Lyd: trommer fra Versilian Community Sample Library (CC0). Piano: Salamander Grand Piano av Alexander Holm (CC BY 3.0). Gitar, fiolin og cello fra tonejs-instruments av Nicholas Brosowsky (CC BY 3.0).": "Dźwięk: perkusja z Versilian Community Sample Library (CC0). Fortepian: Salamander Grand Piano, Alexander Holm (CC BY 3.0). Gitara, skrzypce i wiolonczela z tonejs-instruments, Nicholas Brosowsky (CC BY 3.0).",
     "Meny": "Menu",
     "Original": "Oryginał",
-    "Hopp til innholdet": "Przejdź do treści"
+    "Hopp til innholdet": "Przejdź do treści",
+    "Innstillinger": "Ustawienia",
+    "Visning": "Wygląd",
+    "Svart-hvitt er for deg som er fargeblind, eller som har kromestesi og ser egne farger når du hører toner. Notene og navnene vises da i svart, hvitt og grått, på hele nettstedet.": "Tryb czarno-biały jest dla osób z daltonizmem albo z chromestezją, które widzą własne kolory, słysząc dźwięki. Nuty i nazwy są wtedy pokazywane w czerni, bieli i szarości na całej stronie."
   },
   sider: {
     "index.html": {

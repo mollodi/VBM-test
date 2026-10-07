@@ -39,7 +39,7 @@
     <p class="label">Nøkkel</p>
     <div class="row brikker" id="nokler" role="group" aria-label="Velg nøkkel"></div>
     <div class="stav-og-navn">
-      <div class="noter" id="stav"></div>
+      <div class="noter" id="stav" data-uten-navn></div>
       <p class="tonenavn" id="tonenavn" aria-live="polite"></p>
     </div>
     <div class="piano-rad">
@@ -79,7 +79,7 @@
       <h2>Samme tone, fire plasser</h2>
     </div>
     <p class="task">Alle fire notelinjene under viser den samme tonen, c¹, den midterste C-en på pianoet. Nøkkelen flytter tonen: i G-nøkkel står den på hjelpelinjen under, i F-nøkkel på hjelpelinjen over, og i C-nøklene på linjen nøkkelen peker på.</p>
-    <div class="fire-stav" id="fire-stav"></div>
+    <div class="fire-stav" id="fire-stav" data-uten-navn></div>
   </section>
 
   <section class="card">
@@ -191,7 +191,10 @@
     valgt = +el.getAttribute('data-m'); lagre(); tegn();
     /* Stopp tonen som klinger først, ellers tolkes et nytt trykk som «stopp» */
     if (window.VBM_LYD_STOPP) window.VBM_LYD_STOPP();
-    if (window.VBM_LYD_SEKVENS) window.VBM_LYD_SEKVENS([[valgt]], $('piano'));
+    /* Noten på notelinjen lyser i sin farge mens tonen klinger */
+    if (window.VBM_LYD_SEKVENS) window.VBM_LYD_SEKVENS([[valgt]], $('piano'), function(k){
+      var e = $('stav').querySelector('ellipse[data-f]'); if (e) e.classList.toggle('spilles', k >= 0);
+    });
   }
   /* Tangenten finnes ut fra det nøyaktige punktet fingeren traff. Mobilnettlesere «justerer» ellers
      trykket til nærmeste knapp, og på et piano blir det ofte nabotangenten. */

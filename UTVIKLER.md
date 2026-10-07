@@ -120,3 +120,11 @@ Nettsiden ligger på https://verdensbestemusikkskole.no/ (GitHub Pages med eget 
 - Bytter domenet igjen, endres `ORIGINAL` og `EGNE` øverst i `felles.js`.
 - Alle sider har `noindex, nofollow` og signatur, og hvert verk har sin egen Verk-ID.
 
+## Tonefarger, tonenavn og innstillinger
+
+- Notene har tonens farge fra Newtons regnbue mens de spilles (C rød, D oransje, E gul, F grønn, G blå, A indigo, H fiolett; ♯ lysere, ♭ mørkere), de samme fargene som juksebøkene.
+- Notehodene tegnet av `skalaer.js` får `data-f` (farge) og `data-navn` (tonenavn). `felles.js` farger dem når siden setter klassen `spilles`, og viser navnet i en lapp over notelinjen, øverst til høyre, bare når én tone klinger.
+- Quizene (`data-quiz`) farger notene, men viser ingen navn. Sider som viser navnet selv bruker `data-uten-navn` (Notelesing).
+- Tannhjulet i menylinjen åpner Innstillinger. «Svart-hvitt» (for fargeblinde og kromestesi) lagres i `localStorage` (`vbm-visning`) og gjelder hele nettstedet: notene følger sidens blekk, og tonen som spilles blir en hul note med kant.
+- Juksebøkene, sangsiden, lytteguiden og intervall- og akkordquizen har ferdigtegnede noter og kobles på i neste versjon.
+
