@@ -263,7 +263,16 @@
   }
   function byggMeny(){
     var nav = document.querySelector('.vbm-back');
-    if (!nav || nav.querySelector('.vbm-meny-knapp') || side === 'index.html') return;
+    /* Startsiden: menyknappen til venstre og språkknappene til høyre i samme linje øverst,
+       slik som på de andre sidene, men uten lenke tilbake (siden er selv oversikten). */
+    if (!nav && side === 'index.html') {
+      nav = document.createElement('nav'); nav.className = 'vbm-back vbm-back--start'; nav.setAttribute('aria-label', T('Nettsted'));
+      var banner = document.querySelector('.vbm-original');
+      document.body.insertBefore(nav, banner ? banner.nextSibling : document.body.firstChild);
+      var plass = document.querySelector('[data-vbm-sprak]'), pille = plass && plass.querySelector('.vbm-sprak');
+      if (pille) { var v = document.createElement('div'); v.className = 'vbm-valg'; v.appendChild(pille); nav.appendChild(v); plass.hidden = true; plass.style.display = 'none'; }
+    }
+    if (!nav || nav.querySelector('.vbm-meny-knapp')) return;
     nav.classList.add('vbm-topp');
     var hjem = nav.querySelector('a[href="index.html"]'); if (hjem) hjem.classList.add('vbm-hjem');
     var bs = getComputedStyle(document.body);
@@ -276,9 +285,10 @@
     if (valg) nav.insertBefore(b, valg); else nav.appendChild(b);
     nav.appendChild(panel);
     /* Hopp til et kapittel (#kapittel-3, #innhold) skal stoppe under menylinjen, ikke bak den */
-    function luft(){ root.style.scrollPaddingTop = (nav.getBoundingClientRect().height + 12) + 'px'; }
+    function luft(){ if (!nav.classList.contains('vbm-meny-apen')) root.style.scrollPaddingTop = (nav.getBoundingClientRect().height + 12) + 'px'; }
     luft(); window.addEventListener('resize', luft);
-    function lukk(){ panel.hidden = true; b.setAttribute('aria-expanded', 'false'); }
+    /* Mens menyen er åpen, står linjen ikke fast øverst, så hele listen kan rulles og leses */
+    function lukk(){ panel.hidden = true; b.setAttribute('aria-expanded', 'false'); nav.classList.remove('vbm-meny-apen'); luft(); }
     b.addEventListener('click', function(){
       if (!panel.hidden) { lukk(); return; }
       hentMaterialer(function(){
@@ -294,7 +304,10 @@
           html += '</ul></div>';
         });
         panel.innerHTML = html;
-        panel.hidden = false; b.setAttribute('aria-expanded', 'true');
+        panel.hidden = false; b.setAttribute('aria-expanded', 'true'); nav.classList.add('vbm-meny-apen');
+        /* Er siden rullet ned, rulles den opp så menyen begynner øverst på skjermen */
+        var y = nav.getBoundingClientRect().top + window.pageYOffset;
+        if (window.pageYOffset > y) window.scrollTo(0, y);
       });
     });
     document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && !panel.hidden) { lukk(); b.focus(); } });

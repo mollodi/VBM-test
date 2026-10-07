@@ -2187,6 +2187,9 @@ a.btn:hover::after { transform: translateX(3px); }
   box-shadow: 0 4px 14px rgba(0, 0, 0, .12);
 }
 .vbm-back.vbm-topp.vbm-back--book { margin: 0 0 24px; }
+/* Mens menyen er åpen, ruller linjen med siden, så hele listen kan leses uten egen rullefelt */
+.vbm-back.vbm-topp.vbm-meny-apen { position: relative; }
+/* Startsiden: menyknappen til venstre, språkknappene til høyre */
 .vbm-back .vbm-hjem, .vbm-back .vbm-meny-knapp {
   display: inline-flex; align-items: center; gap: 8px;
   font: 600 14px/1 -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
@@ -2209,16 +2212,15 @@ a.btn:hover::after { transform: translateX(3px); }
 .vbm-back.vbm-topp .vbm-valg { order: 3; }
 /* Menyen med alle sidene */
 .vbm-meny {
-  order: 4; flex: 1 1 100%;
-  max-height: min(70vh, 620px); overflow-y: auto;
-  display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 6px 24px;
+  order: 4; flex: 1 1 100%; min-width: 0;
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr)); gap: 6px 24px;
   padding: 10px 2px 6px; border-top: 1px solid color-mix(in srgb, currentColor 18%, transparent);
 }
 .vbm-meny[hidden] { display: none; }
 .vbm-meny-tittel { margin: 6px 0 4px; font: 700 11px/1.3 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; letter-spacing: .1em; text-transform: uppercase; opacity: .75; }
 .vbm-meny ul { list-style: none; margin: 0; padding: 0; }
 .vbm-meny-lenke {
-  display: block; padding: 7px 10px; margin: 0 -10px; border-radius: 8px;
+  display: block; padding: 7px 10px; margin: 0; border-radius: 8px; overflow-wrap: anywhere;
   color: inherit; text-decoration: none; font: 15px/1.35 -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
 }
 .vbm-meny-lenke:hover, .vbm-meny-lenke:focus-visible { background: color-mix(in srgb, currentColor 10%, transparent); outline: none; }
