@@ -2831,7 +2831,7 @@ html.vbm-tonefarger.vbm-sh .vbm-notebilde[data-fast] [data-f].spilles { fill: tr
 
 /* ---------- Piano under notelinjene (Innstillinger) ---------- */
 .tn-piano { margin: 8px 0 16px; touch-action: manipulation; -webkit-tap-highlight-color: transparent; user-select: none; -webkit-user-select: none; }
-.tn-piano svg { display: block; width: 100% !important; max-width: 100%; height: auto; }
+.tn-piano svg { display: block; max-width: 100%; height: auto; }   /* fast tangentstørrelse: flere tangenter på bredere skjermer */
 .tn-tangent { cursor: pointer; stroke: #1E1E1A; stroke-width: 1; }
 .tn-tangent.hvit { fill: #FFFDF8; }
 .tn-tangent.svart { fill: #1E1E1A; }

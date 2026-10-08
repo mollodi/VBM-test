@@ -502,9 +502,17 @@
     var noter = [].slice.call(svg.querySelectorAll('[data-f][data-m]'));
     if (!noter.length) return;
     var ms = noter.map(function(n){ return +n.getAttribute('data-m'); });
-    /* Fra C-en under den laveste tonen til den høyeste tonen, minst én oktav */
+    /* Fra C-en under den laveste tonen til den høyeste tonen, minst én oktav. Tangentene har fast størrelse:
+       er det mer plass, vises flere tangenter (vekselvis under og over), ikke større tangenter. */
     var fra = Math.floor(Math.min.apply(null, ms) / 12) * 12, til = Math.max(Math.max.apply(null, ms), fra + 11);
     if (SVARTE.indexOf(til % 12) >= 0) til++;   // ikke slutt på en svart tangent
+    function antallHvite(a, b){ var n = 0; for (var q = a; q <= b; q++) if (SVARTE.indexOf(q % 12) < 0) n++; return n; }
+    var TANGENT_PX = 26, plass = Math.floor((holder.clientWidth || 300) / TANGENT_PX), under = true;
+    while (antallHvite(fra, til) < plass && (fra > 21 || til < 108)) {
+      if ((under && fra > 21) || til >= 108) { fra--; while (SVARTE.indexOf(fra % 12) >= 0) fra--; }
+      else { til++; while (SVARTE.indexOf(til % 12) >= 0) til++; }
+      under = !under;
+    }
     var merket = {};
     noter.forEach(function(n){ merket[n.getAttribute('data-m')] = n.getAttribute('data-f'); });   // fargen brukes bare mens tangenten klinger
     var HV = 20, x = 0, hvite = '', svarte = '';
@@ -515,7 +523,7 @@
       else { hvite += '<rect class="' + kl + '"' + f + ' data-m="' + m + '" x="' + x + '" y="0" width="' + HV + '" height="64" rx="2"/>'; x += HV; }
     }
     var div = document.createElement('div'); div.className = 'tn-piano'; div.setAttribute('aria-hidden', 'true');
-    div.innerHTML = '<svg viewBox="-1 -1 ' + (x + 2) + ' 66" style="width:' + Math.min(x * 1.3, 560) + 'px">' + hvite + svarte + '</svg>';
+    div.innerHTML = '<svg viewBox="-1 -1 ' + (x + 2) + ' 66" style="width:' + Math.round((x + 2) * TANGENT_PX / HV) + 'px">' + hvite + svarte + '</svg>';
     holder.appendChild(div);
   }
   function pianoSynk(svg){
@@ -559,7 +567,7 @@
   }
   function alleStaver(){ [].forEach.call(document.querySelectorAll('svg[data-tn]'), utvidStav); }
   var stavTimer = null;
-  window.addEventListener('resize', function(){ clearTimeout(stavTimer); stavTimer = setTimeout(alleStaver, 200); });
+  window.addEventListener('resize', function(){ clearTimeout(stavTimer); stavTimer = setTimeout(function(){ alleStaver(); if (pianoPaa()) allePianoer(); }, 200); });
   window.addEventListener('load', alleStaver);
 
   function tonefarger(rot){
