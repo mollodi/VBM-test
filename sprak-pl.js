@@ -128,7 +128,7 @@ VBM_ORDBOK("pl", {
     "Hopp til innholdet": "Przejdź do treści",
     "Innstillinger": "Ustawienia",
     "Visning": "Wygląd",
-    "Svart-hvitt er for deg som er fargeblind, eller som har kromestesi og ser egne farger når du hører toner. Notene vises da uten farger, og tonen som spilles får en kant i stedet, på hele nettstedet.": "Tryb czarno-biały jest dla osób z daltonizmem albo z chromestezją, które widzą własne kolory, słysząc dźwięki. Nuty są wtedy pokazywane bez kolorów, a grana nuta dostaje zamiast tego obwódkę, na całej stronie.",
+    "Svart-hvitt er for deg som er fargeblind. Har du synestesi og ser egne farger når du hører toner, bør du ikke slå det på: bruk gaven din! For alle andre er fargene også nyttige, fordi det hjelper å knytte bestemte toner til farger.": "Tryb czarno-biały jest dla osób z daltonizmem. Jeśli masz synestezję i widzisz własne kolory, słysząc dźwięki, nie włączaj go: korzystaj ze swojego daru! Dla wszystkich innych kolory też są przydatne, bo pomagają kojarzyć konkretne dźwięki z kolorami.",
     "Tempo": "Tempo",
     "Sakte": "Wolno",
     "Middels": "Średnio",
@@ -139,7 +139,8 @@ VBM_ORDBOK("pl", {
     "Av": "Wył.",
     "Viser tonene på notelinjen på et piano under hver notelinje. Du kan trykke på tangentene for å høre dem.": "Pokazuje dźwięki z pięciolinii na fortepianie pod każdą pięciolinią. Możesz dotykać klawiszy, aby je usłyszeć.",
     "En oktav ned": "Oktawę w dół",
-    "En oktav opp": "Oktawę w górę"
+    "En oktav opp": "Oktawę w górę",
+    "{instrument} når ikke så dype eller høye toner, så de spilles på piano.": "{instrument} nie sięga tak niskich ani wysokich dźwięków, więc grane są na fortepianie."
   },
   sider: {
     "index.html": {
@@ -335,7 +336,8 @@ VBM_ORDBOK("pl", {
         "20 halvtoner, også kalt oktav + liten sekst": "20 półtonów, inaczej oktawa + seksta mała",
         "21 halvtoner, også kalt oktav + stor sekst": "21 półtonów, inaczej oktawa + seksta wielka",
         "22 halvtoner, også kalt oktav + liten septim": "22 półtony, inaczej oktawa + septyma mała",
-        "23 halvtoner, også kalt oktav + stor septim": "23 półtony, inaczej oktawa + septyma wielka"
+        "23 halvtoner, også kalt oktav + stor septim": "23 półtony, inaczej oktawa + septyma wielka",
+        "Tips: er du fargeblind, kan du vise notene i svart-hvitt under Innstillinger (tannhjulet øverst).": "Wskazówka: jeśli masz daltonizm, możesz pokazać nuty w czerni i bieli w Ustawieniach (koło zębate u góry)."
       },
     "akkorder-og-intervaller.html": {
         "Den ultimate jukseboka for akkorder og intervaller": "Najlepsza ściąga z akordów i interwałów",
@@ -580,7 +582,8 @@ VBM_ORDBOK("pl", {
         "C-molltreklang med kvinten (G) i bassen, skrevet Cm/G. Over bassen ligger en ren kvart (C) og en liten sekst (E♭). Dette er kadensens kvartsekstakkord i moll: Cm/G foran G-dur og så til c-moll, slik akkordene i kapittel 4 spilles i kadensen i gehørquizen.": "Trójdźwięk c-moll z kwintą (G) w basie, zapisywany Cm/G. Nad basem leżą kwarta czysta (C) i seksta mała (E♭). To kadencyjny akord kwartsekstowy w mollu: Cm/G przed G-dur, a potem do c-moll, tak jak akordy z rozdziału 4 grane są w kadencji w quizie słuchowym.",
         "Jazz- og popakkorder har ingen faste norske navn. I noter skrives de med akkordsymboler, som C7sus4 eller Cadd9, og musikere sier symbolet. Navnene her beskriver hva akkorden består av, og symbolet står i parentes.": "Akordy jazzowe i popowe nie mają w języku norweskim stałych nazw. W nutach zapisuje się je symbolami akordów, takimi jak C7sus4 czy Cadd9, a muzycy wypowiadają symbol. Nazwy tutaj opisują, z czego składa się akord, a symbol podano w nawiasie.",
         "Innhold": "Spis treści",
-        "↑ Til innholdet": "↑ Do spisu treści"
+        "↑ Til innholdet": "↑ Do spisu treści",
+        "Tips: er du fargeblind, kan du vise notene i svart-hvitt under Innstillinger (tannhjulet øverst).": "Wskazówka: jeśli masz daltonizm, możesz pokazać nuty w czerni i bieli w Ustawieniach (koło zębate u góry)."
       },
     "intervaller-og-sanger.html": {
         "Intervaller & sanger: øretreningsreferanse": "Interwały i piosenki: materiał do kształcenia słuchu",

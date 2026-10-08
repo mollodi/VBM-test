@@ -270,6 +270,13 @@
     activeBtn = btn; btn.classList.add('playing', 'loading');
     var urls = {};
     var alle = notes.concat.apply(notes, (kadens || []).concat(sekvens || []));
+    /* Gitar og strykere har ikke hele pianoets område (A0 til C8). Toner utenfor spilles på piano,
+       og siden får beskjed (felles.js viser en kort melding). */
+    var OMRADE = { gitar: [40, 88], strykere: [36, 100] }, omr = OMRADE[current];
+    if (omr && alle.some(function(m){ return m < omr[0] || m > omr[1]; })) {
+      inst = INSTR.piano;
+      try { window.dispatchEvent(new CustomEvent('vbm-utenfor', { detail: { instrument: INSTR[current].label } })); } catch(e){}
+    }
     inst.layers.forEach(function(L){
       alle.forEach(function(m){ var s = nearest(L, m + L.shift); if (s !== null) urls[urlFor(L, s)] = true; });
     });

@@ -301,7 +301,8 @@
     $('ov-fb').innerHTML = '<strong class="' + (riktig ? 'ok' : 'nei') + '">' + (riktig ? T('Riktig.') : T('Feil.')) + '</strong> '
       + T('Det var {navn} {hvor}.', { navn: smaa(navnMedEng(o.s)), hvor: hvor(o) }) + ogsa(o.s)
       + (m ? '<span class="motiv">' + m + '</span>' : '');
-    $('ov-fasit').innerHTML = notelinje(o, true); $('ov-fasit').hidden = false;
+    /* Samme notelinje som før svaret (med svaret markert), ikke en ekstra kopi */
+    $('ov-bilde').innerHTML = notelinje(o, true); $('ov-bilde').hidden = false;
     $('ov-spill').hidden = false;
     $('ov-neste').hidden = false;
     visFremgang();

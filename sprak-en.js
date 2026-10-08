@@ -128,7 +128,7 @@ VBM_ORDBOK("en", {
     "Hopp til innholdet": "Skip to content",
     "Innstillinger": "Settings",
     "Visning": "Display",
-    "Svart-hvitt er for deg som er fargeblind, eller som har kromestesi og ser egne farger når du hører toner. Notene vises da uten farger, og tonen som spilles får en kant i stedet, på hele nettstedet.": "Black and white is for you if you are colour-blind, or have chromesthesia and see your own colours when you hear notes. The notes are then shown without colours, and the note being played gets an outline instead, across the whole site.",
+    "Svart-hvitt er for deg som er fargeblind. Har du synestesi og ser egne farger når du hører toner, bør du ikke slå det på: bruk gaven din! For alle andre er fargene også nyttige, fordi det hjelper å knytte bestemte toner til farger.": "Black and white is for you if you are colour-blind. If you have synaesthesia and see your own colours when you hear notes, do not turn it on: use your gift! For everyone else the colours are useful too, because they help you link particular notes to colours.",
     "Tempo": "Tempo",
     "Sakte": "Slow",
     "Middels": "Medium",
@@ -139,7 +139,8 @@ VBM_ORDBOK("en", {
     "Av": "Off",
     "Viser tonene på notelinjen på et piano under hver notelinje. Du kan trykke på tangentene for å høre dem.": "Shows the notes of each staff on a piano below it. You can tap the keys to hear them.",
     "En oktav ned": "One octave down",
-    "En oktav opp": "One octave up"
+    "En oktav opp": "One octave up",
+    "{instrument} når ikke så dype eller høye toner, så de spilles på piano.": "{instrument} cannot reach notes that low or high, so they are played on the piano."
   },
   sider: {
     "index.html": {
@@ -335,7 +336,8 @@ VBM_ORDBOK("en", {
         "20 halvtoner, også kalt oktav + liten sekst": "20 semitones, also called octave + minor 6th",
         "21 halvtoner, også kalt oktav + stor sekst": "21 semitones, also called octave + major 6th",
         "22 halvtoner, også kalt oktav + liten septim": "22 semitones, also called octave + minor 7th",
-        "23 halvtoner, også kalt oktav + stor septim": "23 semitones, also called octave + major 7th"
+        "23 halvtoner, også kalt oktav + stor septim": "23 semitones, also called octave + major 7th",
+        "Tips: er du fargeblind, kan du vise notene i svart-hvitt under Innstillinger (tannhjulet øverst).": "Tip: if you are colour-blind, you can show the notes in black and white under Settings (the gear at the top)."
       },
     "akkorder-og-intervaller.html": {
         "Den ultimate jukseboka for akkorder og intervaller": "The Ultimate Cheat Book for Chords and Intervals",
@@ -580,7 +582,8 @@ VBM_ORDBOK("en", {
         "C-molltreklang med kvinten (G) i bassen, skrevet Cm/G. Over bassen ligger en ren kvart (C) og en liten sekst (E♭). Dette er kadensens kvartsekstakkord i moll: Cm/G foran G-dur og så til c-moll, slik akkordene i kapittel 4 spilles i kadensen i gehørquizen.": "A C minor triad with the fifth (G) in the bass, written Cm/G. Above the bass lie a perfect fourth (C) and a minor sixth (E♭). This is the cadential six-four chord in minor: Cm/G before G major and then to C minor, the way the chapter 4 chords are played in the cadence in the ear quiz.",
         "Jazz- og popakkorder har ingen faste norske navn. I noter skrives de med akkordsymboler, som C7sus4 eller Cadd9, og musikere sier symbolet. Navnene her beskriver hva akkorden består av, og symbolet står i parentes.": "Jazz and pop chords have no fixed names in Norwegian. In sheet music they are written as chord symbols, such as C7sus4 or Cadd9, and musicians say the symbol. The names here describe what the chord is made of, and the symbol is in parentheses.",
         "Innhold": "Contents",
-        "↑ Til innholdet": "↑ Back to contents"
+        "↑ Til innholdet": "↑ Back to contents",
+        "Tips: er du fargeblind, kan du vise notene i svart-hvitt under Innstillinger (tannhjulet øverst).": "Tip: if you are colour-blind, you can show the notes in black and white under Settings (the gear at the top)."
       },
     "intervaller-og-sanger.html": {
         "Intervaller & sanger: øretreningsreferanse": "Intervals & songs: ear training reference",

@@ -188,10 +188,11 @@
 
   /* =================== Oktavnavnene =================== */
   var oktHtml = '';
-  for (var o = 1; o <= 6; o++) {
-    var fra = S.oktavInfo({ b: 0, f: 0, oktav: o }), til = S.oktavInfo({ b: 6, f: 0, oktav: o });
+  /* Hele pianoets område: delvis subkontraoktav (A til H), og femstrøken oktav har bare c⁵ */
+  for (var o = 0; o <= 8; o++) {
+    var fra = S.oktavInfo({ b: o === 0 ? 5 : 0, f: 0, oktav: o }), til = S.oktavInfo({ b: o === 8 ? 0 : 6, f: 0, oktav: o });
     var fraT = SPRAK === 'en' ? fra.sci : fra.helm, tilT = SPRAK === 'en' ? til.sci : til.helm;
-    oktHtml += '<li><span class="okt-navn">' + esc(T(fra.oktav)) + '</span><span class="okt-toner">' + esc(fraT + ' ' + T('til') + ' ' + tilT) + '</span></li>';
+    oktHtml += '<li><span class="okt-navn">' + esc(T(fra.oktav)) + '</span><span class="okt-toner">' + esc(o === 8 ? fraT : fraT + ' ' + T('til') + ' ' + tilT) + '</span></li>';
   }
   $('oktaver').innerHTML = oktHtml;
 
