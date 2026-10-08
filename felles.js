@@ -495,19 +495,29 @@
   var PIANO = 'vbm-piano';
   function pianoPaa(){ try { return localStorage.getItem(PIANO) === '1'; } catch(e){ return false; } }
   var SVARTE = [1, 3, 6, 8, 10];
+  function cNavn(m, langt){
+    var o = Math.floor(m / 12) - 1;
+    if (sprak === 'en') return 'C' + o;
+    return o >= 4 ? 'c' + '¹²³⁴⁵'.charAt(o - 4) : o === 3 ? 'c' : o === 2 ? 'C' : 'C' + (o === 1 ? '₁' : '₂');
+  }
   function lagPiano(svg){
     var holder = svg.parentNode, gammel = holder.querySelector(':scope > .tn-piano');
     if (gammel) gammel.parentNode.removeChild(gammel);
-    if (!pianoPaa() || svg.closest('[data-uten-navn]')) return;
+    var alltid = holder.getAttribute('data-piano') === 'alltid';   // sider der pianoet er selve verktøyet (Notelesing)
+    if (!alltid && (!pianoPaa() || svg.closest('[data-uten-navn]'))) return;
     var noter = [].slice.call(svg.querySelectorAll('[data-f][data-m]'));
     if (!noter.length) return;
     var ms = noter.map(function(n){ return +n.getAttribute('data-m'); });
     /* Fra C-en under den laveste tonen til den høyeste tonen, minst én oktav. Tangentene har fast størrelse:
        er det mer plass, vises flere tangenter (vekselvis under og over), ikke større tangenter. */
-    var fra = Math.floor(Math.min.apply(null, ms) / 12) * 12, til = Math.max(Math.max.apply(null, ms), fra + 11);
+    var fra = holder.hasAttribute('data-piano-fra') ? +holder.getAttribute('data-piano-fra') : Math.floor(Math.min.apply(null, ms) / 12) * 12;
+    var til = Math.max(Math.max.apply(null, ms), fra + 11);
+    /* Pilene flytter pianoet en oktav om gangen (husket på notelinjen) */
+    var skift = +(holder.getAttribute('data-skift') || 0) * 12;
+    fra = Math.min(96, Math.max(24, fra + skift)); til = Math.max(fra + 11, Math.min(108, til + skift));
     if (SVARTE.indexOf(til % 12) >= 0) til++;   // ikke slutt på en svart tangent
     function antallHvite(a, b){ var n = 0; for (var q = a; q <= b; q++) if (SVARTE.indexOf(q % 12) < 0) n++; return n; }
-    var TANGENT_PX = 26, plass = Math.floor((holder.clientWidth || 300) / TANGENT_PX), under = true;
+    var TANGENT_PX = 26, plass = Math.floor(((holder.clientWidth || 300) - 84) / TANGENT_PX), under = true;   // 84 px til pilene
     while (antallHvite(fra, til) < plass && (fra > 21 || til < 108)) {
       if ((under && fra > 21) || til >= 108) { fra--; while (SVARTE.indexOf(fra % 12) >= 0) fra--; }
       else { til++; while (SVARTE.indexOf(til % 12) >= 0) til++; }
@@ -520,10 +530,16 @@
       var svart = SVARTE.indexOf(m % 12) >= 0, f = merket[m] ? ' data-tf="' + merket[m] + '"' : '';   // eget navn, så notereglene aldri treffer tangentene
       var kl = 'tn-tangent ' + (svart ? 'svart' : 'hvit');
       if (svart) svarte += '<rect class="' + kl + '"' + f + ' data-m="' + m + '" x="' + (x - 6.5) + '" y="0" width="13" height="40" rx="2"/>';
-      else { hvite += '<rect class="' + kl + '"' + f + ' data-m="' + m + '" x="' + x + '" y="0" width="' + HV + '" height="64" rx="2"/>'; x += HV; }
+      else {
+        hvite += '<rect class="' + kl + '"' + f + ' data-m="' + m + '" x="' + x + '" y="0" width="' + HV + '" height="64" rx="2"' + (alltid ? ' role="button" tabindex="0" aria-label="' + cNavn(m, true) + '"' : '') + '/>';
+        if (m % 12 === 0) hvite += '<text class="tn-c" x="' + (x + HV / 2) + '" y="58" text-anchor="middle">' + cNavn(m) + '</text>';
+        x += HV;
+      }
     }
-    var div = document.createElement('div'); div.className = 'tn-piano'; div.setAttribute('aria-hidden', 'true');
-    div.innerHTML = '<svg viewBox="-1 -1 ' + (x + 2) + ' 66" style="width:' + Math.round((x + 2) * TANGENT_PX / HV) + 'px">' + hvite + svarte + '</svg>';
+    var div = document.createElement('div'); div.className = 'tn-piano'; if (!alltid) div.setAttribute('aria-hidden', 'true');
+    div.innerHTML = '<button type="button" class="tn-pil" data-pil="-1" aria-label="' + T('En oktav ned') + '"' + (fra <= 24 ? ' disabled' : '') + '>&#9664;&#xFE0E;</button>'
+      + '<svg viewBox="-1 -1 ' + (x + 2) + ' 66" style="width:' + Math.round((x + 2) * TANGENT_PX / HV) + 'px">' + hvite + svarte + '</svg>'
+      + '<button type="button" class="tn-pil" data-pil="1" aria-label="' + T('En oktav opp') + '"' + (til >= 108 ? ' disabled' : '') + '>&#9654;&#xFE0E;</button>';
     holder.appendChild(div);
   }
   function pianoSynk(svg){
@@ -539,21 +555,44 @@
   /* Trykk på en tangent: tonen spilles. Punktet fingeren traff avgjør tangenten (ikke nettleserens «justering»). */
   var sistPianoTrykk = 0;
   function pianoTrykk(e){
+    var pil = e.type === 'click' && e.target.closest && e.target.closest('.tn-pil');
+    if (pil) {
+      var h = pil.closest('.tn-piano').parentNode, sv = h.querySelector(':scope > svg');
+      h.setAttribute('data-skift', +(h.getAttribute('data-skift') || 0) + +pil.getAttribute('data-pil'));
+      if (sv) lagPiano(sv);
+      var ny = h.querySelector('.tn-pil[data-pil="' + pil.getAttribute('data-pil') + '"]'); if (ny && !ny.disabled) ny.focus();
+      return;
+    }
     var el = document.elementFromPoint(e.clientX, e.clientY), t = el && el.closest ? el.closest('.tn-piano .tn-tangent') : null;
+    if (!t && e.type === 'keydown') t = e.target.closest && e.target.closest('.tn-tangent');
     if (!t || !window.VBM_LYD_SEKVENS) return;
     if (e.type === 'click' && Date.now() - sistPianoTrykk < 600) return;
     if (e.type === 'pointerup') sistPianoTrykk = Date.now();
+    var eier = t.closest('.tn-piano').parentNode;
+    if (eier.getAttribute('data-piano') === 'alltid') {
+      /* Siden bestemmer selv hva et trykk gjør (Notelesing viser tonen på notelinjen og spiller den) */
+      eier.dispatchEvent(new CustomEvent('vbm-tangent', { bubbles: true, detail: { m: +t.getAttribute('data-m') } }));
+      return;
+    }
     if (window.VBM_LYD_STOPP) window.VBM_LYD_STOPP();
     var piano = t.closest('.tn-piano');
     window.VBM_LYD_SEKVENS([[+t.getAttribute('data-m')]], piano, function(k){ t.classList.toggle('spilles', k >= 0); });
   }
   document.addEventListener('pointerup', pianoTrykk);
   document.addEventListener('click', pianoTrykk);
+  document.addEventListener('keydown', function(e){ if ((e.key === 'Enter' || e.key === ' ') && e.target.classList && e.target.classList.contains('tn-tangent')) { e.preventDefault(); pianoTrykk(e); } });
   function allePianoer(){ [].forEach.call(document.querySelectorAll('svg[data-tn]'), lagPiano); }
   /* Notelinjer med fast målestokk (bøkene, quizene, sangsiden) forlenges til hele bredden som er ledig:
      notene beholder størrelsen, og notelinjen går helt ut til høyre. */
+  var STAV_SKALA = 1.15;   // samme målestokk for alle notelinjer: fast høyde på alle skjermer
   function utvidStav(svg){
-    var b0 = parseFloat(svg.style.width); if (!b0 || svg.closest('.tn-piano')) return;
+    if (svg.closest('.tn-piano') || svg.closest('[data-uten-navn]')) return;
+    if (!parseFloat(svg.style.width)) {
+      /* Notelinjer som strekkes med bredden (leksjonene) får fast målestokk som resten */
+      var vb0 = svg.getAttribute('viewBox').split(' ').map(Number);
+      svg.style.width = Math.round(vb0[2] * STAV_SKALA) + 'px'; svg.style.maxWidth = '100%'; svg.style.height = 'auto';
+    }
+    var b0 = parseFloat(svg.style.width); if (!b0) return;
     var vb = svg.getAttribute('viewBox').split(' ').map(Number);
     if (!svg.hasAttribute('data-vb0')) { svg.setAttribute('data-vb0', vb[2]); svg.setAttribute('data-px0', b0); }
     var w0 = +svg.getAttribute('data-vb0'), px0 = +svg.getAttribute('data-px0'), k = px0 / w0;
@@ -561,7 +600,8 @@
     var w = Math.max(w0, ledig / k);
     [].forEach.call(svg.querySelectorAll('line'), function(l){
       if (!l.hasAttribute('data-x20')) l.setAttribute('data-x20', l.getAttribute('x2'));
-      if (Math.abs(+l.getAttribute('data-x20') - (w0 - 6)) < 0.6) l.setAttribute('x2', w - 6);
+      var x2 = +l.getAttribute('data-x20');
+      if (Math.abs(x2 - (w0 - 6)) < 0.6 || Math.abs(x2 - (w0 - 4)) < 0.6) l.setAttribute('x2', w - (w0 - x2));   // notelinjene går helt ut
     });
     vb[2] = w; svg.setAttribute('viewBox', vb.join(' ')); svg.style.width = Math.round(w * k) + 'px';
   }

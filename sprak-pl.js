@@ -137,7 +137,9 @@ VBM_ORDBOK("pl", {
     "Piano under notene": "Fortepian pod nutami",
     "På": "Wł.",
     "Av": "Wył.",
-    "Viser tonene på notelinjen på et piano under hver notelinje. Du kan trykke på tangentene for å høre dem.": "Pokazuje dźwięki z pięciolinii na fortepianie pod każdą pięciolinią. Możesz dotykać klawiszy, aby je usłyszeć."
+    "Viser tonene på notelinjen på et piano under hver notelinje. Du kan trykke på tangentene for å høre dem.": "Pokazuje dźwięki z pięciolinii na fortepianie pod każdą pięciolinią. Możesz dotykać klawiszy, aby je usłyszeć.",
+    "En oktav ned": "Oktawę w dół",
+    "En oktav opp": "Oktawę w górę"
   },
   sider: {
     "index.html": {

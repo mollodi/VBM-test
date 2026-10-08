@@ -137,7 +137,9 @@ VBM_ORDBOK("en", {
     "Piano under notene": "Piano under the notes",
     "På": "On",
     "Av": "Off",
-    "Viser tonene på notelinjen på et piano under hver notelinje. Du kan trykke på tangentene for å høre dem.": "Shows the notes of each staff on a piano below it. You can tap the keys to hear them."
+    "Viser tonene på notelinjen på et piano under hver notelinje. Du kan trykke på tangentene for å høre dem.": "Shows the notes of each staff on a piano below it. You can tap the keys to hear them.",
+    "En oktav ned": "One octave down",
+    "En oktav opp": "One octave up"
   },
   sider: {
     "index.html": {
