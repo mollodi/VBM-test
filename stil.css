@@ -137,7 +137,7 @@ html.sh .legend, html.sh .cover-band{ display:none !important; }
 :root:where([data-side="intervaller.html"]) { --vbm-verk: "K7Q4-95F9"; }
 :root:where([data-side="akkorder-og-intervaller.html"]) { --vbm-verk: "K7Q4-TEC2"; }
 :root:where([data-stil="bok"]) {
-  --bg: #FAF9F6;
+  --bg: #F6F1E7;   /* samme papirfarge som kortene på resten av nettstedet */
   --ink: #1E1E1A;
   --ink-soft: #6B6A62;
   --line: #DEDBD1;
@@ -190,7 +190,7 @@ html.sh .legend, html.sh .cover-band{ display:none !important; }
   --octave-ink: #2A2925;
 }
 @media (prefers-color-scheme: dark) {
-  :root:where([data-stil="bok"]) {
+  :root:where([data-stil="bok"][data-mork-bok]) {   /* slått av: bøkene har lyse kort som resten av nettstedet */
     --bg: #17160F;
     --ink: #EDEBE2;
     --ink-soft: #A6A499;
@@ -2158,7 +2158,7 @@ html.sh .viktig strong { color: var(--ink) !important; }
 :where([data-stil="ovelse"], [data-stil="mork"]) body { --lenke: var(--lenke-mork); }
 :where([data-stil="ovelse"], [data-stil="mork"]) :where(.card, .cover) { --lenke: var(--lenke-lys); }
 @media (prefers-color-scheme: dark) {
-  :where([data-stil="bok"]) body { --lenke: var(--lenke-mork); }
+  :where([data-stil="bok"][data-mork-bok]) body { --lenke: var(--lenke-mork); }
 }
 :where(main, .hero, .chapter, article, .lede, .wrap) a:not(.btn):not(.spotify-link):not(.card-link):not(.vbm-meny-lenke):not(.vbm-hjem) {
   color: var(--lenke);
@@ -2184,8 +2184,11 @@ a.btn:hover::after { transform: translateX(3px); }
 /* ---------- Menylinjen øverst ---------- */
 .vbm-back.vbm-topp {
   position: sticky; top: 0; z-index: 40;
-  max-width: none; margin: 0; padding: 8px max(1.25rem, calc((100% - 60rem) / 2 + 1.25rem));
-  background: var(--vbm-topp-bg, #fff);
+  max-width: none; margin: 0;
+  /* --utvid: sidemargen i juksebøkene, så knappene står nøyaktig der de står på alle andre sider */
+  padding: 8px max(1.25rem, calc((100% - 60rem) / 2 + 1.25rem + var(--utvid, 0px)));
+  background: #12151A; color: #F6F1E7;   /* samme mørke linje på alle sider */
+  font: 14px/1.4 -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
   border-bottom: 1px solid color-mix(in srgb, currentColor 18%, transparent);
   box-shadow: 0 4px 14px rgba(0, 0, 0, .12);
 }
@@ -2887,4 +2890,10 @@ html.vbm-tonefarger.vbm-sh .tn-tangent.tn-trykket.svart { fill: #55554F !importa
 .vbm-melding.vis { opacity: 1; transform: translate(-50%, 0); }
 @media (forced-colors: active) { .vbm-melding { background: Canvas; color: CanvasText; border: 2px solid CanvasText; } }
 
-.vbm-tips { font-size: 15px; opacity: .9; margin-top: 4px; }
+.vbm-tips { font-size: 15px; margin-top: 4px; color: var(--ink) !important; }
+
+/* Juksebøkene: samme mørke side som resten av nettstedet, og boken på ett stort, lyst kort i midten */
+html:where([data-stil="bok"]), html:where([data-stil="bok"]) body { background: #12151A; }
+:where(html[data-stil="bok"]) body > main { background: var(--bg); border-radius: 16px; padding: 36px 32px 44px; }
+@media (max-width: 600px) { :where(html[data-stil="bok"]) body > main { padding: 24px 16px 32px; } }
+@media (forced-colors: active) { :where(html[data-stil="bok"]) body > main { border: 1px solid CanvasText; } }
