@@ -133,7 +133,11 @@ VBM_ORDBOK("en", {
     "Sakte": "Slow",
     "Middels": "Medium",
     "Raskt": "Fast",
-    "Gjelder alt som spilles på nettstedet: skalaer, akkorder, intervaller og rytmer.": "Applies to everything played on the site: scales, chords, intervals and rhythms."
+    "Gjelder alt som spilles på nettstedet: skalaer, akkorder, intervaller og rytmer.": "Applies to everything played on the site: scales, chords, intervals and rhythms.",
+    "Piano under notene": "Piano under the notes",
+    "På": "On",
+    "Av": "Off",
+    "Viser tonene på notelinjen på et piano under hver notelinje. Du kan trykke på tangentene for å høre dem.": "Shows the notes of each staff on a piano below it. You can tap the keys to hear them."
   },
   sider: {
     "index.html": {

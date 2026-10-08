@@ -319,7 +319,7 @@ window.VBM_SKALAER = (function(){
      så felles.js kan farge dem mens de spilles og vise navnene i en boks. */
   var REGNBUE = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
   function fargeFor(n){ return REGNBUE[n.b] + (n.f > 0 ? '-lt' : n.f < 0 ? '-dk' : ''); }
-  function fargeData(n){ return ' data-f="' + fargeFor(n) + '" data-navn="' + K.tone(n) + '"'; }
+  function fargeData(n){ return ' data-f="' + fargeFor(n) + '" data-navn="' + K.tone(n) + '" data-m="' + midi(n) + '"'; }
 
   /* ---------- Én notelinje med valgfri nøkkel ----------
      G-nøkkel (diskant), F-nøkkel (bass), altnøkkel og tenornøkkel (C-nøkler).

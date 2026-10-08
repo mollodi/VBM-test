@@ -133,7 +133,11 @@ VBM_ORDBOK("pl", {
     "Sakte": "Wolno",
     "Middels": "Średnio",
     "Raskt": "Szybko",
-    "Gjelder alt som spilles på nettstedet: skalaer, akkorder, intervaller og rytmer.": "Dotyczy wszystkiego, co jest odtwarzane na stronie: skal, akordów, interwałów i rytmów."
+    "Gjelder alt som spilles på nettstedet: skalaer, akkorder, intervaller og rytmer.": "Dotyczy wszystkiego, co jest odtwarzane na stronie: skal, akordów, interwałów i rytmów.",
+    "Piano under notene": "Fortepian pod nutami",
+    "På": "Wł.",
+    "Av": "Wył.",
+    "Viser tonene på notelinjen på et piano under hver notelinje. Du kan trykke på tangentene for å høre dem.": "Pokazuje dźwięki z pięciolinii na fortepianie pod każdą pięciolinią. Możesz dotykać klawiszy, aby je usłyszeć."
   },
   sider: {
     "index.html": {

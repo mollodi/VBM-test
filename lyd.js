@@ -139,7 +139,7 @@
   }
 
   /* ---------- aktive stemmer, slik at alt kan stoppes ---------- */
-  var voices = [], activeBtn = null, timer = null, token = 0;
+  var voices = [], activeBtn = null, timer = null, token = 0, aktivVedToner = null;
   function stopAll(){
     token++;
     if (ctx) {
@@ -157,6 +157,8 @@
     if (timer) { clearTimeout(timer); timer = null; }
     stegTimere.forEach(clearTimeout); stegTimere = [];
     planlagt = []; if (rafId) { clearTimeout(rafId); rafId = null; }
+    /* Fargene og navnelappen fra forrige avspilling fjernes når noe nytt starter eller alt stoppes */
+    if (aktivVedToner) { var gml = aktivVedToner; aktivVedToner = null; try { gml(null); } catch(e){} }
     if (aktivVedSteg) { var v = aktivVedSteg; aktivVedSteg = null; try { v(-1); } catch(e){} }
     if (activeBtn) { activeBtn.classList.remove('playing', 'loading'); activeBtn = null; }
   }
@@ -257,6 +259,7 @@
     /* vedToner(indekser) brukes til fargelegging når tonene spilles med VBM_LYD_SPILL; vedToner(null) til slutt */
     var merk = vedToner ? function(tt, idx){ var my = token; planlegg(tt, function(){ if (my === token) vedToner(idx); }); } : null;
     function plan(voiceFn){
+      aktivVedToner = vedToner || null;   // etter stopAll(), så den gjelder denne avspillingen
       if (sekvens) return planSekvens(sekvens, voiceFn, vedSteg, token);
       var lengde = schedule(notes, voiceFn, ganger, kadens, samlet, merk);
       if (vedToner) { var my2 = token; planlegg(ctx.currentTime + lengde - 0.6, function(){ if (my2 === token) vedToner(null); }); }

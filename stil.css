@@ -2717,10 +2717,10 @@ html.vbm-tonefarger [data-f="violet-lt"].spilles { fill: var(--nf-violet-lt) !im
    og notelinjen trenger ingen ekstra plass. */
 html.vbm-tonefarger .har-tn { position: relative; }
 /* Når linjen over er full (sjelden), får notelinjen en egen stripe like høy som lappen */
-html.vbm-tonefarger .har-tn.tn-plass { padding-top: 50px; }
-html.vbm-tonefarger .har-tn.tn-plass > .tn-knapp { bottom: auto; top: 0; margin-bottom: 0; }
+html.vbm-tonefarger .har-tn.tn-plass { padding-top: 66px; }   /* egen stripe: luft over og under lappen */
+html.vbm-tonefarger .har-tn.tn-plass > .tn-knapp { bottom: auto; top: 10px; margin-bottom: 0; }
 html.vbm-tonefarger .tn-knapp {
-  position: absolute; bottom: 100%; right: 0; margin-bottom: 2px;
+  position: absolute; bottom: 100%; right: 0; margin-bottom: 8px;   /* litt luft til strekene */
   display: inline-flex; align-items: center; justify-content: center;
   min-height: 46px; min-width: 76px; padding: 0 20px; box-sizing: border-box;
   border-radius: 999px; border: 1.5px solid transparent;
@@ -2870,4 +2870,42 @@ html.vbm-tonefarger.vbm-sh .vbm-notebilde[data-fast] [data-f].spilles { fill: tr
 @media (forced-colors: active) {
   .vbm-notebilde svg { forced-color-adjust: none; color: CanvasText; }
   html.vbm-tonefarger .vbm-notebilde[data-fast] [data-f].spilles { stroke: Highlight !important; }
+}
+
+/* ---------- Piano under notelinjene (Innstillinger) ---------- */
+.tn-piano { margin: 6px 0 2px; touch-action: manipulation; -webkit-tap-highlight-color: transparent; user-select: none; -webkit-user-select: none; }
+.tn-piano svg { display: block; max-width: 100%; height: auto; }
+.tn-tangent { cursor: pointer; stroke: #1E1E1A; stroke-width: 1; }
+.tn-tangent.hvit { fill: #FFFDF8; }
+.tn-tangent.svart { fill: #1E1E1A; }
+html.vbm-tonefarger .tn-tangent[data-f="red"].merket, html.vbm-tonefarger .tn-tangent[data-f="red"].spilles { fill: var(--nf-red); }
+html.vbm-tonefarger .tn-tangent[data-f="red-dk"].merket, html.vbm-tonefarger .tn-tangent[data-f="red-dk"].spilles { fill: var(--nf-red-dk); }
+html.vbm-tonefarger .tn-tangent[data-f="red-lt"].merket, html.vbm-tonefarger .tn-tangent[data-f="red-lt"].spilles { fill: var(--nf-red-lt); }
+html.vbm-tonefarger .tn-tangent[data-f="orange"].merket, html.vbm-tonefarger .tn-tangent[data-f="orange"].spilles { fill: var(--nf-orange); }
+html.vbm-tonefarger .tn-tangent[data-f="orange-dk"].merket, html.vbm-tonefarger .tn-tangent[data-f="orange-dk"].spilles { fill: var(--nf-orange-dk); }
+html.vbm-tonefarger .tn-tangent[data-f="orange-lt"].merket, html.vbm-tonefarger .tn-tangent[data-f="orange-lt"].spilles { fill: var(--nf-orange-lt); }
+html.vbm-tonefarger .tn-tangent[data-f="yellow"].merket, html.vbm-tonefarger .tn-tangent[data-f="yellow"].spilles { fill: var(--nf-yellow); }
+html.vbm-tonefarger .tn-tangent[data-f="yellow-dk"].merket, html.vbm-tonefarger .tn-tangent[data-f="yellow-dk"].spilles { fill: var(--nf-yellow-dk); }
+html.vbm-tonefarger .tn-tangent[data-f="yellow-lt"].merket, html.vbm-tonefarger .tn-tangent[data-f="yellow-lt"].spilles { fill: var(--nf-yellow-lt); }
+html.vbm-tonefarger .tn-tangent[data-f="green"].merket, html.vbm-tonefarger .tn-tangent[data-f="green"].spilles { fill: var(--nf-green); }
+html.vbm-tonefarger .tn-tangent[data-f="green-dk"].merket, html.vbm-tonefarger .tn-tangent[data-f="green-dk"].spilles { fill: var(--nf-green-dk); }
+html.vbm-tonefarger .tn-tangent[data-f="green-lt"].merket, html.vbm-tonefarger .tn-tangent[data-f="green-lt"].spilles { fill: var(--nf-green-lt); }
+html.vbm-tonefarger .tn-tangent[data-f="blue"].merket, html.vbm-tonefarger .tn-tangent[data-f="blue"].spilles { fill: var(--nf-blue); }
+html.vbm-tonefarger .tn-tangent[data-f="blue-dk"].merket, html.vbm-tonefarger .tn-tangent[data-f="blue-dk"].spilles { fill: var(--nf-blue-dk); }
+html.vbm-tonefarger .tn-tangent[data-f="blue-lt"].merket, html.vbm-tonefarger .tn-tangent[data-f="blue-lt"].spilles { fill: var(--nf-blue-lt); }
+html.vbm-tonefarger .tn-tangent[data-f="indigo"].merket, html.vbm-tonefarger .tn-tangent[data-f="indigo"].spilles { fill: var(--nf-indigo); }
+html.vbm-tonefarger .tn-tangent[data-f="indigo-dk"].merket, html.vbm-tonefarger .tn-tangent[data-f="indigo-dk"].spilles { fill: var(--nf-indigo-dk); }
+html.vbm-tonefarger .tn-tangent[data-f="indigo-lt"].merket, html.vbm-tonefarger .tn-tangent[data-f="indigo-lt"].spilles { fill: var(--nf-indigo-lt); }
+html.vbm-tonefarger .tn-tangent[data-f="violet"].merket, html.vbm-tonefarger .tn-tangent[data-f="violet"].spilles { fill: var(--nf-violet); }
+html.vbm-tonefarger .tn-tangent[data-f="violet-dk"].merket, html.vbm-tonefarger .tn-tangent[data-f="violet-dk"].spilles { fill: var(--nf-violet-dk); }
+html.vbm-tonefarger .tn-tangent[data-f="violet-lt"].merket, html.vbm-tonefarger .tn-tangent[data-f="violet-lt"].spilles { fill: var(--nf-violet-lt); }
+.tn-tangent.spilles { stroke-width: 3; }
+/* Svart-hvitt: tonene på notelinjen vises som nedtrykte tangenter (kraftig kant, svarte tangenter blir hvite) */
+html.vbm-tonefarger.vbm-sh .tn-tangent.merket.hvit, html.vbm-tonefarger.vbm-sh .tn-tangent.spilles.hvit { fill: #FFFDF8; stroke-width: 3; }
+html.vbm-tonefarger.vbm-sh .tn-tangent.merket.svart, html.vbm-tonefarger.vbm-sh .tn-tangent.spilles.svart { fill: #FFFDF8; stroke-width: 2.5; }
+html.vbm-tonefarger.vbm-sh .tn-tangent.spilles { stroke-width: 4.5; }
+@media (forced-colors: active) {
+  .tn-piano svg { forced-color-adjust: none; }
+  .tn-tangent { stroke: CanvasText; } .tn-tangent.hvit { fill: Canvas; } .tn-tangent.svart { fill: CanvasText; }
+  .tn-tangent.merket, .tn-tangent.spilles { fill: Highlight !important; }
 }
