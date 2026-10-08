@@ -548,7 +548,7 @@
     [].forEach.call(svg.querySelectorAll('.spilles[data-m]'), function(n){ klinger[n.getAttribute('data-m')] = n.getAttribute('data-f'); });
     [].forEach.call(p.querySelectorAll('.tn-tangent'), function(t){
       var m = t.getAttribute('data-m'), pa = m in klinger;
-      t.classList.toggle('spilles', pa);
+      t.classList.toggle('tn-trykket', pa);   // eget navn: ingen side-regler for noter kan treffe tangentene
       if (pa) t.setAttribute('data-tf', klinger[m]);
     });
   }
@@ -576,7 +576,7 @@
     }
     if (window.VBM_LYD_STOPP) window.VBM_LYD_STOPP();
     var piano = t.closest('.tn-piano');
-    window.VBM_LYD_SEKVENS([[+t.getAttribute('data-m')]], piano, function(k){ t.classList.toggle('spilles', k >= 0); });
+    window.VBM_LYD_SEKVENS([[+t.getAttribute('data-m')]], piano, function(k){ t.classList.toggle('tn-trykket', k >= 0); });
   }
   document.addEventListener('pointerup', pianoTrykk);
   document.addEventListener('click', pianoTrykk);

@@ -176,7 +176,7 @@
     if (window.VBM_LYD_SEKVENS) window.VBM_LYD_SEKVENS([[valgt]], piano || $('stav'), function(k){
       var note = $('stav').querySelector('ellipse[data-f]'); if (note) note.classList.toggle('spilles', k >= 0);
       var tangent = $('stav').querySelector('.tn-tangent[data-m="' + valgt + '"]');
-      if (tangent) { tangent.setAttribute('data-tf', S.fargeFor(stav(valgt))); tangent.classList.toggle('spilles', k >= 0); }
+      if (tangent) { tangent.setAttribute('data-tf', S.fargeFor(stav(valgt))); tangent.classList.toggle('tn-trykket', k >= 0); }
     });
   });
 
