@@ -279,8 +279,24 @@
     /* «Alle ressurser» står ikke lenger i linjen, men øverst inne i menyen */
     var hjem = nav.querySelector('a[href="index.html"]'), hjemTekst = '';
     if (hjem) { hjemTekst = hjem.innerHTML; hjem.parentNode.removeChild(hjem); }
-    var bs = getComputedStyle(document.body);
-    nav.style.setProperty('--vbm-topp-bg', bs.backgroundColor && bs.backgroundColor !== 'rgba(0, 0, 0, 0)' ? bs.backgroundColor : '#fff');
+    /* Samme menylinje på alle sider: helt øverst over hele bredden, mørk med lys tekst.
+       I juksebøkene står linjen inne i innholdet, så den flyttes ut til toppen av siden. */
+    /* Banneret om originalen står også helt øverst over hele bredden, som på de andre sidene */
+    var over = document.querySelector('.vbm-original');
+    if (over && over.parentNode !== document.body) document.body.insertBefore(over, document.body.firstChild);
+    if (nav.parentNode !== document.body || (over && nav.previousElementSibling !== over)) {
+      document.body.insertBefore(nav, over ? over.nextSibling : document.body.firstChild);
+    }
+    nav.classList.remove('vbm-back--book');
+    /* Har siden marg på sidene (juksebøkene), går linjen og banneret likevel helt ut til kanten */
+    var bsr = getComputedStyle(document.body), pl = parseFloat(bsr.paddingLeft) || 0, pr = parseFloat(bsr.paddingRight) || 0;
+    if (pl || pr) {
+      [nav, over].forEach(function(el){ if (el) { el.style.marginLeft = -pl + 'px'; el.style.marginRight = -pr + 'px'; } });
+      nav.style.setProperty('--utvid', Math.max(pl, pr) + 'px');
+    }
+    /* … og helt opp til toppen, selv om siden har luft øverst */
+    var pt = parseFloat(bsr.paddingTop) || 0;
+    if (pt) { var forst = over && over.parentNode === document.body ? over : nav; forst.style.marginTop = -pt + 'px'; nav.style.marginBottom = pt + 'px'; }   // luften kommer under linjen i stedet
     var b = document.createElement('button'); b.type = 'button'; b.className = 'vbm-meny-knapp';
     b.setAttribute('aria-expanded', 'false'); b.setAttribute('aria-controls', 'vbm-meny');
     b.innerHTML = '<span class="vbm-meny-ikon" aria-hidden="true"></span><span>' + T('Meny') + '</span>';
