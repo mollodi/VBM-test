@@ -2021,7 +2021,8 @@ VBM_ORDBOK("pl", {
         "Du er på god vei. Bruk øvemodus på det du bommet på, og prøv igjen.": "Jesteś na dobrej drodze. Poćwicz w trybie ćwiczeń to, co sprawiło trudność, i spróbuj ponownie.",
         "Ikke gi opp. Begynn i øvemodus med én nøkkel, og legg til flere etter hvert.": "Nie poddawaj się. Zacznij w trybie ćwiczeń od jednego klucza i stopniowo dodawaj kolejne.",
         "{n} kryss": function(v){ var n = v.n; return n + (n >= 2 && n <= 4 ? ' krzyżyki' : ' krzyżyków'); },
-        "{n} b-er": function(v){ var n = v.n; return n + (n >= 2 && n <= 4 ? ' bemole' : ' bemoli'); }
+        "{n} b-er": function(v){ var n = v.n; return n + (n >= 2 && n <= 4 ? ' bemole' : ' bemoli'); },
+        "Spill tonen": "Odtwórz dźwięk"
       },
     "rytme.html": {
         "Musikkteori": "Teoria muzyki",

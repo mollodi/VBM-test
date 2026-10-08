@@ -1970,7 +1970,8 @@ VBM_ORDBOK("en", {
         "Du er på god vei. Bruk øvemodus på det du bommet på, og prøv igjen.": "You’re on the right track. Use practice mode on what you missed, and try again.",
         "Ikke gi opp. Begynn i øvemodus med én nøkkel, og legg til flere etter hvert.": "Don’t give up. Start in practice mode with one clef, and add more as you go.",
         "{n} kryss": function(v){ return v.n + ' sharps'; },
-        "{n} b-er": function(v){ return v.n + ' flats'; }
+        "{n} b-er": function(v){ return v.n + ' flats'; },
+        "Spill tonen": "Play the note"
       },
     "rytme.html": {
         "Musikkteori": "Music theory",

@@ -190,7 +190,7 @@ html.sh .legend, html.sh .cover-band{ display:none !important; }
   --octave-ink: #2A2925;
 }
 @media (prefers-color-scheme: dark) {
-  :root:where([data-stil="bok"][data-mork-bok]) {   /* slått av: bøkene har lyse kort som resten av nettstedet */
+  :root:where([data-stil="bok"]) {   /* mørk modus: bokens innhold på sort, med lys tekst og lyse noter, som før */
     --bg: #17160F;
     --ink: #EDEBE2;
     --ink-soft: #A6A499;
@@ -2158,7 +2158,7 @@ html.sh .viktig strong { color: var(--ink) !important; }
 :where([data-stil="ovelse"], [data-stil="mork"]) body { --lenke: var(--lenke-mork); }
 :where([data-stil="ovelse"], [data-stil="mork"]) :where(.card, .cover) { --lenke: var(--lenke-lys); }
 @media (prefers-color-scheme: dark) {
-  :where([data-stil="bok"][data-mork-bok]) body { --lenke: var(--lenke-mork); }
+  :where([data-stil="bok"]) body { --lenke: var(--lenke-mork); }
 }
 :where(main, .hero, .chapter, article, .lede, .wrap) a:not(.btn):not(.spotify-link):not(.card-link):not(.vbm-meny-lenke):not(.vbm-hjem) {
   color: var(--lenke);
@@ -2823,7 +2823,7 @@ html.vbm-tonefarger .vbm-notebilde[data-fast] [data-f="indigo-lt"] { fill: var(-
 html.vbm-tonefarger .vbm-notebilde[data-fast] [data-f="violet"] { fill: var(--nf-violet); }
 html.vbm-tonefarger .vbm-notebilde[data-fast] [data-f="violet-dk"] { fill: var(--nf-violet-dk); }
 html.vbm-tonefarger .vbm-notebilde[data-fast] [data-f="violet-lt"] { fill: var(--nf-violet-lt); }
-html.vbm-tonefarger .vbm-notebilde[data-fast] [data-f] { stroke: #1E1E1A; stroke-width: .8px; }
+html.vbm-tonefarger .vbm-notebilde[data-fast] [data-f] { stroke: var(--ink, #1E1E1A); stroke-width: .8px; }
 html.vbm-tonefarger.vbm-sh .vbm-notebilde[data-fast] [data-f] { fill: currentColor; stroke: none; }
 html.vbm-tonefarger.vbm-sh .vbm-notebilde[data-fast] [data-f].spilles { fill: transparent !important; stroke: currentColor !important; stroke-width: 2.2px !important; }
 .vbm-notebilde { color: var(--ink, currentColor); }
@@ -2898,9 +2898,6 @@ html:where([data-stil="bok"]), html:where([data-stil="bok"]) body { background: 
 @media (max-width: 600px) { :where(html[data-stil="bok"]) body > main { padding: 24px 16px 32px; } }
 @media (forced-colors: active) { :where(html[data-stil="bok"]) body > main { border: 1px solid CanvasText; } }
 
-/* Tom overskrift over notelinjen i quizer der notene står rett under spørsmålet:
-   fast plass til navnelappen, med en strek under, så lappen aldri legger seg over tekst */
-.tn-hode { height: 62px; border-bottom: 1px solid var(--rule); margin-bottom: 10px; }
 
 /* =====================================================================
    Lys og mørk modus følger nettleseren.
@@ -2910,7 +2907,6 @@ html:where([data-stil="bok"]), html:where([data-stil="bok"]) body { background: 
    ===================================================================== */
 @media (prefers-color-scheme: dark) {
   :root:where([data-stil="ovelse"], [data-stil="mork"], [data-side="index.html"]) { --paper: #FFFFFF; }
-  :root:where([data-stil="bok"]) { --bg: #FFFFFF; }
 }
 @media (prefers-color-scheme: light) {
   /* --paper er tekst rett på siden (mørk); kortene får fargen sin under */
@@ -2923,7 +2919,7 @@ html:where([data-stil="bok"]), html:where([data-stil="bok"]) body { background: 
   html:where([data-stil="ovelse"], [data-stil="mork"], [data-side="index.html"], [data-stil="bok"]) body { background: #DCD6C6 !important; }
   :where(html[data-stil="ovelse"], html[data-stil="mork"], html[data-side="index.html"]) .card,
   :where(html[data-side="index.html"]) .cover { background: #F2EEE3 !important; color: #22252A; }
-  :root:where([data-stil="bok"]) { --bg: #F2EEE3; }
+  :root:where([data-stil="bok"]) { --bg: #FAF9F6; }   /* bokens innhold hvitt, som før */
   :where(html[data-stil="ovelse"]) .btn[aria-pressed="true"] { color: #F2EEE3; }
   :where(html[data-side="intervaller-og-sanger.html"]) .chip-option input:checked + span { background: #22252A; color: #F2EEE3; border-color: #22252A; }
   /* Messing rett på den beige siden: mørkere, så teksten er lett å lese */
@@ -2962,3 +2958,8 @@ html:where([data-stil="bok"]), html:where([data-stil="bok"]) body { background: 
   :where(html[data-side="kvintsirkelen.html"]) .midt { fill: #F2EEE3; }
   :where(html[data-side="kvintsirkelen.html"]) .plass.valgt text { fill: #F2EEE3; }
 }
+@media (prefers-color-scheme: dark) {
+  :root:where([data-side="index.html"]):not([data-theme="light"]) { --paper: #FFFFFF; }
+}
+/* Quizer med knapperad rett under overskriften og notelinjen under knappene: litt luft, så lappen ikke kommer nær streken */
+.card-head + .row + .noter.har-tn { margin-top: 18px !important; }   /* vinner over regler for enkelte notelinjer (#ov-stav) */
