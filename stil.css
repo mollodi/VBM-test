@@ -2905,12 +2905,12 @@ html:where([data-stil="bok"]), html:where([data-stil="bok"]) body { background: 
 /* =====================================================================
    Lys og mørk modus følger nettleseren.
    Lys: fargene fra Akkordheftet (beige side, lyse ark, mørk skifergrå tekst).
-   Mørk: som før, men kortene er nesten hvite (#FDFEFF i stedet for #F6F1E7).
+   Mørk: som før, men kortene er helt hvite (#FFFFFF i stedet for #F6F1E7).
    Menylinjen og instrumentvelgeren er like i begge.
    ===================================================================== */
 @media (prefers-color-scheme: dark) {
-  :root:where([data-stil="ovelse"], [data-stil="mork"], [data-side="index.html"]) { --paper: #FDFEFF; }
-  :root:where([data-stil="bok"]) { --bg: #FDFEFF; }
+  :root:where([data-stil="ovelse"], [data-stil="mork"], [data-side="index.html"]) { --paper: #FFFFFF; }
+  :root:where([data-stil="bok"]) { --bg: #FFFFFF; }
 }
 @media (prefers-color-scheme: light) {
   /* --paper er tekst rett på siden (mørk); kortene får fargen sin under */
@@ -2956,4 +2956,9 @@ html:where([data-stil="bok"]), html:where([data-stil="bok"]) body { background: 
   /* Lys modus: menylinjen og instrumentvelgeren er beige med mørk tekst, som Akkordheftet */
   .vbm-back.vbm-topp { background: #DCD6C6; color: #22252A; border-bottom-color: rgba(34,37,42,.18); box-shadow: 0 4px 14px rgba(0,0,0,.08); }
   .vbm-instr-float { background: #DCD6C6 !important; color: #22252A !important; }
+}
+@media (prefers-color-scheme: light) {
+  /* Kvintsirkelen: midten og bokstavene på den valgte tonearten skal være lyse, ikke sidens mørke tekstfarge */
+  :where(html[data-side="kvintsirkelen.html"]) .midt { fill: #F2EEE3; }
+  :where(html[data-side="kvintsirkelen.html"]) .plass.valgt text { fill: #F2EEE3; }
 }
