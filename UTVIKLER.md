@@ -126,5 +126,7 @@ Nettsiden ligger på https://verdensbestemusikkskole.no/ (GitHub Pages med eget 
 - Notehodene tegnet av `skalaer.js` får `data-f` (farge) og `data-navn` (tonenavn). `felles.js` farger dem når siden setter klassen `spilles`, og viser navnet i en lapp over notelinjen, øverst til høyre, bare når én tone klinger.
 - Quizene (`data-quiz`) farger notene, men viser ingen navn. Sider som viser navnet selv bruker `data-uten-navn` (Notelesing).
 - Tannhjulet i menylinjen åpner Innstillinger. «Svart-hvitt» (for fargeblinde og kromestesi) lagres i `localStorage` (`vbm-visning`) og gjelder hele nettstedet: notene følger sidens blekk, og tonen som spilles blir en hul note med kant.
-- Juksebøkene, sangsiden, lytteguiden og intervall- og akkordquizen har ferdigtegnede noter og kobles på i neste versjon.
+- Alle notelinjer tegnes med den felles notekoden i `skalaer.js`. Sider med faste eksempler (juksebøkene, sangsiden, lytteguiden) lagrer bare notene som data: `<div class="vbm-notebilde" data-noter='[[b, f, oktav], ...]' data-form="melodi|akkord">`, og `skalaer.js` tegner dem. `data-fast` gir juksebøkenes faste farger (notene har alltid tonens farge, og får kraftig kant mens de spilles).
+- Spill-knapper med `data-notes` farger notebildet i samme kort automatisk (`lyd.js`).
+- Juksebøkene har ikke lenger egne knapper for farger og svart-hvitt. Gamle lenker med `?svart-hvitt` slår på svart-hvitt under Innstillinger.
 

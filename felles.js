@@ -171,7 +171,9 @@
     var b = document.querySelectorAll('.vbm-modus button');
     for (var i = 0; i < b.length; i++) b[i].setAttribute('aria-pressed', (b[i].getAttribute('data-sh') === '1') === sh ? 'true' : 'false');
   }
-  if (harSH) settSH(villSH());                           // før siden tegnes, så den ikke blinker i farger
+  /* Juksebøkene har ikke lenger egne knapper for farger og svart-hvitt: det velges under Innstillinger
+     (tannhjulet), og gjelder bare notene. Gamle lenker med ?svart-hvitt slår på svart-hvitt der. */
+  if (villSH()) { try { localStorage.setItem('vbm-visning', 'sh'); } catch(e){} try { history.replaceState(null, '', location.pathname + location.hash); } catch(e){} }
 
   /* ==================== 5. Knapperaden ==================== */
   function pille(klasse, etikett){
@@ -190,7 +192,7 @@
     var valg = null;
     if (nav) { valg = document.createElement('div'); valg.className = 'vbm-valg'; nav.appendChild(valg); }
 
-    if (harSH && valg) {
+    if (false) {   // de gamle knappene for farger og svart-hvitt er erstattet av Innstillinger
       var m = pille('vbm-modus', 'Farger eller svart-hvitt');
       [['0', 'Farger'], ['1', 'Svart-hvitt']].forEach(function(o){
         var b = knapp(o[1]); b.setAttribute('data-sh', o[0]);
@@ -416,8 +418,8 @@
   /* ==================== 11. Tonefarger og tonenavn ====================
      Notehoder med data-f (farge) og data-navn får fargen sin mens de spilles, og navnene vises
      i en lapp over notelinjen. Quizene farger notene, men viser ingen navn. */
-  /* På for hele nettstedet. Juksebøkene (data-stil="bok") kobles på i neste steg. */
-  var TONEFARGER = root.getAttribute('data-stil') !== 'bok';
+  /* På for hele nettstedet, også juksebøkene */
+  var TONEFARGER = true;
   /* Navnet på tonen som klinger vises i en knappeformet lapp øverst til høyre over notelinjen, i tonens farge.
      Plassen over notelinjen er alltid satt av (fast minstehøyde), så ingenting flytter seg når lappen kommer.
      Bare når én tone klinger (skalaer, melodier); når en akkord klinger, vises ikke noe navn. Quizene viser ingen navn. */

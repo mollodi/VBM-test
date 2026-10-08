@@ -2816,3 +2816,58 @@ html.vbm-tonefarger.vbm-sh[data-side="notelesing.html"] .tn-navn { background: t
 @media (forced-colors: active) {
   :where(html[data-side="notelesing.html"]) .tn-navn { forced-color-adjust: none; background: Highlight; color: HighlightText; border-color: Highlight; }
 }
+
+/* ---------- Faste farger (juksebøkene): notene har alltid tonens farge, med en tynn kant ----------
+   Mens tonen spilles beholder den fargen og får en kraftig kant. I svart-hvitt blir notene svarte (eller hvite
+   på mørk bakgrunn), og tonen som spilles blir en hul note, som ellers på nettstedet. */
+html.vbm-tonefarger .vbm-notebilde[data-fast] [data-f="red"] { fill: var(--nf-red); }
+html.vbm-tonefarger .vbm-notebilde[data-fast] [data-f="red-dk"] { fill: var(--nf-red-dk); }
+html.vbm-tonefarger .vbm-notebilde[data-fast] [data-f="red-lt"] { fill: var(--nf-red-lt); }
+html.vbm-tonefarger .vbm-notebilde[data-fast] [data-f="orange"] { fill: var(--nf-orange); }
+html.vbm-tonefarger .vbm-notebilde[data-fast] [data-f="orange-dk"] { fill: var(--nf-orange-dk); }
+html.vbm-tonefarger .vbm-notebilde[data-fast] [data-f="orange-lt"] { fill: var(--nf-orange-lt); }
+html.vbm-tonefarger .vbm-notebilde[data-fast] [data-f="yellow"] { fill: var(--nf-yellow); }
+html.vbm-tonefarger .vbm-notebilde[data-fast] [data-f="yellow-dk"] { fill: var(--nf-yellow-dk); }
+html.vbm-tonefarger .vbm-notebilde[data-fast] [data-f="yellow-lt"] { fill: var(--nf-yellow-lt); }
+html.vbm-tonefarger .vbm-notebilde[data-fast] [data-f="green"] { fill: var(--nf-green); }
+html.vbm-tonefarger .vbm-notebilde[data-fast] [data-f="green-dk"] { fill: var(--nf-green-dk); }
+html.vbm-tonefarger .vbm-notebilde[data-fast] [data-f="green-lt"] { fill: var(--nf-green-lt); }
+html.vbm-tonefarger .vbm-notebilde[data-fast] [data-f="blue"] { fill: var(--nf-blue); }
+html.vbm-tonefarger .vbm-notebilde[data-fast] [data-f="blue-dk"] { fill: var(--nf-blue-dk); }
+html.vbm-tonefarger .vbm-notebilde[data-fast] [data-f="blue-lt"] { fill: var(--nf-blue-lt); }
+html.vbm-tonefarger .vbm-notebilde[data-fast] [data-f="indigo"] { fill: var(--nf-indigo); }
+html.vbm-tonefarger .vbm-notebilde[data-fast] [data-f="indigo-dk"] { fill: var(--nf-indigo-dk); }
+html.vbm-tonefarger .vbm-notebilde[data-fast] [data-f="indigo-lt"] { fill: var(--nf-indigo-lt); }
+html.vbm-tonefarger .vbm-notebilde[data-fast] [data-f="violet"] { fill: var(--nf-violet); }
+html.vbm-tonefarger .vbm-notebilde[data-fast] [data-f="violet-dk"] { fill: var(--nf-violet-dk); }
+html.vbm-tonefarger .vbm-notebilde[data-fast] [data-f="violet-lt"] { fill: var(--nf-violet-lt); }
+html.vbm-tonefarger .vbm-notebilde[data-fast] [data-f] { stroke: #1E1E1A; stroke-width: .8px; }
+html.vbm-tonefarger .vbm-notebilde[data-fast] [data-f].spilles { stroke: currentColor !important; stroke-width: 3px !important; }
+html.vbm-tonefarger .vbm-notebilde[data-fast] [data-f="red"].spilles { fill: var(--nf-red) !important; }
+html.vbm-tonefarger .vbm-notebilde[data-fast] [data-f="red-dk"].spilles { fill: var(--nf-red-dk) !important; }
+html.vbm-tonefarger .vbm-notebilde[data-fast] [data-f="red-lt"].spilles { fill: var(--nf-red-lt) !important; }
+html.vbm-tonefarger .vbm-notebilde[data-fast] [data-f="orange"].spilles { fill: var(--nf-orange) !important; }
+html.vbm-tonefarger .vbm-notebilde[data-fast] [data-f="orange-dk"].spilles { fill: var(--nf-orange-dk) !important; }
+html.vbm-tonefarger .vbm-notebilde[data-fast] [data-f="orange-lt"].spilles { fill: var(--nf-orange-lt) !important; }
+html.vbm-tonefarger .vbm-notebilde[data-fast] [data-f="yellow"].spilles { fill: var(--nf-yellow) !important; }
+html.vbm-tonefarger .vbm-notebilde[data-fast] [data-f="yellow-dk"].spilles { fill: var(--nf-yellow-dk) !important; }
+html.vbm-tonefarger .vbm-notebilde[data-fast] [data-f="yellow-lt"].spilles { fill: var(--nf-yellow-lt) !important; }
+html.vbm-tonefarger .vbm-notebilde[data-fast] [data-f="green"].spilles { fill: var(--nf-green) !important; }
+html.vbm-tonefarger .vbm-notebilde[data-fast] [data-f="green-dk"].spilles { fill: var(--nf-green-dk) !important; }
+html.vbm-tonefarger .vbm-notebilde[data-fast] [data-f="green-lt"].spilles { fill: var(--nf-green-lt) !important; }
+html.vbm-tonefarger .vbm-notebilde[data-fast] [data-f="blue"].spilles { fill: var(--nf-blue) !important; }
+html.vbm-tonefarger .vbm-notebilde[data-fast] [data-f="blue-dk"].spilles { fill: var(--nf-blue-dk) !important; }
+html.vbm-tonefarger .vbm-notebilde[data-fast] [data-f="blue-lt"].spilles { fill: var(--nf-blue-lt) !important; }
+html.vbm-tonefarger .vbm-notebilde[data-fast] [data-f="indigo"].spilles { fill: var(--nf-indigo) !important; }
+html.vbm-tonefarger .vbm-notebilde[data-fast] [data-f="indigo-dk"].spilles { fill: var(--nf-indigo-dk) !important; }
+html.vbm-tonefarger .vbm-notebilde[data-fast] [data-f="indigo-lt"].spilles { fill: var(--nf-indigo-lt) !important; }
+html.vbm-tonefarger .vbm-notebilde[data-fast] [data-f="violet"].spilles { fill: var(--nf-violet) !important; }
+html.vbm-tonefarger .vbm-notebilde[data-fast] [data-f="violet-dk"].spilles { fill: var(--nf-violet-dk) !important; }
+html.vbm-tonefarger .vbm-notebilde[data-fast] [data-f="violet-lt"].spilles { fill: var(--nf-violet-lt) !important; }
+html.vbm-tonefarger.vbm-sh .vbm-notebilde[data-fast] [data-f] { fill: currentColor; stroke: none; }
+html.vbm-tonefarger.vbm-sh .vbm-notebilde[data-fast] [data-f].spilles { fill: transparent !important; stroke: currentColor !important; stroke-width: 2.2px !important; }
+.vbm-notebilde { color: var(--ink, currentColor); }
+@media (forced-colors: active) {
+  .vbm-notebilde svg { forced-color-adjust: none; color: CanvasText; }
+  html.vbm-tonefarger .vbm-notebilde[data-fast] [data-f].spilles { stroke: Highlight !important; }
+}

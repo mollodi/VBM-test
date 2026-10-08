@@ -394,7 +394,9 @@ window.VBM_SKALAER = (function(){
     [].forEach.call((rot || document).querySelectorAll('.vbm-notebilde[data-noter]:not([data-tegnet])'), function(el){
       var liste = JSON.parse(el.getAttribute('data-noter')).map(function(x){ return { b: x[0], f: x[1], oktav: x[2] }; });
       var navn = liste.map(function(n){ return K.tone(n); }).join(', ');
-      el.innerHTML = el.getAttribute('data-form') === 'akkord'
+      /* To like toner (ren prim) kan ikke stå over hverandre, så de tegnes side om side */
+      var lik = liste.some(function(n, i){ return liste.some(function(m, j){ return j > i && m.b === n.b && m.oktav === n.oktav; }); });
+      el.innerHTML = el.getAttribute('data-form') === 'akkord' && !lik
         ? maalestokk(akkordrekke([{ noter: liste, tall: [] }], navn), 40)
         : maalestokk(noter(liste, 0, [], ''), 0);
       el.setAttribute('data-tegnet', '1');
