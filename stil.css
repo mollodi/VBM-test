@@ -190,7 +190,7 @@ html.sh .legend, html.sh .cover-band{ display:none !important; }
   --octave-ink: #2A2925;
 }
 @media (prefers-color-scheme: dark) {
-  :root:not([data-tema="lys"]):where([data-stil="bok"]) { --bg: #17160F;
+  :root:not([data-tema="lys"]):where([data-stil="bok"]) { --bg: #12151A;
     --ink: #EDEBE2;
     --ink-soft: #A6A499;
     --line: #3A382E;
@@ -2950,7 +2950,7 @@ html:where([data-stil="bok"]), html:where([data-stil="bok"]) body { background: 
    Utseende valgt under Innstillinger (Lys eller Mørk). Laget automatisk fra
    reglene for lys og mørk modus over, så de alltid er like. Automatisk følger nettleseren.
    ===================================================================== */
-:root[data-tema="mork"]:where([data-stil="bok"]) { --bg: #17160F;
+:root[data-tema="mork"]:where([data-stil="bok"]) { --bg: #12151A;
     --ink: #EDEBE2;
     --ink-soft: #A6A499;
     --line: #3A382E;
