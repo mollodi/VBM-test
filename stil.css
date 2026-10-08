@@ -2952,3 +2952,8 @@ html:where([data-stil="bok"]), html:where([data-stil="bok"]) body { background: 
   :where(html[data-stil="mork"]) .spotify-link { color: #4C5566 !important; border-color: rgba(76,85,102,.45) !important; }
   :where(html[data-stil="ovelse"], html[data-stil="mork"], html[data-side="index.html"]) :where(.hero, footer, main > p) a:not(.btn) { color: #7A5410 !important; }
 }
+@media (prefers-color-scheme: light) {
+  /* Lys modus: menylinjen og instrumentvelgeren er beige med mørk tekst, som Akkordheftet */
+  .vbm-back.vbm-topp { background: #DCD6C6; color: #22252A; border-bottom-color: rgba(34,37,42,.18); box-shadow: 0 4px 14px rgba(0,0,0,.08); }
+  .vbm-instr-float { background: #DCD6C6 !important; color: #22252A !important; }
+}
