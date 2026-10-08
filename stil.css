@@ -2920,9 +2920,9 @@ html.vbm-tonefarger.vbm-sh .tn-tangent.tn-trykket.svart { fill: #55554F !importa
     --octave: #CFCBC1;
     --octave-ink: #E4E1D8;
   }
-:root[data-tema="lys"]:where([data-stil="bok"]) { --bg: #ECE6DA; --surface: #FFFFFF; }
+:root[data-tema="lys"]:where([data-stil="bok"]) { --bg: #ECE6DA; --surface: #FAF4E6; }
 :root[data-tema="mork"] { --tema-side: #16181C; --tema-kort: #1F2228; --tema-tekst: #E6E2D8; --tema-sidetekst: #ECE8DF; --tema-kant: #2C3038; --tema-strek: rgba(230,226,216,.16); }
-:root[data-tema="lys"]  { --tema-side: #ECE6DA; --tema-kort: #FFFFFF; --tema-tekst: #1E1E1A; --tema-sidetekst: #1E1E1A; --tema-kant: #E5E1D6; --tema-strek: rgba(33,31,26,.14); }
+:root[data-tema="lys"]  { --tema-side: #ECE6DA; --tema-kort: #FAF4E6; --tema-tekst: #1E1E1A; --tema-sidetekst: #1E1E1A; --tema-kant: #E5E1D6; --tema-strek: rgba(33,31,26,.14); }
 /* Sider med mørk side og lyse kort (leksjoner, quizer, sangsider, startsiden) */
 :root[data-tema]:where([data-stil="ovelse"], [data-stil="mork"], [data-side="index.html"]) {
   --text-on-paper: var(--tema-tekst); --rule: var(--tema-strek); --rule-dark: var(--tema-strek);
@@ -2935,23 +2935,20 @@ html[data-tema]:where([data-stil="ovelse"], [data-stil="mork"], [data-side="inde
   background: var(--tema-kort) !important; color: var(--tema-tekst) !important; border: 1px solid var(--tema-kant);
 }
 html[data-tema="lys"] .card { box-shadow: none; }
-html[data-tema] .vbm-notebilde, html[data-tema] .noter { color: var(--tema-tekst) !important; }
+html[data-tema="lys"] .vbm-notebilde, html[data-tema="lys"] .noter { color: #1E1E1A !important; }
 /* Knapper inne i kortene */
 html[data-tema="mork"] .card .btn { background: #262A31; color: var(--tema-tekst); border-color: rgba(230,226,216,.28); }
 html[data-tema="mork"] .card .btn[aria-pressed="true"] { background: var(--tema-tekst); color: #16181C; border-color: var(--tema-tekst); }
-html[data-tema="lys"] .card .btn { background: #FFFFFF; }
+html[data-tema="lys"] .card .btn { background: #FFFDF8; }
 html[data-tema="lys"] .card .btn[aria-pressed="true"] { background: #1E1E1A; color: #FFFFFF; border-color: #1E1E1A; }
 /* Lenker: mørk messing på lyst, lys messing på mørkt */
 html[data-tema="lys"] body, html[data-tema="lys"] .card { --lenke: var(--lenke-lys); }
 html[data-tema="mork"] body, html[data-tema="mork"] .card { --lenke: var(--lenke-mork); }
 /* Menylinjen: hvit i Lys, mørk i Mørk */
-html[data-tema="lys"] .vbm-back.vbm-topp { background: #FFFFFF !important; color: #1E1E1A; border-bottom-color: #E5E1D6; }
+html[data-tema="lys"] .vbm-back.vbm-topp { background: #FAF4E6 !important; color: #1E1E1A; border-bottom-color: #E5E1D6; }
 html[data-tema="mork"] .vbm-back.vbm-topp { background: var(--tema-side) !important; color: var(--tema-sidetekst); }
 /* Pianoet i Mørk: litt dempede hvite tangenter, så den fargede tangenten fortsatt skiller seg ut */
-html[data-tema="mork"] .tn-tangent.hvit { fill: #E6E2D8; }
-html[data-tema="mork"] .tn-tangent { stroke: #0D0F12; }
 /* Juksebøkenes fargede noter: lys kant i Mørk, så mørke farger synes på mørk bakgrunn */
-html[data-tema="mork"] .vbm-notebilde[data-fast] [data-f] { stroke: #E6E2D8 !important; }
 @media (forced-colors: active) { html[data-tema] .card { border-color: CanvasText; } }
 
 /* Rettelser etter første test av temaene */
@@ -2988,3 +2985,10 @@ html[data-tema="lys"] .eyebrow, html[data-tema="lys"] .hero h1 em, html[data-tem
 html[data-tema="lys"] .card .eyebrow, html[data-tema="lys"] .card .step-label { color: #6B4A0E !important; }
 :root[data-tema="lys"]:where([data-stil="bok"]) { --ink-soft: #4A473E; }
 html[data-tema="lys"] footer, html[data-tema="lys"] footer *, html[data-tema="lys"] .vbm-signatur, html[data-tema="lys"] .staff-caption, html[data-tema="lys"] .hint { color: #4A473E !important; }
+
+/* Mørk: notene står på lyst papir med svart blekk, som før, også i juksebøkene.
+   Bare høyde-luft (ikke sidemarg), så notelinjen fortsatt fyller hele bredden. */
+html[data-tema="mork"] .vbm-notebilde, html[data-tema="mork"] .noter {
+  background: #FFFDF8; color: #1E1E1A !important; border-radius: 10px; padding-top: 8px; padding-bottom: 8px;
+}
+html[data-tema="mork"] .noter.rytme { padding-left: 8px; padding-right: 8px; }
