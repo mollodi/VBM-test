@@ -140,7 +140,12 @@ VBM_ORDBOK("en", {
     "Viser tonene på notelinjen på et piano under hver notelinje. Du kan trykke på tangentene for å høre dem.": "Shows the notes of each staff on a piano below it. You can tap the keys to hear them.",
     "En oktav ned": "One octave down",
     "En oktav opp": "One octave up",
-    "{instrument} når ikke så dype eller høye toner, så de spilles på piano.": "{instrument} cannot reach notes that low or high, so they are played on the piano."
+    "{instrument} når ikke så dype eller høye toner, så de spilles på piano.": "{instrument} cannot reach notes that low or high, so they are played on the piano.",
+    "Utseende": "Appearance",
+    "Automatisk": "Automatic",
+    "Lys": "Light",
+    "Mørk": "Dark",
+    "Automatisk følger innstillingen på telefonen eller datamaskinen.": "Automatic follows the setting on your phone or computer."
   },
   sider: {
     "index.html": {

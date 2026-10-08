@@ -140,7 +140,12 @@ VBM_ORDBOK("pl", {
     "Viser tonene på notelinjen på et piano under hver notelinje. Du kan trykke på tangentene for å høre dem.": "Pokazuje dźwięki z pięciolinii na fortepianie pod każdą pięciolinią. Możesz dotykać klawiszy, aby je usłyszeć.",
     "En oktav ned": "Oktawę w dół",
     "En oktav opp": "Oktawę w górę",
-    "{instrument} når ikke så dype eller høye toner, så de spilles på piano.": "{instrument} nie sięga tak niskich ani wysokich dźwięków, więc grane są na fortepianie."
+    "{instrument} når ikke så dype eller høye toner, så de spilles på piano.": "{instrument} nie sięga tak niskich ani wysokich dźwięków, więc grane są na fortepianie.",
+    "Utseende": "Wygląd strony",
+    "Automatisk": "Automatyczny",
+    "Lys": "Jasny",
+    "Mørk": "Ciemny",
+    "Automatisk følger innstillingen på telefonen eller datamaskinen.": "Tryb automatyczny podąża za ustawieniem telefonu lub komputera."
   },
   sider: {
     "index.html": {

@@ -190,7 +190,7 @@ html.sh .legend, html.sh .cover-band{ display:none !important; }
   --octave-ink: #2A2925;
 }
 @media (prefers-color-scheme: dark) {
-  :root:where([data-stil="bok"]) {
+  :root:where([data-stil="bok"]):not([data-tema="lys"]) {
     --bg: #17160F;
     --ink: #EDEBE2;
     --ink-soft: #A6A499;
@@ -679,7 +679,7 @@ html.sh .legend, html.sh .cover-band{ display:none !important; }
   max-width: 560px;
   font-size: 16.5px;
   line-height: 1.6;
-  color: rgba(246,241,231,0.72);
+  color: color-mix(in srgb, var(--paper) 72%, transparent);
   margin: 0 0 30px;
 }
 :where(html[data-stil="mork"]) .hero-staff {
@@ -691,7 +691,7 @@ html.sh .legend, html.sh .cover-band{ display:none !important; }
 :where(html[data-side="intervaller-og-sanger.html"]) .hero-staff .staff-caption {
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   font-size: 12px;
-  color: rgba(246,241,231,0.55);
+  color: color-mix(in srgb, var(--paper) 55%, transparent);
   max-width: 280px;
   line-height: 1.5;
 }
@@ -712,7 +712,7 @@ html.sh .legend, html.sh .cover-band{ display:none !important; }
 :where(html[data-side="lytteguide-septim-og-nonakkorder.html"]) .hero-staff .staff-caption {
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   font-size: 12px;
-  color: rgba(246,241,231,0.55);
+  color: color-mix(in srgb, var(--paper) 55%, transparent);
   max-width: 300px;
   line-height: 1.5;
 }
@@ -754,7 +754,7 @@ html.sh .legend, html.sh .cover-band{ display:none !important; }
   font-size: 12.5px;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: rgba(246,241,231,0.55);
+  color: color-mix(in srgb, var(--paper) 55%, transparent);
   padding: 9px 16px;
   border-radius: 7px;
   display: inline-block;
@@ -765,7 +765,7 @@ html.sh .legend, html.sh .cover-band{ display:none !important; }
   font-size: 10.5px;
   letter-spacing: 0.02em;
   text-transform: uppercase;
-  color: rgba(246,241,231,0.55);
+  color: color-mix(in srgb, var(--paper) 55%, transparent);
   padding: 8px 10px;
   border-radius: 7px;
   display: inline-block;
@@ -800,7 +800,7 @@ html.sh .legend, html.sh .cover-band{ display:none !important; }
   padding: 6px 11px;
   border-radius: 999px;
   border: 1px solid var(--rule-dark);
-  color: rgba(246,241,231,0.65);
+  color: color-mix(in srgb, var(--paper) 65%, transparent);
   display: inline-block;
   pointer-events: none;
   white-space: nowrap;
@@ -813,13 +813,13 @@ html.sh .legend, html.sh .cover-band{ display:none !important; }
 :where(html[data-side="intervaller-og-sanger.html"]) .hint {
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   font-size: 11.5px;
-  color: rgba(246,241,231,0.55);
+  color: color-mix(in srgb, var(--paper) 55%, transparent);
   margin: 10px 0 0;
 }
 :where(html[data-side="lytteguide-septim-og-nonakkorder.html"]) .hint {
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   font-size: 11.5px;
-  color: rgba(246,241,231,0.55);
+  color: color-mix(in srgb, var(--paper) 55%, transparent);
   margin: 10px 0 0;
   text-align: center;
 }
@@ -879,7 +879,7 @@ html.sh .legend, html.sh .cover-band{ display:none !important; }
   display: none;
   text-align: center;
   padding: 60px 20px;
-  color: rgba(246,241,231,0.4);
+  color: color-mix(in srgb, var(--paper) 40%, transparent);
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   font-size: 13px;
 }
@@ -981,7 +981,7 @@ html.sh .legend, html.sh .cover-band{ display:none !important; }
   padding: 0 28px 60px;
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   font-size: 11.5px;
-  color: rgba(246,241,231,0.6);
+  color: color-mix(in srgb, var(--paper) 60%, transparent);
   line-height: 1.7;
 }
 :where(html[data-stil="mork"]) footer .vbm-signatur {
@@ -1210,7 +1210,7 @@ html:where([data-side="index.html"]) {
   max-width: 560px;
   font-size: 16px;
   line-height: 1.6;
-  color: rgba(246,241,231,.72);
+  color: color-mix(in srgb, var(--paper) 72%, transparent);
   margin: 0 0 20px;
 }
 :where(html[data-side="index.html"]) .grid {
@@ -1304,7 +1304,7 @@ html:where([data-side="index.html"]) {
   white-space: nowrap;
 }
 :where(html[data-side="index.html"]) .empty {
-  color: rgba(246,241,231,.72);
+  color: color-mix(in srgb, var(--paper) 72%, transparent);
   font-size: 15px;
   line-height: 1.6;
   padding-top: 44px;
@@ -1320,7 +1320,7 @@ html:where([data-side="index.html"]) {
   border-top: 1px solid var(--rule-dark);
   font-family: ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
   font-size: 12px;
-  color: rgba(246,241,231,.5);
+  color: color-mix(in srgb, var(--paper) 50%, transparent);
   display: flex;
   justify-content: space-between;
   gap: 12px;
@@ -1416,7 +1416,7 @@ html:where([data-side="index.html"]) {
   max-width: 580px;
   font-size: 16.5px;
   line-height: 1.6;
-  color: rgba(246,241,231,0.72);
+  color: color-mix(in srgb, var(--paper) 72%, transparent);
   margin: 0 0 14px;
 }
 :where(html[data-stil="ovelse"]) .hero p.lede:last-child { margin-bottom: 0; }
@@ -1624,7 +1624,7 @@ html:where([data-side="index.html"]) {
   border-top: 1px solid var(--rule-dark);
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   font-size: 12px;
-  color: rgba(246,241,231,0.5);
+  color: color-mix(in srgb, var(--paper) 50%, transparent);
   display: flex;
   justify-content: space-between;
   gap: 12px;
@@ -2888,3 +2888,103 @@ html.vbm-tonefarger.vbm-sh .tn-tangent.tn-trykket.svart { fill: #55554F !importa
 @media (forced-colors: active) { .vbm-melding { background: Canvas; color: CanvasText; border: 2px solid CanvasText; } }
 
 .vbm-tips { font-size: 15px; opacity: .9; margin-top: 4px; }
+
+/* =====================================================================
+   Utseende: Lys og Mørk (Innstillinger). Uten valgt tema ser alt ut som før.
+   Mørk: mørk side og mørke kort med lys tekst, som juksebøkene i mørk modus.
+   Lys: hvite kort med tynn kant på en varm, lys bakgrunn.
+   ===================================================================== */
+:root:where([data-stil="bok"])[data-tema="mork"] {
+    --bg: #17160F;
+    --ink: #EDEBE2;
+    --ink-soft: #A6A499;
+    --line: #3A382E;
+    --surface: #201F17;
+    --crimson-ink: #CCA9AE;
+    --red-ink: #DFACB1;
+    --orange-ink: #EDC5B0;
+    --yellow-ink: #E9D8A9;
+    --green-ink: #B7D6C1;
+    --teal-ink: #B5D5D4;
+    --blue-ink: #B2CCE0;
+    --purple-ink: #BEB5C7;
+    --magenta-ink: #D3B5C4;
+    --taupe-ink: #C6C0BA;
+    --indigo-ink: #B9C0E6;
+    --violet-ink: #D0C0E6;
+    --rose-ink: #EBC2D2;
+    --orange-dk-ink: #E4B89F;
+    --yellow-dk-ink: #DCC99A;
+    --indigo-dk-ink: #AEB5DC;
+    --violet-dk-ink: #C6B7DB;
+    --octave: #CFCBC1;
+    --octave-ink: #E4E1D8;
+  }
+:root[data-tema="lys"]:where([data-stil="bok"]) { --bg: #ECE6DA; --surface: #FFFFFF; }
+:root[data-tema="mork"] { --tema-side: #16181C; --tema-kort: #1F2228; --tema-tekst: #E6E2D8; --tema-sidetekst: #ECE8DF; --tema-kant: #2C3038; --tema-strek: rgba(230,226,216,.16); }
+:root[data-tema="lys"]  { --tema-side: #ECE6DA; --tema-kort: #FFFFFF; --tema-tekst: #1E1E1A; --tema-sidetekst: #1E1E1A; --tema-kant: #E5E1D6; --tema-strek: rgba(33,31,26,.14); }
+/* Sider med mørk side og lyse kort (leksjoner, quizer, sangsider, startsiden) */
+:root[data-tema]:where([data-stil="ovelse"], [data-stil="mork"], [data-side="index.html"]) {
+  --text-on-paper: var(--tema-tekst); --rule: var(--tema-strek); --rule-dark: var(--tema-strek);
+}
+:root[data-tema="mork"]:where([data-stil="ovelse"], [data-stil="mork"], [data-side="index.html"]) { --text-muted: #A9A497; }
+html[data-tema]:where([data-stil="ovelse"], [data-stil="mork"], [data-side="index.html"]),
+html[data-tema]:where([data-stil="ovelse"], [data-stil="mork"], [data-side="index.html"]) body { background: var(--tema-side) !important; color: var(--tema-sidetekst) !important; }
+html[data-tema] .hero h1:not(.cover-title), html[data-tema] .hero .lede, html[data-tema] .gruppe-intro, html[data-tema] .seksjon-hode, html[data-tema] section > h2 { color: var(--tema-sidetekst) !important; }
+html[data-tema]:where([data-stil="ovelse"], [data-stil="mork"], [data-side="index.html"]) .card {
+  background: var(--tema-kort) !important; color: var(--tema-tekst) !important; border: 1px solid var(--tema-kant);
+}
+html[data-tema="lys"] .card { box-shadow: none; }
+html[data-tema] .vbm-notebilde, html[data-tema] .noter { color: var(--tema-tekst) !important; }
+/* Knapper inne i kortene */
+html[data-tema="mork"] .card .btn { background: #262A31; color: var(--tema-tekst); border-color: rgba(230,226,216,.28); }
+html[data-tema="mork"] .card .btn[aria-pressed="true"] { background: var(--tema-tekst); color: #16181C; border-color: var(--tema-tekst); }
+html[data-tema="lys"] .card .btn { background: #FFFFFF; }
+html[data-tema="lys"] .card .btn[aria-pressed="true"] { background: #1E1E1A; color: #FFFFFF; border-color: #1E1E1A; }
+/* Lenker: mørk messing på lyst, lys messing på mørkt */
+html[data-tema="lys"] body, html[data-tema="lys"] .card { --lenke: var(--lenke-lys); }
+html[data-tema="mork"] body, html[data-tema="mork"] .card { --lenke: var(--lenke-mork); }
+/* Menylinjen: hvit i Lys, mørk i Mørk */
+html[data-tema="lys"] .vbm-back.vbm-topp { background: #FFFFFF !important; color: #1E1E1A; border-bottom-color: #E5E1D6; }
+html[data-tema="mork"] .vbm-back.vbm-topp { background: var(--tema-side) !important; color: var(--tema-sidetekst); }
+/* Pianoet i Mørk: litt dempede hvite tangenter, så den fargede tangenten fortsatt skiller seg ut */
+html[data-tema="mork"] .tn-tangent.hvit { fill: #E6E2D8; }
+html[data-tema="mork"] .tn-tangent { stroke: #0D0F12; }
+/* Juksebøkenes fargede noter: lys kant i Mørk, så mørke farger synes på mørk bakgrunn */
+html[data-tema="mork"] .vbm-notebilde[data-fast] [data-f] { stroke: #E6E2D8 !important; }
+@media (forced-colors: active) { html[data-tema] .card { border-color: CanvasText; } }
+
+/* Rettelser etter første test av temaene */
+/* Lys: tekst rett på siden (ikke i kort) blir mørk. Kortene får fargen sin fra temaet. */
+:root[data-tema="lys"]:where([data-stil="ovelse"], [data-stil="mork"], [data-side="index.html"]) { --paper: #1E1E1A; }
+html[data-tema="lys"] .card .btn[aria-pressed="true"], html[data-tema="lys"] .card .btn[aria-pressed="true"] * { color: #FFFFFF !important; }
+/* Mørk: beskrivelser i kortene med full styrke */
+html[data-tema="mork"] .card .task, html[data-tema="mork"] .card p:not(.label):not(.step-label) { color: var(--tema-tekst); }
+/* Juksebøkene i Mørk: samme mørke tone som resten av nettstedet */
+:root:where([data-stil="bok"])[data-tema="mork"] { --bg: #16181C; --surface: #1F2228; }
+/* Startsidens forside: følger temaet som de andre kortene */
+html[data-tema] .cover { background: var(--tema-kort) !important; color: var(--tema-tekst) !important; border: 1px solid var(--tema-kant); }
+html[data-tema] .cover .cover-title, html[data-tema] .cover h1 { color: var(--tema-tekst) !important; }
+
+/* Forsidens notelinje på startsiden: lys i Mørk */
+html[data-tema="mork"] .cover-staff { filter: invert(1) brightness(.92); }
+
+/* Sangsiden i Lys: valgt brikke og bryteren Oppover/Nedover */
+html[data-tema="lys"] .chip-option input:checked + span { background: #1E1E1A !important; color: #FFFFFF !important; border-color: #1E1E1A !important; }
+html[data-tema="lys"] .tabs, html[data-tema="lys"] .tab-switch { background: #FFFFFF !important; border: 1px solid #E5E1D6; }
+html[data-tema="lys"] .tab-option span { color: color-mix(in srgb, #1E1E1A 65%, transparent); }
+html[data-tema="lys"] .tab-option input:checked + span { color: #1E1E1A; }
+html[data-tema="mork"] .tabs, html[data-tema="mork"] .tab-switch { background: var(--tema-kort) !important; }
+
+/* Kontrast i temaene (sjekket med axe) */
+/* Mørk: «viktig»-bokser, spill-knapper, Spotify-lenker og «Nytt» */
+html[data-tema="mork"] .viktig { background: rgba(232,184,102,.10) !important; border-left-color: #E8B866 !important; }
+html[data-tema="mork"] .viktig strong, html[data-tema="mork"] .viktig a { color: #E8B866 !important; }
+html[data-tema="mork"] .card .play-btn, html[data-tema="mork"] .card .play-btn span { color: var(--tema-tekst) !important; border-color: rgba(230,226,216,.4) !important; background: #262A31 !important; }
+html[data-tema="mork"] .card .spotify-link { color: #E8B866 !important; border-color: rgba(232,184,102,.45) !important; }
+html[data-tema="mork"] .card .new { color: #16181C !important; background: #E8B866 !important; }
+/* Lys: messingfarget tekst rett på den lyse siden blir mørkere messing */
+html[data-tema="lys"] .eyebrow, html[data-tema="lys"] .hero h1 em, html[data-tema="lys"] h2 em, html[data-tema="lys"] .seksjon-hode em { color: #7A5410 !important; }
+html[data-tema="lys"] .card .eyebrow, html[data-tema="lys"] .card .step-label { color: #6B4A0E !important; }
+:root[data-tema="lys"]:where([data-stil="bok"]) { --ink-soft: #4A473E; }
+html[data-tema="lys"] footer, html[data-tema="lys"] footer *, html[data-tema="lys"] .vbm-signatur, html[data-tema="lys"] .staff-caption, html[data-tema="lys"] .hint { color: #4A473E !important; }
