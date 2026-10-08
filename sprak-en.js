@@ -128,7 +128,12 @@ VBM_ORDBOK("en", {
     "Hopp til innholdet": "Skip to content",
     "Innstillinger": "Settings",
     "Visning": "Display",
-    "Svart-hvitt er for deg som er fargeblind, eller som har kromestesi og ser egne farger når du hører toner. Notene og navnene vises da i svart, hvitt og grått, på hele nettstedet.": "Black and white is for you if you are colour-blind, or have chromesthesia and see your own colours when you hear notes. The notes and names are then shown in black, white and grey across the whole site."
+    "Svart-hvitt er for deg som er fargeblind, eller som har kromestesi og ser egne farger når du hører toner. Notene vises da uten farger, og tonen som spilles får en kant i stedet, på hele nettstedet.": "Black and white is for you if you are colour-blind, or have chromesthesia and see your own colours when you hear notes. The notes are then shown without colours, and the note being played gets an outline instead, across the whole site.",
+    "Tempo": "Tempo",
+    "Sakte": "Slow",
+    "Middels": "Medium",
+    "Raskt": "Fast",
+    "Gjelder alt som spilles på nettstedet: skalaer, akkorder, intervaller og rytmer.": "Applies to everything played on the site: scales, chords, intervals and rhythms."
   },
   sider: {
     "index.html": {
@@ -2036,7 +2041,8 @@ VBM_ORDBOK("en", {
         "{n} kryss": function(v){ return v.n + ' sharps'; },
         "{n} b-er": function(v){ return v.n + ' flats'; },
         "åttendelstriol": "eighth-note triplet",
-        "firedelstriol": "quarter-note triplet"
+        "firedelstriol": "quarter-note triplet",
+        "Metronom": "Metronome"
       },
     "quiz-rytme.html": {
         "Modus": "Mode",
@@ -2147,7 +2153,8 @@ VBM_ORDBOK("en", {
         "Takten varer {n} firedeler, så taktarten er {takt}.": "The bar lasts {n} quarter notes, so the time signature is {takt}.",
         "Takten varer {n} åttendeler, så taktarten er {takt}.": "The bar lasts {n} eighth notes, so the time signature is {takt}.",
         "åttendelstriol": "eighth-note triplet",
-        "firedelstriol": "quarter-note triplet"
+        "firedelstriol": "quarter-note triplet",
+        "Riktig svar": "Correct answer"
       }
   }
 });

@@ -128,7 +128,12 @@ VBM_ORDBOK("pl", {
     "Hopp til innholdet": "Przejdź do treści",
     "Innstillinger": "Ustawienia",
     "Visning": "Wygląd",
-    "Svart-hvitt er for deg som er fargeblind, eller som har kromestesi og ser egne farger når du hører toner. Notene og navnene vises da i svart, hvitt og grått, på hele nettstedet.": "Tryb czarno-biały jest dla osób z daltonizmem albo z chromestezją, które widzą własne kolory, słysząc dźwięki. Nuty i nazwy są wtedy pokazywane w czerni, bieli i szarości na całej stronie."
+    "Svart-hvitt er for deg som er fargeblind, eller som har kromestesi og ser egne farger når du hører toner. Notene vises da uten farger, og tonen som spilles får en kant i stedet, på hele nettstedet.": "Tryb czarno-biały jest dla osób z daltonizmem albo z chromestezją, które widzą własne kolory, słysząc dźwięki. Nuty są wtedy pokazywane bez kolorów, a grana nuta dostaje zamiast tego obwódkę, na całej stronie.",
+    "Tempo": "Tempo",
+    "Sakte": "Wolno",
+    "Middels": "Średnio",
+    "Raskt": "Szybko",
+    "Gjelder alt som spilles på nettstedet: skalaer, akkorder, intervaller og rytmer.": "Dotyczy wszystkiego, co jest odtwarzane na stronie: skal, akordów, interwałów i rytmów."
   },
   sider: {
     "index.html": {
@@ -2087,7 +2092,8 @@ VBM_ORDBOK("pl", {
         "{n} kryss": function(v){ var n = v.n; return n + (n >= 2 && n <= 4 ? ' krzyżyki' : ' krzyżyków'); },
         "{n} b-er": function(v){ var n = v.n; return n + (n >= 2 && n <= 4 ? ' bemole' : ' bemoli'); },
         "åttendelstriol": "triola ósemkowa",
-        "firedelstriol": "triola ćwierćnutowa"
+        "firedelstriol": "triola ćwierćnutowa",
+        "Metronom": "Metronom"
       },
     "quiz-rytme.html": {
         "Modus": "Tryb",
@@ -2198,7 +2204,8 @@ VBM_ORDBOK("pl", {
         "Takten varer {n} firedeler, så taktarten er {takt}.": function(v){ var n = v.n, f = n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14); return 'Takt trwa ' + n + (f ? ' ćwierćnuty' : ' ćwierćnut') + ', więc metrum to ' + v.takt + '.'; },
         "Takten varer {n} åttendeler, så taktarten er {takt}.": function(v){ var n = v.n, f = n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14); return 'Takt trwa ' + n + (f ? ' ósemki' : ' ósemek') + ', więc metrum to ' + v.takt + '.'; },
         "åttendelstriol": "triola ósemkowa",
-        "firedelstriol": "triola ćwierćnutowa"
+        "firedelstriol": "triola ćwierćnutowa",
+        "Riktig svar": "Poprawna odpowiedź"
       }
   }
 });

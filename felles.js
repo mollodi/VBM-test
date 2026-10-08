@@ -422,7 +422,7 @@
      Plassen over notelinjen er alltid satt av (fast minstehøyde), så ingenting flytter seg når lappen kommer.
      Bare når én tone klinger (skalaer, melodier); når en akkord klinger, vises ikke noe navn. Quizene viser ingen navn. */
   function synkFarger(svg){
-    if (root.hasAttribute('data-quiz') || svg.closest('[data-uten-navn]')) return;
+    if (svg.closest('[data-uten-navn]')) return;
     var holder = svg.parentNode, lapp = holder.querySelector(':scope > .tn-knapp');
     if (!lapp) { lapp = document.createElement('span'); lapp.className = 'tn-knapp tn-tom'; lapp.setAttribute('aria-hidden', 'true'); holder.appendChild(lapp); }
     var klinger = {}, liste = [];
@@ -442,7 +442,15 @@
   function plassSjekk(holder){
     var lapp = holder.querySelector(':scope > .tn-knapp');
     if (!lapp) { lapp = document.createElement('span'); lapp.className = 'tn-knapp tn-tom'; lapp.setAttribute('aria-hidden', 'true'); lapp.textContent = 'Giss'; holder.appendChild(lapp); }
-    holder.classList.remove('tn-plass');
+    holder.classList.remove('tn-plass'); lapp.style.bottom = '';
+    /* Ligger streken under .card-head eller over .noter-blokk der lappen ville stått, flyttes lappen rett over streken */
+    var h = holder.getBoundingClientRect(), l0 = lapp.getBoundingClientRect(), kort0 = holder.closest('article, section, .card') || holder.parentNode, strek = null;
+    [].forEach.call(kort0.querySelectorAll('.card-head, .noter-blokk'), function(e){
+      if (e.contains(holder) && !e.classList.contains('noter-blokk')) return;
+      var r = e.getBoundingClientRect(), y = e.classList.contains('card-head') ? r.bottom : r.top;
+      if (y <= h.top + 1 && y >= l0.top - 2 && (strek === null || y > strek)) strek = y;
+    });
+    if (strek !== null) lapp.style.bottom = 'calc(100% + ' + Math.round(h.top - strek + 6) + 'px)';
     var a = lapp.getBoundingClientRect(), kort = holder.closest('article, section, .card, .rytme-eks') || holder.parentNode, kolliderer = false;
     var w = document.createTreeWalker(kort, NodeFilter.SHOW_TEXT), n;
     while (!kolliderer && (n = w.nextNode())) {
@@ -461,6 +469,16 @@
     clearTimeout(plassTimer);
     plassTimer = setTimeout(function(){ [].forEach.call(document.querySelectorAll('.har-tn'), plassSjekk); }, 200);
   });
+  /* Felles hjelper for sidene: farger notene med data-i i et notebilde mens de klinger.
+     Brukes som vedToner i VBM_LYD_SPILL: VBM_FARG(notebilde) gir en funksjon som tar indeksene som klinger. */
+  window.VBM_FARG = function(holder){
+    return function(idx){
+      var svg = typeof holder === 'function' ? holder() : (holder && (holder.tagName === 'svg' ? holder : holder.querySelector('svg')));
+      if (!svg) return;
+      [].forEach.call(svg.querySelectorAll('.spilles'), function(x){ x.classList.remove('spilles'); });
+      (idx || []).forEach(function(i){ [].forEach.call(svg.querySelectorAll('[data-i="' + i + '"]'), function(x){ x.classList.add('spilles'); }); });
+    };
+  };
   function tonefarger(rot){
     if (!TONEFARGER || !rot || rot.nodeType !== 1) return;
     var quiz = root.hasAttribute('data-quiz');
@@ -469,7 +487,7 @@
       if (!svg.querySelector('[data-f]') || svg.getAttribute('data-tn')) return;
       svg.setAttribute('data-tn', '1');
       /* data-uten-navn: siden viser navnet selv (Notelesing), så bare fargen brukes */
-      if (!quiz && !svg.closest('[data-uten-navn]')) { svg.parentNode.classList.add('har-tn'); plassSjekk(svg.parentNode); }
+      if (!svg.closest('[data-uten-navn]')) { svg.parentNode.classList.add('har-tn'); plassSjekk(svg.parentNode); }
       new MutationObserver(function(){ synkFarger(svg); }).observe(svg, { attributes: true, subtree: true, attributeFilter: ['class'] });
     });
   }
@@ -477,8 +495,12 @@
   /* ==================== 12. Innstillinger ====================
      Tannhjulet i menylinjen: Farger eller Svart-hvitt (for fargeblinde og for deg med kromestesi).
      Valget gjelder hele nettstedet og huskes. Flere innstillinger kommer her senere. */
-  var VISNING = 'vbm-visning';
-  function brukVisning(){ var v = ''; try { v = localStorage.getItem(VISNING) || ''; } catch(e){} root.classList.toggle('sh', v === 'sh'); return v; }
+  var VISNING = 'vbm-visning', TEMPO = 'vbm-tempo';
+  /* Tempo for hele nettstedet: «raskt» (standard), «middels» eller «sakte». Rytmesidene bruker 100, 80 og 60 slag i minuttet. */
+  function tempoValg(){ var v = ''; try { v = localStorage.getItem(TEMPO) || ''; } catch(e){} return v === 'sakte' || v === 'middels' ? v : 'raskt'; }
+  window.VBM_TEMPO = tempoValg;
+  window.VBM_TEMPO_BPM = function(){ return { raskt: 100, middels: 80, sakte: 60 }[tempoValg()]; };
+  function brukVisning(){ var v = ''; try { v = localStorage.getItem(VISNING) || ''; } catch(e){} root.classList.toggle('vbm-sh', v === 'sh'); return v; }
   function byggInnstillinger(){
     if (!TONEFARGER) return;
     var nav = document.querySelector('.vbm-back'); if (!nav || nav.querySelector('.vbm-inst-knapp')) return;
@@ -489,14 +511,26 @@
     panel.innerHTML = '<p class="vbm-meny-tittel">' + T('Visning') + '</p>'
       + '<div class="vbm-pille vbm-inst-valg" role="group" aria-label="' + T('Visning') + '">'
       + '<button type="button" data-visning=""><span>' + T('Farger') + '</span></button><button type="button" data-visning="sh"><span>' + T('Svart-hvitt') + '</span></button></div>'
-      + '<p class="vbm-inst-tekst">' + T('Svart-hvitt er for deg som er fargeblind, eller som har kromestesi og ser egne farger når du hører toner. Notene og navnene vises da i svart, hvitt og grått, på hele nettstedet.') + '</p>';
+      + '<p class="vbm-inst-tekst">' + T('Svart-hvitt er for deg som er fargeblind, eller som har kromestesi og ser egne farger når du hører toner. Notene vises da uten farger, og tonen som spilles får en kant i stedet, på hele nettstedet.') + '</p>'
+      + '<p class="vbm-meny-tittel">' + T('Tempo') + '</p>'
+      + '<div class="vbm-pille vbm-inst-valg" role="group" aria-label="' + T('Tempo') + '">'
+      + '<button type="button" data-tempo-valg="sakte"><span>' + T('Sakte') + '</span></button><button type="button" data-tempo-valg="middels"><span>' + T('Middels') + '</span></button><button type="button" data-tempo-valg="raskt"><span>' + T('Raskt') + '</span></button></div>'
+      + '<p class="vbm-inst-tekst">' + T('Gjelder alt som spilles på nettstedet: skalaer, akkorder, intervaller og rytmer.') + '</p>';
     var meny = nav.querySelector('.vbm-meny-knapp');
     nav.insertBefore(b, meny ? meny.nextSibling : nav.firstChild);
     nav.appendChild(panel);
-    function vis(){ var v = brukVisning(); [].forEach.call(panel.querySelectorAll('[data-visning]'), function(k){ k.setAttribute('aria-pressed', k.getAttribute('data-visning') === v ? 'true' : 'false'); }); }
+    function vis(){
+      var v = brukVisning(), t = tempoValg();
+      [].forEach.call(panel.querySelectorAll('[data-visning]'), function(k){ k.setAttribute('aria-pressed', k.getAttribute('data-visning') === v ? 'true' : 'false'); });
+      [].forEach.call(panel.querySelectorAll('[data-tempo-valg]'), function(k){ k.setAttribute('aria-pressed', k.getAttribute('data-tempo-valg') === t ? 'true' : 'false'); });
+    }
     panel.addEventListener('click', function(e){
-      var k = e.target.closest && e.target.closest('[data-visning]'); if (!k) return;
-      try { localStorage.setItem(VISNING, k.getAttribute('data-visning')); } catch(e2){}
+      var k = e.target.closest && e.target.closest('[data-visning], [data-tempo-valg]'); if (!k) return;
+      try {
+        if (k.hasAttribute('data-visning')) localStorage.setItem(VISNING, k.getAttribute('data-visning'));
+        else localStorage.setItem(TEMPO, k.getAttribute('data-tempo-valg'));
+      } catch(e2){}
+      if (window.VBM_LYD_STOPP) window.VBM_LYD_STOPP();
       vis();
     });
     b.addEventListener('click', function(){

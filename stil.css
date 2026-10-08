@@ -1359,6 +1359,8 @@ html:where([data-side="index.html"]) {
 :root:where([data-side="quiz-notelesing.html"]) { --vbm-verk: "K7Q4-QNOT"; }
 :root:where([data-side="rytme.html"]) { --vbm-verk: "K7Q4-RTML"; }
 :root:where([data-side="quiz-rytme.html"]) { --vbm-verk: "K7Q4-QRTM"; }
+:where(html[data-side="quiz-rytme.html"]) .gj-noter { margin-top: 6px; color: var(--text-on-paper); }
+:where(html[data-side="quiz-rytme.html"]) .gjennomgang li { flex-wrap: wrap; }
 :root:where([data-stil="ovelse"]) {
   --ink: #12151A;
   --ink-soft: #1B2027;
@@ -1861,7 +1863,7 @@ html:where([data-side="index.html"]) {
 :where(html[data-side="skalaer.html"]) .formel .label { display: inline-block; min-width: 82px; margin: 0; }
 :where(html[data-side="skalaer.html"]) .noter { color: var(--text-on-paper); margin: 8px 0 10px; }
 :where(html[data-side="skalaer.html"]) .noter svg { display: block; width: 100%; max-width: 460px; height: auto; }
-:where(html[data-side="skalaer.html"]) .noter .kjenne { fill: var(--brass); }
+:where(html[data-side="skalaer.html"]) .noter .kjenne { fill: transparent; stroke: currentColor; stroke-width: 2px; }   /* kjennetegnende tone: hul note, fargen betyr tonehøyde */
 :where(html[data-side="skalaer.html"]) .noter .spilles, :where(html[data-side="kvintsirkelen.html"]) .noter .spilles { fill: var(--green-dk); stroke: var(--green-dk); stroke-width: 2.5; }
 :where(html[data-side="skalaer.html"]) .to-noter { display: grid; grid-template-columns: minmax(0, 1fr); gap: 6px 18px; }
 :where(html[data-side="skalaer.html"]) .noter-blokk { border-top: 1px solid var(--rule); padding-top: 8px; margin-top: 4px; }
@@ -1880,7 +1882,7 @@ html:where([data-side="index.html"]) {
   :where(html[data-side="skalaer.html"]) .noter { color: CanvasText; }
   :where(html[data-side="skalaer.html"]) .noter svg { forced-color-adjust: none; }
   :where(html[data-side="skalaer.html"]) .noter svg line, :where(html[data-side="skalaer.html"]) .noter svg use, :where(html[data-side="skalaer.html"]) .noter svg ellipse { color: CanvasText; }
-  :where(html[data-side="skalaer.html"]) .noter .kjenne { fill: Highlight; }
+  :where(html[data-side="skalaer.html"]) .noter .kjenne { fill: transparent; stroke: CanvasText; stroke-width: 2px; }
   :where(html[data-side="skalaer.html"]) .noter .spilles, :where(html[data-side="kvintsirkelen.html"]) .noter .spilles { fill: LinkText; stroke: LinkText; stroke-width: 3; }
   :where(html[data-side="skalaer.html"]) .noter-blokk, :where(html[data-side="skalaer.html"]) .sanger li { border-color: CanvasText; }
   :where(html[data-side="skalaer.html"]) .spotify-link { border-color: LinkText; color: LinkText; }
@@ -1890,14 +1892,14 @@ html:where([data-side="index.html"]) {
 /* ---------- Bare Skalaquiz (quiz-skalaer.html) ---------- */
 :where(html[data-side="quiz-skalaer.html"]) #ov-bilde, :where(html[data-side="quiz-skalaer.html"]) #prove-bilde { border-top: none; padding-top: 0; margin: 0 0 12px; }
 :where(html[data-side="quiz-skalaer.html"]) .noter svg { max-width: 460px; margin: 0; }
-:where(html[data-side="quiz-skalaer.html"]) .noter .kjenne { fill: var(--brass); }
+:where(html[data-side="quiz-skalaer.html"]) .noter .kjenne { fill: transparent; stroke: currentColor; stroke-width: 2px; }   /* kjennetegnende tone: hul note, fargen betyr tonehøyde */
 :where(html[data-side="quiz-skalaer.html"]) .prove-sporsmal {
   font-family: Charter, "Iowan Old Style", "Palatino Linotype", Georgia, serif;
   font-size: 18px; font-weight: 700; margin: 0 0 12px;
 }
 @media (forced-colors: active) {
   :where(html[data-side="quiz-skalaer.html"]) .noter svg { forced-color-adjust: none; color: CanvasText; }
-  :where(html[data-side="quiz-skalaer.html"]) .noter .kjenne { fill: Highlight; }
+  :where(html[data-side="quiz-skalaer.html"]) .noter .kjenne { fill: transparent; stroke: CanvasText; stroke-width: 2px; }
 }
 
 
@@ -2750,8 +2752,8 @@ html.vbm-tonefarger .tn-knapp[data-f="violet-lt"] { --farge: var(--nf-violet-lt)
 /* ---------- Svart-hvitt (fargeblinde og kromestesi): bare svart eller hvitt og en gråtone ---------- */
 /* Svart-hvitt: ingen grått. Alt følger sidens blekk (svart på lys bakgrunn, hvitt på mørk).
    Tonen som spilles blir en hul note med tydelig kant, og navnelappen får kant i samme blekk. */
-html.vbm-tonefarger.sh [data-f].spilles { fill: transparent !important; stroke: currentColor !important; stroke-width: 2.2px; }
-html.vbm-tonefarger.sh .tn-knapp { background: transparent !important; border: 2.5px solid currentColor !important; color: currentColor !important; }
+html.vbm-tonefarger.vbm-sh [data-f].spilles { fill: transparent !important; stroke: currentColor !important; stroke-width: 2.2px; }
+html.vbm-tonefarger.vbm-sh .tn-knapp { background: transparent !important; border: 2.5px solid currentColor !important; color: currentColor !important; }
 @media (forced-colors: active) {
   html.vbm-tonefarger .tn-knapp { forced-color-adjust: none; background: Highlight !important; color: HighlightText !important; border-color: Highlight !important; }
   html.vbm-tonefarger [data-f].spilles { fill: Highlight !important; stroke: Highlight !important; }
@@ -2770,9 +2772,47 @@ html.vbm-tonefarger.sh .tn-knapp { background: transparent !important; border: 2
 .vbm-inst-valg { display: inline-flex; margin: 2px 0 8px; }
 .vbm-inst-valg button { padding: 7px 14px; font-weight: 600; }
 .vbm-inst-valg button + button { border-left: 1px solid currentColor; }
-.vbm-inst-tekst { margin: 0; max-width: 60ch; font: 14px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; opacity: .85; }
+.vbm-inst-tekst { margin: 0 0 12px; max-width: 60ch; font: 14px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; opacity: .85; }
 @media (max-width: 520px) {
   .vbm-back .vbm-inst-knapp { padding: 7px 9px; font-size: 13px; }
   .vbm-back .vbm-inst-knapp span { display: none; }   /* bare tannhjulet på mobil, så linjen holder én rad */
 }
 @media (forced-colors: active) { .vbm-back .vbm-inst-knapp { border-color: CanvasText; color: LinkText; } }
+
+/* ---------- Notelesing: valgt tangent og navn i tonens farge ---------- */
+:where(html[data-side="notelesing.html"]) .tangent.valgt[data-f="red"], :where(html[data-side="notelesing.html"]) .tn-navn[data-f="red"] { --farge: var(--nf-red); --tekst: var(--nt-red); }
+:where(html[data-side="notelesing.html"]) .tangent.valgt[data-f="red-dk"], :where(html[data-side="notelesing.html"]) .tn-navn[data-f="red-dk"] { --farge: var(--nf-red-dk); --tekst: var(--nt-red-dk); }
+:where(html[data-side="notelesing.html"]) .tangent.valgt[data-f="red-lt"], :where(html[data-side="notelesing.html"]) .tn-navn[data-f="red-lt"] { --farge: var(--nf-red-lt); --tekst: var(--nt-red-lt); }
+:where(html[data-side="notelesing.html"]) .tangent.valgt[data-f="orange"], :where(html[data-side="notelesing.html"]) .tn-navn[data-f="orange"] { --farge: var(--nf-orange); --tekst: var(--nt-orange); }
+:where(html[data-side="notelesing.html"]) .tangent.valgt[data-f="orange-dk"], :where(html[data-side="notelesing.html"]) .tn-navn[data-f="orange-dk"] { --farge: var(--nf-orange-dk); --tekst: var(--nt-orange-dk); }
+:where(html[data-side="notelesing.html"]) .tangent.valgt[data-f="orange-lt"], :where(html[data-side="notelesing.html"]) .tn-navn[data-f="orange-lt"] { --farge: var(--nf-orange-lt); --tekst: var(--nt-orange-lt); }
+:where(html[data-side="notelesing.html"]) .tangent.valgt[data-f="yellow"], :where(html[data-side="notelesing.html"]) .tn-navn[data-f="yellow"] { --farge: var(--nf-yellow); --tekst: var(--nt-yellow); }
+:where(html[data-side="notelesing.html"]) .tangent.valgt[data-f="yellow-dk"], :where(html[data-side="notelesing.html"]) .tn-navn[data-f="yellow-dk"] { --farge: var(--nf-yellow-dk); --tekst: var(--nt-yellow-dk); }
+:where(html[data-side="notelesing.html"]) .tangent.valgt[data-f="yellow-lt"], :where(html[data-side="notelesing.html"]) .tn-navn[data-f="yellow-lt"] { --farge: var(--nf-yellow-lt); --tekst: var(--nt-yellow-lt); }
+:where(html[data-side="notelesing.html"]) .tangent.valgt[data-f="green"], :where(html[data-side="notelesing.html"]) .tn-navn[data-f="green"] { --farge: var(--nf-green); --tekst: var(--nt-green); }
+:where(html[data-side="notelesing.html"]) .tangent.valgt[data-f="green-dk"], :where(html[data-side="notelesing.html"]) .tn-navn[data-f="green-dk"] { --farge: var(--nf-green-dk); --tekst: var(--nt-green-dk); }
+:where(html[data-side="notelesing.html"]) .tangent.valgt[data-f="green-lt"], :where(html[data-side="notelesing.html"]) .tn-navn[data-f="green-lt"] { --farge: var(--nf-green-lt); --tekst: var(--nt-green-lt); }
+:where(html[data-side="notelesing.html"]) .tangent.valgt[data-f="blue"], :where(html[data-side="notelesing.html"]) .tn-navn[data-f="blue"] { --farge: var(--nf-blue); --tekst: var(--nt-blue); }
+:where(html[data-side="notelesing.html"]) .tangent.valgt[data-f="blue-dk"], :where(html[data-side="notelesing.html"]) .tn-navn[data-f="blue-dk"] { --farge: var(--nf-blue-dk); --tekst: var(--nt-blue-dk); }
+:where(html[data-side="notelesing.html"]) .tangent.valgt[data-f="blue-lt"], :where(html[data-side="notelesing.html"]) .tn-navn[data-f="blue-lt"] { --farge: var(--nf-blue-lt); --tekst: var(--nt-blue-lt); }
+:where(html[data-side="notelesing.html"]) .tangent.valgt[data-f="indigo"], :where(html[data-side="notelesing.html"]) .tn-navn[data-f="indigo"] { --farge: var(--nf-indigo); --tekst: var(--nt-indigo); }
+:where(html[data-side="notelesing.html"]) .tangent.valgt[data-f="indigo-dk"], :where(html[data-side="notelesing.html"]) .tn-navn[data-f="indigo-dk"] { --farge: var(--nf-indigo-dk); --tekst: var(--nt-indigo-dk); }
+:where(html[data-side="notelesing.html"]) .tangent.valgt[data-f="indigo-lt"], :where(html[data-side="notelesing.html"]) .tn-navn[data-f="indigo-lt"] { --farge: var(--nf-indigo-lt); --tekst: var(--nt-indigo-lt); }
+:where(html[data-side="notelesing.html"]) .tangent.valgt[data-f="violet"], :where(html[data-side="notelesing.html"]) .tn-navn[data-f="violet"] { --farge: var(--nf-violet); --tekst: var(--nt-violet); }
+:where(html[data-side="notelesing.html"]) .tangent.valgt[data-f="violet-dk"], :where(html[data-side="notelesing.html"]) .tn-navn[data-f="violet-dk"] { --farge: var(--nf-violet-dk); --tekst: var(--nt-violet-dk); }
+:where(html[data-side="notelesing.html"]) .tangent.valgt[data-f="violet-lt"], :where(html[data-side="notelesing.html"]) .tn-navn[data-f="violet-lt"] { --farge: var(--nf-violet-lt); --tekst: var(--nt-violet-lt); }
+:where(html[data-side="notelesing.html"]) .tangent.valgt { fill: var(--farge, var(--brass)); }
+:where(html[data-side="notelesing.html"]) .tn-navn {
+  display: inline-flex; align-items: center; justify-content: center; min-height: 46px; min-width: 76px; padding: 0 20px; box-sizing: border-box;
+  border-radius: 999px; background: var(--farge); color: var(--tekst); border: 1.5px solid var(--farge);
+  font: 700 20px/1 -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; vertical-align: middle;
+}
+:where(html[data-side="notelesing.html"]) .tn-oktav { margin-left: 6px; }
+:where(html[data-side="notelesing.html"]) .tonenavn { display: flex; align-items: center; min-height: 46px; }
+/* Svart-hvitt: tangenten ser trykket ned (kraftig kant), navnet får kant i stedet for farge */
+html.vbm-tonefarger.vbm-sh[data-side="notelesing.html"] .tangent.hvit.valgt { fill: #FFFDF8; stroke: #1E1E1A; stroke-width: 3.5; }
+html.vbm-tonefarger.vbm-sh[data-side="notelesing.html"] .tangent.svart.valgt { fill: #FFFDF8; stroke: #1E1E1A; stroke-width: 2.5; }   /* trykket svart tangent: hvit med mørk kant, tydelig uten farger */
+html.vbm-tonefarger.vbm-sh[data-side="notelesing.html"] .tn-navn { background: transparent; color: currentColor; border: 2.5px solid currentColor; }
+@media (forced-colors: active) {
+  :where(html[data-side="notelesing.html"]) .tn-navn { forced-color-adjust: none; background: Highlight; color: HighlightText; border-color: Highlight; }
+}

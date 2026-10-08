@@ -381,6 +381,28 @@ window.VBM_SKALAER = (function(){
     return { helm: helm, sci: sci, oktav: OKTAVNAVN[o] || '' };
   }
 
+  /* ---------- Notebilder fra data ----------
+     <div class="vbm-notebilde" data-noter='[[b, f, oktav], ...]' data-form="melodi|akkord"> tegnes med den
+     felles notekoden: «melodi» side om side (som skalaer og intervaller), «akkord» over hverandre.
+     Samme målestokk som notelinjene ellers, og bare mindre på smale skjermer. */
+  function maalestokk(svg, kutt){
+    return svg.replace(/viewBox="([\d.-]+) ([\d.-]+) ([\d.]+) ([\d.]+)"/, function(m, x, y, w, h){
+      return 'style="width:' + Math.round(+w * 1.15) + 'px;max-width:100%;height:auto" viewBox="' + x + ' ' + y + ' ' + w + ' ' + (+h - (kutt || 0)) + '"';
+    });
+  }
+  function tegnNotebilder(rot){
+    [].forEach.call((rot || document).querySelectorAll('.vbm-notebilde[data-noter]:not([data-tegnet])'), function(el){
+      var liste = JSON.parse(el.getAttribute('data-noter')).map(function(x){ return { b: x[0], f: x[1], oktav: x[2] }; });
+      var navn = liste.map(function(n){ return K.tone(n); }).join(', ');
+      el.innerHTML = el.getAttribute('data-form') === 'akkord'
+        ? maalestokk(akkordrekke([{ noter: liste, tall: [] }], navn), 40)
+        : maalestokk(noter(liste, 0, [], ''), 0);
+      el.setAttribute('data-tegnet', '1');
+    });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', function(){ tegnNotebilder(); });
+  else tegnNotebilder();
+
   /* Lyd: opp og ned, hver tone for seg. */
   function lyd(liste, ned){
     var opp = liste.map(midi), vei = ned ? ned.map(midi) : opp;
@@ -388,7 +410,7 @@ window.VBM_SKALAER = (function(){
   }
 
   var DUR_SKALA = { trinn: DUR };
-  return { GRUPPER: GRUPPER, ALLE: ALLE, GRUNN: GRUNN, DUR: DUR, toner: toner, modusIDur: modusIDur, rotFor: rotFor, fargeFor: fargeFor, REGNBUE: REGNBUE, akkordrekke: akkordrekke, storSats: storSats, enStav: enStav, NOKLER: NOKLER, yNokkel: yNokkel, linjeomrade: linjeområde, oktavInfo: oktavInfo, OKTAVNAVN: OKTAVNAVN,
+  return { GRUPPER: GRUPPER, ALLE: ALLE, GRUNN: GRUNN, DUR: DUR, toner: toner, modusIDur: modusIDur, rotFor: rotFor, fargeFor: fargeFor, tegnNotebilder: tegnNotebilder, REGNBUE: REGNBUE, akkordrekke: akkordrekke, storSats: storSats, enStav: enStav, NOKLER: NOKLER, yNokkel: yNokkel, linjeomrade: linjeområde, oktavInfo: oktavInfo, OKTAVNAVN: OKTAVNAVN,
            durRot: function(nr){ return rotFor(nr, DUR_SKALA); },
            fortegnFor: fortegnFor, noter: noter, lyd: lyd, midi: midi, T: T };
 })();
