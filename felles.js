@@ -656,13 +656,7 @@
   /* ==================== 12. Innstillinger ====================
      Tannhjulet i menylinjen: Farger eller Svart-hvitt (for fargeblinde og for deg med kromestesi).
      Valget gjelder hele nettstedet og huskes. Flere innstillinger kommer her senere. */
-  var VISNING = 'vbm-visning', TEMPO = 'vbm-tempo', TEMA = 'vbm-tema';
-  /* Utseende: «lys», «mork» eller automatisk (følger telefonen eller datamaskinen). Settes før siden tegnes. */
-  function temaValg(){ var v = ''; try { v = localStorage.getItem(TEMA) || ''; } catch(e){} return v === 'lys' || v === 'mork' ? v : ''; }
-  var morkMedie = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
-  function brukTema(){ var v = temaValg(); root.setAttribute('data-tema', v || (morkMedie && morkMedie.matches ? 'mork' : 'lys')); }
-  brukTema();
-  if (morkMedie && morkMedie.addEventListener) morkMedie.addEventListener('change', function(){ if (!temaValg()) brukTema(); });
+  var VISNING = 'vbm-visning', TEMPO = 'vbm-tempo';
   /* Tempo for hele nettstedet: «raskt» (standard), «middels» eller «sakte». Rytmesidene bruker 100, 80 og 60 slag i minuttet. */
   function tempoValg(){ var v = ''; try { v = localStorage.getItem(TEMPO) || ''; } catch(e){} return v === 'sakte' || v === 'middels' ? v : 'raskt'; }
   window.VBM_TEMPO = tempoValg;
@@ -679,10 +673,6 @@
       + '<div class="vbm-pille vbm-inst-valg" role="group" aria-label="' + T('Visning') + '">'
       + '<button type="button" data-visning=""><span>' + T('Farger') + '</span></button><button type="button" data-visning="sh"><span>' + T('Svart-hvitt') + '</span></button></div>'
       + '<p class="vbm-inst-tekst">' + T('Svart-hvitt er for deg som er fargeblind. Har du synestesi og ser egne farger når du hører toner, bør du ikke slå det på: bruk gaven din! For alle andre er fargene også nyttige, fordi det hjelper å knytte bestemte toner til farger.') + '</p>'
-      + '<p class="vbm-meny-tittel">' + T('Utseende') + '</p>'
-      + '<div class="vbm-pille vbm-inst-valg" role="group" aria-label="' + T('Utseende') + '">'
-      + '<button type="button" data-tema-valg=""><span>' + T('Automatisk') + '</span></button><button type="button" data-tema-valg="lys"><span>' + T('Lys') + '</span></button><button type="button" data-tema-valg="mork"><span>' + T('Mørk') + '</span></button></div>'
-      + '<p class="vbm-inst-tekst">' + T('Automatisk følger innstillingen på telefonen eller datamaskinen.') + '</p>'
       + '<p class="vbm-meny-tittel">' + T('Tempo') + '</p>'
       + '<div class="vbm-pille vbm-inst-valg" role="group" aria-label="' + T('Tempo') + '">'
       + '<button type="button" data-tempo-valg="sakte"><span>' + T('Sakte') + '</span></button><button type="button" data-tempo-valg="middels"><span>' + T('Middels') + '</span></button><button type="button" data-tempo-valg="raskt"><span>' + T('Raskt') + '</span></button></div>'
@@ -698,14 +688,12 @@
       var v = brukVisning(), t = tempoValg();
       [].forEach.call(panel.querySelectorAll('[data-visning]'), function(k){ k.setAttribute('aria-pressed', k.getAttribute('data-visning') === v ? 'true' : 'false'); });
       [].forEach.call(panel.querySelectorAll('[data-tempo-valg]'), function(k){ k.setAttribute('aria-pressed', k.getAttribute('data-tempo-valg') === t ? 'true' : 'false'); });
-      [].forEach.call(panel.querySelectorAll('[data-tema-valg]'), function(k){ k.setAttribute('aria-pressed', k.getAttribute('data-tema-valg') === temaValg() ? 'true' : 'false'); });
       [].forEach.call(panel.querySelectorAll('[data-piano-valg]'), function(k){ k.setAttribute('aria-pressed', (k.getAttribute('data-piano-valg') === '1') === pianoPaa() ? 'true' : 'false'); });
     }
     panel.addEventListener('click', function(e){
-      var k = e.target.closest && e.target.closest('[data-visning], [data-tempo-valg], [data-piano-valg], [data-tema-valg]'); if (!k) return;
+      var k = e.target.closest && e.target.closest('[data-visning], [data-tempo-valg], [data-piano-valg]'); if (!k) return;
       try {
-        if (k.hasAttribute('data-tema-valg')) { localStorage.setItem(TEMA, k.getAttribute('data-tema-valg')); brukTema(); }
-        else if (k.hasAttribute('data-visning')) localStorage.setItem(VISNING, k.getAttribute('data-visning'));
+        if (k.hasAttribute('data-visning')) localStorage.setItem(VISNING, k.getAttribute('data-visning'));
         else if (k.hasAttribute('data-piano-valg')) { localStorage.setItem(PIANO, k.getAttribute('data-piano-valg')); allePianoer(); }
         else localStorage.setItem(TEMPO, k.getAttribute('data-tempo-valg'));
       } catch(e2){}
