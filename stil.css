@@ -679,7 +679,7 @@ html.sh .legend, html.sh .cover-band{ display:none !important; }
   max-width: 560px;
   font-size: 16.5px;
   line-height: 1.6;
-  color: rgba(246,241,231,0.72);
+  color: color-mix(in srgb, var(--paper) 72%, transparent);
   margin: 0 0 30px;
 }
 :where(html[data-stil="mork"]) .hero-staff {
@@ -691,7 +691,7 @@ html.sh .legend, html.sh .cover-band{ display:none !important; }
 :where(html[data-side="intervaller-og-sanger.html"]) .hero-staff .staff-caption {
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   font-size: 12px;
-  color: rgba(246,241,231,0.55);
+  color: color-mix(in srgb, var(--paper) 55%, transparent);
   max-width: 280px;
   line-height: 1.5;
 }
@@ -712,7 +712,7 @@ html.sh .legend, html.sh .cover-band{ display:none !important; }
 :where(html[data-side="lytteguide-septim-og-nonakkorder.html"]) .hero-staff .staff-caption {
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   font-size: 12px;
-  color: rgba(246,241,231,0.55);
+  color: color-mix(in srgb, var(--paper) 55%, transparent);
   max-width: 300px;
   line-height: 1.5;
 }
@@ -754,7 +754,7 @@ html.sh .legend, html.sh .cover-band{ display:none !important; }
   font-size: 12.5px;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: rgba(246,241,231,0.55);
+  color: color-mix(in srgb, var(--paper) 55%, transparent);
   padding: 9px 16px;
   border-radius: 7px;
   display: inline-block;
@@ -765,7 +765,7 @@ html.sh .legend, html.sh .cover-band{ display:none !important; }
   font-size: 10.5px;
   letter-spacing: 0.02em;
   text-transform: uppercase;
-  color: rgba(246,241,231,0.55);
+  color: color-mix(in srgb, var(--paper) 55%, transparent);
   padding: 8px 10px;
   border-radius: 7px;
   display: inline-block;
@@ -800,7 +800,7 @@ html.sh .legend, html.sh .cover-band{ display:none !important; }
   padding: 6px 11px;
   border-radius: 999px;
   border: 1px solid var(--rule-dark);
-  color: rgba(246,241,231,0.65);
+  color: color-mix(in srgb, var(--paper) 65%, transparent);
   display: inline-block;
   pointer-events: none;
   white-space: nowrap;
@@ -813,13 +813,13 @@ html.sh .legend, html.sh .cover-band{ display:none !important; }
 :where(html[data-side="intervaller-og-sanger.html"]) .hint {
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   font-size: 11.5px;
-  color: rgba(246,241,231,0.55);
+  color: color-mix(in srgb, var(--paper) 55%, transparent);
   margin: 10px 0 0;
 }
 :where(html[data-side="lytteguide-septim-og-nonakkorder.html"]) .hint {
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   font-size: 11.5px;
-  color: rgba(246,241,231,0.55);
+  color: color-mix(in srgb, var(--paper) 55%, transparent);
   margin: 10px 0 0;
   text-align: center;
 }
@@ -879,7 +879,7 @@ html.sh .legend, html.sh .cover-band{ display:none !important; }
   display: none;
   text-align: center;
   padding: 60px 20px;
-  color: rgba(246,241,231,0.4);
+  color: color-mix(in srgb, var(--paper) 40%, transparent);
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   font-size: 13px;
 }
@@ -981,7 +981,7 @@ html.sh .legend, html.sh .cover-band{ display:none !important; }
   padding: 0 28px 60px;
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   font-size: 11.5px;
-  color: rgba(246,241,231,0.6);
+  color: color-mix(in srgb, var(--paper) 60%, transparent);
   line-height: 1.7;
 }
 :where(html[data-stil="mork"]) footer .vbm-signatur {
@@ -1210,7 +1210,7 @@ html:where([data-side="index.html"]) {
   max-width: 560px;
   font-size: 16px;
   line-height: 1.6;
-  color: rgba(246,241,231,.72);
+  color: color-mix(in srgb, var(--paper) 72%, transparent);
   margin: 0 0 20px;
 }
 :where(html[data-side="index.html"]) .grid {
@@ -1304,7 +1304,7 @@ html:where([data-side="index.html"]) {
   white-space: nowrap;
 }
 :where(html[data-side="index.html"]) .empty {
-  color: rgba(246,241,231,.72);
+  color: color-mix(in srgb, var(--paper) 72%, transparent);
   font-size: 15px;
   line-height: 1.6;
   padding-top: 44px;
@@ -1320,7 +1320,7 @@ html:where([data-side="index.html"]) {
   border-top: 1px solid var(--rule-dark);
   font-family: ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
   font-size: 12px;
-  color: rgba(246,241,231,.5);
+  color: color-mix(in srgb, var(--paper) 50%, transparent);
   display: flex;
   justify-content: space-between;
   gap: 12px;
@@ -1416,7 +1416,7 @@ html:where([data-side="index.html"]) {
   max-width: 580px;
   font-size: 16.5px;
   line-height: 1.6;
-  color: rgba(246,241,231,0.72);
+  color: color-mix(in srgb, var(--paper) 72%, transparent);
   margin: 0 0 14px;
 }
 :where(html[data-stil="ovelse"]) .hero p.lede:last-child { margin-bottom: 0; }
@@ -1624,7 +1624,7 @@ html:where([data-side="index.html"]) {
   border-top: 1px solid var(--rule-dark);
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   font-size: 12px;
-  color: rgba(246,241,231,0.5);
+  color: color-mix(in srgb, var(--paper) 50%, transparent);
   display: flex;
   justify-content: space-between;
   gap: 12px;
@@ -2897,3 +2897,58 @@ html:where([data-stil="bok"]), html:where([data-stil="bok"]) body { background: 
 :where(html[data-stil="bok"]) body > main { background: var(--bg); border-radius: 16px; padding: 36px 32px 44px; }
 @media (max-width: 600px) { :where(html[data-stil="bok"]) body > main { padding: 24px 16px 32px; } }
 @media (forced-colors: active) { :where(html[data-stil="bok"]) body > main { border: 1px solid CanvasText; } }
+
+/* Tom overskrift over notelinjen i quizer der notene står rett under spørsmålet:
+   fast plass til navnelappen, med en strek under, så lappen aldri legger seg over tekst */
+.tn-hode { height: 62px; border-bottom: 1px solid var(--rule); margin-bottom: 10px; }
+
+/* =====================================================================
+   Lys og mørk modus følger nettleseren.
+   Lys: fargene fra Akkordheftet (beige side, lyse ark, mørk skifergrå tekst).
+   Mørk: som før, men kortene er nesten hvite (#FDFEFF i stedet for #F6F1E7).
+   Menylinjen og instrumentvelgeren er like i begge.
+   ===================================================================== */
+@media (prefers-color-scheme: dark) {
+  :root:where([data-stil="ovelse"], [data-stil="mork"], [data-side="index.html"]) { --paper: #FDFEFF; }
+  :root:where([data-stil="bok"]) { --bg: #FDFEFF; }
+}
+@media (prefers-color-scheme: light) {
+  /* --paper er tekst rett på siden (mørk); kortene får fargen sin under */
+  :root:where([data-stil="ovelse"], [data-stil="mork"], [data-side="index.html"]) {
+    --paper: #22252A; --text-on-paper: #22252A; --text-muted: #5B5A54;
+    --rule: rgba(34,37,42,.16); --rule-dark: rgba(34,37,42,.16);
+    --knapp-valgt-bg: #22252A; --knapp-valgt-tekst: #F2EEE3;
+  }
+  html:where([data-stil="ovelse"], [data-stil="mork"], [data-side="index.html"], [data-stil="bok"]),
+  html:where([data-stil="ovelse"], [data-stil="mork"], [data-side="index.html"], [data-stil="bok"]) body { background: #DCD6C6 !important; }
+  :where(html[data-stil="ovelse"], html[data-stil="mork"], html[data-side="index.html"]) .card,
+  :where(html[data-side="index.html"]) .cover { background: #F2EEE3 !important; color: #22252A; }
+  :root:where([data-stil="bok"]) { --bg: #F2EEE3; }
+  :where(html[data-stil="ovelse"]) .btn[aria-pressed="true"] { color: #F2EEE3; }
+  :where(html[data-side="intervaller-og-sanger.html"]) .chip-option input:checked + span { background: #22252A; color: #F2EEE3; border-color: #22252A; }
+  /* Messing rett på den beige siden: mørkere, så teksten er lett å lese */
+  :where(html[data-stil="ovelse"], html[data-stil="mork"], html[data-side="index.html"]) .eyebrow,
+  :where(html[data-stil="ovelse"], html[data-stil="mork"], html[data-side="index.html"]) .hero h1 em,
+  :where(html[data-stil="ovelse"], html[data-stil="mork"], html[data-side="index.html"]) h2 em { color: #7A5410; }
+  :where(html[data-stil="ovelse"], html[data-stil="mork"], html[data-side="index.html"]) body { --lenke: var(--lenke-lys); }
+}
+/* Radioknappene (Oppover/Nedover og fanene i lytteguiden) ser ut som de andre knappene på nettstedet */
+:where(html[data-stil="mork"]) .tabs { background: transparent !important; border: 0 !important; padding: 0 !important; gap: 8px; display: flex; flex-wrap: wrap; }
+:where(html[data-stil="mork"]) .tab-option span {
+  font: 600 14px/1 -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif !important; letter-spacing: 0 !important; text-transform: none !important;
+  padding: 9px 16px !important; border-radius: 999px !important; border: 1.5px solid color-mix(in srgb, currentColor 45%, transparent) !important;
+  background: transparent !important; color: inherit !important; display: inline-block;
+}
+:where(html[data-stil="mork"]) .tab-option input:checked + span { background: var(--knapp-valgt-bg, var(--paper)) !important; color: var(--knapp-valgt-tekst, var(--ink)) !important; border-color: var(--knapp-valgt-bg, var(--paper)) !important; }
+:where(html[data-stil="mork"]) .tab-option input:focus-visible + span { outline: 2px solid currentColor; outline-offset: 2px; }
+@media (forced-colors: active) { :where(html[data-stil="mork"]) .tab-option input:checked + span { background: Highlight !important; color: HighlightText !important; border-color: Highlight !important; forced-color-adjust: none; } }
+@media (prefers-color-scheme: light) {
+  :where(html[data-stil="ovelse"], html[data-stil="mork"], html[data-side="index.html"]) footer,
+  :where(html[data-stil="ovelse"], html[data-stil="mork"], html[data-side="index.html"]) footer *,
+  :where(html[data-stil="ovelse"], html[data-stil="mork"], html[data-side="index.html"]) .vbm-signatur,
+  :where(html[data-stil="mork"]) .staff-caption, :where(html[data-stil="mork"]) .hint,
+  :where(html[data-side="intervaller-og-sanger.html"]) .chip-option input:not(:checked) + span { color: #4A4943 !important; }
+  :where(html[data-stil="mork"]) footer, :where(html[data-stil="mork"]) footer * { opacity: 1 !important; }
+  :where(html[data-stil="mork"]) .spotify-link { color: #4C5566 !important; border-color: rgba(76,85,102,.45) !important; }
+  :where(html[data-stil="ovelse"], html[data-stil="mork"], html[data-side="index.html"]) :where(.hero, footer, main > p) a:not(.btn) { color: #7A5410 !important; }
+}
