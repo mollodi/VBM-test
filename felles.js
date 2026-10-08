@@ -506,11 +506,11 @@
     var fra = Math.floor(Math.min.apply(null, ms) / 12) * 12, til = Math.max(Math.max.apply(null, ms), fra + 11);
     if (SVARTE.indexOf(til % 12) >= 0) til++;   // ikke slutt på en svart tangent
     var merket = {};
-    if (!root.hasAttribute('data-quiz')) noter.forEach(function(n){ merket[n.getAttribute('data-m')] = n.getAttribute('data-f'); });
+    noter.forEach(function(n){ merket[n.getAttribute('data-m')] = n.getAttribute('data-f'); });   // fargen brukes bare mens tangenten klinger
     var HV = 20, x = 0, hvite = '', svarte = '';
     for (var m = fra; m <= til; m++) {
-      var svart = SVARTE.indexOf(m % 12) >= 0, f = merket[m] ? ' data-f="' + merket[m] + '"' : '';
-      var kl = 'tn-tangent ' + (svart ? 'svart' : 'hvit') + (merket[m] ? ' merket' : '');
+      var svart = SVARTE.indexOf(m % 12) >= 0, f = merket[m] ? ' data-tf="' + merket[m] + '"' : '';   // eget navn, så notereglene aldri treffer tangentene
+      var kl = 'tn-tangent ' + (svart ? 'svart' : 'hvit');
       if (svart) svarte += '<rect class="' + kl + '"' + f + ' data-m="' + m + '" x="' + (x - 6.5) + '" y="0" width="13" height="40" rx="2"/>';
       else { hvite += '<rect class="' + kl + '"' + f + ' data-m="' + m + '" x="' + x + '" y="0" width="' + HV + '" height="64" rx="2"/>'; x += HV; }
     }
@@ -525,7 +525,7 @@
     [].forEach.call(p.querySelectorAll('.tn-tangent'), function(t){
       var m = t.getAttribute('data-m'), pa = m in klinger;
       t.classList.toggle('spilles', pa);
-      if (root.hasAttribute('data-quiz') && pa) t.setAttribute('data-f', klinger[m]);
+      if (pa) t.setAttribute('data-tf', klinger[m]);
     });
   }
   /* Trykk på en tangent: tonen spilles. Punktet fingeren traff avgjør tangenten (ikke nettleserens «justering»). */
@@ -542,6 +542,25 @@
   document.addEventListener('pointerup', pianoTrykk);
   document.addEventListener('click', pianoTrykk);
   function allePianoer(){ [].forEach.call(document.querySelectorAll('svg[data-tn]'), lagPiano); }
+  /* Notelinjer med fast målestokk (bøkene, quizene, sangsiden) forlenges til hele bredden som er ledig:
+     notene beholder størrelsen, og notelinjen går helt ut til høyre. */
+  function utvidStav(svg){
+    var b0 = parseFloat(svg.style.width); if (!b0 || svg.closest('.tn-piano')) return;
+    var vb = svg.getAttribute('viewBox').split(' ').map(Number);
+    if (!svg.hasAttribute('data-vb0')) { svg.setAttribute('data-vb0', vb[2]); svg.setAttribute('data-px0', b0); }
+    var w0 = +svg.getAttribute('data-vb0'), px0 = +svg.getAttribute('data-px0'), k = px0 / w0;
+    var ledig = svg.parentNode.clientWidth; if (!ledig) return;
+    var w = Math.max(w0, ledig / k);
+    [].forEach.call(svg.querySelectorAll('line'), function(l){
+      if (!l.hasAttribute('data-x20')) l.setAttribute('data-x20', l.getAttribute('x2'));
+      if (Math.abs(+l.getAttribute('data-x20') - (w0 - 6)) < 0.6) l.setAttribute('x2', w - 6);
+    });
+    vb[2] = w; svg.setAttribute('viewBox', vb.join(' ')); svg.style.width = Math.round(w * k) + 'px';
+  }
+  function alleStaver(){ [].forEach.call(document.querySelectorAll('svg[data-tn]'), utvidStav); }
+  var stavTimer = null;
+  window.addEventListener('resize', function(){ clearTimeout(stavTimer); stavTimer = setTimeout(alleStaver, 200); });
+  window.addEventListener('load', alleStaver);
 
   function tonefarger(rot){
     if (!TONEFARGER || !rot || rot.nodeType !== 1) return;
@@ -552,6 +571,7 @@
       svg.setAttribute('data-tn', '1');
       /* data-uten-navn: siden viser navnet selv (Notelesing), så bare fargen brukes */
       if (!svg.closest('[data-uten-navn]')) { svg.parentNode.classList.add('har-tn'); plassSjekk(svg.parentNode); }
+      utvidStav(svg);
       lagPiano(svg);
       new MutationObserver(function(){ synkFarger(svg); pianoSynk(svg); }).observe(svg, { attributes: true, subtree: true, attributeFilter: ['class'] });
     });
@@ -565,7 +585,7 @@
   function tempoValg(){ var v = ''; try { v = localStorage.getItem(TEMPO) || ''; } catch(e){} return v === 'sakte' || v === 'middels' ? v : 'raskt'; }
   window.VBM_TEMPO = tempoValg;
   window.VBM_TEMPO_BPM = function(){ return { raskt: 100, middels: 80, sakte: 60 }[tempoValg()]; };
-  function brukVisning(){ var v = ''; try { v = localStorage.getItem(VISNING) || ''; } catch(e){} root.classList.toggle('vbm-sh', v === 'sh'); return v; }
+  function brukVisning(){ var v = ''; try { v = localStorage.getItem(VISNING) || ''; } catch(e){} root.classList.toggle('vbm-sh', v === 'sh'); if (root.getAttribute('data-stil') === 'bok') root.classList.toggle('sh', v === 'sh'); return v; }
   function byggInnstillinger(){
     if (!TONEFARGER) return;
     var nav = document.querySelector('.vbm-back'); if (!nav || nav.querySelector('.vbm-inst-knapp')) return;

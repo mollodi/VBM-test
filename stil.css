@@ -2687,27 +2687,6 @@ main:focus, .sheet:focus { outline: none; }
   --nf-violet-lt: #B49AD4; --nt-violet-lt: #1E1E1A;
 }
 /* Notehodet som spilles får tonens farge */
-html.vbm-tonefarger [data-f="red"].spilles { fill: var(--nf-red) !important; stroke: var(--nf-red) !important; }
-html.vbm-tonefarger [data-f="red-dk"].spilles { fill: var(--nf-red-dk) !important; stroke: var(--nf-red-dk) !important; }
-html.vbm-tonefarger [data-f="red-lt"].spilles { fill: var(--nf-red-lt) !important; stroke: var(--nf-red-lt) !important; }
-html.vbm-tonefarger [data-f="orange"].spilles { fill: var(--nf-orange) !important; stroke: var(--nf-orange) !important; }
-html.vbm-tonefarger [data-f="orange-dk"].spilles { fill: var(--nf-orange-dk) !important; stroke: var(--nf-orange-dk) !important; }
-html.vbm-tonefarger [data-f="orange-lt"].spilles { fill: var(--nf-orange-lt) !important; stroke: var(--nf-orange-lt) !important; }
-html.vbm-tonefarger [data-f="yellow"].spilles { fill: var(--nf-yellow) !important; stroke: var(--nf-yellow) !important; }
-html.vbm-tonefarger [data-f="yellow-dk"].spilles { fill: var(--nf-yellow-dk) !important; stroke: var(--nf-yellow-dk) !important; }
-html.vbm-tonefarger [data-f="yellow-lt"].spilles { fill: var(--nf-yellow-lt) !important; stroke: var(--nf-yellow-lt) !important; }
-html.vbm-tonefarger [data-f="green"].spilles { fill: var(--nf-green) !important; stroke: var(--nf-green) !important; }
-html.vbm-tonefarger [data-f="green-dk"].spilles { fill: var(--nf-green-dk) !important; stroke: var(--nf-green-dk) !important; }
-html.vbm-tonefarger [data-f="green-lt"].spilles { fill: var(--nf-green-lt) !important; stroke: var(--nf-green-lt) !important; }
-html.vbm-tonefarger [data-f="blue"].spilles { fill: var(--nf-blue) !important; stroke: var(--nf-blue) !important; }
-html.vbm-tonefarger [data-f="blue-dk"].spilles { fill: var(--nf-blue-dk) !important; stroke: var(--nf-blue-dk) !important; }
-html.vbm-tonefarger [data-f="blue-lt"].spilles { fill: var(--nf-blue-lt) !important; stroke: var(--nf-blue-lt) !important; }
-html.vbm-tonefarger [data-f="indigo"].spilles { fill: var(--nf-indigo) !important; stroke: var(--nf-indigo) !important; }
-html.vbm-tonefarger [data-f="indigo-dk"].spilles { fill: var(--nf-indigo-dk) !important; stroke: var(--nf-indigo-dk) !important; }
-html.vbm-tonefarger [data-f="indigo-lt"].spilles { fill: var(--nf-indigo-lt) !important; stroke: var(--nf-indigo-lt) !important; }
-html.vbm-tonefarger [data-f="violet"].spilles { fill: var(--nf-violet) !important; stroke: var(--nf-violet) !important; }
-html.vbm-tonefarger [data-f="violet-dk"].spilles { fill: var(--nf-violet-dk) !important; stroke: var(--nf-violet-dk) !important; }
-html.vbm-tonefarger [data-f="violet-lt"].spilles { fill: var(--nf-violet-lt) !important; stroke: var(--nf-violet-lt) !important; }
 
 /* Navnet på tonen som klinger: en lapp med samme form som spill-knappen, rett ved siden av den.
    Lappen har tonens farge, og navnet er hvitt eller mørkt, det som synes best på fargen. */
@@ -2842,28 +2821,6 @@ html.vbm-tonefarger .vbm-notebilde[data-fast] [data-f="violet"] { fill: var(--nf
 html.vbm-tonefarger .vbm-notebilde[data-fast] [data-f="violet-dk"] { fill: var(--nf-violet-dk); }
 html.vbm-tonefarger .vbm-notebilde[data-fast] [data-f="violet-lt"] { fill: var(--nf-violet-lt); }
 html.vbm-tonefarger .vbm-notebilde[data-fast] [data-f] { stroke: #1E1E1A; stroke-width: .8px; }
-html.vbm-tonefarger .vbm-notebilde[data-fast] [data-f].spilles { stroke: currentColor !important; stroke-width: 3px !important; }
-html.vbm-tonefarger .vbm-notebilde[data-fast] [data-f="red"].spilles { fill: var(--nf-red) !important; }
-html.vbm-tonefarger .vbm-notebilde[data-fast] [data-f="red-dk"].spilles { fill: var(--nf-red-dk) !important; }
-html.vbm-tonefarger .vbm-notebilde[data-fast] [data-f="red-lt"].spilles { fill: var(--nf-red-lt) !important; }
-html.vbm-tonefarger .vbm-notebilde[data-fast] [data-f="orange"].spilles { fill: var(--nf-orange) !important; }
-html.vbm-tonefarger .vbm-notebilde[data-fast] [data-f="orange-dk"].spilles { fill: var(--nf-orange-dk) !important; }
-html.vbm-tonefarger .vbm-notebilde[data-fast] [data-f="orange-lt"].spilles { fill: var(--nf-orange-lt) !important; }
-html.vbm-tonefarger .vbm-notebilde[data-fast] [data-f="yellow"].spilles { fill: var(--nf-yellow) !important; }
-html.vbm-tonefarger .vbm-notebilde[data-fast] [data-f="yellow-dk"].spilles { fill: var(--nf-yellow-dk) !important; }
-html.vbm-tonefarger .vbm-notebilde[data-fast] [data-f="yellow-lt"].spilles { fill: var(--nf-yellow-lt) !important; }
-html.vbm-tonefarger .vbm-notebilde[data-fast] [data-f="green"].spilles { fill: var(--nf-green) !important; }
-html.vbm-tonefarger .vbm-notebilde[data-fast] [data-f="green-dk"].spilles { fill: var(--nf-green-dk) !important; }
-html.vbm-tonefarger .vbm-notebilde[data-fast] [data-f="green-lt"].spilles { fill: var(--nf-green-lt) !important; }
-html.vbm-tonefarger .vbm-notebilde[data-fast] [data-f="blue"].spilles { fill: var(--nf-blue) !important; }
-html.vbm-tonefarger .vbm-notebilde[data-fast] [data-f="blue-dk"].spilles { fill: var(--nf-blue-dk) !important; }
-html.vbm-tonefarger .vbm-notebilde[data-fast] [data-f="blue-lt"].spilles { fill: var(--nf-blue-lt) !important; }
-html.vbm-tonefarger .vbm-notebilde[data-fast] [data-f="indigo"].spilles { fill: var(--nf-indigo) !important; }
-html.vbm-tonefarger .vbm-notebilde[data-fast] [data-f="indigo-dk"].spilles { fill: var(--nf-indigo-dk) !important; }
-html.vbm-tonefarger .vbm-notebilde[data-fast] [data-f="indigo-lt"].spilles { fill: var(--nf-indigo-lt) !important; }
-html.vbm-tonefarger .vbm-notebilde[data-fast] [data-f="violet"].spilles { fill: var(--nf-violet) !important; }
-html.vbm-tonefarger .vbm-notebilde[data-fast] [data-f="violet-dk"].spilles { fill: var(--nf-violet-dk) !important; }
-html.vbm-tonefarger .vbm-notebilde[data-fast] [data-f="violet-lt"].spilles { fill: var(--nf-violet-lt) !important; }
 html.vbm-tonefarger.vbm-sh .vbm-notebilde[data-fast] [data-f] { fill: currentColor; stroke: none; }
 html.vbm-tonefarger.vbm-sh .vbm-notebilde[data-fast] [data-f].spilles { fill: transparent !important; stroke: currentColor !important; stroke-width: 2.2px !important; }
 .vbm-notebilde { color: var(--ink, currentColor); }
@@ -2873,39 +2830,43 @@ html.vbm-tonefarger.vbm-sh .vbm-notebilde[data-fast] [data-f].spilles { fill: tr
 }
 
 /* ---------- Piano under notelinjene (Innstillinger) ---------- */
-.tn-piano { margin: 6px 0 2px; touch-action: manipulation; -webkit-tap-highlight-color: transparent; user-select: none; -webkit-user-select: none; }
-.tn-piano svg { display: block; max-width: 100%; height: auto; }
+.tn-piano { margin: 8px 0 16px; touch-action: manipulation; -webkit-tap-highlight-color: transparent; user-select: none; -webkit-user-select: none; }
+.tn-piano svg { display: block; width: 100% !important; max-width: 100%; height: auto; }
 .tn-tangent { cursor: pointer; stroke: #1E1E1A; stroke-width: 1; }
 .tn-tangent.hvit { fill: #FFFDF8; }
 .tn-tangent.svart { fill: #1E1E1A; }
-html.vbm-tonefarger .tn-tangent[data-f="red"].merket, html.vbm-tonefarger .tn-tangent[data-f="red"].spilles { fill: var(--nf-red); }
-html.vbm-tonefarger .tn-tangent[data-f="red-dk"].merket, html.vbm-tonefarger .tn-tangent[data-f="red-dk"].spilles { fill: var(--nf-red-dk); }
-html.vbm-tonefarger .tn-tangent[data-f="red-lt"].merket, html.vbm-tonefarger .tn-tangent[data-f="red-lt"].spilles { fill: var(--nf-red-lt); }
-html.vbm-tonefarger .tn-tangent[data-f="orange"].merket, html.vbm-tonefarger .tn-tangent[data-f="orange"].spilles { fill: var(--nf-orange); }
-html.vbm-tonefarger .tn-tangent[data-f="orange-dk"].merket, html.vbm-tonefarger .tn-tangent[data-f="orange-dk"].spilles { fill: var(--nf-orange-dk); }
-html.vbm-tonefarger .tn-tangent[data-f="orange-lt"].merket, html.vbm-tonefarger .tn-tangent[data-f="orange-lt"].spilles { fill: var(--nf-orange-lt); }
-html.vbm-tonefarger .tn-tangent[data-f="yellow"].merket, html.vbm-tonefarger .tn-tangent[data-f="yellow"].spilles { fill: var(--nf-yellow); }
-html.vbm-tonefarger .tn-tangent[data-f="yellow-dk"].merket, html.vbm-tonefarger .tn-tangent[data-f="yellow-dk"].spilles { fill: var(--nf-yellow-dk); }
-html.vbm-tonefarger .tn-tangent[data-f="yellow-lt"].merket, html.vbm-tonefarger .tn-tangent[data-f="yellow-lt"].spilles { fill: var(--nf-yellow-lt); }
-html.vbm-tonefarger .tn-tangent[data-f="green"].merket, html.vbm-tonefarger .tn-tangent[data-f="green"].spilles { fill: var(--nf-green); }
-html.vbm-tonefarger .tn-tangent[data-f="green-dk"].merket, html.vbm-tonefarger .tn-tangent[data-f="green-dk"].spilles { fill: var(--nf-green-dk); }
-html.vbm-tonefarger .tn-tangent[data-f="green-lt"].merket, html.vbm-tonefarger .tn-tangent[data-f="green-lt"].spilles { fill: var(--nf-green-lt); }
-html.vbm-tonefarger .tn-tangent[data-f="blue"].merket, html.vbm-tonefarger .tn-tangent[data-f="blue"].spilles { fill: var(--nf-blue); }
-html.vbm-tonefarger .tn-tangent[data-f="blue-dk"].merket, html.vbm-tonefarger .tn-tangent[data-f="blue-dk"].spilles { fill: var(--nf-blue-dk); }
-html.vbm-tonefarger .tn-tangent[data-f="blue-lt"].merket, html.vbm-tonefarger .tn-tangent[data-f="blue-lt"].spilles { fill: var(--nf-blue-lt); }
-html.vbm-tonefarger .tn-tangent[data-f="indigo"].merket, html.vbm-tonefarger .tn-tangent[data-f="indigo"].spilles { fill: var(--nf-indigo); }
-html.vbm-tonefarger .tn-tangent[data-f="indigo-dk"].merket, html.vbm-tonefarger .tn-tangent[data-f="indigo-dk"].spilles { fill: var(--nf-indigo-dk); }
-html.vbm-tonefarger .tn-tangent[data-f="indigo-lt"].merket, html.vbm-tonefarger .tn-tangent[data-f="indigo-lt"].spilles { fill: var(--nf-indigo-lt); }
-html.vbm-tonefarger .tn-tangent[data-f="violet"].merket, html.vbm-tonefarger .tn-tangent[data-f="violet"].spilles { fill: var(--nf-violet); }
-html.vbm-tonefarger .tn-tangent[data-f="violet-dk"].merket, html.vbm-tonefarger .tn-tangent[data-f="violet-dk"].spilles { fill: var(--nf-violet-dk); }
-html.vbm-tonefarger .tn-tangent[data-f="violet-lt"].merket, html.vbm-tonefarger .tn-tangent[data-f="violet-lt"].spilles { fill: var(--nf-violet-lt); }
-.tn-tangent.spilles { stroke-width: 3; }
+html.vbm-tonefarger .tn-tangent[data-tf="red"].spilles { fill: var(--nf-red); }
+html.vbm-tonefarger .tn-tangent[data-tf="red-dk"].spilles { fill: var(--nf-red-dk); }
+html.vbm-tonefarger .tn-tangent[data-tf="red-lt"].spilles { fill: var(--nf-red-lt); }
+html.vbm-tonefarger .tn-tangent[data-tf="orange"].spilles { fill: var(--nf-orange); }
+html.vbm-tonefarger .tn-tangent[data-tf="orange-dk"].spilles { fill: var(--nf-orange-dk); }
+html.vbm-tonefarger .tn-tangent[data-tf="orange-lt"].spilles { fill: var(--nf-orange-lt); }
+html.vbm-tonefarger .tn-tangent[data-tf="yellow"].spilles { fill: var(--nf-yellow); }
+html.vbm-tonefarger .tn-tangent[data-tf="yellow-dk"].spilles { fill: var(--nf-yellow-dk); }
+html.vbm-tonefarger .tn-tangent[data-tf="yellow-lt"].spilles { fill: var(--nf-yellow-lt); }
+html.vbm-tonefarger .tn-tangent[data-tf="green"].spilles { fill: var(--nf-green); }
+html.vbm-tonefarger .tn-tangent[data-tf="green-dk"].spilles { fill: var(--nf-green-dk); }
+html.vbm-tonefarger .tn-tangent[data-tf="green-lt"].spilles { fill: var(--nf-green-lt); }
+html.vbm-tonefarger .tn-tangent[data-tf="blue"].spilles { fill: var(--nf-blue); }
+html.vbm-tonefarger .tn-tangent[data-tf="blue-dk"].spilles { fill: var(--nf-blue-dk); }
+html.vbm-tonefarger .tn-tangent[data-tf="blue-lt"].spilles { fill: var(--nf-blue-lt); }
+html.vbm-tonefarger .tn-tangent[data-tf="indigo"].spilles { fill: var(--nf-indigo); }
+html.vbm-tonefarger .tn-tangent[data-tf="indigo-dk"].spilles { fill: var(--nf-indigo-dk); }
+html.vbm-tonefarger .tn-tangent[data-tf="indigo-lt"].spilles { fill: var(--nf-indigo-lt); }
+html.vbm-tonefarger .tn-tangent[data-tf="violet"].spilles { fill: var(--nf-violet); }
+html.vbm-tonefarger .tn-tangent[data-tf="violet-dk"].spilles { fill: var(--nf-violet-dk); }
+html.vbm-tonefarger .tn-tangent[data-tf="violet-lt"].spilles { fill: var(--nf-violet-lt); }
 /* Svart-hvitt: tonene på notelinjen vises som nedtrykte tangenter (kraftig kant, svarte tangenter blir hvite) */
-html.vbm-tonefarger.vbm-sh .tn-tangent.merket.hvit, html.vbm-tonefarger.vbm-sh .tn-tangent.spilles.hvit { fill: #FFFDF8; stroke-width: 3; }
-html.vbm-tonefarger.vbm-sh .tn-tangent.merket.svart, html.vbm-tonefarger.vbm-sh .tn-tangent.spilles.svart { fill: #FFFDF8; stroke-width: 2.5; }
-html.vbm-tonefarger.vbm-sh .tn-tangent.spilles { stroke-width: 4.5; }
 @media (forced-colors: active) {
   .tn-piano svg { forced-color-adjust: none; }
   .tn-tangent { stroke: CanvasText; } .tn-tangent.hvit { fill: Canvas; } .tn-tangent.svart { fill: CanvasText; }
-  .tn-tangent.merket, .tn-tangent.spilles { fill: Highlight !important; }
 }
+
+/* Noten som spilles: hul note med kant, i alle visninger. Fargene vises i navnelappen og på pianoet. */
+html.vbm-tonefarger [data-f].spilles { fill: transparent !important; stroke: currentColor !important; stroke-width: 2.2px !important; }
+/* Tangenten som klinger ser nedtrykt ut: litt lavere og med skygge øverst. I farger får den tonens farge. */
+.tn-tangent { transition: transform .06s, fill .06s; transform-box: fill-box; transform-origin: top; }
+.tn-tangent.spilles { transform: scaleY(.965); filter: drop-shadow(0 -2px 0 rgba(0, 0, 0, .35)); }
+html.vbm-tonefarger.vbm-sh .tn-tangent.spilles.hvit { fill: #CFCCC4 !important; }
+html.vbm-tonefarger.vbm-sh .tn-tangent.spilles.svart { fill: #55554F !important; }
+@media (forced-colors: active) { .tn-tangent.spilles { fill: Highlight !important; filter: none; } }
