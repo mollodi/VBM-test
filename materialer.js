@@ -109,6 +109,15 @@ window.VBM = {
     },
     {
       seksjon: "teori",
+      merke: "Intervaller",
+      tittel: "Intervaller",
+      beskrivelse: "Tell bokstavene, tell halvtonene: rene, store, små, forstørrede og forminskede intervaller, omvending, sammensatte intervaller, og konsonans og dissonans.",
+      fil: "intervaller-teori.html",
+      svartHvitt: false,
+      lagtTil: "2026-10-09"
+    },
+    {
+      seksjon: "teori",
       merke: "Rytme",
       tittel: "Rytme og taktarter",
       beskrivelse: "Seks kapitler fra nivå 1 til 5: notelengder, punktering, trioler, synkoper, sammensatt og ujevn takt, med trommer.",
@@ -196,6 +205,15 @@ window.VBM = {
       fil: "quiz-notelesing.html",
       svartHvitt: false,
       lagtTil: "2026-10-06"
+    },
+    {
+      seksjon: "teoriquiz",
+      merke: "Intervaller",
+      tittel: "Teoriquiz: intervaller",
+      beskrivelse: "Les et intervall på notelinjen og finn navnet, eller skriv det ved å velge riktig notebilde, i G- og F-nøkkel.",
+      fil: "quiz-intervaller.html",
+      svartHvitt: false,
+      lagtTil: "2026-10-09"
     },
     {
       seksjon: "teoriquiz",

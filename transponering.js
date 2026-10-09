@@ -4,8 +4,9 @@
    ---------------------------------------------------------------------
    Felles for leksjonen (transponering.html) og quizen (quiz-transponering.html):
    intervallene, melodiene, akkordrekkene og de transponerende instrumentene.
-   Bruker tonearter.js, skalaer.js og harmoni.js, så de må lastes først:
+   Bruker tonearter.js, intervall.js, skalaer.js og harmoni.js, så de må lastes først:
      <script src="tonearter.js"></script>
+     <script src="intervall.js"></script>
      <script src="skalaer.js"></script>
      <script src="harmoni.js"></script>
      <script src="transponering.js"></script>
@@ -41,16 +42,12 @@ window.VBM_TRANSPONERING = (function(){
   function frase(iv, opp){ return T((iv.id === 'r8' ? 'en oktav' : 'en ' + iv.navn) + (opp ? ' opp' : ' ned')); }
 
   /* ---------- Flytt en tone ----------
-     Bokstaven flyttes iv.b steg, og fortegnet blir det som gir iv.h halvtoner. */
-  function flytt(n, iv, opp){
-    var r = opp ? 1 : -1, d = n.oktav * 7 + n.b + r * iv.b, m = S.midi(n) + r * iv.h;
-    var ny = { b: ((d % 7) + 7) % 7, oktav: Math.floor(d / 7), f: 0 };
-    ny.f = m - S.midi(ny);
-    return ny;
-  }
+     Bokstaven flyttes iv.b steg, og fortegnet blir det som gir iv.h halvtoner (felles regel i intervall.js). */
+  var I = window.VBM_INTERVALL;
+  function flytt(n, iv, opp){ return I.flytt(n, iv, opp); }
   function flyttListe(liste, iv, opp){ return liste.map(function(n){ return flytt(n, iv, opp); }); }
   /* Halvtoner og bokstavsteg mellom to toner (b over a), som et intervall */
-  function mellom(a, b){ return { b: (b.oktav * 7 + b.b) - (a.oktav * 7 + a.b), h: S.midi(b) - S.midi(a) }; }
+  function mellom(a, b){ return I.mellom(a, b); }
   function likeToner(a, b){ return a.b === b.b && a.f === b.f && a.oktav === b.oktav; }
 
   /* ---------- Melodiene ----------
