@@ -30,7 +30,7 @@ window.VBM = {
 
   seksjoner: [
     { id: "jukseboker", overskrift: "Juksebøker", tittel: "Bøker til", uthevet: "oppslag",
-      ingress: "Oppslagsverk med ekte noter i C. Trykk på spill-knappen for å høre, på piano, gitar eller strykere." },
+      ingress: "Oppslagsverk med ekte noter i C. Trykk på spill-knappen for å høre, på piano, strykere eller sinustoner." },
     { id: "oretrening", overskrift: "Øretrening", tittel: "Hør og", uthevet: "lytt",
       ingress: "Kjente sanger og verk som viser lyden av intervaller og akkorder, og gehørlekser i små forskjeller i tonehøyde." },
     { id: "teori", overskrift: "Musikkteori", tittel: "Lær og", uthevet: "forstå",
@@ -131,6 +131,15 @@ window.VBM = {
       tittel: "Transponering",
       beskrivelse: "Flytt en melodi med et intervall eller til en ny toneart, transponer akkorder, bruk kapo, og se hva som klinger på klarinett, saksofon, valthorn og gitar.",
       fil: "transponering.html",
+      svartHvitt: false,
+      lagtTil: "2026-10-09"
+    },
+    {
+      seksjon: "teori",
+      merke: "Stemming",
+      tittel: "Stemming og temperatur",
+      beskrivelse: "Frekvens og kammertone, overtonerekken, rene intervaller og svevninger, det pytagoreiske kommaet, og fire temperaturer du kan høre.",
+      fil: "stemming.html",
       svartHvitt: false,
       lagtTil: "2026-10-09"
     },
@@ -266,6 +275,24 @@ window.VBM = {
       tittel: "Teoriquiz: transponering",
       beskrivelse: "Transponer en tone eller en akkordrekke, og finn hva som klinger og hva som står skrevet for transponerende instrumenter.",
       fil: "quiz-transponering.html?type=les",
+      svartHvitt: false,
+      lagtTil: "2026-10-09"
+    },
+    {
+      seksjon: "gehorquiz",
+      merke: "Stemming",
+      tittel: "Gehørquiz: rent eller svevende",
+      beskrivelse: "Hør to toner samtidig og avgjør om intervallet er rent eller svever, slik en pianostemmer lytter.",
+      fil: "quiz-stemming.html?type=hor",
+      svartHvitt: false,
+      lagtTil: "2026-10-09"
+    },
+    {
+      seksjon: "teoriquiz",
+      merke: "Stemming",
+      tittel: "Teoriquiz: stemming og temperatur",
+      beskrivelse: "Frekvensforhold, cent, kommaet, temperaturene og utregning av frekvenser.",
+      fil: "quiz-stemming.html?type=les",
       svartHvitt: false,
       lagtTil: "2026-10-09"
     }

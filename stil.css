@@ -1357,6 +1357,8 @@ html:where([data-side="index.html"]) {
 :root:where([data-side="quiz-rytme.html"]) { --vbm-verk: "K7Q4-QRTM"; }
 :root:where([data-side="transponering.html"]) { --vbm-verk: "K7Q4-TRSP"; }
 :root:where([data-side="quiz-transponering.html"]) { --vbm-verk: "K7Q4-QTRS"; }
+:root:where([data-side="stemming.html"]) { --vbm-verk: "K7Q4-STMT"; }
+:root:where([data-side="quiz-stemming.html"]) { --vbm-verk: "K7Q4-QSTM"; }
 :where(html[data-side="quiz-rytme.html"]) .gj-noter { margin-top: 6px; color: var(--text-on-paper); }
 :where(html[data-side="quiz-rytme.html"]) .gjennomgang li { flex-wrap: wrap; }
 :root:where([data-stil="ovelse"]) {
@@ -2024,55 +2026,66 @@ html.sh .viktig strong { color: var(--ink) !important; }
 }
 
 
-/* ---------- Bare Transponering (transponering.html) ---------- */
-:where(html[data-side="transponering.html"]) main { align-items: stretch; }
-:where(html[data-side="transponering.html"]) .bred { grid-column: 1 / -1; }
-:where(html[data-side="transponering.html"]) .brikker .btn { min-width: 52px; justify-content: center; }
-:where(html[data-side="transponering.html"]) .answers { max-width: 360px; }
-:where(html[data-side="transponering.html"]) .card > .label { margin: 14px 0 6px; }
-:where(html[data-side="transponering.html"]) .stav-blokk { border-top: 1px solid var(--rule); padding-top: 10px; margin-top: 12px; }
-:where(html[data-side="transponering.html"]) .stav-blokk .row { margin: 6px 0 12px; min-height: 46px; }
-:where(html[data-side="transponering.html"]) .stav-blokk .label { margin: 0; }
-:where(html[data-side="transponering.html"]) .noter { color: var(--text-on-paper); margin: 6px 0 8px; }
-:where(html[data-side="transponering.html"]) .noter svg { display: block; width: 100%; height: auto; }
-:where(html[data-side="transponering.html"]) .noter .besifring { fill: currentColor; font-family: Charter, "Iowan Old Style", "Palatino Linotype", Georgia, serif; font-size: 17px; font-weight: 700; }
-:where(html[data-side="transponering.html"]) .stav-blokk + .task { margin-top: 12px; }
-:where(html[data-side="transponering.html"]) .viktig { margin: 4px 0 0; }
-:where(html[data-side="transponering.html"]) .del-tittel { font-family: Charter, "Iowan Old Style", "Palatino Linotype", Georgia, serif; font-size: 19px; margin: 22px 0 8px; padding-top: 14px; border-top: 1px solid var(--rule); }
-:where(html[data-side="transponering.html"]) .instrument-liste { margin: 0 0 6px; padding: 0 0 0 1.2em; font-size: 14.5px; line-height: 1.55; color: #3E3A32; }
-:where(html[data-side="transponering.html"]) .instrument-liste li { margin: 0 0 8px; }
-:where(html[data-side="transponering.html"]) .sanger { list-style: none; margin: 10px 0 0; padding: 0; }
-:where(html[data-side="transponering.html"]) .sanger li { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 8px 0; border-top: 1px solid var(--rule); }
-:where(html[data-side="transponering.html"]) .song-title { font-weight: 600; font-size: 15px; }
-:where(html[data-side="transponering.html"]) .song-meta { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 12px; color: var(--text-muted); }
-:where(html[data-side="transponering.html"]) .spotify-link { flex-shrink: 0; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 12px; border: 1.5px solid var(--rule); border-radius: 999px; padding: 4px 10px; text-decoration: none; color: inherit; }
-:where(html[data-side="transponering.html"]) .spotify-link:hover { border-color: var(--brass); }
-:where(html[data-side="transponering.html"]) a.btn { text-decoration: none; }
+/* ---------- Transponering og Stemming og temperatur (transponering.html, stemming.html) ---------- */
+:where(html[data-side="transponering.html"], html[data-side="stemming.html"]) main { align-items: stretch; }
+:where(html[data-side="transponering.html"], html[data-side="stemming.html"]) .bred { grid-column: 1 / -1; }
+:where(html[data-side="transponering.html"], html[data-side="stemming.html"]) .brikker .btn { min-width: 52px; justify-content: center; }
+:where(html[data-side="transponering.html"], html[data-side="stemming.html"]) .answers { max-width: 360px; }
+:where(html[data-side="transponering.html"], html[data-side="stemming.html"]) .card > .label { margin: 14px 0 6px; }
+:where(html[data-side="transponering.html"], html[data-side="stemming.html"]) .stav-blokk { border-top: 1px solid var(--rule); padding-top: 10px; margin-top: 12px; }
+:where(html[data-side="transponering.html"], html[data-side="stemming.html"]) .stav-blokk .row { margin: 6px 0 12px; min-height: 46px; }
+:where(html[data-side="transponering.html"], html[data-side="stemming.html"]) .stav-blokk .label { margin: 0; }
+:where(html[data-side="transponering.html"], html[data-side="stemming.html"]) .noter { color: var(--text-on-paper); margin: 6px 0 8px; }
+:where(html[data-side="transponering.html"], html[data-side="stemming.html"]) .noter svg { display: block; width: 100%; height: auto; }
+:where(html[data-side="transponering.html"], html[data-side="stemming.html"]) .noter .besifring { fill: currentColor; font-family: Charter, "Iowan Old Style", "Palatino Linotype", Georgia, serif; font-size: 17px; font-weight: 700; }
+:where(html[data-side="transponering.html"], html[data-side="stemming.html"]) .stav-blokk + .task { margin-top: 12px; }
+:where(html[data-side="transponering.html"], html[data-side="stemming.html"]) .viktig { margin: 4px 0 0; }
+:where(html[data-side="transponering.html"], html[data-side="stemming.html"]) .del-tittel { font-family: Charter, "Iowan Old Style", "Palatino Linotype", Georgia, serif; font-size: 19px; margin: 22px 0 8px; padding-top: 14px; border-top: 1px solid var(--rule); }
+:where(html[data-side="transponering.html"], html[data-side="stemming.html"]) .instrument-liste { margin: 0 0 6px; padding: 0 0 0 1.2em; font-size: 14.5px; line-height: 1.55; color: #3E3A32; }
+:where(html[data-side="transponering.html"], html[data-side="stemming.html"]) .instrument-liste li { margin: 0 0 8px; }
+:where(html[data-side="transponering.html"], html[data-side="stemming.html"]) .sanger { list-style: none; margin: 10px 0 0; padding: 0; }
+:where(html[data-side="transponering.html"], html[data-side="stemming.html"]) .sanger li { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 8px 0; border-top: 1px solid var(--rule); }
+:where(html[data-side="transponering.html"], html[data-side="stemming.html"]) .song-title { font-weight: 600; font-size: 15px; }
+:where(html[data-side="transponering.html"], html[data-side="stemming.html"]) .song-meta { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 12px; color: var(--text-muted); }
+:where(html[data-side="transponering.html"], html[data-side="stemming.html"]) .spotify-link { flex-shrink: 0; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 12px; border: 1.5px solid var(--rule); border-radius: 999px; padding: 4px 10px; text-decoration: none; color: inherit; }
+:where(html[data-side="transponering.html"], html[data-side="stemming.html"]) .spotify-link:hover { border-color: var(--brass); }
+:where(html[data-side="transponering.html"], html[data-side="stemming.html"]) a.btn { text-decoration: none; }
 @media (forced-colors: active) {
-  :where(html[data-side="transponering.html"]) .noter { color: CanvasText; }
-  :where(html[data-side="transponering.html"]) .noter svg { forced-color-adjust: none; }
-  :where(html[data-side="transponering.html"]) .stav-blokk, :where(html[data-side="transponering.html"]) .del-tittel, :where(html[data-side="transponering.html"]) .sanger li { border-color: CanvasText; }
-  :where(html[data-side="transponering.html"]) .instrument-liste { color: CanvasText; }
-  :where(html[data-side="transponering.html"]) .spotify-link { border-color: LinkText; color: LinkText; }
+  :where(html[data-side="transponering.html"], html[data-side="stemming.html"]) .noter { color: CanvasText; }
+  :where(html[data-side="transponering.html"], html[data-side="stemming.html"]) .noter svg { forced-color-adjust: none; }
+  :where(html[data-side="transponering.html"], html[data-side="stemming.html"]) .stav-blokk, :where(html[data-side="transponering.html"], html[data-side="stemming.html"]) .del-tittel, :where(html[data-side="transponering.html"], html[data-side="stemming.html"]) .sanger li { border-color: CanvasText; }
+  :where(html[data-side="transponering.html"], html[data-side="stemming.html"]) .instrument-liste { color: CanvasText; }
+  :where(html[data-side="transponering.html"], html[data-side="stemming.html"]) .spotify-link { border-color: LinkText; color: LinkText; }
 }
 
 
-/* ---------- Bare Quiz: transponering (quiz-transponering.html) ---------- */
-:where(html[data-side="quiz-transponering.html"]) #ov-bilde, :where(html[data-side="quiz-transponering.html"]) #prove-bilde { border-top: none; padding-top: 0; margin: 0 0 12px; }
-:where(html[data-side="quiz-transponering.html"]) .noter svg { margin: 0; }
-:where(html[data-side="quiz-transponering.html"]) .noter .besifring { fill: currentColor; font-family: Charter, "Iowan Old Style", "Palatino Linotype", Georgia, serif; font-size: 17px; font-weight: 700; }
-:where(html[data-side="quiz-transponering.html"]) .noter-merke { margin: 0; }
-:where(html[data-side="quiz-transponering.html"]) #ov-fasit-blokk { border-top: 1px solid var(--rule); padding-top: 8px; margin: 0 0 12px; }
-:where(html[data-side="quiz-transponering.html"]) #ov-fasit-blokk .noter { border-top: none; padding-top: 0; margin-top: 0; }
-:where(html[data-side="quiz-transponering.html"]) .oppgave-tekst, :where(html[data-side="quiz-transponering.html"]) .prove-sporsmal {
+/* Bare Stemming og temperatur */
+:where(html[data-side="stemming.html"]) .stav-blokk.uten-strek { border-top: none; padding-top: 0; margin-top: 0; }
+:where(html[data-side="stemming.html"]) .deltoner { margin: 4px 0 14px; padding: 0; list-style: none; font-size: 14.5px; }
+:where(html[data-side="stemming.html"]) .deltoner li { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 4px 12px; padding: 7px 0; border-bottom: 1px solid var(--rule); }
+:where(html[data-side="stemming.html"]) .deltoner .tall { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 12.5px; color: var(--text-muted); }
+@media (forced-colors: active) {
+  :where(html[data-side="stemming.html"]) .deltoner li { border-color: CanvasText; }
+  :where(html[data-side="stemming.html"]) .deltoner .tall { color: CanvasText; }
+}
+
+
+/* ---------- Quiz: transponering og Quiz: stemming og temperatur (quiz-transponering.html, quiz-stemming.html) ---------- */
+:where(html[data-side="quiz-transponering.html"], html[data-side="quiz-stemming.html"]) #ov-bilde, :where(html[data-side="quiz-transponering.html"], html[data-side="quiz-stemming.html"]) #prove-bilde { border-top: none; padding-top: 0; margin: 0 0 12px; }
+:where(html[data-side="quiz-transponering.html"], html[data-side="quiz-stemming.html"]) .noter svg { margin: 0; }
+:where(html[data-side="quiz-transponering.html"], html[data-side="quiz-stemming.html"]) .noter .besifring { fill: currentColor; font-family: Charter, "Iowan Old Style", "Palatino Linotype", Georgia, serif; font-size: 17px; font-weight: 700; }
+:where(html[data-side="quiz-transponering.html"], html[data-side="quiz-stemming.html"]) .noter-merke { margin: 0; }
+:where(html[data-side="quiz-transponering.html"], html[data-side="quiz-stemming.html"]) #ov-fasit-blokk { border-top: 1px solid var(--rule); padding-top: 8px; margin: 0 0 12px; }
+:where(html[data-side="quiz-transponering.html"], html[data-side="quiz-stemming.html"]) #ov-fasit-blokk .noter { border-top: none; padding-top: 0; margin-top: 0; }
+:where(html[data-side="quiz-transponering.html"], html[data-side="quiz-stemming.html"]) .oppgave-tekst, :where(html[data-side="quiz-transponering.html"], html[data-side="quiz-stemming.html"]) .prove-sporsmal {
   font-family: Charter, "Iowan Old Style", "Palatino Linotype", Georgia, serif;
   font-size: 18px; font-weight: 700; line-height: 1.4; margin: 0 0 12px;
 }
-:where(html[data-side="quiz-transponering.html"]) .svar.akkord-svar .btn { flex: 1 1 100%; }
-@media (min-width: 520px) { :where(html[data-side="quiz-transponering.html"]) .svar.akkord-svar .btn { flex: 1 1 200px; } }
+:where(html[data-side="quiz-transponering.html"], html[data-side="quiz-stemming.html"]) .svar.akkord-svar .btn { flex: 1 1 100%; }
+@media (min-width: 520px) { :where(html[data-side="quiz-transponering.html"], html[data-side="quiz-stemming.html"]) .svar.akkord-svar .btn { flex: 1 1 200px; } }
 @media (forced-colors: active) {
-  :where(html[data-side="quiz-transponering.html"]) .noter svg { forced-color-adjust: none; color: CanvasText; }
-  :where(html[data-side="quiz-transponering.html"]) #ov-fasit-blokk { border-color: CanvasText; }
+  :where(html[data-side="quiz-transponering.html"], html[data-side="quiz-stemming.html"]) .noter svg { forced-color-adjust: none; color: CanvasText; }
+  :where(html[data-side="quiz-transponering.html"], html[data-side="quiz-stemming.html"]) #ov-fasit-blokk { border-color: CanvasText; }
 }
 
 

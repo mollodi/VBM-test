@@ -25,6 +25,7 @@ Gratis undervisningsmateriell i musikkteori for elever og lærere. Juksebøkene 
 - **Omvendinger**: alle stillingene til treklanger og septimakkorder, fra sekstakkord til sekundakkord, med besifring, skråstreknavn og intervallene over bassen, i alle tonearter. Forklarer også at sekstakkord betyr to ting.
 - **Harmonilære**: funksjoner (T, S, D og parallellene), de fire kadensene i dur og moll, kvartsekstakkordens tre bruksmåter, beliggenhet og leie, og skråstrekakkorder, i firstemmig sats på to notelinjer i alle tonearter.
 - **Transponering**: hva transponering er, å flytte en melodi med et intervall (med riktig stavemåte) eller til en ny toneart med fortegn, tilfeldige fortegn som blir oppløsningstegn, akkordsymboler og romertall i alle tonearter, kapo på gitaren, og transponerende instrumenter (klarinett og trompet i B, altsaksofon i Ess, valthorn i F og gitar) med skrevet og klingende tone side om side.
+- **Stemming og temperatur**: frekvens og kammertone (415, 440 og 442 Hz), overtonerekken med avvik i cent, rene intervaller og svevninger med utregnet antall i sekundet, det pytagoreiske kommaet, og pytagoreisk stemming, midttone, Werckmeister III og likesvevende temperatur, med en kadens du kan høre i alle tonearter, og stemming i praksis (piano, gitar og orkester).
 
 ### Elevhefter
 - **Akkordhefte**: treklanger, trinnakkorder og diatonisk harmoni, med harmonisk moll.
@@ -37,6 +38,7 @@ Gratis undervisningsmateriell i musikkteori for elever og lærere. Juksebøkene 
 - **Gehørquiz: kadenser og funksjoner**: hør en kadens og finn typen, eller hør en akkord etter tonika og finn funksjonen.
 - **Gehørquiz: rytme**: hør en rytme og finn riktig notasjon blant fire, eller hør hvilken taktart en trommegroove går i. Samme side som Teoriquiz: rytme, åpnet med lytteoppgaver (quiz-rytme.html?type=hor).
 - **Gehørquiz: transponering**: hør en melodi bli transponert og finn tonearten, hør en akkordrekke og finn akkordene i en ny toneart, eller hør tonen fra et transponerende instrument (etter en C) og finn noten som står skrevet. Samme side som Teoriquiz: transponering, åpnet med lytteoppgaver (quiz-transponering.html?type=hor).
+- **Gehørquiz: rent eller svevende**: hør to toner samtidig og avgjør om intervallet er rent eller svever, på grunnleggende eller avansert nivå (quiz-stemming.html?type=hor).
 
 ### Teoriquiz
 - **Teoriquiz: notelesing**: les en note og finn navnet, med eller uten fortegn, eller trykk der en tone står på notelinjen, i G-, F-, alt- og tenornøkkel.
@@ -44,12 +46,14 @@ Gratis undervisningsmateriell i musikkteori for elever og lærere. Juksebøkene 
 - **Teoriquiz: skalaer og modi**: les en skala på notelinjen og finn navnet. Samme side, åpnet med «Les» valgt (quiz-skalaer.html?type=les).
 - **Teoriquiz: rytme**: les en takt og finn taktarten, eller finn noten som mangler (quiz-rytme.html?type=les).
 - **Teoriquiz: transponering**: transponer en tone med et intervall eller en akkordrekke til en ny toneart, og finn klingende eller skrevet tone for transponerende instrumenter, også oktaven for gitar (quiz-transponering.html?type=les).
+- **Teoriquiz: stemming og temperatur**: frekvensforhold, cent, kommaet, temperaturene og utregning av frekvenser (quiz-stemming.html?type=les).
 
 ## Lyd
-I juksebøkene kan du velge mellom **piano**, **gitar** og **strykere** med knappen nederst til høyre. Når du trykker på en ny spill-knapp, stopper lyden som spiller. Trykk på samme knapp igjen for å stoppe.
+Du kan velge mellom **piano**, **strykere** og **sinustoner** med knappen nederst til høyre. Når du trykker på en ny spill-knapp, stopper lyden som spiller. Trykk på samme knapp igjen for å stoppe.
 
 - Piano: Salamander Grand Piano av Alexander Holm, CC BY 3.0
-- Gitar og strykere: akustisk gitar, fiolin og cello fra [tonejs-instruments](https://github.com/nbrosowsky/tonejs-instruments) av Nicholas Brosowsky, CC BY 3.0
+- Strykere: fiolin og cello fra [tonejs-instruments](https://github.com/nbrosowsky/tonejs-instruments) av Nicholas Brosowsky, CC BY 3.0
+- Sinustoner: laget i nettleseren, uten lydfiler
 
 ## Språk
 Nettsiden finnes på norsk, engelsk og polsk. Knappene **NO / EN / PL** øverst på hver side bytter språk. Første gang velges språket ut fra språket på telefonen eller i nettleseren, og engelsk brukes for alle andre land. Oversettelsene ligger i `sprak-en.js`, `sprak-pl.js` og `sprak-no.js`, og selve språkfunksjonen i `felles.js`. Se `UTVIKLER.md` for hvordan du endrer siden selv.

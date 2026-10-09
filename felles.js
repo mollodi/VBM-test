@@ -41,9 +41,9 @@
   };
   /* Lydkreditter. Siden velger med <footer data-lyd="alle"> eller data-lyd="piano". */
   var LYD = {
-    alle: 'Lyd: Salamander Grand Piano av Alexander Holm (CC BY 3.0). Gitar, fiolin og cello fra tonejs-instruments av Nicholas Brosowsky (CC BY 3.0).',
+    alle: 'Lyd: Salamander Grand Piano av Alexander Holm (CC BY 3.0). Fiolin og cello fra tonejs-instruments av Nicholas Brosowsky (CC BY 3.0).',
     piano: 'Lyd: Salamander Grand Piano av Alexander Holm (CC BY 3.0).',
-    rytme: 'Lyd: trommer fra Versilian Community Sample Library (CC0). Piano: Salamander Grand Piano av Alexander Holm (CC BY 3.0). Gitar, fiolin og cello fra tonejs-instruments av Nicholas Brosowsky (CC BY 3.0).'
+    rytme: 'Lyd: trommer fra Versilian Community Sample Library (CC0). Piano: Salamander Grand Piano av Alexander Holm (CC BY 3.0). Fiolin og cello fra tonejs-instruments av Nicholas Brosowsky (CC BY 3.0).'
   };
 
   /* ==================== 2. Språk ==================== */
@@ -646,7 +646,7 @@
   window.addEventListener('resize', function(){ clearTimeout(stavTimer); stavTimer = setTimeout(function(){ alleStaver(); if (pianoPaa()) allePianoer(); }, 200); });
   window.addEventListener('load', alleStaver);
 
-  /* Kort melding når gitar eller strykere ikke når tonen, og den spilles på piano i stedet */
+  /* Kort melding når strykerne ikke når tonen, og den spilles på piano i stedet */
   var meldingTimer = null;
   window.addEventListener('vbm-utenfor', function(e){
     var m = document.querySelector('.vbm-melding');

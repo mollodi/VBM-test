@@ -11,11 +11,12 @@ Ren HTML, CSS og JavaScript. Ingen byggesteg, ingen rammeverk. Alle filer ligger
 | `materialer.js` | Kortene på startsiden | Ja |
 | `sprak-en.js`, `sprak-pl.js` | Oversettelser fra norsk | Ja |
 | `sprak-no.js` | Oversettelse til norsk for sider skrevet på engelsk (lytteguiden) | Sjelden |
-| `lyd.js` | Lydmotor for spill-knappene (piano, gitar, strykere) | Nesten aldri |
+| `lyd.js` | Lydmotor for spill-knappene (piano, strykere og sinustoner). Toner er MIDI-tall, og desimaltall gir toner mellom tangentene (60.14 = C pluss 14 cent) | Nesten aldri |
 | `tonearter.js` | Tonearter, fortegn og tonenavn på tre språk, brukt av kvintsirkelen, skalaene og quizene deres | Sjelden |
 | `skalaer.js` | Alle skalaene (trinn, tekster, sangeksempler), noter for skalaer, akkorder side om side, firstemmig sats på to notelinjer og enkeltnoter i fire nøkler, brukt av skalaleksjonen, skalaquizen, kvintsirkelen, omvendingene, harmonilæren og notelesingen | Sjelden |
 | `harmoni.js` | Firstemmige akkorder for funksjoner, kadenser, kvartsekstakkorder, beliggenhet og skråstrekakkorder, brukt av harmonilæren, quizen og transponeringen | Sjelden |
 | `transponering.js` | Intervaller med riktig stavemåte, melodiene, akkordrekkene (firstemmig sats, kontrollert stemmeføring) og de transponerende instrumentene, brukt av transponeringsleksjonen og quizen. Må lastes etter `tonearter.js`, `skalaer.js` og `harmoni.js` | Sjelden |
+| `stemming.js` | Frekvenser, cent, rene intervaller, svevninger og fire temperaturer (pytagoreisk, midttone, Werckmeister III, likesvevende), brukt av leksjonen og quizen om stemming og temperatur | Sjelden |
 | `rytme.js` | Rytmer, taktarter, rytmenoter på én linje, avspilling med inntelling og metronom, og trommegrooves, brukt av rytmeleksjonen og rytmequizen | Sjelden |
 | `favicon.svg`, `favicon-32.png`, `apple-touch-icon.png` | Favikonet (G-nøkkel i messing på mørk bakgrunn): SVG for nye nettlesere, 32 px PNG for eldre, og 180 px for telefonens hjemskjerm. Lenkes i `<head>` på alle sider | Aldri |
 | `rytme-skarptromme.mp3`, `rytme-basstromme.mp3`, `rytme-hihat.mp3`, `rytme-treblokk.mp3` | Ekte trommeopptak fra Versilian Community Sample Library (CC0), brukt av rytmesidene. Treblokken er metronomen | Aldri |
@@ -84,7 +85,7 @@ Skriv bare dette nederst i siden. Resten fylles inn av `felles.js`:
 ```html
 <footer data-lyd="alle"></footer>
 ```
-`data-lyd="alle"` gir kreditt for piano, gitar og strykere, `data-lyd="piano"` bare for piano, og `data-lyd=""` ingen lydkreditt. Tekst du skriver inne i `<footer>` (for eksempel en merknad) står over signaturen. Dato og tekst endres ett sted: øverst i `felles.js`, under «Innstillinger». Husk å endre de samme ordene i `sprak-en.js` og `sprak-pl.js`.
+`data-lyd="alle"` gir kreditt for piano og strykere, `data-lyd="piano"` bare for piano, og `data-lyd=""` ingen lydkreditt. Tekst du skriver inne i `<footer>` (for eksempel en merknad) står over signaturen. Dato og tekst endres ett sted: øverst i `felles.js`, under «Innstillinger». Husk å endre de samme ordene i `sprak-en.js` og `sprak-pl.js`.
 
 ### Tekst som lages i JavaScript
 ```js
