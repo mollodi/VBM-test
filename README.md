@@ -23,6 +23,7 @@ Gratis undervisningsmateriell i musikkteori for elever og lærere. Juksebøkene 
 - **Kvintsirkelen**: interaktiv kvintsirkel med alle dur- og molltonearter, fortegnene på ekte notelinje, rekkefølgen på kryss og b-er, enharmoniske tonearter, og skala og treklang for hver toneart.
 - **Skalaer og modi**: dur, moll (naturlig, harmonisk og melodisk), de sju modiene, pentatonikk, blues, heltone, kromatisk og jazzskalaer, i alle tonearter, med noter, lyd og sangeksempler. Modiene vises både fra samme grunntone og som trinn i durskalaen.
 - **Omvendinger**: alle stillingene til treklanger og septimakkorder, fra sekstakkord til sekundakkord, med besifring, skråstreknavn og intervallene over bassen, i alle tonearter. Forklarer også at sekstakkord betyr to ting.
+- **Akkordanalyse**: metoden i fem steg (stable i terser, akkordtype, omvending, besifring, trinn og funksjon), treklanger, de fem septimakkordene, akkordene på hvert trinn i alle dur- og molltonearter, omvendinger med generalbasstall, og en analyse av hvilken som helst akkord i firstemmig sats.
 - **Harmonilære**: funksjoner (T, S, D og parallellene), de fire kadensene i dur og moll, kvartsekstakkordens tre bruksmåter, beliggenhet og leie, og skråstrekakkorder, i firstemmig sats på to notelinjer i alle tonearter.
 - **Intervaller**: hva et intervall er (melodisk og harmonisk), tallet (tell bokstavene, med lesetriks for linjer og mellomrom), kvaliteten (tell halvtonene, med dur-skalaen fra den nederste tonen), et intervall du kan velge fra hvilken som helst tone, samme klang med ulikt navn, omvending, sammensatte intervaller, og konsonans og dissonans.
 - **Transponering**: hva transponering er, å flytte en melodi med et intervall (med riktig stavemåte) eller til en ny toneart med fortegn, tilfeldige fortegn som blir oppløsningstegn, akkordsymboler og romertall i alle tonearter, kapo på gitaren, og transponerende instrumenter (klarinett og trompet i B, altsaksofon i Ess, valthorn i F og gitar) med skrevet og klingende tone side om side.
@@ -47,6 +48,7 @@ Gratis undervisningsmateriell i musikkteori for elever og lærere. Juksebøkene 
 - **Teoriquiz: skalaer og modi**: les en skala på notelinjen og finn navnet. Samme side, åpnet med «Les» valgt (quiz-skalaer.html?type=les).
 - **Teoriquiz: rytme**: les en takt og finn taktarten, eller finn noten som mangler (quiz-rytme.html?type=les).
 - **Teoriquiz: intervaller**: les et intervall på notelinjen og finn navnet, eller skriv det ved å velge riktig notebilde, i G- og F-nøkkel, på grunnleggende eller avansert nivå (quiz-intervaller.html).
+- **Teoriquiz: akkordanalyse**: les en akkord og finn besifringen, eller trinnanalyse eller funksjonsanalyse, på grunnleggende eller avansert nivå (quiz-akkordanalyse.html).
 - **Teoriquiz: transponering**: transponer en tone med et intervall eller en akkordrekke til en ny toneart, og finn klingende eller skrevet tone for transponerende instrumenter, også oktaven for gitar (quiz-transponering.html?type=les).
 - **Teoriquiz: stemming og temperatur**: frekvensforhold, cent, kommaet, temperaturene og utregning av frekvenser (quiz-stemming.html?type=les).
 

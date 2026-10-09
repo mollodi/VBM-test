@@ -172,6 +172,15 @@ window.VBM = {
     },
     {
       seksjon: "teori",
+      merke: "Akkordanalyse",
+      tittel: "Akkordanalyse",
+      beskrivelse: "Finn grunntone, akkordtype og omvending, skriv besifringen, og finn trinn og funksjon, for treklanger og septimakkorder i dur og moll.",
+      fil: "akkordanalyse.html",
+      svartHvitt: false,
+      lagtTil: "2026-10-09"
+    },
+    {
+      seksjon: "teori",
       merke: "Harmoni",
       tittel: "Harmonilære",
       beskrivelse: "Funksjoner, kadenser, kvartsekstakkordens bruk, beliggenhet og leie, og skråstrekakkorder, i firstemmig sats.",
@@ -212,6 +221,15 @@ window.VBM = {
       tittel: "Teoriquiz: intervaller",
       beskrivelse: "Les et intervall på notelinjen og finn navnet, eller skriv det ved å velge riktig notebilde, i G- og F-nøkkel.",
       fil: "quiz-intervaller.html",
+      svartHvitt: false,
+      lagtTil: "2026-10-09"
+    },
+    {
+      seksjon: "teoriquiz",
+      merke: "Akkordanalyse",
+      tittel: "Teoriquiz: akkordanalyse",
+      beskrivelse: "Les en akkord på notelinjen og finn besifringen, eller trinn og omvending, eller funksjonen.",
+      fil: "quiz-akkordanalyse.html",
       svartHvitt: false,
       lagtTil: "2026-10-09"
     },
