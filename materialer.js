@@ -181,6 +181,15 @@ window.VBM = {
     },
     {
       seksjon: "teori",
+      merke: "Bitreklanger",
+      tittel: "Bitreklanger og forholdninger",
+      beskrivelse: "Hoved- og bitreklanger i dur og moll, navnene i opptaksprøven og i andre systemer, typiske akkordforløp, omvendinger og forholdninger, og hvor fagfolk er uenige.",
+      fil: "bitreklanger.html",
+      svartHvitt: false,
+      lagtTil: "2026-10-09"
+    },
+    {
+      seksjon: "teori",
       merke: "Harmoni",
       tittel: "Harmonilære",
       beskrivelse: "Funksjoner, kadenser, kvartsekstakkordens bruk, beliggenhet og leie, og skråstrekakkorder, i firstemmig sats.",
@@ -329,6 +338,24 @@ window.VBM = {
       tittel: "Teoriquiz: stemming og temperatur",
       beskrivelse: "Frekvensforhold, cent, kommaet, temperaturene og utregning av frekvenser.",
       fil: "quiz-stemming.html?type=les",
+      svartHvitt: false,
+      lagtTil: "2026-10-09"
+    },
+    {
+      seksjon: "gehorquiz",
+      merke: "Akkordforløp",
+      tittel: "Gehørquiz: akkordforløp",
+      beskrivelse: "Hør korte akkordforløp og velg analysen med romertall eller funksjoner, og hør hvilken forholdning det er.",
+      fil: "quiz-akkordforlop.html?type=hor",
+      svartHvitt: false,
+      lagtTil: "2026-10-09"
+    },
+    {
+      seksjon: "teoriquiz",
+      merke: "Akkordforløp",
+      tittel: "Teoriquiz: akkordforløp",
+      beskrivelse: "Les korte akkordforløp i firstemmig sats og velg analysen, og finn typen forholdning.",
+      fil: "quiz-akkordforlop.html?type=les",
       svartHvitt: false,
       lagtTil: "2026-10-09"
     }
