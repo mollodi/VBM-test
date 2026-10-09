@@ -39,10 +39,11 @@
     hjelp: 'med liten hjelp av Claude AI',
     dato: 'september 2026'
   };
-  /* Lydkreditter. Siden velger med <footer data-lyd="alle"> eller data-lyd="piano". */
+  /* Lydkreditter. Siden velger med <footer data-lyd="alle">, data-lyd="piano" eller data-lyd="stemming". */
   var LYD = {
     alle: 'Lyd: Salamander Grand Piano av Alexander Holm (CC BY 3.0). Strykere fra VS Chamber Orchestra Community Edition av Versilian Studios (CC0).',
     piano: 'Lyd: Salamander Grand Piano av Alexander Holm (CC BY 3.0).',
+    stemming: 'Lyd: orgel spilt inn av Simon Dalzell (Ivy Audio) og strykere, begge fra VS Chamber Orchestra Community Edition av Versilian Studios (CC0). Piano: Salamander Grand Piano av Alexander Holm (CC BY 3.0).',
     rytme: 'Lyd: trommer fra Versilian Community Sample Library (CC0). Piano: Salamander Grand Piano av Alexander Holm (CC BY 3.0). Strykere fra VS Chamber Orchestra Community Edition av Versilian Studios (CC0).'
   };
 
@@ -224,7 +225,8 @@
   }
 
   /* ==================== 6. Bunntekst ====================
-     <footer data-lyd="alle">  signatur + kreditt for piano, gitar og strykere
+     <footer data-lyd="alle">  signatur + kreditt for piano og strykere
+     <footer data-lyd="stemming"> signatur + kreditt for orgel, strykere og piano (sidene om stemming)
      <footer data-lyd="piano"> signatur + kreditt for piano
      <footer data-lyd="">      bare signatur
      Det som står i <footer> fra før (f.eks. en merknad), blir stående over. */

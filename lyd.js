@@ -37,6 +37,11 @@
   var VL   = names('G3 A3 B3 D4 Fs4 A4 C5 E5 G5 B5 D6');
   var SOLO = names('E6 G6 A6 C7');
   var SB = B.strykere || '';
+  /* Orgel: principalstemme (Man3Open) og pedal fra samme orgel, spilt inn av Simon Dalzell (Ivy Audio), i VS Chamber Orchestra
+     Community Edition. Stemt til nøyaktige halvtoner. Orgeltoner holdes jevnt og har mange overtoner, så svevninger høres tydelig. */
+  var ORGEL_PEDAL = names('C1 Ds1 Fs1 A1');
+  var ORGEL_MAN = []; for (var om = 36; om <= 96; om += 3) ORGEL_MAN.push(om);
+  var OB = B.orgel || '';
 
   var INSTR = {
     piano: { label: 'Piano', attack: 0.005, release: 0.35, layers: [
@@ -59,9 +64,21 @@
   INSTR.piano.layers.concat(INSTR.strykere.layers)
     .forEach(function(L){ L.shift = L.shift || 0; L.cents = L.cents || 0; L.delay = L.delay || 0; L.range = L.range || 12; });
 
+  /* Sidene om stemming og temperatur (window.VBM_LYD_ORGEL_SIDE = true) får også orgel, og orgel er valgt som standard der,
+     fordi svevninger høres best med jevne toner som har mange overtoner. */
+  var ORGEL = !!window.VBM_LYD_ORGEL_SIDE;
+  if (ORGEL) {
+    var medOrgel = { orgel: { label: 'Orgel', attack: 0.03, release: 0.5, sustain: true, layers: [
+      { base: OB + 'orgel-', notes: ORGEL_PEDAL, level: 0.8, min: 23, max: 35, range: 2, shift: 0, cents: 0, delay: 0 },
+      { base: OB + 'orgel-', notes: ORGEL_MAN,   level: 0.8, min: 36, max: 96, range: 2, shift: 0, cents: 0, delay: 0 }
+    ]}};
+    Object.keys(INSTR).forEach(function(k){ medOrgel[k] = INSTR[k]; });
+    INSTR = medOrgel;
+  }
+
   /* Rytmesidene (window.VBM_LYD_RYTME_SIDE = true) får også trommer, og trommer er valgt som standard der.
      Trommelydene er ekte opptak fra Versilian Community Sample Library (CC0) og ligger på nettstedet selv. */
-  var RYTME = !!window.VBM_LYD_RYTME_SIDE, LAGRE = RYTME ? 'vbm-instrument-rytme' : 'vbm-instrument';
+  var RYTME = !!window.VBM_LYD_RYTME_SIDE, LAGRE = RYTME ? 'vbm-instrument-rytme' : ORGEL ? 'vbm-instrument-stemming' : 'vbm-instrument';
   /* window.VBM_LYD_TROMMEFILER kan erstatte filene (brukes i forhåndsvisninger der lydene ligger inne i siden). */
   var TROMMER = window.VBM_LYD_TROMMEFILER || { skarp: 'rytme-skarptromme.mp3', bass: 'rytme-basstromme.mp3', hihat: 'rytme-hihat.mp3', klikk: 'rytme-treblokk.mp3' };
   var TROMME_NIVA = { skarp: 0.75, bass: 0.95, hihat: 0.55, klikk: 0.7 };
@@ -70,7 +87,7 @@
     Object.keys(INSTR).forEach(function(k){ med[k] = INSTR[k]; });
     INSTR = med;
   }
-  var current = RYTME ? 'trommer' : 'piano';
+  var current = RYTME ? 'trommer' : ORGEL ? 'orgel' : 'piano';
   try { var saved = localStorage.getItem(LAGRE); if (INSTR[saved]) current = saved; } catch(e){}
 
   /* ---------- lydkontekst ---------- */
@@ -292,7 +309,7 @@
     var alle = notes.concat.apply(notes, (kadens || []).concat(sekvens || []));
     /* Strykerne har ikke hele pianoets område (A0 til C8). Toner utenfor spilles på piano,
        og siden får beskjed (felles.js viser en kort melding). */
-    var OMRADE = { strykere: [23, 96] }, omr = OMRADE[current];
+    var OMRADE = { strykere: [23, 96], orgel: [24, 96] }, omr = OMRADE[current];
     if (omr && alle.some(function(m){ return m < omr[0] || m > omr[1]; })) {
       inst = INSTR.piano;
       try { window.dispatchEvent(new CustomEvent('vbm-utenfor', { detail: { instrument: INSTR[current].label } })); } catch(e){}
