@@ -105,9 +105,10 @@ window.VBM_HARMONI = (function(){
     var navn = K.tone(r) + (akk.kval === 'm' ? 'm' : akk.kval === '7' ? '7' : '');
     return bass.b === r.b && bass.f === r.f ? navn : navn + '/' + K.tone(bass);
   }
-  /* Bygger en rekke: [{ noter, tall, midi, sym, akk }] i tonearten nr (0 = C). */
+  /* Bygger en rekke: [{ noter, tall, midi, sym, akk }] i tonearten nr (0 = C).
+     navn er navnene over (['I', 'IV', 'V7']) eller egne akkorder i samme form (transponering.js bruker det). */
   function rekke(nr, erMoll, navn, tall, merk){
-    var bok = erMoll ? MOLL : DUR, liste = navn.map(function(n){ return bok[n] || DUR[n]; });
+    var bok = erMoll ? MOLL : DUR, liste = navn.map(function(n){ return typeof n === 'string' ? (bok[n] || DUR[n]) : n; });
     var rot = plasser(tonikk(nr, erMoll), liste);
     return { rot: rot, fortegn: fortegn(rot, erMoll), akkorder: liste.map(function(akk, i){
       var noter = noterFor(rot, akk);

@@ -127,6 +127,15 @@ window.VBM = {
     },
     {
       seksjon: "teori",
+      merke: "Transponering",
+      tittel: "Transponering",
+      beskrivelse: "Flytt en melodi med et intervall eller til en ny toneart, transponer akkorder, bruk kapo, og se hva som klinger på klarinett, saksofon, valthorn og gitar.",
+      fil: "transponering.html",
+      svartHvitt: false,
+      lagtTil: "2026-10-09"
+    },
+    {
+      seksjon: "teori",
       merke: "Skalaer",
       tittel: "Skalaer og modi",
       beskrivelse: "Dur, moll, de sju modiene, pentatonikk, blues, heltone og jazzskalaer, i alle tonearter, med lyd og sangeksempler.",
@@ -241,6 +250,24 @@ window.VBM = {
       fil: "quiz-rytme.html?type=les",
       svartHvitt: false,
       lagtTil: "2026-10-06"
+    },
+    {
+      seksjon: "gehorquiz",
+      merke: "Transponering",
+      tittel: "Gehørquiz: transponering",
+      beskrivelse: "Hør en melodi bli transponert og finn tonearten, hør en akkordrekke og skriv den i en ny toneart, eller hør tonen fra et transponerende instrument og finn noten.",
+      fil: "quiz-transponering.html?type=hor",
+      svartHvitt: false,
+      lagtTil: "2026-10-09"
+    },
+    {
+      seksjon: "teoriquiz",
+      merke: "Transponering",
+      tittel: "Teoriquiz: transponering",
+      beskrivelse: "Transponer en tone eller en akkordrekke, og finn hva som klinger og hva som står skrevet for transponerende instrumenter.",
+      fil: "quiz-transponering.html?type=les",
+      svartHvitt: false,
+      lagtTil: "2026-10-09"
     }
   ]
 

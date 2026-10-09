@@ -24,6 +24,7 @@ Gratis undervisningsmateriell i musikkteori for elever og lærere. Juksebøkene 
 - **Skalaer og modi**: dur, moll (naturlig, harmonisk og melodisk), de sju modiene, pentatonikk, blues, heltone, kromatisk og jazzskalaer, i alle tonearter, med noter, lyd og sangeksempler. Modiene vises både fra samme grunntone og som trinn i durskalaen.
 - **Omvendinger**: alle stillingene til treklanger og septimakkorder, fra sekstakkord til sekundakkord, med besifring, skråstreknavn og intervallene over bassen, i alle tonearter. Forklarer også at sekstakkord betyr to ting.
 - **Harmonilære**: funksjoner (T, S, D og parallellene), de fire kadensene i dur og moll, kvartsekstakkordens tre bruksmåter, beliggenhet og leie, og skråstrekakkorder, i firstemmig sats på to notelinjer i alle tonearter.
+- **Transponering**: hva transponering er, å flytte en melodi med et intervall (med riktig stavemåte) eller til en ny toneart med fortegn, tilfeldige fortegn som blir oppløsningstegn, akkordsymboler og romertall i alle tonearter, kapo på gitaren, og transponerende instrumenter (klarinett og trompet i B, altsaksofon i Ess, valthorn i F og gitar) med skrevet og klingende tone side om side.
 
 ### Elevhefter
 - **Akkordhefte**: treklanger, trinnakkorder og diatonisk harmoni, med harmonisk moll.
@@ -35,12 +36,14 @@ Gratis undervisningsmateriell i musikkteori for elever og lærere. Juksebøkene 
 - **Gehørquiz: omvendinger**: hør en akkord og finn stillingen, fra grunnstilling til sekundakkord, for dur, moll og dominantseptimakkorder, med C eller alle tonearter.
 - **Gehørquiz: kadenser og funksjoner**: hør en kadens og finn typen, eller hør en akkord etter tonika og finn funksjonen.
 - **Gehørquiz: rytme**: hør en rytme og finn riktig notasjon blant fire, eller hør hvilken taktart en trommegroove går i. Samme side som Teoriquiz: rytme, åpnet med lytteoppgaver (quiz-rytme.html?type=hor).
+- **Gehørquiz: transponering**: hør en melodi bli transponert og finn tonearten, hør en akkordrekke og finn akkordene i en ny toneart, eller hør tonen fra et transponerende instrument (etter en C) og finn noten som står skrevet. Samme side som Teoriquiz: transponering, åpnet med lytteoppgaver (quiz-transponering.html?type=hor).
 
 ### Teoriquiz
 - **Teoriquiz: notelesing**: les en note og finn navnet, med eller uten fortegn, eller trykk der en tone står på notelinjen, i G-, F-, alt- og tenornøkkel.
 - **Teoriquiz: kvintsirkelen**: les fortegnene og finn tonearten, eller finn fortegnene til en toneart, i dur og moll, med opptil 4 eller alle 7 fortegn.
 - **Teoriquiz: skalaer og modi**: les en skala på notelinjen og finn navnet. Samme side, åpnet med «Les» valgt (quiz-skalaer.html?type=les).
 - **Teoriquiz: rytme**: les en takt og finn taktarten, eller finn noten som mangler (quiz-rytme.html?type=les).
+- **Teoriquiz: transponering**: transponer en tone med et intervall eller en akkordrekke til en ny toneart, og finn klingende eller skrevet tone for transponerende instrumenter, også oktaven for gitar (quiz-transponering.html?type=les).
 
 ## Lyd
 I juksebøkene kan du velge mellom **piano**, **gitar** og **strykere** med knappen nederst til høyre. Når du trykker på en ny spill-knapp, stopper lyden som spiller. Trykk på samme knapp igjen for å stoppe.
