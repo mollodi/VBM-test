@@ -277,18 +277,28 @@
   var stegTimere = [], aktivVedSteg = null;
   function planSekvens(sekvens, voiceFn, vedSteg, my){
     var t = ctx.currentTime + 0.05;
+    /* En tone eller akkord klinger til neste steg med toner begynner (tomme steg er pauser der den fortsatt klinger),
+       med samme lille overlapp som før (S_TONE - S_STEG). Det siste steget med toner klinger minst S_SISTE.
+       Slik holdes akkordene i en akkordrekke like lenge som de varer, i stedet for å bli korte. */
+    var sisteMedToner = -1;
+    sekvens.forEach(function(steg, i){ if (steg.length) sisteMedToner = i; });
     sekvens.forEach(function(steg, i){
-      var siste = i === sekvens.length - 1;
-      steg.forEach(function(m){ voiceFn(m, t + i * S_STEG, siste ? S_SISTE : S_TONE, steg.length > 1, steg.length); });
+      if (!steg.length) return;
+      var neste = i + 1;
+      while (neste < sekvens.length && !sekvens[neste].length) neste++;
+      var lengde = i === sisteMedToner ? Math.max(S_SISTE, (sekvens.length - i) * S_STEG + (S_TONE - S_STEG))
+                                       : Math.max(S_TONE, (neste - i) * S_STEG + (S_TONE - S_STEG));
+      steg.forEach(function(m){ voiceFn(m, t + i * S_STEG, lengde, steg.length > 1, steg.length); });
     });
+    var slutt = sisteMedToner < 0 ? 0 : sisteMedToner * S_STEG + Math.max(S_SISTE, (sekvens.length - sisteMedToner) * S_STEG + (S_TONE - S_STEG));
     if (vedSteg) {
       aktivVedSteg = vedSteg;
       sekvens.forEach(function(steg, i){
         planlegg(t + i * S_STEG, function(){ if (my === token) vedSteg(i); });
       });
-      planlegg(t + (sekvens.length - 1) * S_STEG + S_SISTE, function(){ if (my === token) { aktivVedSteg = null; vedSteg(-1); } });
+      planlegg(t + slutt, function(){ if (my === token) { aktivVedSteg = null; vedSteg(-1); } });
     }
-    return (t + (sekvens.length - 1) * S_STEG + S_SISTE + 0.7) - ctx.currentTime;
+    return (t + slutt + 0.7) - ctx.currentTime;
   }
 
   function play(notes, btn, ganger, kadens, samlet, sekvens, vedSteg, vedToner){
