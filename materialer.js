@@ -190,6 +190,15 @@ window.VBM = {
     },
     {
       seksjon: "teori",
+      merke: "Melodi",
+      tittel: "Melodilesing og melodidiktat",
+      beskrivelse: "Tonika og skalatrinn, trinnvis bevegelse og sprang, dur eller moll, følge notene mens du lytter, finne feil i notene og skrive ned en melodi.",
+      fil: "melodilesing.html",
+      svartHvitt: false,
+      lagtTil: "2026-10-09"
+    },
+    {
+      seksjon: "teori",
       merke: "Harmoni",
       tittel: "Harmonilære",
       beskrivelse: "Funksjoner, kadenser, kvartsekstakkordens bruk, beliggenhet og leie, og skråstrekakkorder, i firstemmig sats.",
@@ -356,6 +365,15 @@ window.VBM = {
       tittel: "Teoriquiz: akkordforløp",
       beskrivelse: "Les korte akkordforløp i firstemmig sats og velg analysen, og finn typen forholdning.",
       fil: "quiz-akkordforlop.html?type=les",
+      svartHvitt: false,
+      lagtTil: "2026-10-09"
+    },
+    {
+      seksjon: "gehorquiz",
+      merke: "Melodi",
+      tittel: "Gehørquiz: melodi",
+      beskrivelse: "Hør melodier og velg riktig notebilde, finn tonen som står feil i notene, og hør om melodien er i dur eller moll.",
+      fil: "quiz-melodi.html",
       svartHvitt: false,
       lagtTil: "2026-10-09"
     }
