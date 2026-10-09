@@ -27,7 +27,7 @@
   <div class="eyebrow">Musikkteori</div>
   <h1>Stemming og <em>temperatur</em></h1>
   <p class="lede">Hvorfor er ikke tonene på et piano helt rene? Her lærer du hva en frekvens er, hvordan overtonene gir de rene intervallene, hvorfor tolv rene kvinter ikke går opp, og hvordan musikere gjennom tidene har løst det med ulike temperaturer.</p>
-  <p class="lede">Trykk på spill for å høre eksemplene. Svevninger høres best med piano eller strykere, som har overtoner. Velg lyd nederst til høyre, og bruk gjerne hodetelefoner.</p>
+  <p class="lede">Trykk på spill for å høre eksemplene. Orgel er valgt nederst til høyre, fordi orgeltoner holdes jevnt og har mange overtoner, så svevningene høres tydelig. Du kan også velge piano, strykere eller sinustoner. Bruk gjerne hodetelefoner.</p>
 </header>
 
 <main>
@@ -92,7 +92,7 @@
       <div class="noter" id="iv-noter"></div>
     </div>
     <p class="task" id="iv-tekst" aria-live="polite"></p>
-    <div class="viktig"><p class="task"><strong>Hør med piano eller strykere:</strong> sinustoner har ingen overtoner, så en kvint eller en ters svever nesten ikke med dem. Bytt til sinustoner og hør selv.</p></div>
+    <div class="viktig"><p class="task"><strong>Hør med orgel eller piano:</strong> sinustoner har ingen overtoner, så en kvint eller en ters svever nesten ikke med dem. Strykerne spiller med vibrato, og det skjuler svevningene. Bytt lyd og hør selv.</p></div>
   </section>
 
   <section class="card bred" id="komma">
@@ -159,7 +159,7 @@
   </section>
 </main>
 
-<footer data-lyd="alle"></footer>
+<footer data-lyd="stemming"></footer>
 
 <script src="tonearter.js"></script>
 <script src="skalaer.js"></script>
@@ -286,6 +286,7 @@
 })();
 </script>
 <script>window.VBM_LYD = { chordDur: 6 };   /* intervallene i kort 3 holdes lenge, så svevningene høres */</script>
+<script>window.VBM_LYD_ORGEL_SIDE = true;   /* orgel i lydvalget, valgt som standard her */</script>
 <script src="lyd.js"></script>
 </body>
 </html>

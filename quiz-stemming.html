@@ -27,7 +27,7 @@
   <div class="eyebrow">Quiz</div>
   <h1>Stemming og <em>temperatur</em></h1>
   <p class="lede">Hør om et intervall er rent eller svever, og regn med frekvensforhold, cent og frekvenser. Øv i ditt eget tempo, eller ta en prøve med 20 oppgaver.</p>
-  <p class="lede">Alt er forklart i leksjonen <a href="stemming.html">Stemming og temperatur</a>. Svevninger høres best med piano eller strykere. Velg lyd nederst til høyre, og bruk gjerne hodetelefoner.</p>
+  <p class="lede">Alt er forklart i leksjonen <a href="stemming.html">Stemming og temperatur</a>. Svevninger høres best med orgel, som er valgt nederst til høyre. Bruk gjerne hodetelefoner.</p>
 </header>
 
 <main>
@@ -125,7 +125,7 @@
   </section>
 </main>
 
-<footer data-lyd="alle"></footer>
+<footer data-lyd="stemming"></footer>
 
 <script src="tonearter.js"></script>
 <script src="skalaer.js"></script>
@@ -268,7 +268,7 @@
   /* =================== Øvemodus =================== */
   var STAT = {}, MAL = 5, paRad = 0, best = 0, klar = false, ov = null, knapper = [];
   var FEIL = {
-    svevning: ['Ikke gi opp. Øret blir bedre for hver oppgave.', 'Lytt etter om lyden pulserer, som en langsom eller rask vibrasjon.', 'Hør med piano eller strykere: sinustoner svever nesten ikke.', 'Pust rolig, lytt godt, og prøv neste.'],
+    svevning: ['Ikke gi opp. Øret blir bedre for hver oppgave.', 'Lytt etter om lyden pulserer, som en langsom eller rask vibrasjon.', 'Hør med orgel eller piano: sinustoner svever nesten ikke, og strykerne har vibrato.', 'Pust rolig, lytt godt, og prøv neste.'],
     forhold: ['Ikke gi opp. Du blir bedre for hver oppgave.', 'Tenk på overtonerekken: 1, 2, 3, 4, 5, 6.', 'Les gjerne kort 3 til 5 i leksjonen en gang til.', 'Pust rolig, tenk deg om, og prøv neste.'],
     frekvens: ['Ikke gi opp. Du blir bedre for hver oppgave.', 'Gang frekvensen med forholdet: en kvint over er ganger 3/2.', 'En oktav over er dobbelt så høy frekvens, en oktav under er halvparten.', 'Pust rolig, tenk deg om, og prøv neste.']
   };
@@ -387,6 +387,7 @@
 })();
 </script>
 <script>window.VBM_LYD = { chordDur: 6 };   /* intervallene holdes lenge, så svevningene høres */</script>
+<script>window.VBM_LYD_ORGEL_SIDE = true;   /* orgel i lydvalget, valgt som standard her */</script>
 <script src="lyd.js"></script>
 </body>
 </html>
