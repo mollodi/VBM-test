@@ -9,7 +9,7 @@
 
    Navn og symboler følger Den ultimate jukseboka: Cmaj7, C7, Cm7, Cm7♭5, Cdim7, C+, Cm(maj7).
    Trinnanalyse: romertall (store for dur og forstørret, små for moll og forminsket) med generalbass-
-   tall for omvendingene (⁶, ⁶₄, ⁷, ⁶₅, ⁴₃, ⁴₂). Funksjonsanalyse: T, S og D (t og s i moll), med tallet
+   tall for omvendingene (⁶, ⁶₄, ⁷, ⁶₅, ⁴₃, ⁴₂). Funksjonsanalyse: T, S og D (store bokstaver også i moll, slik som i opptaksprøven), med tallet
    for basstonen under bokstaven (D₃ = dominant med tersen i bassen, D⁷₃ = dominantseptim med tersen i bassen).
    ===================================================================== */
 window.VBM_AKKORD = (function(){
@@ -66,9 +66,9 @@ window.VBM_AKKORD = (function(){
     if (ak.type === 'aug' || ak.type === 'augmaj7') r += '+';
     return r + INV_TALL[ak.septim ? 1 : 0][inv || 0];
   }
-  /* Funksjon for hovedakkordene (I, IV og V, i moll i, iv og V). Bitreklangene kommer i neste leksjon (null her). */
+  /* Funksjon for hovedakkordene (I, IV og V, i moll i, iv og V), med store bokstaver i begge modi. Bitreklangene kommer i neste leksjon (null her). */
   function funksjon(ak, inv){
-    var f = { 0: ak.moll ? 't' : 'T', 3: ak.moll ? 's' : 'S', 4: 'D' }[ak.trinn];
+    var f = { 0: 'T', 3: 'S', 4: 'D' }[ak.trinn];   // store bokstaver også i moll, slik opptaksprøven skriver dem
     if (!f) return null;
     if (ak.septim && ak.trinn !== 4) return null;   // septimakkorder bare på dominanten (D⁷)
     return f + (ak.septim ? '⁷' : '') + BASS_TALL[inv || 0];

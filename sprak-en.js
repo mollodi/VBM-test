@@ -1208,7 +1208,14 @@ VBM_ORDBOK("en", {
         "Fiss, Ciss, Giss, Diss, Aiss, Eiss, Hiss. Hvert nytt kryss ligger en ren kvint over det forrige.": "F♯, C♯, G♯, D♯, A♯, E♯, B♯. Each new sharp is a perfect fifth above the previous one.",
         "<strong>Huskeregel:</strong> det siste krysset ligger en liten sekund under durtonearten. Med Fiss, Ciss og Giss er det siste krysset Giss, og tonearten er A-dur.": "<strong>Memory rule:</strong> the last sharp is a minor second below the major key. With F♯, C♯ and G♯, the last sharp is G♯, and the key is A major.",
         "B, Ess, Ass, Dess, Gess, Ces, Fes, altså kryssene baklengs.": "B♭, E♭, A♭, D♭, G♭, C♭, F♭, which is the sharps backwards.",
-        "<strong>Huskeregel:</strong> den nest siste b-en er navnet på durtonearten. Med B, Ess og Ass er den nest siste Ess, og tonearten er Ess-dur. F-dur, med bare én b, må du huske.": "<strong>Memory rule:</strong> the second-to-last flat is the name of the major key. With B♭, E♭ and A♭, the second-to-last is E♭, and the key is E♭ major. F major, with just one flat, you have to remember."
+        "<strong>Huskeregel:</strong> den nest siste b-en er navnet på durtonearten. Med B, Ess og Ass er den nest siste Ess, og tonearten er Ess-dur. F-dur, med bare én b, må du huske.": "<strong>Memory rule:</strong> the second-to-last flat is the name of the major key. With B♭, E♭ and A♭, the second-to-last is E♭, and the key is E♭ major. F major, with just one flat, you have to remember.",
+        "Merk": "Note",
+        "Ulike navn og systemer": "Different names and systems",
+        "Musikkteori er ikke helt standardisert. Her er stedene der bøker, land og opptaksprøven bruker ulike navn eller systemer for det du har lært på denne siden.": "Music theory is not fully standardised. Here are the places where books, countries and the admission test use different names or systems for what you have learned on this page.",
+        "<strong>Parallelltoneart.</strong> På norsk (og tysk og polsk) er parallelltonearter to tonearter med samme fortegn, som C-dur og a-moll. På engelsk heter det <em>relative keys</em>. Det engelske <em>parallel key</em> betyr derimot samme grunntone, som C-dur og c-moll, og det heter varianttoneart på norsk.": "<strong>Relative and parallel keys.</strong> In Norwegian (and German and Polish), “parallelltoneart” means two keys with the same key signature, such as C major and A minor. In English these are <em>relative keys</em>. The English <em>parallel key</em> means the same tonic, such as C major and C minor, which is called “varianttoneart” in Norwegian.",
+        "<strong>H og B.</strong> I Norge, Tyskland og Polen heter tonen mellom A og C H, og B er tonen en halvtone under (engelsk B♭). Engelskspråklige bøker og de fleste apper kaller H for B. Sjekk alltid hvilket system en bok eller app bruker.": "<strong>H and B.</strong> In Norway, Germany and Poland the note between A and C is called H, and B is the note a semitone below (English B♭). English-language books and most apps call H “B”. Always check which system a book or app uses.",
+        "<strong>Enharmoniske tonearter.</strong> Nederst i sirkelen kan samme toneart skrives på to måter, for eksempel Fiss-dur (6 kryss) og Gess-dur (6 b-er). Bøker velger ulikt hvilken de viser, men begge er riktige.": "<strong>Enharmonic keys.</strong> At the bottom of the circle the same key can be written in two ways, for example F♯ major (6 sharps) and G♭ major (6 flats). Books choose differently which one they show, but both are correct.",
+        "<strong>Tonartsnavn.</strong> Norsk skriver molltonearter med liten bokstav (a-moll) og durtonearter med stor (A-dur). Engelsk skriver A minor og A major, og i akkordsymboler betyr Am en mollakkord, ikke en toneart.": "<strong>Key names.</strong> Norwegian writes minor keys with a small letter (a-moll) and major keys with a capital (A-dur). English writes A minor and A major, and in chord symbols Am means a minor chord, not a key."
       },
     "quiz-kvintsirkelen.html": {
         "Modus": "Mode",
@@ -1368,7 +1375,14 @@ VBM_ORDBOK("en", {
         "1 kryss": "1 sharp",
         "1 b": "1 flat",
         "{n} kryss": function(v){ return v.n + ' sharps'; },
-        "{n} b-er": function(v){ return v.n + ' flats'; }
+        "{n} b-er": function(v){ return v.n + ' flats'; },
+        "Merk": "Note",
+        "Ulike navn og systemer": "Different names and systems",
+        "Musikkteori er ikke helt standardisert. Her er stedene der bøker, land og opptaksprøven bruker ulike navn eller systemer for det du har lært på denne siden.": "Music theory is not fully standardised. Here are the places where books, countries and the admission test use different names or systems for what you have learned on this page.",
+        "<strong>Naturlig moll.</strong> Den samme skalaen kalles naturlig moll, ren moll og eolisk modus i ulike bøker.": "<strong>Natural minor.</strong> The same scale is called natural minor, pure minor and the Aeolian mode in different books.",
+        "<strong>Melodisk moll.</strong> I klassisk teori hever melodisk moll 6. og 7. trinn på vei opp og bruker naturlig moll på vei ned, slik den vises her. I jazz brukes de hevede trinnene både opp og ned, og skalaen kalles ofte jazzmoll.": "<strong>Melodic minor.</strong> In classical theory melodic minor raises the 6th and 7th degrees on the way up and uses natural minor on the way down, as shown here. In jazz the raised degrees are used both up and down, and the scale is often called jazz minor.",
+        "<strong>Modusnavnene.</strong> Navnene dorisk, frygisk, lydisk og så videre kommer fra antikkens Hellas, men i middelalderen ble de brukt om andre skalaer enn de antikke. Dagens kirketoner og modi bruker middelalderens navn.": "<strong>The mode names.</strong> The names Dorian, Phrygian, Lydian and so on come from ancient Greece, but in the Middle Ages they were used for different scales than the ancient ones. Today’s church modes use the medieval names.",
+        "<strong>Harmonisk og melodisk moll.</strong> Noen bøker regner dem som egne skalaer, andre som varianter av moll med tilfeldige fortegn. Fortegnene for tonearten er uansett de samme som for naturlig moll.": "<strong>Harmonic and melodic minor.</strong> Some books treat them as scales of their own, others as variants of minor with accidentals. The key signature is the same as for natural minor either way."
       },
     "quiz-skalaer.html": {
         "Modus": "Mode",
@@ -1605,7 +1619,14 @@ VBM_ORDBOK("en", {
         "Omvendinger av treklanger og septimakkorder: sekstakkord, kvartsekstakkord, kvintsekstakkord, terskvartakkord og sekundakkord, med noter og lyd i alle tonearter.": "Inversions of triads and seventh chords: the sixth chord, six-four, six-five, four-three and four-two chords, with notation and sound in every key.",
         "{n} kryss": function(v){ return v.n + ' sharps'; },
         "{n} b-er": function(v){ return v.n + ' flats'; },
-        "Hvordan kvartsekstakkorden brukes i kadenser, forskjellen på omvending og beliggenhet, og skråstrekakkorder med en bass utenfor akkorden, står i leksjonen <a href=\"harmonilaere.html\">Harmonilære</a>.": "How the six-four chord is used in cadences, the difference between inversion and melodic position, and slash chords with a bass outside the chord are in the lesson <a href=\"harmonilaere.html\">Harmony</a>."
+        "Hvordan kvartsekstakkorden brukes i kadenser, forskjellen på omvending og beliggenhet, og skråstrekakkorder med en bass utenfor akkorden, står i leksjonen <a href=\"harmonilaere.html\">Harmonilære</a>.": "How the six-four chord is used in cadences, the difference between inversion and melodic position, and slash chords with a bass outside the chord are in the lesson <a href=\"harmonilaere.html\">Harmony</a>.",
+        "Merk": "Note",
+        "Ulike navn og systemer": "Different names and systems",
+        "Musikkteori er ikke helt standardisert. Her er stedene der bøker, land og opptaksprøven bruker ulike navn eller systemer for det du har lært på denne siden.": "Music theory is not fully standardised. Here are the places where books, countries and the admission test use different names or systems for what you have learned on this page.",
+        "<strong>Navn på omvendingene.</strong> Norsk bruker gjerne generalbassnavnene: sekstakkord og kvartsekstakkord for treklanger, og kvintsekstakkord, terskvartakkord og sekundakkord for septimakkorder. Engelsk sier first, second og third inversion.": "<strong>Names of the inversions.</strong> Norwegian often uses the figured-bass names: sixth chord and six-four chord for triads, and six-five, four-three and four-two chord for seventh chords. English says first, second and third inversion.",
+        "<strong>Generalbasstallene.</strong> I de fleste bøker står tallene over hverandre (⁶₅), men i tekst og i noen bøker skrives de som 6/5 eller 65. Sekundakkorden skrives både ⁴₂ og bare 2.": "<strong>The figured-bass numbers.</strong> In most books the numbers are stacked (⁶₅), but in text and in some books they are written as 6/5 or 65. The four-two chord is written both ⁴₂ and simply 2.",
+        "<strong>Skråstrekakkorder.</strong> C/E er en omvending når basstonen er en akkordtone. I jazz og pop kan basstonen også være en tone utenfor akkorden, som i C/D. Se Harmonilære.": "<strong>Slash chords.</strong> C/E is an inversion when the bass note is a chord tone. In jazz and pop the bass note can also be a note outside the chord, as in C/D. See Harmony.",
+        "<strong>Kadensens kvartsekstakkord.</strong> Mange bøker skriver I⁶₄, fordi tonene er de samme som i I. Opptaksprøven og mange nyere bøker skriver V⁶₄ (funksjon D⁶₄), fordi akkorden virker som en del av dominanten. Se Bitreklanger og forholdninger.": "<strong>The cadential six-four.</strong> Many books write I⁶₄, because the notes are the same as in I. The admission test and many newer books write V⁶₄ (function D⁶₄), because the chord works as part of the dominant. See Secondary triads and suspensions."
       },
     "gehorquiz-omvendinger.html": {
         "Modus": "Mode",
@@ -1799,7 +1820,18 @@ VBM_ORDBOK("en", {
         "Halvkadens": "Half cadence",
         "Skuffende kadens": "Deceptive cadence",
         "{n} kryss": function(v){ return v.n + ' sharps'; },
-        "{n} b-er": function(v){ return v.n + ' flats'; }
+        "{n} b-er": function(v){ return v.n + ' flats'; },
+        "Merk": "Note",
+        "Ulike navn og systemer": "Different names and systems",
+        "Musikkteori er ikke helt standardisert. Her er stedene der bøker, land og opptaksprøven bruker ulike navn eller systemer for det du har lært på denne siden.": "Music theory is not fully standardised. Here are the places where books, countries and the admission test use different names or systems for what you have learned on this page.",
+        "<strong>To funksjonssystemer.</strong> Denne siden bruker parallellnavnene Tp, Sp og Dp, og små bokstaver i moll (t og s), slik som i tysk og svensk tradisjon. Opptaksprøven bruker det norske systemet etter Sigvald Tveit: vi heter Ts, ii heter Ss og iii heter Tm, og store bokstaver brukes også i moll.": "<strong>Two function systems.</strong> This page uses the parallel names Tp, Sp and Dp, and small letters in minor (t and s), as in the German and Swedish tradition. The admission test uses the Norwegian system after Sigvald Tveit: vi is Ts, ii is Ss and iii is Tm, and capital letters are used in minor too.",
+        "<strong>VI i moll.</strong> I parallellsystemet er VI i moll subdominantparallellen (sP), og etter V i en skuffende kadens kalles den også tonikaens kontraklang (tG). tP i moll er III. I opptaksprøven heter VI Ts.": "<strong>VI in minor.</strong> In the parallel system, VI in minor is the subdominant parallel (sP), and after V in a deceptive cadence it is also called the tonic’s counter-chord (tG). tP in minor is III. In the admission test VI is called Ts.",
+        "<strong>Kadensenes navn.</strong> Britisk engelsk kaller hel kadens <em>perfect cadence</em>, halv kadens <em>imperfect cadence</em> og skuffende kadens <em>interrupted cadence</em>. Amerikansk engelsk sier <em>authentic</em> (PAC og IAC), <em>half</em> og <em>deceptive cadence</em>. Plagal heter det samme overalt.": "<strong>The cadence names.</strong> British English calls the perfect cadence <em>perfect</em>, the half cadence <em>imperfect</em> and the deceptive cadence <em>interrupted</em>. American English says <em>authentic</em> (PAC and IAC), <em>half</em> and <em>deceptive cadence</em>. Plagal is the same everywhere.",
+        "<strong>Kadensens kvartsekstakkord.</strong> Mange bøker skriver I⁶₄, fordi tonene er de samme som i I. Opptaksprøven og mange nyere bøker skriver V⁶₄ (funksjon D⁶₄), fordi akkorden virker som en del av dominanten. Eksempelet i kort 3 viser V⁶₄.": "<strong>The cadential six-four.</strong> Many books write I⁶₄, because the notes are the same as in I. The admission test and many newer books write V⁶₄ (function D⁶₄), because the chord works as part of the dominant. The example in section 3 shows V⁶₄.",
+        "<strong>Akkorden på 7. trinn.</strong> vii° regnes oftest som en dominantseptimakkord uten grunntone (Đ⁷), men noen lærebøker regner den som en egen akkord.": "<strong>The chord on degree 7.</strong> vii° is usually treated as a dominant seventh chord without its root (Đ⁷), but some textbooks treat it as a chord of its own.",
+        "Kilder: Esa Lilja, «Harmony Analysis Tasks in the Music Theory Admission Test for Higher Music Education in Norway», PlaySpace 3/1 (2024). Bjørnar Utne-Reitan, «Funksjonsteori – en musikkteoretisk tradisjon» (2023).": "Sources: Esa Lilja, “Harmony Analysis Tasks in the Music Theory Admission Test for Higher Music Education in Norway”, PlaySpace 3/1 (2024). Bjørnar Utne-Reitan, “Funksjonsteori – en musikkteoretisk tradisjon” (2023).",
+        "I opptaksprøven heter bitreklangene noe annet: vi heter Ts, ii heter Ss og iii heter Tm, og store bokstaver brukes også i moll. Se «Ulike navn og systemer» nederst og <a href=\"bitreklanger.html\">Bitreklanger og forholdninger</a>.": "In the admission test the secondary triads have other names: vi is Ts, ii is Ss and iii is Tm, and capital letters are used in minor too. See “Different names and systems” at the bottom and <a href=\"bitreklanger.html\">Secondary triads and suspensions</a>.",
+        "Opptaksprøven og mange nyere bøker skriver den derfor V⁶₄ (funksjon D⁶₄), slik som i eksempelet. Andre bøker skriver I⁶₄.": "The admission test and many newer books therefore write it V⁶₄ (function D⁶₄), as in the example. Other books write I⁶₄."
       },
     "gehorquiz-harmoni.html": {
         "Modus": "Mode",
@@ -1888,7 +1920,10 @@ VBM_ORDBOK("en", {
         "Hør en kadens og finn typen, eller hør en akkord etter tonika og finn funksjonen. Øvemodus og prøvemodus med 20 oppgaver.": "Hear a cadence and find its type, or hear a chord after the tonic and find its function. Practice mode and test mode with 20 questions.",
         "{n} kryss": function(v){ return v.n + ' sharps'; },
         "{n} b-er": function(v){ return v.n + ' flats'; },
-        "Hvert lydeksempel spilles tre ganger og kan ikke spilles på nytt. Du kan svare mens lyden spiller, og endre svaret til du går videre. Bruk gjerne hodetelefoner.": "Each sound example plays three times and cannot be replayed. You can answer while the sound plays, and change your answer until you move on. Headphones are a good idea."
+        "Hvert lydeksempel spilles tre ganger og kan ikke spilles på nytt. Du kan svare mens lyden spiller, og endre svaret til du går videre. Bruk gjerne hodetelefoner.": "Each sound example plays three times and cannot be replayed. You can answer while the sound plays, and change your answer until you move on. Headphones are a good idea.",
+        "Tonikaparallell (Tp, i opptaksprøven Ts)": "Tonic relative (Tp, in the Norwegian admission test Ts)",
+        "Subdominantparallell (Sp, i opptaksprøven Ss)": "Subdominant relative (Sp, in the Norwegian admission test Ss)",
+        "Dominantparallell (Dp, i opptaksprøven Tm)": "Dominant relative (Dp, in the Norwegian admission test Tm)"
       },
     "notelesing.html": {
         "Musikkteori": "Music theory",
@@ -1948,7 +1983,14 @@ VBM_ORDBOK("en", {
         "firestrøken oktav": "four-line octave",
         "femstrøken oktav": "five-line octave",
         "{n} kryss": function(v){ return v.n + ' sharps'; },
-        "{n} b-er": function(v){ return v.n + ' flats'; }
+        "{n} b-er": function(v){ return v.n + ' flats'; },
+        "Merk": "Note",
+        "Ulike navn og systemer": "Different names and systems",
+        "Musikkteori er ikke helt standardisert. Her er stedene der bøker, land og opptaksprøven bruker ulike navn eller systemer for det du har lært på denne siden.": "Music theory is not fully standardised. Here are the places where books, countries and the admission test use different names or systems for what you have learned on this page.",
+        "<strong>Oktavnavn.</strong> Norsk bruker gjerne Helmholtz-navnene (store C, lille c, enstrøken c¹), mens engelsk bruker vitenskapelig notasjon (C2, C3, C4). Midtre C er c¹, som er C4.": "<strong>Octave names.</strong> Norwegian often uses the Helmholtz names (great C, small c, one-line c¹), while English uses scientific pitch notation (C2, C3, C4). Middle C is c¹, which is C4.",
+        "<strong>Midtre C i musikkprogrammer.</strong> Noen programmer og keyboard, blant annet fra Yamaha, kaller midtre C for C3 i stedet for C4. Sjekk hva programmet ditt mener med C4.": "<strong>Middle C in music software.</strong> Some programs and keyboards, including Yamaha’s, call middle C “C3” instead of C4. Check what your program means by C4.",
+        "<strong>H og B.</strong> I Norge, Tyskland og Polen heter tonen mellom A og C H, og B er tonen en halvtone under (engelsk B♭). Engelskspråklige bøker og de fleste apper kaller H for B. Sjekk alltid hvilket system en bok eller app bruker.": "<strong>H and B.</strong> In Norway, Germany and Poland the note between A and C is called H, and B is the note a semitone below (English B♭). English-language books and most apps call H “B”. Always check which system a book or app uses.",
+        "<strong>Nøkkelnavn.</strong> G-nøkkelen kalles også fiolinnøkkel (treble clef), F-nøkkelen bassnøkkel (bass clef), og C-nøkkelen altnøkkel eller tenornøkkel etter hvor den står.": "<strong>Clef names.</strong> The G clef is also called the treble clef, the F clef the bass clef, and the C clef the alto or tenor clef depending on where it sits."
       },
     "quiz-notelesing.html": {
         "Modus": "Mode",
@@ -2132,7 +2174,13 @@ VBM_ORDBOK("en", {
         "{n} b-er": function(v){ return v.n + ' flats'; },
         "åttendelstriol": "eighth-note triplet",
         "firedelstriol": "quarter-note triplet",
-        "Metronom": "Metronome"
+        "Metronom": "Metronome",
+        "Merk": "Note",
+        "Ulike navn og systemer": "Different names and systems",
+        "Musikkteori er ikke helt standardisert. Her er stedene der bøker, land og opptaksprøven bruker ulike navn eller systemer for det du har lært på denne siden.": "Music theory is not fully standardised. Here are the places where books, countries and the admission test use different names or systems for what you have learned on this page.",
+        "<strong>Navn på noteverdiene.</strong> Norsk bruker brøknavn (helnote, halvnote, firedelsnote eller fjerdedelsnote, åttendelsnote), slik som amerikansk engelsk (whole, half, quarter, eighth). Britisk engelsk har egne navn: semibreve, minim, crotchet og quaver.": "<strong>Names of note values.</strong> Norwegian uses fraction names, like American English (whole, half, quarter, eighth). British English has its own names: semibreve, minim, crotchet and quaver.",
+        "<strong>Tellemåter.</strong> Det finnes mange måter å telle på: «1 og 2 og», «1 e og a» for sekstendeler, og rytmestavelser som ta og ti-ti (Kodály). Velg én og bruk den hele tiden. Det viktige er rytmen.": "<strong>Ways of counting.</strong> There are many ways to count: “1 and 2 and”, “1 e and a” for sixteenths, and rhythm syllables such as ta and ti-ti (Kodály). Choose one and use it all the time. What matters is the rhythm.",
+        "<strong>6/8: i to eller i seks?</strong> I raskt tempo telles 6/8 i to slag (to punkterte firedeler), i langsomt tempo ofte i seks. Bøker og dirigenter gjør ulikt, men noteringen er den samme.": "<strong>6/8: in two or in six?</strong> At a fast tempo 6/8 is counted in two beats (two dotted quarters), at a slow tempo often in six. Books and conductors differ, but the notation is the same."
       },
     "quiz-rytme.html": {
         "Modus": "Mode",
@@ -2313,7 +2361,13 @@ VBM_ORDBOK("en", {
         "Øv": "Practice",
         "Test deg selv": "Test yourself",
         "I quizen transponerer du toner og akkordrekker, og finner ut hva som klinger og hva som står skrevet for de transponerende instrumentene. Med øvemodus og en prøve med 20 oppgaver.": "In the quiz you transpose notes and chord progressions, and find out what sounds and what is written for the transposing instruments. With practice mode and a test with 20 questions.",
-        "<a class=\"btn\" href=\"quiz-transponering.html\">Gå til quizen</a> <a class=\"btn\" href=\"kvintsirkelen.html\">Kvintsirkelen</a> <a class=\"btn\" href=\"harmonilaere.html\">Harmonilære</a>": "<a class=\"btn\" href=\"quiz-transponering.html\">Go to the quiz</a> <a class=\"btn\" href=\"kvintsirkelen.html\">The circle of fifths</a> <a class=\"btn\" href=\"harmonilaere.html\">Harmony</a>"
+        "<a class=\"btn\" href=\"quiz-transponering.html\">Gå til quizen</a> <a class=\"btn\" href=\"kvintsirkelen.html\">Kvintsirkelen</a> <a class=\"btn\" href=\"harmonilaere.html\">Harmonilære</a>": "<a class=\"btn\" href=\"quiz-transponering.html\">Go to the quiz</a> <a class=\"btn\" href=\"kvintsirkelen.html\">The circle of fifths</a> <a class=\"btn\" href=\"harmonilaere.html\">Harmony</a>",
+        "Merk": "Note",
+        "Ulike navn og systemer": "Different names and systems",
+        "Musikkteori er ikke helt standardisert. Her er stedene der bøker, land og opptaksprøven bruker ulike navn eller systemer for det du har lært på denne siden.": "Music theory is not fully standardised. Here are the places where books, countries and the admission test use different names or systems for what you have learned on this page.",
+        "<strong>«Klarinett i B».</strong> På norsk betyr B tonen som heter B♭ på engelsk, så klarinett i B er det samme som engelsk <em>B♭ clarinet</em>, og altsaksofon i Ess er <em>E♭ alto saxophone</em>.": "<strong>“Klarinett i B”.</strong> In Norwegian, B means the note called B♭ in English, so “klarinett i B” is the same as the English <em>B♭ clarinet</em>, and “altsaksofon i Ess” is the <em>E♭ alto saxophone</em>.",
+        "<strong>Gitarnøkkelen.</strong> Gitarnoter skrives en oktav høyere enn de klinger. Noen noter viser det med et lite 8-tall under G-nøkkelen, men mange sløyfer det.": "<strong>The guitar clef.</strong> Guitar music is written an octave higher than it sounds. Some music shows this with a small 8 under the treble clef, but much of it leaves it out.",
+        "<strong>Partitur i C.</strong> Noen partiturer skrives med alle stemmene slik de klinger (i C), andre med de transponerte stemmene. Det står vanligvis på første side.": "<strong>Scores in C.</strong> Some scores are written with every part as it sounds (in C), others with the transposed parts. It is usually stated on the first page."
       },
     "quiz-transponering.html": {
         "Lytt etter bassen: hvilket trinn står hver akkord på?": "Listen to the bass: which degree is each chord on?",
@@ -2501,7 +2555,13 @@ VBM_ORDBOK("en", {
         "Øv": "Practice",
         "Test deg selv": "Test yourself",
         "I quizen hører du om et intervall er rent eller svever, og regner med forhold, cent og frekvenser. Øv deg også på små forskjeller i tonehøyde i Gehørlekser med mikrointervaller.": "In the quiz you hear whether an interval is pure or beating, and calculate with ratios, cents and frequencies. Also practise small differences in pitch in Ear-training exercises with microintervals.",
-        "<a class=\"btn\" href=\"quiz-stemming.html\">Gå til quizen</a> <a class=\"btn\" href=\"gehorlekser-mikrointervaller.html\">Gehørlekser med mikrointervaller</a> <a class=\"btn\" href=\"kvintsirkelen.html\">Kvintsirkelen</a>": "<a class=\"btn\" href=\"quiz-stemming.html\">Go to the quiz</a> <a class=\"btn\" href=\"gehorlekser-mikrointervaller.html\">Ear-training exercises with microintervals</a> <a class=\"btn\" href=\"kvintsirkelen.html\">The circle of fifths</a>"
+        "<a class=\"btn\" href=\"quiz-stemming.html\">Gå til quizen</a> <a class=\"btn\" href=\"gehorlekser-mikrointervaller.html\">Gehørlekser med mikrointervaller</a> <a class=\"btn\" href=\"kvintsirkelen.html\">Kvintsirkelen</a>": "<a class=\"btn\" href=\"quiz-stemming.html\">Go to the quiz</a> <a class=\"btn\" href=\"gehorlekser-mikrointervaller.html\">Ear-training exercises with microintervals</a> <a class=\"btn\" href=\"kvintsirkelen.html\">The circle of fifths</a>",
+        "Merk": "Note",
+        "Ulike navn og systemer": "Different names and systems",
+        "Musikkteori er ikke helt standardisert. Her er stedene der bøker, land og opptaksprøven bruker ulike navn eller systemer for det du har lært på denne siden.": "Music theory is not fully standardised. Here are the places where books, countries and the admission test use different names or systems for what you have learned on this page.",
+        "<strong>Bachs temperatur.</strong> Ingen vet sikkert hvilken temperatur Bach brukte. Noen forskere, blant andre Bradley Lehman (2005), leser den sløyfete tegningen på tittelbladet til Das Wohltemperierte Klavier som en oppskrift på en temperatur. Mange andre er uenige.": "<strong>Bach’s temperament.</strong> No one knows for certain which temperament Bach used. Some researchers, among them Bradley Lehman (2005), read the looped drawing on the title page of The Well-Tempered Clavier as a recipe for a temperament. Many others disagree.",
+        "<strong>Kammertonen.</strong> 440 Hz er en internasjonal standard (ISO 16), men mange orkestre stemmer til 442 eller 443 Hz, og gjennom historien har kammertonen variert mye. Påstander om at 432 Hz er mer «naturlig», har ikke støtte i forskning.": "<strong>Standard pitch.</strong> 440 Hz is an international standard (ISO 16), but many orchestras tune to 442 or 443 Hz, and through history standard pitch has varied a lot. Claims that 432 Hz is more “natural” have no support in research.",
+        "<strong>Mange midttonetemperaturer.</strong> Kvartkomma-midttone, som her, er den mest kjente, men varianter med en sjettedels og en femtedels komma ble også brukt.": "<strong>Many meantone temperaments.</strong> Quarter-comma meantone, as here, is the best known, but variants with a sixth or a fifth of a comma were also used."
       },
     "quiz-stemming.html": {
         "►︎ <span>spill</span>": "►︎ <span>play</span>",
@@ -2755,7 +2815,14 @@ VBM_ORDBOK("en", {
         "Øv": "Practice",
         "Test deg selv": "Test yourself",
         "I teoriquizen leser du intervaller på notelinjen og skriver dem selv, i G- og F-nøkkel. Med øvemodus og en prøve med 20 oppgaver.": "In the theory quiz you read intervals on the staff and write them yourself, in treble and bass clef. With practice mode and a test with 20 questions.",
-        "<a class=\"btn\" href=\"quiz-intervaller.html\">Gå til quizen</a> <a class=\"btn\" href=\"intervaller.html\">Intervall-jukseboka</a>": "<a class=\"btn\" href=\"quiz-intervaller.html\">Go to the quiz</a> <a class=\"btn\" href=\"intervaller.html\">The interval cheat book</a>"
+        "<a class=\"btn\" href=\"quiz-intervaller.html\">Gå til quizen</a> <a class=\"btn\" href=\"intervaller.html\">Intervall-jukseboka</a>": "<a class=\"btn\" href=\"quiz-intervaller.html\">Go to the quiz</a> <a class=\"btn\" href=\"intervaller.html\">The interval cheat book</a>",
+        "Merk": "Note",
+        "Ulike navn og systemer": "Different names and systems",
+        "Musikkteori er ikke helt standardisert. Her er stedene der bøker, land og opptaksprøven bruker ulike navn eller systemer for det du har lært på denne siden.": "Music theory is not fully standardised. Here are the places where books, countries and the admission test use different names or systems for what you have learned on this page.",
+        "<strong>Prim eller unison.</strong> To like toner heter ren prim på norsk og <em>unison</em> på engelsk.": "<strong>Prime or unison.</strong> Two identical notes are called a perfect prime (“ren prim”) in Norwegian and a <em>unison</em> in English.",
+        "<strong>Tritonus.</strong> Noen bøker bruker tritonus bare om den forstørrede kvarten (tre heltoner), andre om både forstørret kvart og forminsket kvint.": "<strong>The tritone.</strong> Some books use the word tritone only for the augmented fourth (three whole tones), others for both the augmented fourth and the diminished fifth.",
+        "<strong>Sammensatte intervaller.</strong> Norsk har egne navn (none, decim, undecim), mens engelsk bruker tall (9th, 10th, 11th). Mange bøker nøyer seg med det enkle intervallet, for eksempel «stor ters» for en stor decim, særlig i akkordsymboler som C9 og C11.": "<strong>Compound intervals.</strong> Norwegian has its own names (none, decim, undecim), while English uses numbers (9th, 10th, 11th). Many books just give the simple interval, for example “major third” for a major tenth, especially in chord symbols such as C9 and C11.",
+        "<strong>Kvarten.</strong> Om den rene kvarten er en konsonans eller en dissonans, avhenger av tradisjon og sammenheng (se kort 7).": "<strong>The fourth.</strong> Whether the perfect fourth is a consonance or a dissonance depends on tradition and context (see section 7)."
       },
     "quiz-intervaller.html": {
         "ren": "perfect",
@@ -2950,7 +3017,18 @@ VBM_ORDBOK("en", {
         "Øv": "Practice",
         "Test deg selv": "Test yourself",
         "I teoriquizen leser du akkorder på notelinjen og finner besifring, trinn og omvending, eller funksjonen. Med øvemodus og en prøve med 20 oppgaver.": "In the theory quiz you read chords on the staff and find the chord symbol, degree and inversion, or the function. With practice mode and a test with 20 questions.",
-        "<a class=\"btn\" href=\"quiz-akkordanalyse.html\">Gå til quizen</a> <a class=\"btn\" href=\"omvendinger.html\">Omvendinger</a> <a class=\"btn\" href=\"akkordhefte.html\">Akkordhefte</a>": "<a class=\"btn\" href=\"quiz-akkordanalyse.html\">Go to the quiz</a> <a class=\"btn\" href=\"omvendinger.html\">Inversions</a> <a class=\"btn\" href=\"akkordhefte.html\">Chord booklet</a>"
+        "<a class=\"btn\" href=\"quiz-akkordanalyse.html\">Gå til quizen</a> <a class=\"btn\" href=\"omvendinger.html\">Omvendinger</a> <a class=\"btn\" href=\"akkordhefte.html\">Akkordhefte</a>": "<a class=\"btn\" href=\"quiz-akkordanalyse.html\">Go to the quiz</a> <a class=\"btn\" href=\"omvendinger.html\">Inversions</a> <a class=\"btn\" href=\"akkordhefte.html\">Chord booklet</a>",
+        "Merk": "Note",
+        "Ulike navn og systemer": "Different names and systems",
+        "Musikkteori er ikke helt standardisert. Her er stedene der bøker, land og opptaksprøven bruker ulike navn eller systemer for det du har lært på denne siden.": "Music theory is not fully standardised. Here are the places where books, countries and the admission test use different names or systems for what you have learned on this page.",
+        "<strong>Akkordsymboler.</strong> Samme akkord skrives ulikt: Cmaj7, CΔ, CM7 og Cma7; Cm, Cmi og C−; Cm7♭5 og Cø; Cdim og C°; C+ og Caug. Her brukes skrivemåten fra Den ultimate jukseboka.": "<strong>Chord symbols.</strong> The same chord is written in different ways: Cmaj7, CΔ, CM7 and Cma7; Cm, Cmi and C−; Cm7♭5 and Cø; Cdim and C°; C+ and Caug. This site uses the spelling from The ultimate cheat book.",
+        "<strong>Romertall.</strong> Engelskspråklige bøker og dette nettstedet skriver moll og forminsket med små bokstaver (ii, vii°). Opptaksprøven bruker store bokstaver for alle trinn og lar tonearten avgjøre typen. Halvforminsket skrives viiø⁷ i noen bøker og vii⁷ eller vii°⁷ i andre.": "<strong>Roman numerals.</strong> English-language books and this site write minor and diminished with small letters (ii, vii°). The admission test uses capitals for every degree and lets the key decide the type. Half-diminished is written viiø⁷ in some books and vii⁷ or vii°⁷ in others.",
+        "<strong>Funksjoner i moll.</strong> Opptaksprøven og denne siden bruker store bokstaver også i moll (T, S, D). Tysk og dansk tradisjon, og Harmonilære på dette nettstedet, skriver t og s for mollakkorder.": "<strong>Functions in minor.</strong> The admission test and this page use capital letters in minor too (T, S, D). The German and Danish tradition, and Harmony on this site, write t and s for minor chords.",
+        "<strong>Basstallet.</strong> Det norske og danske systemet skriver basstonen som et tall under funksjonsbokstaven (D₃). Andre tradisjoner bruker bare generalbasstall eller skråstrek.": "<strong>The bass number.</strong> The Norwegian and Danish systems write the bass note as a number under the function letter (D₃). Other traditions use only figured bass or a slash.",
+        "<strong>Kadensens kvartsekstakkord.</strong> Mange bøker skriver I⁶₄, fordi tonene er de samme som i I. Opptaksprøven og mange nyere bøker skriver V⁶₄ (funksjon D⁶₄), fordi akkorden virker som en del av dominanten. Se Bitreklanger og forholdninger.": "<strong>The cadential six-four.</strong> Many books write I⁶₄, because the notes are the same as in I. The admission test and many newer books write V⁶₄ (function D⁶₄), because the chord works as part of the dominant. See Secondary triads and suspensions.",
+        "Kilder: Esa Lilja, «Harmony Analysis Tasks in the Music Theory Admission Test for Higher Music Education in Norway», PlaySpace 3/1 (2024). Bjørnar Utne-Reitan, «Funksjonsteori – en musikkteoretisk tradisjon» (2023).": "Sources: Esa Lilja, “Harmony Analysis Tasks in the Music Theory Admission Test for Higher Music Education in Norway”, PlaySpace 3/1 (2024). Bjørnar Utne-Reitan, “Funksjonsteori – en musikkteoretisk tradisjon” (2023).",
+        "I funksjonsanalysen viser tallet under bokstaven hvilken tone som ligger i bassen (₃ = tersen, ₅ = kvinten, ₇ = septimen), og tallet over viser en tilføyd tone, som septimen i D⁷. Her vises funksjonen for hovedakkordene T, S og D, med store bokstaver også i moll, slik opptaksprøven skriver dem. Bitreklangene får sine funksjoner i neste leksjon.": "In function analysis the number below the letter shows which note is in the bass (₃ = the third, ₅ = the fifth, ₇ = the seventh), and the number above shows an added note, such as the seventh in D⁷. Here the function is shown for the main chords T, S and D, with capital letters in minor too, as the admission test writes them. The secondary chords get their functions in the next lesson.",
+        "I en kadens: V⁶₄ eller D⁶₄ (kadensens kvartsekstakkord)": "In a cadence: V⁶₄ or D⁶₄ (the cadential six-four)"
       },
     "quiz-akkordanalyse.html": {
         "durtreklang": "major triad",
@@ -3041,7 +3119,9 @@ VBM_ORDBOK("en", {
         "Svært bra. Du er godt forberedt.": "Very good. You are well prepared.",
         "Bra. Øv litt mer på oppgavene du bommet på.": "Good. Practice a bit more on the questions you missed.",
         "Du er på god vei. Bruk øvemodus på det du bommet på, og prøv igjen.": "You are on the right track. Use practice mode for what you missed, and try again.",
-        "Ikke gi opp. Les leksjonen en gang til, og begynn i øvemodus på grunnleggende nivå.": "Don’t give up. Read the lesson again, and start in practice mode at the basic level."
+        "Ikke gi opp. Les leksjonen en gang til, og begynn i øvemodus på grunnleggende nivå.": "Don’t give up. Read the lesson again, and start in practice mode at the basic level.",
+        "Grunnleggende: treklanger i durtonearter med opptil tre fortegn, tett beliggenhet i G-nøkkel. Avansert: også septimakkorder og harmonisk moll, i firstemmig sats på to linjer med tonartens fortegn. Funksjonsanalyse gjelder hovedakkordene (T, S og D, med store bokstaver også i moll, slik som i opptaksprøven).": "Basic: triads in major keys with up to three sharps or flats, close position in treble clef. Advanced: also seventh chords and harmonic minor, in four parts on two staves with the key signature. Function analysis covers the main chords (T, S and D, with capital letters in minor too, as in the admission test).",
+        "I en kadens regner opptaksprøven denne akkorden som kadensens kvartsekstakkord: V⁶₄ eller D⁶₄.": "In a cadence the admission test counts this chord as the cadential six-four: V⁶₄ or D⁶₄."
       },
     "bitreklanger.html": {
         "►︎ <span>spill</span>": "►︎ <span>play</span>",

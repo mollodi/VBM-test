@@ -141,3 +141,8 @@ Nettsiden ligger på https://verdensbestemusikkskole.no/ (GitHub Pages med eget 
 - Under Innstillinger kan man velge Lys eller Mørk. Valget lagres i `localStorage` (`vbm-tema`) og settes som `data-tema` på `<html>`.
 - Reglene for valgt tema nederst i `stil.css` er laget automatisk fra reglene for lys og mørk modus. Endrer du en farge i en av dem, lag de valgte reglene på nytt på samme måte, så de fortsatt er like.
 
+## Ulike navn og systemer
+
+Musikkteori er ikke standardisert. Leksjonene har derfor et eget kort, «Ulike navn og systemer» (`<section class="card ulike-kort" id="ulike-navn">`), rett før «Test deg selv». Der står det hvor bøker, land og opptaksprøven bruker ulike navn eller systemer, med kilder når det er en faglig uenighet. Nye leksjoner får det samme kortet når det finnes slike forskjeller.
+
+Funksjonsanalyse: Harmonilære og gehørquizen om kadenser bruker parallellnavnene (Tp, Sp, Dp, t og s i moll, sP for VI i moll). Akkordanalyse og Bitreklanger og forholdninger bruker opptaksprøvens system etter Sigvald Tveit (T, S, D, Tm, Ts, Ss, store bokstaver også i moll). Begge systemene er forklart på sidene, og de andre navnene står i parentes der det trengs. Kadensens kvartsekstakkord skrives V⁶₄ (D⁶₄), slik som i opptaksprøven (`K64` i `harmoni.js`).

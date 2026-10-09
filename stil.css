@@ -2032,6 +2032,16 @@ html.sh .viktig strong { color: var(--ink) !important; }
 }
 
 
+/* ---------- Kortet «Ulike navn og systemer» (alle leksjoner som har det) ---------- */
+:where([data-stil="ovelse"]) .ulike-kort { grid-column: 1 / -1; }
+:where([data-stil="ovelse"]) .ulike-liste { margin: 4px 0 6px; padding: 0 0 0 1.2em; font-size: 14.5px; line-height: 1.55; color: #3E3A32; }
+:where([data-stil="ovelse"]) .ulike-liste li { margin: 0 0 9px; }
+:where([data-stil="ovelse"]) .ulike-kort .kilde { font-size: 12.5px; line-height: 1.5; color: var(--text-muted); margin: 8px 0 0; }
+@media (forced-colors: active) {
+  :where([data-stil="ovelse"]) .ulike-liste, :where([data-stil="ovelse"]) .ulike-kort .kilde { color: CanvasText; }
+}
+
+
 /* ---------- Transponering, Stemming og temperatur og Intervaller (transponering.html, stemming.html, intervaller-teori.html) ---------- */
 :where(html[data-side="transponering.html"], html[data-side="stemming.html"], html[data-side="intervaller-teori.html"], html[data-side="akkordanalyse.html"], html[data-side="bitreklanger.html"]) main { align-items: stretch; }
 :where(html[data-side="transponering.html"], html[data-side="stemming.html"], html[data-side="intervaller-teori.html"], html[data-side="akkordanalyse.html"], html[data-side="bitreklanger.html"]) .bred { grid-column: 1 / -1; }

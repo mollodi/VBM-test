@@ -67,7 +67,7 @@
       <button type="button" class="btn" data-valg="niva" data-verdi="enkel">Grunnleggende</button>
       <button type="button" class="btn" data-valg="niva" data-verdi="avansert">Avansert</button>
     </div>
-    <p class="task">Grunnleggende: treklanger i durtonearter med opptil tre fortegn, tett beliggenhet i G-nøkkel. Avansert: også septimakkorder og harmonisk moll, i firstemmig sats på to linjer med tonartens fortegn. Funksjonsanalyse gjelder hovedakkordene (T, S og D, i moll t, s og D).</p>
+    <p class="task">Grunnleggende: treklanger i durtonearter med opptil tre fortegn, tett beliggenhet i G-nøkkel. Avansert: også septimakkorder og harmonisk moll, i firstemmig sats på to linjer med tonartens fortegn. Funksjonsanalyse gjelder hovedakkordene (T, S og D, med store bokstaver også i moll, slik som i opptaksprøven).</p>
   </section>
 
   <!-- ===== Øvemodus ===== -->
@@ -220,7 +220,8 @@
       o.svar = blandet(unike(fun, blandet(kand3), 4)).map(function(t){ return { tekst: t, riktig: t === fun }; });
     }
     o.beskriv = T('{akkord}: {type}, {omvending}. I {toneart}: {trinn}.', { akkord: sym, type: A.typeNavn(ak2), omvending: A.invNavn(ak2, inv2), toneart: toneart, trinn: rom })
-      + (fun ? ' ' + T('Funksjon: {f}.', { f: fun }) : '');
+      + (fun ? ' ' + T('Funksjon: {f}.', { f: fun }) : '')
+      + (!ak2.septim && ak2.trinn === 0 && inv2 === 2 ? ' ' + T('I en kadens regner opptaksprøven denne akkorden som kadensens kvartsekstakkord: V⁶₄ eller D⁶₄.') : '');
     return o;
   }
   function svarKnapper(rot, o, ved){
