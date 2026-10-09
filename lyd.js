@@ -1,6 +1,6 @@
 /* © 2026 Verdens Beste Musikkskole. Alle rettigheter forbeholdt. Verk-ID: VBM-K7Q4-KCX8. Signatur: bf337bfd3ba9686ea01e757a1996aa9c1cffd86425fb5f5115cfe4cf5e7d08e9 */
 /* Verdens Beste Musikkskole – felles lydmotor for juksebøkene.
-   Ekte opptak av piano og strykere (fiolin + cello), og rene sinustoner.
+   Ekte opptak av piano og strykere (kontrabass, cello, bratsj og fiolin), og rene sinustoner.
    Tonene er MIDI-tall (60 = midtre C). Desimaltall gir toner mellom tangentene:
    60.14 er C pluss 14 cent (brukes av leksjonen om stemming og temperatur).
    Bare én lyd spiller om gangen: et nytt trykk stopper den forrige,
@@ -30,20 +30,28 @@
   var B = window.VBM_LYD_BASE || {};
   var CDN = 'https://cdn.jsdelivr.net/npm/';
   var pianoNotes = []; for (var m = 21; m <= 108; m += 3) pianoNotes.push(m);
-  var VIOLIN = names('G3 A3 C4 E4 G4 A4 C5 E5 G5 A5 C6 E6 G6 A6 C7');
-  var CELLO  = names('C2 D2 Ds2 E2 F2 G2 Gs2 A2 As2 B2 C3 Cs3 D3 Ds3 E3 F3 Fs3 G3 Gs3 A3 As3 B3 ' +
-                     'C4 Cs4 D4 Ds4 E4 F4 Fs4 G4 Gs4 A4 As4 B4 C5');
+  /* Strykere fra VS Chamber Orchestra Community Edition (CC0), stemt til nøyaktige halvtoner. Filene ligger på nettstedet. */
+  var KB   = names('E1 Fs1 G1 As1 C2');
+  var VC   = names('C2 E2 G2 B2 D3 F3 A3 C4 E4 G4 B4 D5 F5');
+  var VLA  = names('C3 D3 E3');
+  var VL   = names('G3 A3 B3 D4 Fs4 A4 C5 E5 G5 B5 D6');
+  var SOLO = names('E6 G6 A6 C7');
+  var SB = B.strykere || '';
 
   var INSTR = {
     piano: { label: 'Piano', attack: 0.005, release: 0.35, layers: [
       { base: B.piano || 'https://tonejs.github.io/audio/salamander/', notes: pianoNotes, level: 0.9 }
     ]},
-    /* Strykere: fiolin på tonen, en svakt forstemt fiolin for et fyldigere «ensemble»,
-       og cello en oktav under som gir varme i bunnen. Myk start og lang utklinging. */
+    /* Strykere med realistisk område, H0 til C7 (engelsk B0 til C7): kontrabass helt nederst (fem strenger når ned til H0),
+       så celloer, bratsjer og fioliner, og en solofiolin øverst. I fiolinområdet spiller celloene med en oktav under,
+       som gir varme i bunnen. min og max er tonene hvert lag spiller. */
     strykere: { label: 'Strykere', attack: 0.09, release: 0.6, sustain: true, layers: [
-      { base: B.fiolin || CDN + 'tonejs-instrument-violin-mp3@1.1.1/', notes: VIOLIN, level: 0.55 },
-      { base: B.fiolin || CDN + 'tonejs-instrument-violin-mp3@1.1.1/', notes: VIOLIN, level: 0.32, cents: 8, delay: 0.018 },
-      { base: B.cello  || CDN + 'tonejs-instrument-cello-mp3@1.1.1/',  notes: CELLO,  level: 0.38, shift: -12, range: 2 }
+      { base: SB + 'strykere-kb-',   notes: KB,   level: 0.75, min: 23, max: 35, range: 5 },
+      { base: SB + 'strykere-vc-',   notes: VC,   level: 0.75, min: 36, max: 47, range: 3 },
+      { base: SB + 'strykere-vla-',  notes: VLA,  level: 0.7,  min: 48, max: 54, range: 3 },
+      { base: SB + 'strykere-vl-',   notes: VL,   level: 0.7,  min: 55, max: 87, range: 3 },
+      { base: SB + 'strykere-solo-', notes: SOLO, level: 0.6,  min: 88, max: 96, range: 3 },
+      { base: SB + 'strykere-vc-',   notes: VC,   level: 0.45, min: 43, max: 75, range: 3, shift: -12 }
     ]},
     /* Sinustoner: rene toner uten overtoner, laget i nettleseren (ingen lydfiler). Holder tonen like sterkt. */
     sinus: { label: 'Sinustoner', sinus: true, attack: 0.02, release: 0.25, layers: [] }
@@ -85,6 +93,7 @@
   /* ---------- lasting av lydfiler (bare de tonene som trengs, én gang) ---------- */
   var cache = {};
   function nearest(L, p){
+    if ((L.min != null && p < L.min - 0.5) || (L.max != null && p > L.max + 0.5)) return null;   // utenfor lagets område
     var best = L.notes[0];
     L.notes.forEach(function(s){ if (Math.abs(s - p) < Math.abs(best - p)) best = s; });
     return Math.abs(best - p) <= L.range ? best : null;   // null = laget spiller ikke denne tonen
@@ -283,7 +292,7 @@
     var alle = notes.concat.apply(notes, (kadens || []).concat(sekvens || []));
     /* Strykerne har ikke hele pianoets område (A0 til C8). Toner utenfor spilles på piano,
        og siden får beskjed (felles.js viser en kort melding). */
-    var OMRADE = { strykere: [36, 100] }, omr = OMRADE[current];
+    var OMRADE = { strykere: [23, 96] }, omr = OMRADE[current];
     if (omr && alle.some(function(m){ return m < omr[0] || m > omr[1]; })) {
       inst = INSTR.piano;
       try { window.dispatchEvent(new CustomEvent('vbm-utenfor', { detail: { instrument: INSTR[current].label } })); } catch(e){}

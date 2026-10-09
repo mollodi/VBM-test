@@ -52,7 +52,7 @@ Gratis undervisningsmateriell i musikkteori for elever og lærere. Juksebøkene 
 Du kan velge mellom **piano**, **strykere** og **sinustoner** med knappen nederst til høyre. Når du trykker på en ny spill-knapp, stopper lyden som spiller. Trykk på samme knapp igjen for å stoppe.
 
 - Piano: Salamander Grand Piano av Alexander Holm, CC BY 3.0
-- Strykere: fiolin og cello fra [tonejs-instruments](https://github.com/nbrosowsky/tonejs-instruments) av Nicholas Brosowsky, CC BY 3.0
+- Strykere: kontrabass, celloseksjon, bratsjseksjon, fiolinseksjon og solofiolin fra [VS Chamber Orchestra Community Edition](https://github.com/sgossner/VSCO-2-CE) av Versilian Studios, CC0. Opptakene er stemt til nøyaktige halvtoner, kortet ned til 7 sekunder og ligger på nettstedet (filene som begynner med `strykere-`). Området er H0 til C7 (engelsk B0 til C7).
 - Sinustoner: laget i nettleseren, uten lydfiler
 
 ## Språk

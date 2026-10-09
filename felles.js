@@ -41,9 +41,9 @@
   };
   /* Lydkreditter. Siden velger med <footer data-lyd="alle"> eller data-lyd="piano". */
   var LYD = {
-    alle: 'Lyd: Salamander Grand Piano av Alexander Holm (CC BY 3.0). Fiolin og cello fra tonejs-instruments av Nicholas Brosowsky (CC BY 3.0).',
+    alle: 'Lyd: Salamander Grand Piano av Alexander Holm (CC BY 3.0). Strykere fra VS Chamber Orchestra Community Edition av Versilian Studios (CC0).',
     piano: 'Lyd: Salamander Grand Piano av Alexander Holm (CC BY 3.0).',
-    rytme: 'Lyd: trommer fra Versilian Community Sample Library (CC0). Piano: Salamander Grand Piano av Alexander Holm (CC BY 3.0). Fiolin og cello fra tonejs-instruments av Nicholas Brosowsky (CC BY 3.0).'
+    rytme: 'Lyd: trommer fra Versilian Community Sample Library (CC0). Piano: Salamander Grand Piano av Alexander Holm (CC BY 3.0). Strykere fra VS Chamber Orchestra Community Edition av Versilian Studios (CC0).'
   };
 
   /* ==================== 2. Språk ==================== */
@@ -688,6 +688,7 @@
     var nav = document.querySelector('.vbm-back'); if (!nav || nav.querySelector('.vbm-inst-knapp')) return;
     var b = document.createElement('button'); b.type = 'button'; b.className = 'vbm-inst-knapp';
     b.setAttribute('aria-expanded', 'false'); b.setAttribute('aria-controls', 'vbm-inst');
+    b.setAttribute('aria-label', T('Innstillinger'));   /* teksten skjules på smale skjermer, så knappen trenger et navn */
     b.innerHTML = '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M19.4 13a7.5 7.5 0 0 0 0-2l2-1.6-2-3.4-2.4 1a7.6 7.6 0 0 0-1.7-1L15 3.5h-4l-.4 2.5a7.6 7.6 0 0 0-1.7 1l-2.4-1-2 3.4 2 1.6a7.5 7.5 0 0 0 0 2l-2 1.6 2 3.4 2.4-1a7.6 7.6 0 0 0 1.7 1l.4 2.5h4l.4-2.5a7.6 7.6 0 0 0 1.7-1l2.4 1 2-3.4zM13 15.5A3.5 3.5 0 1 1 13 8.5a3.5 3.5 0 0 1 0 7z" transform="translate(-1 0)"/></svg><span>' + T('Innstillinger') + '</span>';
     var panel = document.createElement('div'); panel.id = 'vbm-inst'; panel.className = 'vbm-inst'; panel.hidden = true;
     panel.innerHTML = '<p class="vbm-meny-tittel">' + T('Visning') + '</p>'
