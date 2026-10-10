@@ -215,11 +215,10 @@
   /* Akkorder på to linjer (firstemmig sats), delt på flere linjer når det er mer enn fire */
   function sats(id, x, merke, steg){
     $(id.replace('-noter', '') + '-merke').textContent = merke;
-    var akk = x.akkorder, antall = Math.ceil(akk.length / 4), str = Math.ceil(akk.length / antall), grupper = [];
-    for (var i = 0; i < akk.length; i += str) grupper.push(akk.slice(i, i + str));
-    $(id).innerHTML = grupper.map(function(g){ return S.storSats(g, x.fortegn, merke); }).join('');
+    var akk = x.akkorder, g = window.VBM_GRUPPER(akk, function(del){ return S.storSats(del, x.fortegn, merke); }, $(id));
+    $(id).innerHTML = g.html;
     var ut = []; akk.forEach(function(a){ ut.push(a.midi); for (var k = 1; k < (steg || 2); k++) ut.push([]); });
-    lyd[id] = { steg: ut, str: str, per: steg || 2 };
+    lyd[id] = { steg: ut, str: g.str, per: steg || 2 };
   }
   var st = { nr: 0, moll: false, fl: 0, system: 'rom' };
   try { var l = JSON.parse(localStorage.getItem('vbm-bitreklanger')); if (l) for (var k in st) if (l[k] != null) st[k] = l[k]; } catch(e){}
@@ -248,9 +247,10 @@
     $('navn-tabell').innerHTML = rader;
     /* Treklangene på én linje (G-nøkkel), delt i to */
     $('tre-merke').textContent = T('Treklangene i {toneart}', { toneart: toneart });
-    $('tre-noter').innerHTML = [akk.slice(0, 4), akk.slice(4)].map(function(g){ return S.akkordrekke(g, T('Treklangene i {toneart}', { toneart: toneart })); }).join('');
+    var gT = window.VBM_GRUPPER(akk, function(del){ return S.akkordrekke(del, T('Treklangene i {toneart}', { toneart: toneart })); }, $('tre-noter'));
+    $('tre-noter').innerHTML = gT.html;
     var ut = []; akk.forEach(function(a){ ut.push(a.noter.map(S.midi)); ut.push([]); });
-    lyd['tre-noter'] = { steg: ut, str: 4, per: 2 };
+    lyd['tre-noter'] = { steg: ut, str: gT.str, per: 2 };
   }
   [].forEach.call(document.querySelectorAll('[data-moll]'), function(b){ b.addEventListener('click', function(){ stopp(); st.moll = b.getAttribute('data-moll') === '1'; st.fl = 0; lagre(); tegnAlt(); }); });
 
@@ -319,6 +319,7 @@
 
   function tegnAlt(){ tegnTrinn(); tegnForlop(); tegnOmvendinger(); tegnForholdninger(); tegnFremmed(); }
   tegnAlt();
+  window.VBM_VED_BREDDE(tegnAlt);
 })();
 </script>
 <script src="lyd.js"></script>

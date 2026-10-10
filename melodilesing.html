@@ -209,11 +209,14 @@
     merk(rad, function(i){ return i === st.nr; });
     [].forEach.call(document.querySelectorAll('[data-moll]'), function(b){ b.setAttribute('aria-pressed', (b.getAttribute('data-moll') === '1') === st.moll ? 'true' : 'false'); });
     var r = A.rot(st.nr, st.moll), toner = M.toner(r, st.moll, [0, 1, 2, 3, 4, 5, 6, 7]), navn = A.tonartNavn(r, st.moll);
-    var akk = toner.map(function(n, i){ return { noter: [n], tall: [String(i % 7 + 1)] }; });
-    $('sk-merke').textContent = T('Skalatrinnene i {toneart}', { toneart: navn });
-    $('sk-noter').innerHTML = [akk.slice(0, 4), akk.slice(4)].map(function(g){ return S.akkordrekke(g, T('Skalatrinnene i {toneart}', { toneart: navn })); }).join('');
-    var ut = []; toner.forEach(function(n){ ut.push([S.midi(n)]); });
-    lyd['sk-noter'] = { steg: ut, str: 4, enkle: true };
+    /* Skalaen på én notelinje med tonartens fortegn, og trinnet skrevet under hver tone */
+    var merke = T('Skalatrinnene i {toneart}', { toneart: navn }), svg = S.noter(toner, A.fortegn(r, st.moll), null, merke);
+    var vb = /viewBox="([\d.-]+) ([\d.-]+) ([\d.]+) ([\d.]+)"/.exec(svg), bunn = +vb[2] + +vb[4], tekster = '';
+    svg.replace(/<ellipse[^>]*data-i="(\d+)" cx="([\d.]+)"/g, function(m, i, x){ tekster += '<text class="besifring" x="' + x + '" y="' + (bunn + 12) + '" text-anchor="middle">' + ((+i) % 7 + 1) + '</text>'; return m; });
+    svg = svg.replace(vb[0], 'viewBox="' + vb[1] + ' ' + vb[2] + ' ' + vb[3] + ' ' + (+vb[4] + 22) + '"').replace('</svg>', tekster + '</svg>');
+    $('sk-merke').textContent = merke;
+    $('sk-noter').innerHTML = svg;
+    lyd['sk-noter'] = { steg: toner.map(function(n){ return [S.midi(n)]; }) };
   }
   [].forEach.call(document.querySelectorAll('[data-moll]'), function(b){ b.addEventListener('click', function(){ stopp(); st.moll = b.getAttribute('data-moll') === '1'; lagre(); tegnAlt(); }); });
 
@@ -289,6 +292,7 @@
 
   function tegnAlt(){ tegnTrinn(); tegnEksempler(); nyLesing(); nyKorreksjon(); }
   tegnAlt();
+  window.VBM_VED_BREDDE(tegnTrinn);
 })();
 </script>
 <script src="lyd.js"></script>

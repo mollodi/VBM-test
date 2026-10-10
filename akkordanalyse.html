@@ -220,15 +220,17 @@
   function n(b, f, o){ return { b: b, f: f, oktav: o }; }
   var lyd = {};
   /* Akkorder på én notelinje (G-nøkkel) med navn under: akkorder = [{ noter, tall }] */
-  /* Mer enn fire akkorder deles på flere notelinjer (4 + 3, 3 + 2), så de er lette å lese også på mobil */
+  /* Én notelinje når den får plass, ellers delt på flere (4 + 3, 3 + 2), så den er lett å lese også på mobil */
+  var tegnet = {};
   function rekke(id, akkorder, merke){
+    tegnet[id] = [akkorder, merke];
     $(id.replace('-noter', '') + '-merke').textContent = merke;
-    var antall = Math.ceil(akkorder.length / 4), str = Math.ceil(akkorder.length / antall), grupper = [];
-    for (var i = 0; i < akkorder.length; i += str) grupper.push(akkorder.slice(i, i + str));
-    $(id).innerHTML = grupper.map(function(g){ return S.akkordrekke(g, merke); }).join('');
+    var g = window.VBM_GRUPPER(akkorder, function(del){ return S.akkordrekke(del, merke); }, $(id));
+    $(id).innerHTML = g.html;
     var steg = []; akkorder.forEach(function(a){ steg.push(a.noter.map(S.midi)); steg.push([]); });
-    lyd[id] = { steg: steg, str: str };
+    lyd[id] = { steg: steg, str: g.str };
   }
+  window.VBM_VED_BREDDE(function(){ Object.keys(tegnet).forEach(function(id){ rekke(id, tegnet[id][0], tegnet[id][1]); }); });
   /* En akkord fra grunntonen C med gitte intervaller (tall og kvalitet) */
   function fraC(iv){ var c = n(0, 0, 4); return [c].concat(iv.map(function(x){ return I.lag(c, x[0], x[1], true); })); }
   var C_DUR = A.rot(0, false);

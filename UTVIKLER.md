@@ -147,3 +147,9 @@ Nettsiden ligger på https://verdensbestemusikkskole.no/ (GitHub Pages med eget 
 Musikkteori er ikke standardisert. Leksjonene har derfor et eget kort, «Ulike navn og systemer» (`<section class="card ulike-kort" id="ulike-navn">`), rett før «Test deg selv». Der står det hvor bøker, land og opptaksprøven bruker ulike navn eller systemer, med kilder når det er en faglig uenighet. Nye leksjoner får det samme kortet når det finnes slike forskjeller.
 
 Funksjonsanalyse: Harmonilære og gehørquizen om kadenser bruker parallellnavnene (Tp, Sp, Dp, t og s i moll, sP for VI i moll). Akkordanalyse og Bitreklanger og forholdninger bruker opptaksprøvens system etter Sigvald Tveit (T, S, D, Tm, Ts, Ss, store bokstaver også i moll). Begge systemene er forklart på sidene, og de andre navnene står i parentes der det trengs. Kadensens kvartsekstakkord skrives V⁶₄ (D⁶₄), slik som i opptaksprøven (`K64` i `harmoni.js`).
+
+## Lange rekker med akkorder
+
+Bruk `window.VBM_GRUPPER(liste, lag, holder)` (felles.js) når en rekke med mer enn fire akkorder skal på notelinjen. Den tegner alt på én linje når det får plass i full målestokk, og deler på flere linjer (høyst fire i hver) bare på smale skjermer. Kall tegningen på nytt med `window.VBM_VED_BREDDE(fn)`, som bare reagerer når bredden endres.
+
+Tempo (Innstillinger): raskt 100, middels 65 og sakte 45 slag i minuttet. Resten av lyden følger samme forhold (lyd.js).

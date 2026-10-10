@@ -643,6 +643,26 @@
     });
     vb[2] = w; svg.setAttribute('viewBox', vb.join(' ')); svg.style.width = Math.round(w * k) + 'px';
   }
+  /* VBM_GRUPPER(liste, lag, holder): tegner en rekke akkorder eller toner på én notelinje når den får plass i full
+     målestokk (STAV_SKALA), og deler den på flere linjer med høyst fire i hver bare når skjermen er for smal.
+     lag(del) gir SVG-koden for en del av lista. Svarer { html, str }, der str er hvor mange det er per linje. */
+  window.VBM_GRUPPER = function(liste, lag, holder){
+    var hel = lag(liste), m = /viewBox="[\d.-]+ [\d.-]+ ([\d.]+)/.exec(hel), w = m ? +m[1] : 0;
+    var plass = holder && holder.clientWidth ? holder.clientWidth : Math.max(280, (window.innerWidth || 800) - 80);
+    if (liste.length <= 4 || w * STAV_SKALA <= plass) return { html: hel, str: liste.length };
+    var antall = Math.ceil(liste.length / 4), str = Math.ceil(liste.length / antall), html = '';
+    for (var i = 0; i < liste.length; i += str) html += lag(liste.slice(i, i + str));
+    return { html: html, str: str };
+  };
+  /* VBM_VED_BREDDE(fn): kaller fn når vinduet blir bredere eller smalere (ikke når bare høyden endres, som når
+     adresselinjen på mobilen skjules), så sidene kan tegne notelinjene om. */
+  window.VBM_VED_BREDDE = function(fn){
+    var bredde = window.innerWidth, timer = null;
+    window.addEventListener('resize', function(){
+      if (window.innerWidth === bredde) return;
+      clearTimeout(timer); timer = setTimeout(function(){ bredde = window.innerWidth; fn(); }, 250);
+    });
+  };
   function alleStaver(){ [].forEach.call(document.querySelectorAll('svg[data-tn]'), utvidStav); }
   var stavTimer = null;
   window.addEventListener('resize', function(){ clearTimeout(stavTimer); stavTimer = setTimeout(function(){ alleStaver(); if (pianoPaa()) allePianoer(); }, 200); });
@@ -679,10 +699,11 @@
   function temaValg(){ var v = ''; try { v = localStorage.getItem(TEMA) || ''; } catch(e){} return v === 'lys' || v === 'mork' ? v : ''; }
   function brukTema(){ var v = temaValg(); if (v) root.setAttribute('data-tema', v); else root.removeAttribute('data-tema'); }
   brukTema();
-  /* Tempo for hele nettstedet: «raskt» (standard), «middels» eller «sakte». Rytmesidene bruker 100, 80 og 60 slag i minuttet. */
+  /* Tempo for hele nettstedet: «raskt» (standard), «middels» eller «sakte». Rytmesidene bruker 100, 65 og 45 slag i minuttet,
+     og resten av lyden blir langsommere i samme forhold (lyd.js). */
   function tempoValg(){ var v = ''; try { v = localStorage.getItem(TEMPO) || ''; } catch(e){} return v === 'sakte' || v === 'middels' ? v : 'raskt'; }
   window.VBM_TEMPO = tempoValg;
-  window.VBM_TEMPO_BPM = function(){ return { raskt: 100, middels: 80, sakte: 60 }[tempoValg()]; };
+  window.VBM_TEMPO_BPM = function(){ return { raskt: 100, middels: 65, sakte: 45 }[tempoValg()]; };
   /* Svart-hvitt er standard. Fargene slås på under Innstillinger (lagres som «farger»). */
   function brukVisning(){ var v = null; try { v = localStorage.getItem(VISNING); } catch(e){} v = v === 'farger' ? 'farger' : 'sh'; root.classList.toggle('vbm-sh', v === 'sh'); if (root.getAttribute('data-stil') === 'bok') root.classList.toggle('sh', v === 'sh'); return v; }
   function byggInnstillinger(){

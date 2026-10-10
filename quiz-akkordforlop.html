@@ -180,9 +180,9 @@
   function tekster(moll, romListe, system){ return romListe.map(function(r){ return F.merke(moll, r, system); }).join(', '); }
   function tom(x){ return x.akkorder.map(function(a){ return { noter: a.noter, tall: [], midi: a.midi }; }); }
   function bildeFor(x, merke, medTall, per){
-    var akk = medTall ? x.akkorder : tom(x), antall = Math.ceil(akk.length / 4), str = Math.ceil(akk.length / antall), html = '';
-    for (var i = 0; i < akk.length; i += str) html += S.storSats(akk.slice(i, i + str), x.fortegn, merke);
-    return { html: html, str: str, per: per };
+    var akk = medTall ? x.akkorder : tom(x), holder = $('ov-bilde').clientWidth ? $('ov-bilde') : $('prove-bilde');
+    var g = window.VBM_GRUPPER(akk, function(del){ return S.storSats(del, x.fortegn, merke); }, holder);
+    return { html: g.html, str: g.str, per: per };
   }
   function lyd(x, per){ var ut = []; x.akkorder.forEach(function(a){ ut.push(a.midi); for (var i = 1; i < per; i++) ut.push([]); }); return ut; }
   function lagForlop(form, avansert, system){

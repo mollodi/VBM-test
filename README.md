@@ -19,7 +19,7 @@ Gratis undervisningsmateriell i musikkteori for elever og lærere. Juksebøkene 
 
 ### Musikkteori
 - **Notelesing**: notelinjen, G-nøkkel, F-nøkkel, altnøkkel og tenornøkkel, oktavnavnene (Helmholtz og vitenskapelige navn), og et piano som viser hver tone på notelinjen i valgt nøkkel.
-- **Rytme og taktarter**: seks kapitler fra nivå 1 til 5, fra puls og notelengder til punktering, trioler, synkoper, sammensatt takt (6/8, 9/8, 12/8) og ujevn takt (5/4, 7/8), med rytmenoter, telling, metronom, trommegrooves og sangeksempler.
+- **Rytme og taktarter**: seks kapitler fra nivå 1 til 5, fra puls og notelengder til punktering, trioler, synkoper, sammensatt takt (6/8, 9/8, 12/8) og ujevn takt (5/4, 7/8), med rytmenoter, telling, metronom, trommegrooves og sangeksempler. Kapittel 7, Rytmelesing og rytmediktat: taktstreker (med en rytme der du kan vise og skjule taktstrekene), bjelker, opptakt og en metode for rytmediktat og rytmekorreksjon.
 - **Kvintsirkelen**: interaktiv kvintsirkel med alle dur- og molltonearter, fortegnene på ekte notelinje, rekkefølgen på kryss og b-er, enharmoniske tonearter, og skala og treklang for hver toneart.
 - **Skalaer og modi**: dur, moll (naturlig, harmonisk og melodisk), de sju modiene, pentatonikk, blues, heltone, kromatisk og jazzskalaer, i alle tonearter, med noter, lyd og sangeksempler. Modiene vises både fra samme grunntone og som trinn i durskalaen.
 - **Omvendinger**: alle stillingene til treklanger og septimakkorder, fra sekstakkord til sekundakkord, med besifring, skråstreknavn og intervallene over bassen, i alle tonearter. Forklarer også at sekstakkord betyr to ting.
@@ -49,7 +49,7 @@ Gratis undervisningsmateriell i musikkteori for elever og lærere. Juksebøkene 
 - **Teoriquiz: notelesing**: les en note og finn navnet, med eller uten fortegn, eller trykk der en tone står på notelinjen, i G-, F-, alt- og tenornøkkel.
 - **Teoriquiz: kvintsirkelen**: les fortegnene og finn tonearten, eller finn fortegnene til en toneart, i dur og moll, med opptil 4 eller alle 7 fortegn.
 - **Teoriquiz: skalaer og modi**: les en skala på notelinjen og finn navnet. Samme side, åpnet med «Les» valgt (quiz-skalaer.html?type=les).
-- **Teoriquiz: rytme**: les en takt og finn taktarten, eller finn noten som mangler (quiz-rytme.html?type=les).
+- **Teoriquiz: rytme**: les en takt og finn taktarten, eller finn noten som mangler (quiz-rytme.html?type=les). Nye oppgavetyper: «Finn feilen» (én takt klinger annerledes enn notene) og «Taktstreker» (velg notebildet der taktstrekene står riktig).
 - **Teoriquiz: intervaller**: les et intervall på notelinjen og finn navnet, eller skriv det ved å velge riktig notebilde, i G- og F-nøkkel, på grunnleggende eller avansert nivå (quiz-intervaller.html).
 - **Teoriquiz: akkordanalyse**: les en akkord og finn besifringen, eller trinnanalyse eller funksjonsanalyse, på grunnleggende eller avansert nivå (quiz-akkordanalyse.html).
 - **Gehørquiz og Teoriquiz: akkordforløp**: hør eller les korte akkordforløp og velg analysen med romertall eller funksjoner, og finn typen forholdning (quiz-akkordforlop.html?type=hor eller ?type=les).
