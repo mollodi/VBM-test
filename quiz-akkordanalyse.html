@@ -198,7 +198,7 @@
     if (typeId === 'symbol') {
       o.sporsmal = T('Hvilken besifring har akkorden?');
       var bassAk = A.akkord(o.r, o.moll, trinnAv(o.r, o.moll, ak2.toner[inv2]), ak2.septim);
-      var rot = K.tone(ak2.toner[0]), slash = inv2 ? '/' + K.tone(ak2.toner[inv2]) : '';
+      var rot = K.akkordTone(ak2.toner[0]), slash = inv2 ? '/' + K.akkordTone(ak2.toner[inv2]) : '';
       var kand = [inv2 ? A.symbol(bassAk, 0) : null];
       ANDRE_TYPE[ak2.type].forEach(function(t){ kand.push(rot + A.SUFFIKS[t] + slash); });
       kand.push(inv2 ? rot + A.SUFFIKS[ak2.type] : A.symbol(ak2, 1));

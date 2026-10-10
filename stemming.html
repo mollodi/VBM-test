@@ -27,7 +27,7 @@
   <div class="eyebrow">Musikkteori</div>
   <h1>Stemming og <em>temperatur</em></h1>
   <p class="lede">Hvorfor er ikke tonene på et piano helt rene? Her lærer du hva en frekvens er, hvordan overtonene gir de rene intervallene, hvorfor tolv rene kvinter ikke går opp, og hvordan musikere gjennom tidene har løst det med ulike temperaturer.</p>
-  <p class="lede">Trykk på spill for å høre eksemplene. Orgel er valgt nederst til høyre, fordi orgeltoner holdes jevnt og har mange overtoner, så svevningene høres tydelig. Du kan også velge piano, strykere eller sinustoner. Bruk gjerne hodetelefoner.</p>
+  <p class="lede">Trykk på spill for å høre eksemplene. Overtonetonen er valgt nederst til høyre. Den lages i nettleseren med alle overtonene og holder jevn styrke, så svevningene høres like tydelig som i virkeligheten. Du kan også velge orgel, piano, strykere eller sinustoner. Bruk gjerne hodetelefoner.</p>
 </header>
 
 <main>
@@ -88,11 +88,11 @@
     </div>
     <div class="stav-blokk">
       <p class="label" id="iv-merke"></p>
-      <div class="row"><button type="button" class="btn" id="iv-spill">&#9658;&#xFE0E; <span>spill</span></button></div>
+      <div class="row"><button type="button" class="btn" id="iv-spill">&#9658;&#xFE0E; <span>spill</span></button><button type="button" class="btn" id="iv-sammenlign">&#9658;&#xFE0E; <span>Sammenlign rent og urent</span></button></div>
       <div class="noter" id="iv-noter"></div>
     </div>
     <p class="task" id="iv-tekst" aria-live="polite"></p>
-    <div class="viktig"><p class="task"><strong>Hør med orgel eller piano:</strong> sinustoner har ingen overtoner, så en kvint eller en ters svever nesten ikke med dem. Strykerne spiller med vibrato, og det skjuler svevningene. Bytt lyd og hør selv.</p></div>
+    <div class="viktig"><p class="task"><strong>Slik hører du svevningene:</strong> trykk på «Sammenlign rent og urent», som spiller intervallet rent i tre sekunder og så urent i tre sekunder. Lytt etter en svak pulsering i den urene klangen. Ved 8 cent for stor kvint er det omtrent tre til fire pulseringer i sekundet. Sinustoner har ingen overtoner, så en kvint eller en ters svever nesten ikke med dem, og strykerne spiller med vibrato, som skjuler svevningene.</p></div>
   </section>
 
   <section class="card bred" id="komma">
@@ -254,6 +254,14 @@
   }
   $('iv-spill').addEventListener('click', function(){
     if (window.VBM_LYD_SPILL) window.VBM_LYD_SPILL(ivLyd, this, 1, null, true, window.VBM_FARG($('iv-noter')));
+  });
+  /* Sammenlign: først rent i 3 sekunder, så urent i 3 sekunder (8 cent for stort, eller som på piano når det er valgt).
+     Seks steg à 0,5 sekunder hver; en akkord klinger til neste akkord begynner (lyd.js). */
+  $('iv-sammenlign').addEventListener('click', function(){
+    if (!window.VBM_LYD_SEKVENS) return;
+    var iv = St.RENE[ivNr], ren = 60 + iv.cent / 100, uren = st === 'lik' ? 60 + iv.halv : 60 + (iv.cent + 8) / 100;
+    var steg = [[60, ren], [], [], [], [], [], [60, uren], [], [], [], [], []];
+    window.VBM_LYD_SEKVENS(steg, this);
   });
 
   /* =================== 4. Det pytagoreiske kommaet =================== */

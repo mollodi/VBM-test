@@ -64,11 +64,11 @@
   INSTR.piano.layers.concat(INSTR.strykere.layers)
     .forEach(function(L){ L.shift = L.shift || 0; L.cents = L.cents || 0; L.delay = L.delay || 0; L.range = L.range || 12; });
 
-  /* Sidene om stemming og temperatur (window.VBM_LYD_ORGEL_SIDE = true) får også orgel, og orgel er valgt som standard der,
-     fordi svevninger høres best med jevne toner som har mange overtoner. */
+  /* Sidene om stemming og temperatur (window.VBM_LYD_ORGEL_SIDE = true) får også overtonetone og orgel. Overtonetonen er valgt
+     som standard der, fordi svevninger høres best med jevne toner som har mange overtoner. */
   var ORGEL = !!window.VBM_LYD_ORGEL_SIDE;
   if (ORGEL) {
-    var medOrgel = { orgel: { label: 'Orgel', attack: 0.03, release: 0.5, sustain: true, layers: [
+    var medOrgel = { overtoner: { label: 'Overtonetone', sinus: true, synth: 'sag', attack: 0.03, release: 0.3, layers: [] }, orgel: { label: 'Orgel', attack: 0.03, release: 0.5, sustain: true, layers: [
       { base: OB + 'orgel-', notes: ORGEL_PEDAL, level: 0.8, min: 23, max: 35, range: 2, shift: 0, cents: 0, delay: 0 },
       { base: OB + 'orgel-', notes: ORGEL_MAN,   level: 0.8, min: 36, max: 96, range: 2, shift: 0, cents: 0, delay: 0 }
     ]}};
@@ -87,7 +87,7 @@
     Object.keys(INSTR).forEach(function(k){ med[k] = INSTR[k]; });
     INSTR = med;
   }
-  var current = RYTME ? 'trommer' : ORGEL ? 'orgel' : 'piano';
+  var current = RYTME ? 'trommer' : ORGEL ? 'overtoner' : 'piano';
   try { var saved = localStorage.getItem(LAGRE); if (INSTR[saved]) current = saved; } catch(e){}
 
   /* ---------- lydkontekst ---------- */
@@ -220,10 +220,17 @@
   }
 
   /* Ren sinustone: myk start, jevn styrke, og myk slutt (ingen klikk). */
-  function sinusVoice(m, t0, dur, level){
-    var osc = ctx.createOscillator(), g = ctx.createGain(), inst = INSTR.sinus;
-    osc.type = 'sine'; osc.frequency.value = 440 * Math.pow(2, (m - 69) / 12);
-    osc.connect(g); g.connect(out);
+  function sinusVoice(m, t0, dur, level, type){
+    var osc = ctx.createOscillator(), g = ctx.createGain(), inst = type === 'sag' ? INSTR.overtoner : INSTR.sinus;
+    osc.type = type === 'sag' ? 'sawtooth' : 'sine'; osc.frequency.value = 440 * Math.pow(2, (m - 69) / 12);
+    if (type === 'sag') {
+      /* Overtonetone: en sagtann har alle overtonene, svakere og svakere oppover (1, 1/2, 1/3 ...), som en strøket streng
+         eller en orgelpipe. Et mykt filter tar bort de skarpeste overtonene. Tonen holder jevn styrke, så svevningene
+         mellom overtonene som nesten faller sammen, høres tydelig, akkurat som i virkeligheten. */
+      var filt = ctx.createBiquadFilter(); filt.type = 'lowpass'; filt.frequency.value = 3200; filt.Q.value = 0.5;
+      osc.connect(filt); filt.connect(g);
+    } else osc.connect(g);
+    g.connect(out);
     g.gain.setValueAtTime(0.0001, t0);
     g.gain.linearRampToValueAtTime(level, t0 + inst.attack);
     g.gain.setValueAtTime(level, t0 + dur);
@@ -325,8 +332,9 @@
       try { window.dispatchEvent(new CustomEvent('vbm-utenfor', { detail: { instrument: INSTR[current].label } })); } catch(e){}
     }
     if (inst.sinus) {
+      var synthType = inst.synth || 'sinus';
       btn.classList.remove('loading');
-      finish(plan(function(m, t0, dur, chord, n){ sinusVoice(m, t0, dur, 0.32 * (chord ? Math.min(1, 2.2 / n) : 1)); }), my);
+      finish(plan(function(m, t0, dur, chord, n){ sinusVoice(m, t0, dur, (synthType === 'sag' ? 0.16 : 0.32) * (chord ? Math.min(1, 2.2 / n) : 1), synthType); }), my);
       return;
     }
     inst.layers.forEach(function(L){
@@ -378,6 +386,15 @@
   function buildPicker(){
     var wrap = document.createElement('div'), bs = getComputedStyle(document.body);
     wrap.className = 'vbm-pille vbm-instr vbm-instr-float';
+    /* Velgeren står i høyre kant av innholdet (samme ramme som kortene), ikke helt ute i kanten av et bredt vindu */
+    function plasser(){
+      var hoved = document.querySelector('main'); if (!hoved) return;
+      var r = hoved.getBoundingClientRect(), stil = getComputedStyle(hoved), innerHoyre = r.right - parseFloat(stil.paddingRight || 0);
+      var hoyre = Math.max(14, window.innerWidth - innerHoyre);
+      wrap.style.right = hoyre + 'px';
+    }
+    window.addEventListener('resize', plasser);
+    setTimeout(plasser, 0);
     wrap.setAttribute('role', 'region'); wrap.setAttribute('aria-label', 'Velg instrument');
     /* Samme utseende på alle sider, som menylinjen: mørk med lys tekst */
     wrap.style.background = '#12151A';
@@ -445,7 +462,7 @@
           slutt = Math.max(slutt, h.t + src.buffer.duration);
         } else {
           var d = Math.max(0.12, (h.d || 0.4) * 0.92);
-          if (inst.sinus) { sinusVoice(h.m || 72, t0, d, 0.32 * v); slutt = Math.max(slutt, h.t + d + inst.release); return; }
+          if (inst.sinus) { sinusVoice(h.m || 72, t0, d, (inst.synth === 'sag' ? 0.16 : 0.32) * v, inst.synth); slutt = Math.max(slutt, h.t + d + inst.release); return; }
           inst.layers.forEach(function(L){
             var p = (h.m || 72) + L.shift, s3 = nearest(L, p);
             if (s3 === null) return;

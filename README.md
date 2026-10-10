@@ -64,7 +64,8 @@ Du kan velge mellom **piano**, **strykere** og **sinustoner** med knappen neders
 
 - Piano: Salamander Grand Piano av Alexander Holm, CC BY 3.0
 - Strykere: kontrabass, celloseksjon, bratsjseksjon, fiolinseksjon og solofiolin fra [VS Chamber Orchestra Community Edition](https://github.com/sgossner/VSCO-2-CE) av Versilian Studios, CC0. Opptakene er stemt til nøyaktige halvtoner, kortet ned til 7 sekunder og ligger på nettstedet (filene som begynner med `strykere-`). Området er H0 til C7 (engelsk B0 til C7).
-- Orgel (bare på sidene om stemming og temperatur, valgt som standard der): principalstemme og pedal spilt inn av Simon Dalzell (Ivy Audio), fra [VS Chamber Orchestra Community Edition](https://github.com/sgossner/VSCO-2-CE) av Versilian Studios. Stemt til nøyaktige halvtoner, filene begynner med `orgel-`. Område C1 til C7.
+- Overtonetone (bare på sidene om stemming og temperatur, valgt som standard der): laget i nettleseren som en sagtann med alle overtonene og jevn styrke, så svevningene høres som i virkeligheten.
+- Orgel (bare på sidene om stemming og temperatur): principalstemme og pedal spilt inn av Simon Dalzell (Ivy Audio), fra [VS Chamber Orchestra Community Edition](https://github.com/sgossner/VSCO-2-CE) av Versilian Studios. Stemt til nøyaktige halvtoner, filene begynner med `orgel-`. Område C1 til C7.
 - Sinustoner: laget i nettleseren, uten lydfiler
 
 ## Språk

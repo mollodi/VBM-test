@@ -287,14 +287,15 @@
       /* Leksjonene i Musikkteori henger sammen som et kurs: forrige og neste leksjon i rekkefølgen fra materialer.js */
       var kurs = alle.filter(function(m){ return m.seksjon === meg.seksjon && meg.seksjon === 'teori' && !m.skjult; }), nr = kurs.indexOf(meg), steg = '';
       if (nr >= 0) {
-        if (nr > 0) steg += '<a class="vbm-kurs-lenke" href="' + kurs[nr - 1].fil + '">&larr; ' + T('Forrige leksjon') + ': ' + menyT(kurs[nr - 1].tittel) + '</a>';
-        if (nr < kurs.length - 1) steg += '<a class="vbm-kurs-lenke vbm-kurs-neste" href="' + kurs[nr + 1].fil + '">' + T('Neste leksjon') + ': ' + menyT(kurs[nr + 1].tittel) + ' &rarr;</a>';
+        if (nr > 0) steg += '<a class="vbm-rel-lenke vbm-kurs-lenke" href="' + kurs[nr - 1].fil + '"><span class="vbm-kurs-retning">&larr; ' + T('Forrige leksjon') + '</span><span>' + menyT(kurs[nr - 1].tittel) + '</span></a>';
+        if (nr < kurs.length - 1) steg += '<a class="vbm-rel-lenke vbm-kurs-lenke vbm-kurs-neste" href="' + kurs[nr + 1].fil + '"><span class="vbm-kurs-retning">' + T('Neste leksjon') + ' &rarr;</span><span>' + menyT(kurs[nr + 1].tittel) + '</span></a>';
       }
       nav.innerHTML = (steg ? '<div class="vbm-kurs">' + steg + '</div>' : '') + '<p class="vbm-relatert-tittel">' + T('Se også') + '</p><ul>' + rel.map(function(m){
-        return '<li><a href="' + m.fil + '">' + menyT(m.tittel) + '</a>' + (m.niva ? ' <span class="vbm-niva niva-' + m.niva + '">' + T(NIVANAVN[m.niva]) + '</span>' : '') + '</li>';
+        return '<li><a class="vbm-rel-lenke" href="' + m.fil + '"><span>' + menyT(m.tittel) + '</span>' + (m.niva ? '<span class="vbm-niva niva-' + m.niva + '">' + T(NIVANAVN[m.niva]) + '</span>' : '') + '</a></li>';
       }).join('') + '</ul>';
-      var fot = document.querySelector('footer');
-      if (fot) fot.parentNode.insertBefore(nav, fot); else document.body.appendChild(nav);
+      /* Inni <main>, så blokken holder seg i samme ramme og bredde som resten av siden */
+      var hoved = document.querySelector('main'), fot = document.querySelector('footer');
+      if (hoved) hoved.appendChild(nav); else if (fot) fot.parentNode.insertBefore(nav, fot); else document.body.appendChild(nav);
     });
   }
   function byggMeny(){
