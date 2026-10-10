@@ -19,6 +19,7 @@ Ren HTML, CSS og JavaScript. Ingen byggesteg, ingen rammeverk. Alle filer ligger
 | `akkord.js` | Akkordanalyse: akkordene på hvert trinn i dur og harmonisk moll, akkordtype, besifring, trinnanalyse, funksjonsanalyse og stemmeføring (tett beliggenhet og firstemmig sats). Brukes av Akkordanalyse og Teoriquiz: akkordanalyse. Må lastes etter `tonearter.js`, `intervall.js` og `skalaer.js` | Sjelden |
 | `forlop.js` | Akkordforløp i firstemmig sats (kontrollert stemmeføring), navnene på hvert trinn i opptaksprøvens system (Tveit: T, S, D, Tm, Ts, Ss, Đ⁷) og i parallellsystemet, omvendinger i forløp og forholdninger. Brukes av Bitreklanger og forholdninger og Quiz: akkordforløp. Må lastes etter `tonearter.js`, `skalaer.js` og `harmoni.js` | Sjelden |
 | `melodi.js` | Skalatrinn i dur og harmonisk moll, en generator for tonale melodier (trinnvis, sprang i tonikatreklangen, slutt på 2–1 eller 7–1, aldri forstørret sekund) og varianter med endrede toner. Brukes av Melodilesing og melodidiktat og Gehørquiz: melodi. Må lastes etter `tonearter.js`, `intervall.js`, `skalaer.js` og `akkord.js` | Sjelden |
+| `notasjon.js` | Notasjonstegn og form: tegnene tegnet som ekte notasjon (reprisetegn, volta, segno, coda, fermat, artikulasjon, dynamikk), veikart for gjentakelser og hopp, og tempo- og foredragsbetegnelsene, med navn på norsk, engelsk og polsk. Brukes av Notasjonstegn og form og teoriquizen. Må lastes etter `skalaer.js` | Sjelden |
 | `transponering.js` | Intervaller med riktig stavemåte, melodiene, akkordrekkene (firstemmig sats, kontrollert stemmeføring) og de transponerende instrumentene, brukt av transponeringsleksjonen og quizen. Må lastes etter `tonearter.js`, `intervall.js`, `skalaer.js` og `harmoni.js` | Sjelden |
 | `stemming.js` | Frekvenser, cent, rene intervaller, svevninger og fire temperaturer (pytagoreisk, midttone, Werckmeister III, likesvevende), brukt av leksjonen og quizen om stemming og temperatur | Sjelden |
 | `rytme.js` | Rytmer, taktarter, rytmenoter på én linje, avspilling med inntelling og metronom, og trommegrooves, brukt av rytmeleksjonen og rytmequizen | Sjelden |
@@ -164,8 +165,16 @@ Løpende tekst bruker norske tonenavn (Ess, Fiss, Ass) med `K.tone()`. Akkordsym
 
 ## Versjonsnummer (hurtigminne)
 
-Alle felles filer lenkes med et versjonsnummer, for eksempel `felles.js?v=40` og `stil.css?v=40`, så nettleseren henter nye utgaver etter en oppdatering. Språkfilene og `materialer.js` får samme nummer automatisk (felles.js leser det fra sin egen lenke). Når en felles fil endres: søk og erstatt `?v=40` med neste nummer i alle sider, og last opp alle sidene.
+Alle felles filer lenkes med et versjonsnummer, for eksempel `felles.js?v=42` og `stil.css?v=42`, så nettleseren henter nye utgaver etter en oppdatering. Språkfilene og `materialer.js` får samme nummer automatisk (felles.js leser det fra sin egen lenke). Når en felles fil endres: søk og erstatt `?v=42` med neste nummer i alle sider, og last opp alle sidene.
 
 ## Omvendinger
 
 Leksjonen Omvendinger er slått sammen med Akkordanalyse (kort 5, `akkordanalyse.html#omvendinger`). `omvendinger.html` sender videre dit, så gamle lenker og bokmerker virker.
+
+## Lagret fremgang
+
+`felles.js` følger med på svarfeltet i alle quizene (`#ov-fb`, `.feedback`) og prøveresultatet (`#prove-poeng`) og lagrer alt i nettleseren (`vbm-fremgang`): riktige svar, beste rekke, prøver og dager det er øvd. Quizene trenger ingen egen kode. `fremgang.html` viser oversikten. Svarknappene skal alltid enten blandes eller stå i en fast rekkefølge (for eksempel «Rent» før «Svever»), aldri med riktig svar først.
+
+## Innstillinger og lyd
+
+Piano under notene er på som standard. «Tilbakestill alle innstillinger» sletter innstillingene og lydvalgene og laster siden på nytt. Orgel finnes på alle sider med lyd, rett etter piano. Spillknapper (▶) og lenkene i «Se også» har kantfargen #e8b866. Overtonerekken bruker `S.storStav()`, en storsats med enkelttoner (under c¹ i F-nøkkel, resten i G-nøkkel).

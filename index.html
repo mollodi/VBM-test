@@ -17,8 +17,8 @@
 <meta name="author" content="Verdens Beste Musikklærer">
 <meta name="copyright" content="© 2026 Verdens Beste Musikkskole. Alle rettigheter forbeholdt.">
 <title>Verdens Beste Musikkskole: juksebøker, leksjoner og quizer</title>
-<script src="felles.js?v=40"></script>
-<link rel="stylesheet" href="stil.css?v=40">
+<script src="felles.js?v=42"></script>
+<link rel="stylesheet" href="stil.css?v=42">
 <meta name="description" content="Gratis ressurser i musikkteori og øretrening fra Verdens Beste Musikklærer.">
 </head>
 <body>
@@ -38,7 +38,7 @@
 <noscript><p class="empty">Slå på JavaScript i nettleseren for å se innholdet.</p></noscript>
 </main>
 <!-- Innholdet på startsiden kommer fra materialer.js. Denne filen trenger du ikke endre. -->
-<script src="materialer.js?v=40"></script>
+<script src="materialer.js?v=42"></script>
 <script>/* VBM K7Q4-VZFC */
 (function(){
   var main = document.getElementById('innhold');
@@ -73,7 +73,7 @@
   var INFO = { grunnleggende: 'Viser bare materiell på grunnleggende nivå. Endre nivå i Innstillinger øverst.', avansert: 'Viser bare materiell på avansert nivå. Endre nivå i Innstillinger øverst.', ekspert: 'Viser bare materiell på ekspertnivå. Endre nivå i Innstillinger øverst.' };
   if (INFO[filter]) html += '<p class="niva-info">' + esc(INFO[filter]) + '</p>';
   (data.seksjoner || []).forEach(function(sek){
-    var items = (data.materialer || []).filter(function(m){ return m.seksjon === sek.id && !m.skjult && (filter === 'alle' || m.niva === filter); });
+    var items = (data.materialer || []).filter(function(m){ return m.seksjon === sek.id && !m.skjult && (filter === 'alle' || !m.niva || m.niva === filter); });
     if (!items.length) return;
     html += '<section class="vbm-innhold-seksjon"><p class="eyebrow">' + esc(sek.overskrift) + '</p>' +
       '<h2>' + esc(sek.tittel) + (sek.uthevet ? ' <em>' + esc(sek.uthevet) + '</em>' : '') + '</h2>' +

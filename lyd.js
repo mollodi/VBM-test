@@ -67,15 +67,23 @@
   /* Sidene om stemming og temperatur (window.VBM_LYD_ORGEL_SIDE = true) får også overtonetone og orgel. Overtonetonen er valgt
      som standard der, fordi svevninger høres best med jevne toner som har mange overtoner. */
   var ORGEL = !!window.VBM_LYD_ORGEL_SIDE;
-  if (ORGEL) {
-    var medOrgel = { overtoner: { label: 'Overtonetone', sinus: true, synth: 'sag', attack: 0.03, release: 0.3, layers: [] }, orgel: { label: 'Orgel', attack: 0.03, release: 0.5, sustain: true, layers: [
+  /* Orgel finnes på alle sider med lyd, rett etter piano. Sidene om stemming (VBM_LYD_ORGEL_SIDE) får i tillegg
+     overtonetonen, som er standard der, og ikke strykerne, fordi vibratoen deres skjuler svevningene. */
+  var ORGEL_INSTR = { label: 'Orgel', attack: 0.03, release: 0.5, sustain: true, layers: [
       { base: OB + 'orgel-', notes: ORGEL_PEDAL, level: 0.8, min: 23, max: 35, range: 2, shift: 0, cents: 0, delay: 0 },
       { base: OB + 'orgel-', notes: ORGEL_MAN,   level: 0.8, min: 36, max: 96, range: 2, shift: 0, cents: 0, delay: 0 }
-    ]}};
-    /* Strykerne spiller med vibrato, som skjuler svevningene, så de er ikke med på disse sidene */
-    Object.keys(INSTR).forEach(function(k){ if (k !== 'strykere') medOrgel[k] = INSTR[k]; });
-    INSTR = medOrgel;
-  }
+    ]};
+  (function(){
+    var ny = {};
+    if (ORGEL) ny.overtoner = { label: 'Overtonetone', sinus: true, synth: 'sag', attack: 0.03, release: 0.3, layers: [] };
+    Object.keys(INSTR).forEach(function(k){
+      if (ORGEL && k === 'strykere') return;
+      ny[k] = INSTR[k];
+      if (k === 'piano') ny.orgel = ORGEL_INSTR;
+    });
+    if (!ny.orgel) ny.orgel = ORGEL_INSTR;
+    INSTR = ny;
+  })();
 
   /* Rytmesidene (window.VBM_LYD_RYTME_SIDE = true) får også trommer, og trommer er valgt som standard der.
      Trommelydene er ekte opptak fra Versilian Community Sample Library (CC0) og ligger på nettstedet selv. */
