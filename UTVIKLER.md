@@ -153,3 +153,7 @@ Funksjonsanalyse: Harmonilære og gehørquizen om kadenser bruker parallellnavne
 Bruk `window.VBM_GRUPPER(liste, lag, holder)` (felles.js) når en rekke med mer enn fire akkorder skal på notelinjen. Den tegner alt på én linje når det får plass i full målestokk, og deler på flere linjer (høyst fire i hver) bare på smale skjermer. Kall tegningen på nytt med `window.VBM_VED_BREDDE(fn)`, som bare reagerer når bredden endres.
 
 Tempo (Innstillinger): raskt 100, middels 65 og sakte 45 slag i minuttet. Resten av lyden følger samme forhold (lyd.js).
+
+## Nivå og «Se også»
+
+Hver oppføring i `materialer.js` har `niva` (grunnleggende, avansert eller ekspert) og `relatert` (filnavn). Startsiden viser nivået på kortet, og Innstillinger har et nivåfilter (`vbm-niva`) for startsiden og menyen. På hver side legger `felles.js` til nivået under overskriften og en «Se også»-blokk nederst, og leksjonene i Musikkteori får «Forrige leksjon» og «Neste leksjon» i rekkefølgen fra `materialer.js`. Rekkefølgen i lista er læringsrekkefølgen.

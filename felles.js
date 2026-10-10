@@ -260,10 +260,42 @@
      «Alle ressurser» fører til startsiden, og «Meny» viser alle sidene, gruppert som på startsiden.
      Listen hentes fra materialer.js, så en ny side kommer med i menyen av seg selv. */
   function menyT(s){ var o = menyOrd[s]; if (typeof o === 'string') return o; return T(s); }
+  /* Nivåfilteret (Innstillinger): «alle», «grunnleggende», «avansert» eller «ekspert» */
+  function nivaValg(){ try { return localStorage.getItem('vbm-niva') || 'alle'; } catch(e){ return 'alle'; } }
+  var NIVANAVN = { grunnleggende: 'Grunnleggende', avansert: 'Avansert', ekspert: 'Ekspert' };
   function hentMaterialer(ferdigFn){
     if (window.VBM && window.VBM.materialer) { ferdigFn(); return; }
     var sk = document.createElement('script'); sk.src = 'materialer.js';
     sk.onload = ferdigFn; document.head.appendChild(sk);
+  }
+  /* Nivåmerke under overskriften og «Se også» nederst, fra materialer.js (niva og relatert) */
+  function byggNivaOgRelatert(){
+    if (side === 'index.html') return;
+    hentMaterialer(function(){
+      var M = window.VBM || {}, alle = M.materialer || [], meg = null;
+      alle.forEach(function(m){ if (!meg && m.fil.split('?')[0] === side) meg = m; });
+      if (!meg) return;
+      var hero = document.querySelector('.hero, header');
+      if (meg.niva && hero && !document.querySelector('.vbm-niva-linje')) {
+        var linje = document.createElement('p'); linje.className = 'vbm-niva-linje';
+        linje.innerHTML = '<span class="vbm-niva niva-' + meg.niva + '">' + T('Nivå') + ': ' + T(NIVANAVN[meg.niva]) + '</span>';
+        var h1 = hero.querySelector('h1'); if (h1) h1.parentNode.insertBefore(linje, h1.nextSibling); else hero.appendChild(linje);
+      }
+      var rel = (meg.relatert || []).map(function(f){ var funnet = null; alle.forEach(function(m){ if (!funnet && m.fil.split('?')[0] === f) funnet = m; }); return funnet; }).filter(Boolean);
+      if (!rel.length || document.querySelector('.vbm-relatert')) return;
+      var nav = document.createElement('nav'); nav.className = 'vbm-relatert'; nav.setAttribute('aria-label', T('Se også'));
+      /* Leksjonene i Musikkteori henger sammen som et kurs: forrige og neste leksjon i rekkefølgen fra materialer.js */
+      var kurs = alle.filter(function(m){ return m.seksjon === meg.seksjon && meg.seksjon === 'teori' && !m.skjult; }), nr = kurs.indexOf(meg), steg = '';
+      if (nr >= 0) {
+        if (nr > 0) steg += '<a class="vbm-kurs-lenke" href="' + kurs[nr - 1].fil + '">&larr; ' + T('Forrige leksjon') + ': ' + menyT(kurs[nr - 1].tittel) + '</a>';
+        if (nr < kurs.length - 1) steg += '<a class="vbm-kurs-lenke vbm-kurs-neste" href="' + kurs[nr + 1].fil + '">' + T('Neste leksjon') + ': ' + menyT(kurs[nr + 1].tittel) + ' &rarr;</a>';
+      }
+      nav.innerHTML = (steg ? '<div class="vbm-kurs">' + steg + '</div>' : '') + '<p class="vbm-relatert-tittel">' + T('Se også') + '</p><ul>' + rel.map(function(m){
+        return '<li><a href="' + m.fil + '">' + menyT(m.tittel) + '</a>' + (m.niva ? ' <span class="vbm-niva niva-' + m.niva + '">' + T(NIVANAVN[m.niva]) + '</span>' : '') + '</li>';
+      }).join('') + '</ul>';
+      var fot = document.querySelector('footer');
+      if (fot) fot.parentNode.insertBefore(nav, fot); else document.body.appendChild(nav);
+    });
   }
   function byggMeny(){
     var nav = document.querySelector('.vbm-back');
@@ -317,12 +349,12 @@
         var M = window.VBM || {}, html = '';
         if (hjemTekst) html += '<div class="vbm-meny-hjem"><a class="vbm-hjem" href="index.html">' + hjemTekst + '</a></div>';
         (M.seksjoner || []).forEach(function(sk){
-          var liste = (M.materialer || []).filter(function(m){ return m.seksjon === sk.id && !m.skjult; });
+          var nf = nivaValg(), liste = (M.materialer || []).filter(function(m){ return m.seksjon === sk.id && !m.skjult && (nf === 'alle' || m.niva === nf); });
           if (!liste.length) return;
           html += '<div class="vbm-meny-gruppe"><p class="vbm-meny-tittel">' + menyT(sk.overskrift) + '</p><ul>';
           liste.forEach(function(m){
             var her = m.fil.split('?')[0] === side;
-            html += '<li><a class="vbm-meny-lenke" href="' + m.fil + '"' + (her ? ' aria-current="page"' : '') + '>' + menyT(m.tittel) + '</a></li>';
+            html += '<li><a class="vbm-meny-lenke" href="' + m.fil + '"' + (her ? ' aria-current="page"' : '') + '>' + menyT(m.tittel) + (m.niva ? ' <span class="vbm-meny-niva">' + T(NIVANAVN[m.niva]) + '</span>' : '') + '</a></li>';
           });
           html += '</ul></div>';
         });
@@ -694,7 +726,7 @@
   /* ==================== 12. Innstillinger ====================
      Tannhjulet i menylinjen: Farger eller Svart-hvitt (for fargeblinde og for deg med kromestesi).
      Valget gjelder hele nettstedet og huskes. Flere innstillinger kommer her senere. */
-  var VISNING = 'vbm-visning', TEMPO = 'vbm-tempo', TEMA = 'vbm-tema';
+  var VISNING = 'vbm-visning', TEMPO = 'vbm-tempo', TEMA = 'vbm-tema', NIVA = 'vbm-niva';
   /* Utseende: «lys» eller «mork» velges under Innstillinger. Automatisk (standard) følger nettleseren. */
   function temaValg(){ var v = ''; try { v = localStorage.getItem(TEMA) || ''; } catch(e){} return v === 'lys' || v === 'mork' ? v : ''; }
   function brukTema(){ var v = temaValg(); if (v) root.setAttribute('data-tema', v); else root.removeAttribute('data-tema'); }
@@ -729,7 +761,12 @@
       + '<p class="vbm-meny-tittel">' + T('Piano under notene') + '</p>'
       + '<div class="vbm-pille vbm-inst-valg" role="group" aria-label="' + T('Piano under notene') + '">'
       + '<button type="button" data-piano-valg="1"><span>' + T('På') + '</span></button><button type="button" data-piano-valg="0"><span>' + T('Av') + '</span></button></div>'
-      + '<p class="vbm-inst-tekst">' + T('Viser tonene på notelinjen på et piano under hver notelinje. Du kan trykke på tangentene for å høre dem.') + '</p>';
+      + '<p class="vbm-inst-tekst">' + T('Viser tonene på notelinjen på et piano under hver notelinje. Du kan trykke på tangentene for å høre dem.') + '</p>'
+      + '<p class="vbm-inst-tittel">' + T('Nivå') + '</p>'
+      + '<div class="vbm-pille vbm-inst-valg vbm-niva-valg" role="group" aria-label="' + T('Nivå') + '">'
+      + '<button type="button" data-niva-valg="alle"><span>' + T('Alle') + '</span></button><button type="button" data-niva-valg="grunnleggende"><span>' + T('Grunnleggende') + '</span></button>'
+      + '<button type="button" data-niva-valg="avansert"><span>' + T('Avansert') + '</span></button><button type="button" data-niva-valg="ekspert"><span>' + T('Ekspert') + '</span></button></div>'
+      + '<p class="vbm-inst-tekst">' + T('Viser bare juksebøker, leksjoner og quizer på valgt nivå på startsiden og i menyen.') + '</p>';
     var meny = nav.querySelector('.vbm-meny-knapp');
     nav.insertBefore(b, meny ? meny.nextSibling : nav.firstChild);
     nav.appendChild(panel);
@@ -739,10 +776,12 @@
       [].forEach.call(panel.querySelectorAll('[data-tempo-valg]'), function(k){ k.setAttribute('aria-pressed', k.getAttribute('data-tempo-valg') === t ? 'true' : 'false'); });
       [].forEach.call(panel.querySelectorAll('[data-tema-valg]'), function(k){ k.setAttribute('aria-pressed', k.getAttribute('data-tema-valg') === temaValg() ? 'true' : 'false'); });
       [].forEach.call(panel.querySelectorAll('[data-piano-valg]'), function(k){ k.setAttribute('aria-pressed', (k.getAttribute('data-piano-valg') === '1') === pianoPaa() ? 'true' : 'false'); });
+      [].forEach.call(panel.querySelectorAll('[data-niva-valg]'), function(k){ k.setAttribute('aria-pressed', k.getAttribute('data-niva-valg') === nivaValg() ? 'true' : 'false'); });
     }
     panel.addEventListener('click', function(e){
-      var k = e.target.closest && e.target.closest('[data-visning], [data-tempo-valg], [data-piano-valg], [data-tema-valg]'); if (!k) return;
+      var k = e.target.closest && e.target.closest('[data-visning], [data-tempo-valg], [data-piano-valg], [data-tema-valg], [data-niva-valg]'); if (!k) return;
       try {
+        if (k.hasAttribute('data-niva-valg')) { localStorage.setItem(NIVA, k.getAttribute('data-niva-valg')); window.dispatchEvent(new Event('vbm-niva')); vis(); return; }
         if (k.hasAttribute('data-tema-valg')) { localStorage.setItem(TEMA, k.getAttribute('data-tema-valg')); brukTema(); }
         else if (k.hasAttribute('data-visning')) localStorage.setItem(VISNING, k.getAttribute('data-visning'));
         else if (k.hasAttribute('data-piano-valg')) { localStorage.setItem(PIANO, k.getAttribute('data-piano-valg')); allePianoer(); }
@@ -785,6 +824,7 @@
     byggKnapper();                                       // etter oversettelsen, så knappene ikke forstyrrer den
     byggMeny();
     byggInnstillinger();
+    byggNivaOgRelatert();
     root.classList.remove('vbm-oversetter');
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();

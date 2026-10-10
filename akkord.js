@@ -47,7 +47,7 @@ window.VBM_AKKORD = (function(){
   }
   var SUFFIKS = { dur: '', moll: 'm', dim: 'dim', aug: '+', maj7: 'maj7', '7': '7', m7: 'm7', m7b5: 'm7♭5', dim7: 'dim7', mmaj7: 'm(maj7)', augmaj7: '+maj7' };
   var TYPE_NAVN = { dur: 'durtreklang', moll: 'molltreklang', dim: 'forminsket treklang', aug: 'forstørret treklang',
-    maj7: 'durseptimakkord (maj7)', '7': 'dominantseptimakkord', m7: 'mollseptimakkord', m7b5: 'halvforminsket septimakkord',
+    maj7: 'majorseptimakkord (maj7)', '7': 'dominantseptimakkord', m7: 'mollseptimakkord', m7b5: 'halvforminsket septimakkord',
     dim7: 'forminsket septimakkord', mmaj7: 'moll-maj7-akkord', augmaj7: 'forstørret maj7-akkord' };
   var INV_NAVN = [['grunnstilling', 'sekstakkord', 'kvartsekstakkord'], ['grunnstilling', 'kvintsekstakkord', 'terskvartakkord', 'sekundakkord']];
   var INV_TALL = [['', '⁶', '⁶₄'], ['⁷', '⁶₅', '⁴₃', '⁴₂']];

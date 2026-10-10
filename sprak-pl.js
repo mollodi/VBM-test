@@ -147,6 +147,15 @@ VBM_ORDBOK("pl", {
     "Mørk": "Ciemny",
     "Automatisk følger innstillingen i nettleseren.": "Tryb automatyczny podąża za ustawieniem przeglądarki.",
     "Sinustoner": "Tony sinusoidalne",
+    "Forrige leksjon": "Poprzednia lekcja",
+    "Neste leksjon": "Następna lekcja",
+    "Nivå": "Poziom",
+    "Alle": "Wszystkie",
+    "Grunnleggende": "Podstawowy",
+    "Avansert": "Zaawansowany",
+    "Ekspert": "Ekspert",
+    "Viser bare juksebøker, leksjoner og quizer på valgt nivå på startsiden og i menyen.": "Pokazuje na stronie głównej i w menu tylko ściągi, lekcje i quizy na wybranym poziomie.",
+    "Se også": "Zobacz też",
     "Orgel": "Organy",
     "Lyd: orgel spilt inn av Simon Dalzell (Ivy Audio) og strykere, begge fra VS Chamber Orchestra Community Edition av Versilian Studios (CC0). Piano: Salamander Grand Piano av Alexander Holm (CC BY 3.0).": "Dźwięk: organy nagrane przez Simona Dalzella (Ivy Audio) i smyczki, oba z VS Chamber Orchestra Community Edition, autor Versilian Studios (CC0). Fortepian: Salamander Grand Piano, autor Alexander Holm (CC BY 3.0).",
     "{c} cent": function(v){ var c = String(v.c); if (c.indexOf(',') >= 0) return c + ' centa'; var n = +c; return n + (n === 1 ? ' cent' : (n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14)) ? ' centy' : ' centów'); },
@@ -323,7 +332,13 @@ VBM_ORDBOK("pl", {
         "Melodilesing og melodidiktat": "Czytanie melodii i dyktando melodyczne",
         "Tonika og skalatrinn, trinnvis bevegelse og sprang, dur eller moll, følge notene mens du lytter, finne feil i notene og skrive ned en melodi.": "Tonika i stopnie gamy, ruch krokowy i skoki, dur czy moll, śledzenie nut podczas słuchania, znajdowanie błędów i zapisywanie melodii.",
         "Gehørquiz: melodi": "Quiz słuchowy: melodia",
-        "Hør melodier og velg riktig notebilde, finn tonen som står feil i notene, og hør om melodien er i dur eller moll.": "Słuchaj melodii i wybieraj właściwy zapis, znajduj błędny dźwięk w nutach i rozpoznawaj dur lub moll."
+        "Hør melodier og velg riktig notebilde, finn tonen som står feil i notene, og hør om melodien er i dur eller moll.": "Słuchaj melodii i wybieraj właściwy zapis, znajduj błędny dźwięk w nutach i rozpoznawaj dur lub moll.",
+        "Grunnleggende": "Podstawowy",
+        "Avansert": "Zaawansowany",
+        "Ekspert": "Ekspert",
+        "Viser bare materiell på grunnleggende nivå. Endre nivå i Innstillinger øverst.": "Pokazuję tylko materiały na poziomie podstawowym. Zmień poziom w Ustawieniach na górze.",
+        "Viser bare materiell på avansert nivå. Endre nivå i Innstillinger øverst.": "Pokazuję tylko materiały na poziomie zaawansowanym. Zmień poziom w Ustawieniach na górze.",
+        "Viser bare materiell på ekspertnivå. Endre nivå i Innstillinger øverst.": "Pokazuję tylko materiały na poziomie eksperckim. Zmień poziom w Ustawieniach na górze."
       },
     "intervaller.html": {
         "Intervall-jukseboka: fra prim til dobbel oktav": "Ściąga z interwałów: od prymy do podwójnej oktawy",
@@ -1573,7 +1588,9 @@ VBM_ORDBOK("pl", {
         "Lytt etter halvtonene: hvor ligger de i skalaen?": "Słuchaj półtonów: gdzie leżą w skali?",
         "Ikke gi opp. Du blir bedre for hver oppgave.": "Nie poddawaj się. Z każdym zadaniem idzie ci lepiej.",
         "Se på tersen først: er den stor eller liten?": "Najpierw spójrz na tercję: wielka czy mała?",
-        "Pust rolig, tenk deg om, og prøv neste.": "Oddychaj spokojnie, zastanów się i spróbuj następnego."
+        "Pust rolig, tenk deg om, og prøv neste.": "Oddychaj spokojnie, zastanów się i spróbuj następnego.",
+        "<em>Quiz</em>: skalaer og modi": "<em>Quiz</em>: skale i tryby",
+        "Quiz: skalaer og modi": "Quiz: skale i tryby"
       },
     "omvendinger.html": {
         "ren prim": "pryma czysta",
@@ -1887,7 +1904,8 @@ VBM_ORDBOK("pl", {
         "<strong>Akkorden på 7. trinn.</strong> vii° regnes oftest som en dominantseptimakkord uten grunntone (Đ⁷), men noen lærebøker regner den som en egen akkord.": "<strong>Akord na 7. stopniu.</strong> vii° traktuje się zwykle jako akord septymowy dominantowy bez dźwięku podstawowego (Đ⁷), ale niektóre podręczniki uważają go za osobny akord.",
         "Kilder: Esa Lilja, «Harmony Analysis Tasks in the Music Theory Admission Test for Higher Music Education in Norway», PlaySpace 3/1 (2024). Bjørnar Utne-Reitan, «Funksjonsteori – en musikkteoretisk tradisjon» (2023).": "Źródła: Esa Lilja, „Harmony Analysis Tasks in the Music Theory Admission Test for Higher Music Education in Norway”, PlaySpace 3/1 (2024). Bjørnar Utne-Reitan, „Funksjonsteori – en musikkteoretisk tradisjon” (2023).",
         "I opptaksprøven heter bitreklangene noe annet: vi heter Ts, ii heter Ss og iii heter Tm, og store bokstaver brukes også i moll. Se «Ulike navn og systemer» nederst og <a href=\"bitreklanger.html\">Bitreklanger og forholdninger</a>.": "Na norweskim egzaminie wstępnym akordy poboczne nazywają się inaczej: vi to Ts, ii to Ss, iii to Tm, a wielkie litery stosuje się także w molu. Zobacz „Różne nazwy i systemy” na dole oraz <a href=\"bitreklanger.html\">Akordy poboczne i opóźnienia</a>.",
-        "Opptaksprøven og mange nyere bøker skriver den derfor V⁶₄ (funksjon D⁶₄), slik som i eksempelet. Andre bøker skriver I⁶₄.": "Egzamin wstępny i wiele nowszych książek zapisuje go więc jako V⁶₄ (funkcja D⁶₄), tak jak w przykładzie. Inne książki zapisują I⁶₄."
+        "Opptaksprøven og mange nyere bøker skriver den derfor V⁶₄ (funksjon D⁶₄), slik som i eksempelet. Andre bøker skriver I⁶₄.": "Egzamin wstępny i wiele nowszych książek zapisuje go więc jako V⁶₄ (funkcja D⁶₄), tak jak w przykładzie. Inne książki zapisują I⁶₄.",
+        "<strong>Kadensenes navn.</strong> Britisk engelsk kaller hel kadens <em>perfect cadence</em>, halvkadens <em>imperfect cadence</em> og skuffende kadens <em>interrupted cadence</em>. Amerikansk engelsk sier <em>authentic</em> (PAC og IAC), <em>half</em> og <em>deceptive cadence</em>. Plagal heter det samme overalt.": "<strong>Nazwy kadencji.</strong> Brytyjski angielski nazywa kadencję doskonałą <em>perfect cadence</em>, półkadencję <em>imperfect cadence</em>, a kadencję zwodniczą <em>interrupted cadence</em>. Amerykański angielski mówi <em>authentic</em> (PAC i IAC), <em>half</em> i <em>deceptive cadence</em>. Plagalna wszędzie nazywa się tak samo."
       },
     "gehorquiz-harmoni.html": {
         "Modus": "Tryb",
@@ -2259,7 +2277,17 @@ VBM_ORDBOK("pl", {
         "<strong>Skriv noteverdiene</strong> og sjekk at hver takt går opp.": "<strong>Zapisz wartości nut</strong> i sprawdź, czy każdy takt się zgadza.",
         "<strong>Ved rytmekorreksjon</strong> følger du notene slag for slag mens du lytter, og merker deg takten der det du hører, ikke stemmer med det som står.": "<strong>Przy korekcie rytmu</strong> śledzisz nuty miara po mierze podczas słuchania i zaznaczasz takt, w którym to, co słyszysz, nie zgadza się z zapisem.",
         "<strong>Bjelker i 4/4.</strong> Her bindes åttendeler slag for slag. Mange trykte noter binder i stedet fire åttendeler sammen over halve takten (slag 1–2 og 3–4). Begge er vanlige, men en bjelke over midten av takten brukes nesten aldri.": "<strong>Belki w 4/4.</strong> Tu ósemki łączy się miara po mierze. W wielu drukowanych nutach łączy się natomiast cztery ósemki na pół taktu (miary 1–2 i 3–4). Oba sposoby są powszechne, ale belki przez środek taktu prawie się nie stosuje.",
-        "<strong>Opptakt.</strong> Norsk sier opptakt, engelsk <em>upbeat</em>, <em>pickup</em> eller <em>anacrusis</em>, og polsk <em>przedtakt</em>. Noen bøker nummererer opptakten som takt 0, andre som takt 1.": "<strong>Przedtakt.</strong> Po norwesku „opptakt”, po angielsku <em>upbeat</em>, <em>pickup</em> albo <em>anacrusis</em>, po polsku <em>przedtakt</em>. Niektóre książki numerują przedtakt jako takt 0, inne jako takt 1."
+        "<strong>Opptakt.</strong> Norsk sier opptakt, engelsk <em>upbeat</em>, <em>pickup</em> eller <em>anacrusis</em>, og polsk <em>przedtakt</em>. Noen bøker nummererer opptakten som takt 0, andre som takt 1.": "<strong>Przedtakt.</strong> Po norwesku „opptakt”, po angielsku <em>upbeat</em>, <em>pickup</em> albo <em>anacrusis</em>, po polsku <em>przedtakt</em>. Niektóre książki numerują przedtakt jako takt 0, inne jako takt 1.",
+        "Kapittel 1 · Grunnleggende": "Rozdział 1 · Podstawowy",
+        "Kapittel 2 · Grunnleggende": "Rozdział 2 · Podstawowy",
+        "Kapittel 3 · Grunnleggende": "Rozdział 3 · Podstawowy",
+        "Kapittel 4 · Avansert": "Rozdział 4 · Zaawansowany",
+        "Kapittel 5 · Avansert": "Rozdział 5 · Zaawansowany",
+        "Kapittel 6 · Ekspert": "Rozdział 6 · Ekspert",
+        "Rytme er hvor lenge tonene varer og når de kommer. Leksjonen har seks kapitler, fra grunnleggende til ekspert, og hvert kapittel bygger på det forrige.": "Rytm to czas trwania dźwięków i moment ich pojawienia się. Lekcja ma sześć rozdziałów, od podstawowego do eksperckiego, i każdy rozdział opiera się na poprzednim.",
+        "Grunnleggende": "Podstawowy",
+        "Avansert": "Zaawansowany",
+        "Ekspert": "Ekspert"
       },
     "quiz-rytme.html": {
         "Modus": "Tryb",
@@ -2383,7 +2411,14 @@ VBM_ORDBOK("pl", {
         "Takt {n} var annerledes. Under ser du det som ble spilt.": "Takt {n} był inny. Poniżej widać, co zabrzmiało.",
         "Hver takt i {takt} varer {n} åttendeler. Tell sammen notelengdene fra taktstrek til taktstrek.": "Każdy takt w {takt} trwa {n} ósemek. Zsumuj wartości nut od kreski do kreski.",
         "Hver takt i {takt} varer {n} firedeler. Tell sammen notelengdene fra taktstrek til taktstrek.": "Każdy takt w {takt} trwa {n} ćwierćnut. Zsumuj wartości nut od kreski do kreski.",
-        "takt {n}": "takt {n}"
+        "takt {n}": "takt {n}",
+        "{n}. {navn} ({niva})": "{n}. {navn} ({niva})",
+        "Grunnleggende": "Podstawowy",
+        "Avansert": "Zaawansowany",
+        "Ekspert": "Ekspert",
+        "Hør en rytme og finn notene, hør hvilken taktart musikken går i, eller les en rytme og tell. Velg kapitlene du vil øve på, fra grunnleggende til ekspert.": "Posłuchaj rytmu i znajdź nuty, usłysz metrum muzyki albo przeczytaj rytm i policz. Wybierz rozdziały do ćwiczenia, od podstawowego do eksperckiego.",
+        "<em>Quiz</em>: rytme": "<em>Quiz</em>: rytm",
+        "Quiz: rytme": "Quiz: rytm"
       },
     "transponering.html": {
         "og": "i",
@@ -2563,7 +2598,8 @@ VBM_ORDBOK("pl", {
         "Svært bra. Du er godt forberedt.": "Bardzo dobrze. To świetne przygotowanie.",
         "Bra. Øv litt mer på oppgavene du bommet på.": "Dobrze. Poćwicz jeszcze zadania, w których się pomyliłeś.",
         "Du er på god vei. Bruk øvemodus på oppgavetypene du bommet på, og prøv igjen.": "Jesteś na dobrej drodze. Poćwicz w trybie ćwiczeń rodzaje zadań, w których się pomyliłeś, i spróbuj ponownie.",
-        "Ikke gi opp. Begynn i øvemodus med én oppgavetype, og les gjerne leksjonen en gang til.": "Nie poddawaj się. Zacznij w trybie ćwiczeń od jednego rodzaju zadań i przeczytaj jeszcze raz lekcję."
+        "Ikke gi opp. Begynn i øvemodus med én oppgavetype, og les gjerne leksjonen en gang til.": "Nie poddawaj się. Zacznij w trybie ćwiczeń od jednego rodzaju zadań i przeczytaj jeszcze raz lekcję.",
+        "<em>Quiz</em>: transponering": "<em>Quiz</em>: transpozycja"
       },
     "stemming.html": {
         "►︎ <span>spill</span>": "►︎ <span>odtwórz</span>",
@@ -2802,7 +2838,8 @@ VBM_ORDBOK("pl", {
         "Svært bra. Du er godt forberedt.": "Bardzo dobrze. To świetne przygotowanie.",
         "Bra. Øv litt mer på oppgavene du bommet på.": "Dobrze. Poćwicz jeszcze zadania, w których się pomyliłeś.",
         "Du er på god vei. Bruk øvemodus på det du bommet på, og prøv igjen.": "Jesteś na dobrej drodze. Poćwicz w trybie ćwiczeń to, w czym się pomyliłeś, i spróbuj ponownie.",
-        "Ikke gi opp. Les leksjonen en gang til, og begynn i øvemodus på grunnleggende nivå.": "Nie poddawaj się. Przeczytaj jeszcze raz lekcję i zacznij w trybie ćwiczeń na poziomie podstawowym."
+        "Ikke gi opp. Les leksjonen en gang til, og begynn i øvemodus på grunnleggende nivå.": "Nie poddawaj się. Przeczytaj jeszcze raz lekcję i zacznij w trybie ćwiczeń na poziomie podstawowym.",
+        "<em>Quiz</em>: stemming og temperatur": "<em>Quiz</em>: strój i temperacja"
       },
     "intervaller-teori.html": {
         "ren": "czysta",
@@ -3013,7 +3050,8 @@ VBM_ORDBOK("pl", {
         "Svært bra. Du er godt forberedt.": "Bardzo dobrze. To świetne przygotowanie.",
         "Bra. Øv litt mer på oppgavene du bommet på.": "Dobrze. Poćwicz jeszcze zadania, w których się pomyliłeś.",
         "Du er på god vei. Bruk øvemodus på det du bommet på, og prøv igjen.": "Jesteś na dobrej drodze. Poćwicz w trybie ćwiczeń to, w czym się pomyliłeś, i spróbuj ponownie.",
-        "Ikke gi opp. Les leksjonen en gang til, og begynn i øvemodus på grunnleggende nivå.": "Nie poddawaj się. Przeczytaj jeszcze raz lekcję i zacznij w trybie ćwiczeń na poziomie podstawowym."
+        "Ikke gi opp. Les leksjonen en gang til, og begynn i øvemodus på grunnleggende nivå.": "Nie poddawaj się. Przeczytaj jeszcze raz lekcję i zacznij w trybie ćwiczeń na poziomie podstawowym.",
+        "Teori<em>quiz</em>: intervaller": "<em>Quiz</em> teoretyczny: interwały"
       },
     "akkordanalyse.html": {
         "durtreklang": "trójdźwięk durowy",
@@ -3119,7 +3157,9 @@ VBM_ORDBOK("pl", {
         "<strong>Kadensens kvartsekstakkord.</strong> Mange bøker skriver I⁶₄, fordi tonene er de samme som i I. Opptaksprøven og mange nyere bøker skriver V⁶₄ (funksjon D⁶₄), fordi akkorden virker som en del av dominanten. Se Bitreklanger og forholdninger.": "<strong>Kadencyjny akord kwartsekstowy.</strong> Wiele książek zapisuje I⁶₄, bo dźwięki są te same co w I. Egzamin wstępny i wiele nowszych książek zapisuje V⁶₄ (funkcja D⁶₄), bo akord działa jako część dominanty. Zobacz Akordy poboczne i opóźnienia.",
         "Kilder: Esa Lilja, «Harmony Analysis Tasks in the Music Theory Admission Test for Higher Music Education in Norway», PlaySpace 3/1 (2024). Bjørnar Utne-Reitan, «Funksjonsteori – en musikkteoretisk tradisjon» (2023).": "Źródła: Esa Lilja, „Harmony Analysis Tasks in the Music Theory Admission Test for Higher Music Education in Norway”, PlaySpace 3/1 (2024). Bjørnar Utne-Reitan, „Funksjonsteori – en musikkteoretisk tradisjon” (2023).",
         "I funksjonsanalysen viser tallet under bokstaven hvilken tone som ligger i bassen (₃ = tersen, ₅ = kvinten, ₇ = septimen), og tallet over viser en tilføyd tone, som septimen i D⁷. Her vises funksjonen for hovedakkordene T, S og D, med store bokstaver også i moll, slik opptaksprøven skriver dem. Bitreklangene får sine funksjoner i neste leksjon.": "W analizie funkcyjnej cyfra pod literą pokazuje, który dźwięk jest w basie (₃ = tercja, ₅ = kwinta, ₇ = septyma), a cyfra nad literą pokazuje dodany dźwięk, na przykład septymę w D⁷. Tu funkcja jest podana dla akordów głównych T, S i D, wielkimi literami także w molu, tak jak na egzaminie wstępnym. Akordy poboczne dostaną swoje funkcje w następnej lekcji.",
-        "I en kadens: V⁶₄ eller D⁶₄ (kadensens kvartsekstakkord)": "W kadencji: V⁶₄ albo D⁶₄ (kadencyjny akord kwartsekstowy)"
+        "I en kadens: V⁶₄ eller D⁶₄ (kadensens kvartsekstakkord)": "W kadencji: V⁶₄ albo D⁶₄ (kadencyjny akord kwartsekstowy)",
+        "majorseptimakkord (maj7)": "akord septymowy wielki (maj7)",
+        "<strong>Cmaj7</strong>, majorseptimakkord: durtreklang og stor septim. Myk og drømmende, typisk på I og IV i dur.": "<strong>Cmaj7</strong>, akord septymowy wielki: trójdźwięk durowy i septyma wielka. Miękki i marzycielski, typowy na I i IV w dur."
       },
     "quiz-akkordanalyse.html": {
         "durtreklang": "trójdźwięk durowy",
@@ -3212,7 +3252,9 @@ VBM_ORDBOK("pl", {
         "Du er på god vei. Bruk øvemodus på det du bommet på, og prøv igjen.": "Jesteś na dobrej drodze. Poćwicz w trybie ćwiczeń to, w czym się pomyliłeś, i spróbuj ponownie.",
         "Ikke gi opp. Les leksjonen en gang til, og begynn i øvemodus på grunnleggende nivå.": "Nie poddawaj się. Przeczytaj jeszcze raz lekcję i zacznij w trybie ćwiczeń na poziomie podstawowym.",
         "Grunnleggende: treklanger i durtonearter med opptil tre fortegn, tett beliggenhet i G-nøkkel. Avansert: også septimakkorder og harmonisk moll, i firstemmig sats på to linjer med tonartens fortegn. Funksjonsanalyse gjelder hovedakkordene (T, S og D, med store bokstaver også i moll, slik som i opptaksprøven).": "Podstawowy: trójdźwięki w tonacjach durowych do trzech znaków, układ skupiony w kluczu wiolinowym. Zaawansowany: także akordy septymowe i mol harmoniczny, czterogłosowo na dwóch pięcioliniach ze znakami przykluczowymi. Analiza funkcyjna obejmuje akordy główne (T, S i D, wielkimi literami także w molu, jak na egzaminie wstępnym).",
-        "I en kadens regner opptaksprøven denne akkorden som kadensens kvartsekstakkord: V⁶₄ eller D⁶₄.": "W kadencji egzamin wstępny traktuje ten akord jako kadencyjny akord kwartsekstowy: V⁶₄ albo D⁶₄."
+        "I en kadens regner opptaksprøven denne akkorden som kadensens kvartsekstakkord: V⁶₄ eller D⁶₄.": "W kadencji egzamin wstępny traktuje ten akord jako kadencyjny akord kwartsekstowy: V⁶₄ albo D⁶₄.",
+        "Teori<em>quiz</em>: akkordanalyse": "<em>Quiz</em> teoretyczny: analiza akordów",
+        "majorseptimakkord (maj7)": "akord septymowy wielki (maj7)"
       },
     "bitreklanger.html": {
         "►︎ <span>spill</span>": "►︎ <span>odtwórz</span>",
@@ -3369,7 +3411,8 @@ VBM_ORDBOK("pl", {
         "Svært bra. Du er godt forberedt.": "Bardzo dobrze. To świetne przygotowanie.",
         "Bra. Øv litt mer på oppgavene du bommet på.": "Dobrze. Poćwicz jeszcze zadania, w których się pomyliłeś.",
         "Du er på god vei. Bruk øvemodus på det du bommet på, og prøv igjen.": "Jesteś na dobrej drodze. Poćwicz w trybie ćwiczeń to, w czym się pomyliłeś, i spróbuj ponownie.",
-        "Ikke gi opp. Les leksjonen en gang til, og begynn i øvemodus på grunnleggende nivå.": "Nie poddawaj się. Przeczytaj jeszcze raz lekcję i zacznij w trybie ćwiczeń na poziomie podstawowym."
+        "Ikke gi opp. Les leksjonen en gang til, og begynn i øvemodus på grunnleggende nivå.": "Nie poddawaj się. Przeczytaj jeszcze raz lekcję i zacznij w trybie ćwiczeń na poziomie podstawowym.",
+        "<em>Quiz</em>: akkordforløp": "<em>Quiz</em>: następstwa akordów"
       },
     "melodilesing.html": {
         "►︎ <span>spill</span>": "►︎ <span>odtwórz</span>",
@@ -3511,7 +3554,8 @@ VBM_ORDBOK("pl", {
         "Svært bra. Du er godt forberedt.": "Bardzo dobrze. To świetne przygotowanie.",
         "Bra. Øv litt mer på oppgavene du bommet på.": "Dobrze. Poćwicz jeszcze zadania, w których się pomyliłeś.",
         "Du er på god vei. Bruk øvemodus på det du bommet på, og prøv igjen.": "Jesteś na dobrej drodze. Poćwicz w trybie ćwiczeń to, w czym się pomyliłeś, i spróbuj ponownie.",
-        "Ikke gi opp. Les leksjonen en gang til, og begynn i øvemodus på grunnleggende nivå.": "Nie poddawaj się. Przeczytaj jeszcze raz lekcję i zacznij w trybie ćwiczeń na poziomie podstawowym."
+        "Ikke gi opp. Les leksjonen en gang til, og begynn i øvemodus på grunnleggende nivå.": "Nie poddawaj się. Przeczytaj jeszcze raz lekcję i zacznij w trybie ćwiczeń na poziomie podstawowym.",
+        "Gehør<em>quiz</em>: melodi": "<em>Quiz</em> słuchowy: melodia"
       }
   }
 });
