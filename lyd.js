@@ -72,7 +72,8 @@
       { base: OB + 'orgel-', notes: ORGEL_PEDAL, level: 0.8, min: 23, max: 35, range: 2, shift: 0, cents: 0, delay: 0 },
       { base: OB + 'orgel-', notes: ORGEL_MAN,   level: 0.8, min: 36, max: 96, range: 2, shift: 0, cents: 0, delay: 0 }
     ]}};
-    Object.keys(INSTR).forEach(function(k){ medOrgel[k] = INSTR[k]; });
+    /* Strykerne spiller med vibrato, som skjuler svevningene, så de er ikke med på disse sidene */
+    Object.keys(INSTR).forEach(function(k){ if (k !== 'strykere') medOrgel[k] = INSTR[k]; });
     INSTR = medOrgel;
   }
 
@@ -205,6 +206,7 @@
     g.gain.exponentialRampToValueAtTime(0.0001, t0 + dur + inst.release);
     src.start(t0); src.stop(t0 + dur + inst.release + 0.05);
     track(src, g);
+    return src;
   }
   function synthVoice(m, t0, dur, peak){
     var osc = ctx.createOscillator(), f = ctx.createBiquadFilter(), g = ctx.createGain();
@@ -237,6 +239,7 @@
     g.gain.exponentialRampToValueAtTime(0.0001, t0 + dur + inst.release);
     osc.start(t0); osc.stop(t0 + dur + inst.release + 0.05);
     track(osc, g);
+    return osc;
   }
 
   /* Opp, ned, og til slutt alle tonene samtidig – som før.
@@ -506,6 +509,50 @@
     ensureCtx();
     if (btn === activeBtn) { stopAll(); return; }
     spillRytme(hendelser, btn, vedSteg);
+  };
+  /* VBM_LYD_TONER(toner, knapp, ferdig): enkelttoner med valgt lyd, der tonehøyden kan endres mens de klinger
+     (brukes av gehørøvelsene med mikrointervaller). toner = [{ m: tonehøyde med desimaler, t: start i sekunder,
+     d: lengde i sekunder (0 = så lenge opptaket varer, eller 60 sekunder for holdte lyder) }].
+     ferdig(handles) kalles når tonene starter; handles[i].set(m) flytter tonen i til ny tonehøyde.
+     Toner som ligger nær hverandre, bruker samme opptak, så klangen er lik og bare tonehøyden skiller dem. */
+  window.VBM_LYD_TONER = function(toner, btn, ferdig){
+    ensureCtx(); stopAll();
+    var my = token, inst = INSTR[current];
+    if (inst.trommer || !inst.layers) inst = INSTR.piano;
+    activeBtn = btn; if (btn) btn.classList.add('playing', 'loading');
+    var midt = toner.reduce(function(s, n){ return s + n.m; }, 0) / toner.length;   // felles opptak for alle tonene
+    function start(got){
+      if (my !== token) return;
+      if (btn) btn.classList.remove('loading');
+      var t0 = ctx.currentTime + 0.05 + forsinkelse(), slutt = 0, hand = [];
+      toner.forEach(function(n){
+        var deler = [], d = n.d;
+        if (inst.sinus) {
+          if (!d) d = 60;
+          var osc = sinusVoice(n.m, t0 + (n.t || 0), d, (inst.synth === 'sag' ? 0.16 : 0.32) * 0.8, inst.synth);
+          deler.push(function(nm){ osc.frequency.setTargetAtTime(440 * Math.pow(2, (nm - 69) / 12), ctx.currentTime, 0.015); });
+        } else {
+          inst.layers.forEach(function(L){
+            var s = nearest(L, midt + L.shift); if (s === null) return;
+            var buf = got[urlFor(L, s)]; if (!buf) return;
+            var rate = Math.pow(2, (n.m + L.shift - s) / 12 + L.cents / 1200), lengde = d || (inst.sustain ? 60 : buf.duration / rate - 0.5);
+            d = d || lengde;
+            var src = sampleVoice(inst, buf, rate, t0 + (n.t || 0) + L.delay, lengde, L.level * 0.5);
+            deler.push(function(nm){ src.playbackRate.setTargetAtTime(Math.pow(2, (nm + L.shift - s) / 12 + L.cents / 1200), ctx.currentTime, 0.015); });
+          });
+        }
+        slutt = Math.max(slutt, (n.t || 0) + (d || 1) + inst.release);
+        hand.push({ set: function(nm){ deler.forEach(function(fn){ fn(nm); }); } });
+      });
+      if (ferdig) ferdig(hand);
+      timer = setTimeout(function(){ if (my === token && activeBtn) { activeBtn.classList.remove('playing'); activeBtn = null; } }, (slutt + 0.1) * 1000);
+    }
+    if (inst.sinus) { start(null); return; }
+    var urls = {};
+    inst.layers.forEach(function(L){ var s = nearest(L, midt + L.shift); if (s !== null) urls[urlFor(L, s)] = true; });
+    var list = Object.keys(urls);
+    Promise.all(list.map(load)).then(function(bufs){ var got = {}; list.forEach(function(u, i){ got[u] = bufs[i]; }); start(got); })
+      .catch(function(){ if (my !== token) return; inst = INSTR.sinus; start(null); });
   };
   window.VBM_LYD_STOPP = stopAll;
   window.__vbmLyd = { voices: function(){ return voices.length; }, instrument: function(){ return current; } };

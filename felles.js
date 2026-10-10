@@ -18,8 +18,12 @@
 
    Alt utseende ligger i stil.css. Denne filen lager ingen CSS.
    ===================================================================== */
+/* Versjonsnummeret fra lenken til denne fila (felles.js?v=39) brukes også for filene som lastes herfra (språk og materialer),
+   så nettleseren henter nye utgaver etter en oppdatering i stedet for gamle kopier fra hurtigminnet. */
+window.VBM_VERSJON = (function(){ var s = document.currentScript && document.currentScript.src, m = s && /[?&]v=([^&#]+)/.exec(s); return m ? m[1] : ''; })();
 (function(){
   'use strict';
+  var VERSJON = window.VBM_VERSJON ? '?v=' + window.VBM_VERSJON : '';
 
   /* ==================== 1. Innstillinger ==================== */
   var SPRAK = ['no', 'en', 'pl'];                        // rekkefølgen på knappene
@@ -78,7 +82,7 @@
     oversettHode();
   };
   var trengs = sprak !== 'no' || kilde !== 'no';
-  if (trengs && !window.VBM_INGEN_LASTING) document.write('<script src="sprak-' + sprak + '.js"><\/script>');
+  if (trengs && !window.VBM_INGEN_LASTING) document.write('<script src="sprak-' + sprak + '.js' + VERSJON + '"><\/script>');
   if (trengs) root.classList.add('vbm-oversetter');      // siden vises når teksten er byttet
   setTimeout(function(){ root.classList.remove('vbm-oversetter'); }, 2500);   // sikkerhet
 
@@ -265,7 +269,7 @@
   var NIVANAVN = { grunnleggende: 'Grunnleggende', avansert: 'Avansert', ekspert: 'Ekspert' };
   function hentMaterialer(ferdigFn){
     if (window.VBM && window.VBM.materialer) { ferdigFn(); return; }
-    var sk = document.createElement('script'); sk.src = 'materialer.js';
+    var sk = document.createElement('script'); sk.src = 'materialer.js' + VERSJON;
     sk.onload = ferdigFn; document.head.appendChild(sk);
   }
   /* Nivåmerke under overskriften og «Se også» nederst, fra materialer.js (niva og relatert) */
