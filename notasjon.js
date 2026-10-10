@@ -47,7 +47,8 @@ window.VBM_NOTASJON = (function(){
   }
   function fermat(x, yy){ return '<path d="M' + (x - 11) + ' ' + yy + ' A11 11 0 0 1 ' + (x + 11) + ' ' + yy + '" fill="none" stroke="currentColor" stroke-width="2.4"/><circle cx="' + x + '" cy="' + (yy - 3) + '" r="2.2" fill="currentColor"/>'; }
   function hairpin(x1, x2, yy, opp){ var a = opp ? x1 : x2, b = opp ? x2 : x1; return '<line x1="' + a + '" y1="' + yy + '" x2="' + b + '" y2="' + (yy - 7) + '" stroke="currentColor" stroke-width="1.6"/><line x1="' + a + '" y1="' + yy + '" x2="' + b + '" y2="' + (yy + 7) + '" stroke="currentColor" stroke-width="1.6"/>'; }
-  function svg(b, h, innhold, merke, y0){ return '<svg viewBox="0 ' + (y0 == null ? 40 : y0) + ' ' + b + ' ' + h + '" role="img" aria-label="' + merke + '">' + innhold + '</svg>'; }
+  function svg(b, h, innhold, merke, y0, fast){ return '<svg viewBox="0 ' + (y0 == null ? 40 : y0) + ' ' + b + ' ' + h + '" role="img" aria-label="' + merke + '"'
+    + (fast ? ' class="vbm-fast-stav" style="width: ' + Math.round(b * 1.15) + 'px; max-width: 100%;"' : '') + '>' + innhold + '</svg>'; }
 
   /* Et lite notebilde for hvert tegn: notelinje, en eller to noter og tegnet */
   var TEGN = {
@@ -120,6 +121,9 @@ window.VBM_NOTASJON = (function(){
   ];
   var BT = 54, X0 = 44;
   function takX(i){ return X0 + (i - 1) * BT; }   // venstre kant av takt i (1, 2, ...)
+  /* Veikartet tegnes i samme målestokk som de andre notelinjene på nettstedet (1,15), ikke strukket til full bredde.
+     Taktnummeret står øverst til venstre i takten, tegnene (segno, coda) midt over takten, og tekstene slutter
+     ved taktstreken de hører til, så ingenting går utenfor bildet. */
   function veikart(v, merke){
     var bredde = X0 + v.takter * BT + 8 + (v.coda ? 14 : 0), s = '', gap = function(i){ return v.coda && i >= v.coda ? 14 : 0; };
     s += linjer(4, v.coda ? takX(v.coda) - 4 : bredde - 4);
@@ -127,7 +131,7 @@ window.VBM_NOTASJON = (function(){
     s += gnokkel(6) + strek(4);
     for (var i = 1; i <= v.takter; i++) {
       var x = takX(i) + gap(i), t = TONER[(i - 1) % TONER.length];
-      s += tekst(x + 10, 84, String(i), false, 12);
+      s += '<text x="' + (x + 5) + '" y="84" font-family="Charter, Georgia, serif" font-size="11" fill="currentColor">' + i + '</text>';
       s += helnote(x + BT / 2, t[0], 'data-i="' + (i - 1) + '"');
       var hoyre = x + BT, siste = i === v.takter;
       if (v.slutt === i) s += prikker(hoyre - 13) + strek(hoyre - 8) + strek(hoyre - 2.5, true);
@@ -136,15 +140,17 @@ window.VBM_NOTASJON = (function(){
       if (v.start === i && i > 1) s += strek(x + 2.5, true) + strek(x + 8) + prikker(x + 13);
     }
     if (v.start === 1) s += strek(X0 + 2.5, true) + strek(X0 + 8) + prikker(X0 + 14);
-    if (v.volta1) { var a = takX(v.volta1); s += '<path d="M' + (a + 3) + ' 74 V64 H' + (a + BT - 4) + ' V74" fill="none" stroke="currentColor" stroke-width="1.6"/>' + tekst(a + 14, 76, '1.', false, 12); }
-    if (v.volta2) { var b = takX(v.volta2); s += '<path d="M' + (b + 3) + ' 74 V64 H' + (b + BT - 4) + '" fill="none" stroke="currentColor" stroke-width="1.6"/>' + tekst(b + 14, 76, '2.', false, 12); }
-    if (v.fine) s += tekst(takX(v.fine) + BT - 6, 162, 'Fine', true, 15);
-    if (v.dc) s += tekst(takX(v.dc) + BT - 30, 162, 'D.C. al Fine', true, 14);
-    if (v.segno) s += segno(takX(v.segno) + 12, 66);
-    if (v.tilCoda) s += tekst(takX(v.tilCoda) + BT - 30, 72, 'To Coda', true, 13) + coda(takX(v.tilCoda) + BT - 4, 66);
-    if (v.ds) s += tekst(takX(v.ds) + BT - 30, 162, 'D.S. al Coda', true, 14);
-    if (v.coda) s += coda(takX(v.coda) + gap(v.coda) + 12, 66);
-    return { svg: svg(bredde, 132, s, merke, 46), lyd: v.rekke.map(function(i){ return TONER[(i - 1) % TONER.length][1]; }) };
+    var slutt = function(i){ return takX(i) + gap(i) + BT - 4; }, midt = function(i){ return takX(i) + gap(i) + BT / 2; };
+    var tekstH = function(x, yy, t, str){ return '<text x="' + x + '" y="' + yy + '" text-anchor="end" font-family="Charter, Georgia, serif" font-size="' + str + '" font-style="italic" font-weight="700" fill="currentColor">' + t + '</text>'; };
+    if (v.volta1) { var a = takX(v.volta1); s += '<path d="M' + (a + 3) + ' 74 V64 H' + (a + BT - 4) + ' V74" fill="none" stroke="currentColor" stroke-width="1.6"/>' + tekst(a + 14, 75, '1.', false, 11); }
+    if (v.volta2) { var b = takX(v.volta2); s += '<path d="M' + (b + 3) + ' 74 V64 H' + (b + BT - 4) + '" fill="none" stroke="currentColor" stroke-width="1.6"/>' + tekst(b + 14, 75, '2.', false, 11); }
+    if (v.fine) s += tekstH(slutt(v.fine), 162, 'Fine', 14);
+    if (v.dc) s += tekstH(slutt(v.dc), 162, 'D.C. al Fine', 13);
+    if (v.segno) s += segno(midt(v.segno), 66);
+    if (v.tilCoda) s += coda(slutt(v.tilCoda) - 8, 66) + tekstH(slutt(v.tilCoda) - 24, 70, 'To Coda', 12);
+    if (v.ds) s += tekstH(slutt(v.ds), 162, 'D.S. al Coda', 13);
+    if (v.coda) s += coda(midt(v.coda), 66);
+    return { svg: svg(bredde, 132, s, merke, 46, true), lyd: v.rekke.map(function(i){ return TONER[(i - 1) % TONER.length][1]; }) };
   }
 
   return { tr: tr, sprak: sprak, TEGN: TEGN, SYMBOLER: SYMBOLER, DYNAMIKK: DYNAMIKK, TERMER: TERMER, VEIKART: VEIKART, veikart: veikart };

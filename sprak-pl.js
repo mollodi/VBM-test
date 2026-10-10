@@ -147,6 +147,7 @@ VBM_ORDBOK("pl", {
     "Mørk": "Ciemny",
     "Automatisk følger innstillingen i nettleseren.": "Tryb automatyczny podąża za ustawieniem przeglądarki.",
     "Sinustoner": "Sinus",
+    "Alle ressurser": "Wszystkie materiały",
     "Lyd: Salamander Grand Piano av Alexander Holm (CC BY 3.0). Orgel spilt inn av Simon Dalzell (Ivy Audio) og strykere, begge fra VS Chamber Orchestra Community Edition av Versilian Studios (CC0).": "Dźwięk: Salamander Grand Piano, autor Alexander Holm (CC BY 3.0). Organy nagrane przez Simona Dalzella (Ivy Audio) i smyczki, oba z VS Chamber Orchestra Community Edition, autor Versilian Studios (CC0).",
     "Lyd: trommer fra Versilian Community Sample Library (CC0). Piano: Salamander Grand Piano av Alexander Holm (CC BY 3.0). Orgel spilt inn av Simon Dalzell (Ivy Audio) og strykere, begge fra VS Chamber Orchestra Community Edition av Versilian Studios (CC0).": "Dźwięk: perkusja z Versilian Community Sample Library (CC0). Fortepian: Salamander Grand Piano, autor Alexander Holm (CC BY 3.0). Organy nagrane przez Simona Dalzella (Ivy Audio) i smyczki, oba z VS Chamber Orchestra Community Edition, autor Versilian Studios (CC0).",
     "Standard": "Domyślne",
@@ -360,7 +361,12 @@ VBM_ORDBOK("pl", {
         "Notasjonstegn og form": "Znaki notacji i forma",
         "Reprisetegn, volta, D.C. og D.S. al Coda og Fine, dynamikk, tempobetegnelser og artikulasjon, med et veikart du kan høre.": "Znaki repetycji, volta, D.C. i D.S. al Coda oraz Fine, dynamika, określenia tempa i artykulacja, z mapą, którą można usłyszeć.",
         "Teoriquiz: notasjonstegn og form": "Quiz teoretyczny: znaki notacji i forma",
-        "Kjenn igjen tegnene, finn betydningen av tempo- og dynamikkbetegnelser, og les veikart med repriser og hopp.": "Rozpoznawaj znaki, znajduj znaczenie określeń tempa i dynamiki oraz czytaj mapy z repetycjami i skokami."
+        "Kjenn igjen tegnene, finn betydningen av tempo- og dynamikkbetegnelser, og les veikart med repriser og hopp.": "Rozpoznawaj znaki, znajduj znaczenie określeń tempa i dynamiki oraz czytaj mapy z repetycjami i skokami.",
+        "Søk": "Szukaj",
+        "Søk i leksjoner, juksebøker og quizer": "Szukaj w lekcjach, ściągach i quizach",
+        "1 treff": "1 wynik",
+        "{n} treff": "Wyniki: {n}",
+        "Ingen treff. Prøv et annet ord.": "Brak wyników. Spróbuj innego słowa."
       },
     "intervaller.html": {
         "Intervall-jukseboka: fra prim til dobbel oktav": "Ściąga z interwałów: od prymy do podwójnej oktawy",
@@ -1487,7 +1493,11 @@ VBM_ORDBOK("pl", {
         "<strong>Melodisk moll.</strong> I klassisk teori hever melodisk moll 6. og 7. trinn på vei opp og bruker naturlig moll på vei ned, slik den vises her. I jazz brukes de hevede trinnene både opp og ned, og skalaen kalles ofte jazzmoll.": "<strong>Gama molowa melodyczna.</strong> W teorii klasycznej mol melodyczny podwyższa 6. i 7. stopień w górę, a w dół używa molu naturalnego, tak jak tutaj. W jazzie podwyższone stopnie są używane w górę i w dół, a gamę nazywa się często molem jazzowym.",
         "<strong>Modusnavnene.</strong> Navnene dorisk, frygisk, lydisk og så videre kommer fra antikkens Hellas, men i middelalderen ble de brukt om andre skalaer enn de antikke. Dagens kirketoner og modi bruker middelalderens navn.": "<strong>Nazwy skal modalnych.</strong> Nazwy dorycka, frygijska, lidyjska i tak dalej pochodzą ze starożytnej Grecji, ale w średniowieczu używano ich dla innych skal niż w starożytności. Dzisiejsze skale kościelne używają nazw średniowiecznych.",
         "<strong>Harmonisk og melodisk moll.</strong> Noen bøker regner dem som egne skalaer, andre som varianter av moll med tilfeldige fortegn. Fortegnene for tonearten er uansett de samme som for naturlig moll.": "<strong>Mol harmoniczny i melodyczny.</strong> Niektóre książki traktują je jako osobne gamy, inne jako odmiany molu ze znakami przygodnymi. Znaki przykluczowe są w każdym razie takie same jak w molu naturalnym.",
-        "Trinnene mellom tonene står under hver skala: <strong>H</strong> er en heltone, <strong>h</strong> en halvtone, og <strong>1½</strong> halvannen tone. Tonene som gjør skalaen spesiell, er farget magenta på notelinjen.": "Odległości między dźwiękami są podane pod każdą skalą: <strong>C</strong> to cały ton, <strong>P</strong> półton, a <strong>1½</strong> półtora tonu. Dźwięki, które czynią skalę wyjątkową, są na pięciolinii w kolorze magenta."
+        "Trinnene mellom tonene står under hver skala: <strong>H</strong> er en heltone, <strong>h</strong> en halvtone, og <strong>1½</strong> halvannen tone. Tonene som gjør skalaen spesiell, er farget magenta på notelinjen.": "Odległości między dźwiękami są podane pod każdą skalą: <strong>C</strong> to cały ton, <strong>P</strong> półton, a <strong>1½</strong> półtora tonu. Dźwięki, które czynią skalę wyjątkową, są na pięciolinii w kolorze magenta.",
+        "Øv": "Ćwicz",
+        "Test deg selv": "Sprawdź się",
+        "I quizen hører du skalaer og modi og kjenner dem igjen på notelinjen. Med øvemodus og en prøve med 20 oppgaver.": "W quizie słuchasz skal i trybów i rozpoznajesz je na pięciolinii. Z trybem ćwiczeń i testem z 20 zadaniami.",
+        "<a class=\"btn\" href=\"quiz-skalaer.html?type=hor\">Gehørquiz: skalaer og modi</a> <a class=\"btn\" href=\"quiz-skalaer.html?type=les\">Teoriquiz: skalaer og modi</a>": "<a class=\"btn\" href=\"quiz-skalaer.html?type=hor\">Quiz słuchowy: skale i tryby</a> <a class=\"btn\" href=\"quiz-skalaer.html?type=les\">Quiz teoretyczny: skale i tryby</a>"
       },
     "quiz-skalaer.html": {
         "Modus": "Tryb",

@@ -2067,29 +2067,26 @@ html.sh .viktig strong { color: var(--ink) !important; }
 .vbm-niva-linje { margin: 4px 0 12px; }
 .hero .vbm-niva { color: inherit; opacity: .9; }
 .vbm-meny-niva { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 10px; text-transform: uppercase; letter-spacing: .05em; opacity: .75; margin-left: 4px; }
-.vbm-relatert { box-sizing: border-box; grid-column: 1 / -1; }
-.vbm-relatert-tittel { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; margin: 0 0 10px; }
+.vbm-relatert { box-sizing: border-box; max-width: 980px; margin: 8px auto 0; padding: 18px 28px 6px; color: inherit; background: transparent; }
+.vbm-relatert-tittel { font: 700 11px/1.3 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; letter-spacing: .1em; text-transform: uppercase; opacity: .8; margin: 0 0 10px; }
 .vbm-relatert ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; }
-/* Lenkene nederst bruker de samme knappene som resten av siden, med samme kantfarge som spillknappene */
-.vbm-relatert a.btn { text-decoration: none; gap: 8px; flex-wrap: wrap; }
+/* Lenkene nederst ser ut som knappene i linjen øverst (Meny og Innstillinger), med kantfargen #e8b866 */
+.vbm-relatert a.vbm-rel-lenke { display: inline-flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  font: 600 14px/1.25 -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  color: inherit; text-decoration: none; background: transparent; border: 2px solid #e8b866; border-radius: 999px; padding: 8px 14px; }
+.vbm-relatert a.vbm-rel-lenke:hover, .vbm-relatert a.vbm-rel-lenke:focus-visible { background: color-mix(in srgb, #e8b866 22%, transparent); outline: none; }
 .vbm-relatert .vbm-niva { font-size: 9.5px; padding: 2px 6px; }
-.vbm-kurs { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; margin: 0 0 18px; padding: 0 0 16px; border-bottom: 1px solid var(--rule); }
-.vbm-relatert a.vbm-kurs-lenke { flex-direction: column; align-items: flex-start; gap: 2px; border-radius: 14px; max-width: 100%; height: auto; }
+.vbm-kurs { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; margin: 18px 0 0; padding: 16px 0 0; border-top: 1px solid color-mix(in srgb, currentColor 18%, transparent); }
+.vbm-relatert a.vbm-kurs-lenke { flex-direction: column; align-items: flex-start; gap: 3px; border-radius: 999px; padding: 8px 18px; }
 .vbm-relatert a.vbm-kurs-neste { margin-left: auto; align-items: flex-end; text-align: right; }
-.vbm-kurs-retning { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; font-weight: 600; }
-.btn.vbm-spillknapp, .vbm-relatert a.btn { border-color: #e8b866 !important; border-width: 2px; }
-.vbm-relatert a.vbm-kurs-lenke::after { content: none; }   /* retningen står allerede i teksten */
-/* Sider uten øvelsesstil (juksebøkene og lytteguidene): blokken følger sidens egne farger, og lenkene får samme knappeform */
-:where(html:not([data-stil="ovelse"])) .vbm-relatert { max-width: 980px; margin: 28px auto 8px; padding: 20px 22px; border-top: 1px solid currentColor; color: inherit; background: transparent; }
-:where(html:not([data-stil="ovelse"])) .vbm-relatert a.btn { display: inline-flex; align-items: center; padding: 9px 15px; border: 2px solid #e8b866; border-radius: 999px; color: inherit; font-weight: 600; font-size: 15px; background: transparent; }
-:where(html:not([data-stil="ovelse"])) .vbm-relatert a.btn:hover, :where(html:not([data-stil="ovelse"])) .vbm-relatert a.btn:focus-visible { background: #e8b866; color: #22252A; }
-:where(html[data-stil="ovelse"]) main > .vbm-relatert { margin: 12px 0 0; }
-@media (forced-colors: active) {
-  .niva-merke, .vbm-niva { color: CanvasText; border-color: CanvasText; forced-color-adjust: none; }
-  .vbm-kurs { border-color: CanvasText; }
-  .btn.vbm-spillknapp, .vbm-relatert a.btn { border-color: ButtonText !important; }
-}
-
+.vbm-kurs-retning { font: 600 10.5px/1.2 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; letter-spacing: .06em; text-transform: uppercase; opacity: .8; }
+@media (max-width: 520px) { .vbm-relatert { padding: 16px 16px 4px; } }
+/* Mindre luft mellom siste kort og «Se også» */
+main:has(+ .vbm-relatert) { padding-bottom: 16px !important; margin-bottom: 0 !important; }
+/* Spillknappene skal synes godt: kant og en svak flate i #e8b866 */
+.btn.vbm-spillknapp { border: 2px solid #e8b866 !important; font-weight: 600; }
+.btn.vbm-spillknapp:not(.playing):not([aria-pressed="true"]) { background: #FBF0DC; color: #22252A; }
+.btn.vbm-spillknapp:not(.playing):not([aria-pressed="true"]):hover { background: #F5E2BE; }
 
 /* ---------- Kortet «Ulike navn og systemer» (alle leksjoner som har det) ---------- */
 :where([data-stil="ovelse"]) .ulike-kort { grid-column: 1 / -1; }
@@ -2456,14 +2453,17 @@ a.btn:hover::after { transform: translateX(3px); }
 .vbm-meny-ikon::before, .vbm-meny-ikon::after { content: ""; position: absolute; left: 0; }
 .vbm-meny-ikon::before { top: -5px; } .vbm-meny-ikon::after { top: 5px; }
 .vbm-back.vbm-topp .vbm-valg { margin-left: auto; }
+.vbm-back.vbm-topp .vbm-hjem { order: 1; }
 .vbm-back.vbm-topp .vbm-meny-knapp { order: 2; }
 .vbm-back.vbm-topp .vbm-valg { order: 3; }
 /* Menyen med alle sidene */
 .vbm-meny {
   order: 4; flex: 1 1 100%; min-width: 0;
-  display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr)); gap: 6px 24px;
+  /* Gruppene flyter i kolonner, så korte grupper ikke etterlater tomrom under seg */
+  display: block; columns: 3 240px; column-gap: 28px;
   padding: 10px 2px 6px; border-top: 1px solid color-mix(in srgb, currentColor 18%, transparent);
 }
+.vbm-meny-gruppe { break-inside: avoid; margin: 0 0 12px; }
 .vbm-meny[hidden] { display: none; }
 .vbm-meny-tittel { margin: 6px 0 4px; font: 700 11px/1.3 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; letter-spacing: .1em; text-transform: uppercase; opacity: .75; }
 .vbm-meny ul { list-style: none; margin: 0; padding: 0; }
@@ -2989,6 +2989,7 @@ html.vbm-tonefarger.vbm-sh .tn-knapp { background: transparent !important; borde
 @media (max-width: 520px) {
   .vbm-back .vbm-inst-knapp { padding: 7px 9px; font-size: 13px; }
   .vbm-back .vbm-inst-knapp span { display: none; }   /* bare tannhjulet på mobil, så linjen holder én rad */
+  .vbm-back .vbm-hjem .vbm-hjem-tekst { display: none; }   /* bare pilen på mobil */
 }
 @media (forced-colors: active) { .vbm-back .vbm-inst-knapp { border-color: CanvasText; color: LinkText; } }
 
@@ -3236,3 +3237,17 @@ html[data-tema="lys"] .vbm-instr-float { background: #DCD6C6 !important; color: 
 /* Teoriquiz: notasjonstegn og form: tegnet står lite og sentrert, veikartet i full bredde */
 :where(html[data-side="quiz-notasjonstegn.html"]) #ov-bilde svg[viewBox^="0 40"], :where(html[data-side="quiz-notasjonstegn.html"]) #ov-bilde svg[viewBox^="0 60"],
 :where(html[data-side="quiz-notasjonstegn.html"]) #prove-bilde svg[viewBox^="0 40"], :where(html[data-side="quiz-notasjonstegn.html"]) #prove-bilde svg[viewBox^="0 60"] { width: 150px !important; max-width: 60% !important; display: block; margin: 0 auto; }
+
+/* Veikartet i Notasjonstegn og form står i fast målestokk, som andre notelinjer (ikke strukket) */
+svg.vbm-fast-stav { height: auto; }
+:where(html[data-side="notasjonstegn.html"], html[data-side="quiz-notasjonstegn.html"]) .noter svg.vbm-fast-stav { width: auto; }
+
+/* Søk på startsiden */
+:where(html[data-side="index.html"]) .vbm-sok { margin: 0 0 28px; }
+:where(html[data-side="index.html"]) .vbm-sok-label { display: block; font: 700 11px/1.3 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; letter-spacing: .1em; text-transform: uppercase; margin: 0 0 8px; }
+:where(html[data-side="index.html"]) #vbm-sok { width: 100%; max-width: 560px; box-sizing: border-box; font: 16px/1.3 -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  padding: 11px 18px; border-radius: 999px; border: 2px solid #e8b866; background: #FFFFFF; color: #22252A; }
+:where(html[data-side="index.html"]) #vbm-sok::placeholder { color: #6B6558; opacity: 1; }
+:where(html[data-side="index.html"]) #vbm-sok:focus-visible { outline: 3px solid color-mix(in srgb, #e8b866 60%, transparent); outline-offset: 2px; }
+:where(html[data-side="index.html"]) .vbm-sok-info { margin: 8px 0 0; font-size: 14px; min-height: 1.2em; }
+@media (forced-colors: active) { :where(html[data-side="index.html"]) #vbm-sok { border-color: CanvasText; background: Field; color: FieldText; } }

@@ -147,6 +147,7 @@ VBM_ORDBOK("en", {
     "Mørk": "Dark",
     "Automatisk følger innstillingen i nettleseren.": "Automatic follows your browser setting.",
     "Sinustoner": "Sine tones",
+    "Alle ressurser": "All resources",
     "Lyd: Salamander Grand Piano av Alexander Holm (CC BY 3.0). Orgel spilt inn av Simon Dalzell (Ivy Audio) og strykere, begge fra VS Chamber Orchestra Community Edition av Versilian Studios (CC0).": "Sound: Salamander Grand Piano by Alexander Holm (CC BY 3.0). Organ recorded by Simon Dalzell (Ivy Audio) and strings, both from VS Chamber Orchestra Community Edition by Versilian Studios (CC0).",
     "Lyd: trommer fra Versilian Community Sample Library (CC0). Piano: Salamander Grand Piano av Alexander Holm (CC BY 3.0). Orgel spilt inn av Simon Dalzell (Ivy Audio) og strykere, begge fra VS Chamber Orchestra Community Edition av Versilian Studios (CC0).": "Sound: drums from the Versilian Community Sample Library (CC0). Piano: Salamander Grand Piano by Alexander Holm (CC BY 3.0). Organ recorded by Simon Dalzell (Ivy Audio) and strings, both from VS Chamber Orchestra Community Edition by Versilian Studios (CC0).",
     "Standard": "Default",
@@ -360,7 +361,12 @@ VBM_ORDBOK("en", {
         "Notasjonstegn og form": "Notation signs and form",
         "Reprisetegn, volta, D.C. og D.S. al Coda og Fine, dynamikk, tempobetegnelser og artikulasjon, med et veikart du kan høre.": "Repeat signs, endings, D.C. and D.S. al Coda and Fine, dynamics, tempo terms and articulation, with a road map you can hear.",
         "Teoriquiz: notasjonstegn og form": "Theory quiz: notation signs and form",
-        "Kjenn igjen tegnene, finn betydningen av tempo- og dynamikkbetegnelser, og les veikart med repriser og hopp.": "Recognise the signs, find the meaning of tempo and dynamics terms, and read road maps with repeats and jumps."
+        "Kjenn igjen tegnene, finn betydningen av tempo- og dynamikkbetegnelser, og les veikart med repriser og hopp.": "Recognise the signs, find the meaning of tempo and dynamics terms, and read road maps with repeats and jumps.",
+        "Søk": "Search",
+        "Søk i leksjoner, juksebøker og quizer": "Search lessons, cheat books and quizzes",
+        "1 treff": "1 result",
+        "{n} treff": "{n} results",
+        "Ingen treff. Prøv et annet ord.": "No results. Try another word."
       },
     "intervaller.html": {
         "Intervall-jukseboka: fra prim til dobbel oktav": "The Interval Cheat Book: from unison to double octave",
@@ -1436,7 +1442,11 @@ VBM_ORDBOK("en", {
         "<strong>Melodisk moll.</strong> I klassisk teori hever melodisk moll 6. og 7. trinn på vei opp og bruker naturlig moll på vei ned, slik den vises her. I jazz brukes de hevede trinnene både opp og ned, og skalaen kalles ofte jazzmoll.": "<strong>Melodic minor.</strong> In classical theory melodic minor raises the 6th and 7th degrees on the way up and uses natural minor on the way down, as shown here. In jazz the raised degrees are used both up and down, and the scale is often called jazz minor.",
         "<strong>Modusnavnene.</strong> Navnene dorisk, frygisk, lydisk og så videre kommer fra antikkens Hellas, men i middelalderen ble de brukt om andre skalaer enn de antikke. Dagens kirketoner og modi bruker middelalderens navn.": "<strong>The mode names.</strong> The names Dorian, Phrygian, Lydian and so on come from ancient Greece, but in the Middle Ages they were used for different scales than the ancient ones. Today’s church modes use the medieval names.",
         "<strong>Harmonisk og melodisk moll.</strong> Noen bøker regner dem som egne skalaer, andre som varianter av moll med tilfeldige fortegn. Fortegnene for tonearten er uansett de samme som for naturlig moll.": "<strong>Harmonic and melodic minor.</strong> Some books treat them as scales of their own, others as variants of minor with accidentals. The key signature is the same as for natural minor either way.",
-        "Trinnene mellom tonene står under hver skala: <strong>H</strong> er en heltone, <strong>h</strong> en halvtone, og <strong>1½</strong> halvannen tone. Tonene som gjør skalaen spesiell, er farget magenta på notelinjen.": "The steps between the notes are shown under each scale: <strong>W</strong> is a whole step, <strong>H</strong> a half step, and <strong>1½</strong> a step and a half. The notes that make the scale special are coloured magenta on the staff."
+        "Trinnene mellom tonene står under hver skala: <strong>H</strong> er en heltone, <strong>h</strong> en halvtone, og <strong>1½</strong> halvannen tone. Tonene som gjør skalaen spesiell, er farget magenta på notelinjen.": "The steps between the notes are shown under each scale: <strong>W</strong> is a whole step, <strong>H</strong> a half step, and <strong>1½</strong> a step and a half. The notes that make the scale special are coloured magenta on the staff.",
+        "Øv": "Practice",
+        "Test deg selv": "Test yourself",
+        "I quizen hører du skalaer og modi og kjenner dem igjen på notelinjen. Med øvemodus og en prøve med 20 oppgaver.": "In the quiz you hear scales and modes and recognise them on the staff. With practice mode and a test with 20 questions.",
+        "<a class=\"btn\" href=\"quiz-skalaer.html?type=hor\">Gehørquiz: skalaer og modi</a> <a class=\"btn\" href=\"quiz-skalaer.html?type=les\">Teoriquiz: skalaer og modi</a>": "<a class=\"btn\" href=\"quiz-skalaer.html?type=hor\">Ear quiz: scales and modes</a> <a class=\"btn\" href=\"quiz-skalaer.html?type=les\">Theory quiz: scales and modes</a>"
       },
     "quiz-skalaer.html": {
         "Modus": "Mode",

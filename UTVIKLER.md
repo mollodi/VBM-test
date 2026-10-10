@@ -165,7 +165,7 @@ Løpende tekst bruker norske tonenavn (Ess, Fiss, Ass) med `K.tone()`. Akkordsym
 
 ## Versjonsnummer (hurtigminne)
 
-Alle felles filer lenkes med et versjonsnummer, for eksempel `felles.js?v=42` og `stil.css?v=42`, så nettleseren henter nye utgaver etter en oppdatering. Språkfilene og `materialer.js` får samme nummer automatisk (felles.js leser det fra sin egen lenke). Når en felles fil endres: søk og erstatt `?v=42` med neste nummer i alle sider, og last opp alle sidene.
+Alle felles filer lenkes med et versjonsnummer, for eksempel `felles.js?v=43` og `stil.css?v=43`, så nettleseren henter nye utgaver etter en oppdatering. Språkfilene og `materialer.js` får samme nummer automatisk (felles.js leser det fra sin egen lenke). Når en felles fil endres: søk og erstatt `?v=43` med neste nummer i alle sider, og last opp alle sidene.
 
 ## Omvendinger
 
@@ -178,3 +178,15 @@ Leksjonen Omvendinger er slått sammen med Akkordanalyse (kort 5, `akkordanalyse
 ## Innstillinger og lyd
 
 Piano under notene er på som standard. «Tilbakestill alle innstillinger» sletter innstillingene og lydvalgene og laster siden på nytt. Orgel finnes på alle sider med lyd, rett etter piano. Spillknapper (▶) og lenkene i «Se også» har kantfargen #e8b866. Overtonerekken bruker `S.storStav()`, en storsats med enkelttoner (under c¹ i F-nøkkel, resten i G-nøkkel).
+
+## Toppen og bunnen av sidene
+
+Linjen øverst har «Alle ressurser», Meny og Innstillinger på alle sider (unntatt startsiden). Nederst setter `felles.js` inn «Se også», så forrige og neste leksjon (Musikkteori), rett over bunnteksten. Leksjonene slutter med kortet «Test deg selv». Menyen viser Min fremgang først, og gruppene flyter i kolonner.
+
+## Søkemotorer og sitemap
+
+Sidene har ingen «noindex»-linje. Testkopien VBM-test skjules for søk av `felles.js` (adressen begynner med /VBM-test/), så de samme filene kan lastes opp begge steder. `sitemap.xml` lister alle sider på alle tre språk; når du legger til en side, legger du til tre `<url>`-blokker (no, en, pl). Videresendingen `omvendinger.html` og `fremgang.html` står ikke i sitemap.
+
+## Søk på startsiden
+
+Søkefeltet filtrerer kortene på startsiden mens du skriver, i teksten slik den står på siden (også på engelsk og polsk).

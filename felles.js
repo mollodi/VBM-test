@@ -36,6 +36,14 @@ window.VBM_VERSJON = (function(){ var s = document.currentScript && document.cur
      og testsiden VBM-test ligger der). */
   var EGNE = ['verdensbestemusikkskole.no', 'www.verdensbestemusikkskole.no', 'mollodi.github.io'];
 
+  /* Testkopien (mollodi.github.io/VBM-test) skjules for søkemotorer her, så de samme filene kan lastes opp
+     både på testsiden og på hovedsiden uten endringer. */
+  (function skjulTest(){
+    if (/^\/VBM-test(\/|$)/i.test(location.pathname) && !document.querySelector('meta[name="robots"]')) {
+      var m = document.createElement('meta'); m.name = 'robots'; m.content = 'noindex, nofollow'; document.head.appendChild(m);
+    }
+  })();
+
   /* Bunnteksten. Navnene står alltid på norsk. De andre delene oversettes
      i sprak-XX.js, så husk å endre dem der også hvis du endrer dem her. */
   var BUNN = {
@@ -361,19 +369,22 @@ window.VBM_VERSJON = (function(){ var s = document.currentScript && document.cur
       }
       var rel = (meg.relatert || []).map(function(f){ var funnet = null; alle.forEach(function(m){ if (!funnet && m.fil.split('?')[0] === f) funnet = m; }); return funnet; }).filter(Boolean);
       if (!rel.length || document.querySelector('.vbm-relatert')) return;
-      var nav = document.createElement('nav'); nav.className = 'card bred vbm-relatert'; nav.setAttribute('aria-label', T('Se også'));
+      var nav = document.createElement('nav'); nav.className = 'vbm-relatert'; nav.setAttribute('aria-label', T('Se også'));
       /* Leksjonene i Musikkteori henger sammen som et kurs: forrige og neste leksjon i rekkefølgen fra materialer.js */
       var kurs = alle.filter(function(m){ return m.seksjon === meg.seksjon && meg.seksjon === 'teori' && !m.skjult; }), nr = kurs.indexOf(meg), steg = '';
       if (nr >= 0) {
-        if (nr > 0) steg += '<a class="btn vbm-rel-lenke vbm-kurs-lenke" href="' + kurs[nr - 1].fil + '"><span class="vbm-kurs-retning">&larr; ' + T('Forrige leksjon') + '</span><span>' + menyT(kurs[nr - 1].tittel) + '</span></a>';
-        if (nr < kurs.length - 1) steg += '<a class="btn vbm-rel-lenke vbm-kurs-lenke vbm-kurs-neste" href="' + kurs[nr + 1].fil + '"><span class="vbm-kurs-retning">' + T('Neste leksjon') + ' &rarr;</span><span>' + menyT(kurs[nr + 1].tittel) + '</span></a>';
+        if (nr > 0) steg += '<a class="vbm-rel-lenke vbm-kurs-lenke" href="' + kurs[nr - 1].fil + '"><span class="vbm-kurs-retning">&larr; ' + T('Forrige leksjon') + '</span><span>' + menyT(kurs[nr - 1].tittel) + '</span></a>';
+        if (nr < kurs.length - 1) steg += '<a class="vbm-rel-lenke vbm-kurs-lenke vbm-kurs-neste" href="' + kurs[nr + 1].fil + '"><span class="vbm-kurs-retning">' + T('Neste leksjon') + ' &rarr;</span><span>' + menyT(kurs[nr + 1].tittel) + '</span></a>';
       }
-      nav.innerHTML = (steg ? '<div class="vbm-kurs">' + steg + '</div>' : '') + '<p class="vbm-relatert-tittel">' + T('Se også') + '</p><ul>' + rel.map(function(m){
-        return '<li><a class="btn vbm-rel-lenke" href="' + m.fil + '"><span>' + menyT(m.tittel) + '</span>' + (m.niva ? '<span class="vbm-niva niva-' + m.niva + '">' + T(NIVANAVN[m.niva]) + '</span>' : '') + '</a></li>';
-      }).join('') + '</ul>';
-      /* Inni <main>, så blokken holder seg i samme ramme og bredde som resten av siden */
-      var hoved = document.querySelector('main'), fot = document.querySelector('footer');
-      if (hoved) hoved.appendChild(nav); else if (fot) fot.parentNode.insertBefore(nav, fot); else document.body.appendChild(nav);
+      /* Rekkefølgen nederst på alle sider: «Se også», så forrige og neste leksjon, så bunnteksten */
+      nav.innerHTML = '<p class="vbm-relatert-tittel">' + T('Se også') + '</p><ul>' + rel.map(function(m){
+        return '<li><a class="vbm-rel-lenke" href="' + m.fil + '"><span>' + menyT(m.tittel) + '</span>' + (m.niva ? '<span class="vbm-niva niva-' + m.niva + '">' + T(NIVANAVN[m.niva]) + '</span>' : '') + '</a></li>';
+      }).join('') + '</ul>' + (steg ? '<div class="vbm-kurs">' + steg + '</div>' : '');
+      /* Rett over bunnteksten på alle sider, i samme bredde som innholdet */
+      var fot = document.querySelector('footer'), hoved = document.querySelector('main');
+      if (fot) fot.parentNode.insertBefore(nav, fot);
+      else if (hoved) hoved.parentNode.insertBefore(nav, hoved.nextSibling);
+      else document.body.appendChild(nav);
     });
   }
   function byggMeny(){
@@ -389,9 +400,14 @@ window.VBM_VERSJON = (function(){ var s = document.currentScript && document.cur
     }
     if (!nav || nav.querySelector('.vbm-meny-knapp')) return;
     nav.classList.add('vbm-topp');
-    /* «Alle ressurser» står ikke lenger i linjen, men øverst inne i menyen */
-    var hjem = nav.querySelector('a[href="index.html"]'), hjemTekst = '';
-    if (hjem) { hjemTekst = hjem.innerHTML; hjem.parentNode.removeChild(hjem); }
+    /* «Alle ressurser» står først i linjen øverst på alle sider (unntatt startsiden, som selv er oversikten).
+       På smale skjermer vises bare pilen, så linjen holder én rad. */
+    var hjem = nav.querySelector('a[href="index.html"]');
+    if (hjem) {
+      hjem.className = 'vbm-hjem';
+      hjem.setAttribute('aria-label', T('Alle ressurser'));
+      hjem.innerHTML = '<span aria-hidden="true">&larr;</span><span class="vbm-hjem-tekst">' + T('Alle ressurser') + '</span>';
+    }
     /* Samme menylinje på alle sider: helt øverst over hele bredden, mørk med lys tekst.
        I juksebøkene står linjen inne i innholdet, så den flyttes ut til toppen av siden. */
     /* Banneret om originalen står også helt øverst over hele bredden, som på de andre sidene */
@@ -426,8 +442,9 @@ window.VBM_VERSJON = (function(){ var s = document.currentScript && document.cur
       if (!panel.hidden) { lukk(); return; }
       hentMaterialer(function(){
         var M = window.VBM || {}, html = '';
-        if (hjemTekst) html += '<div class="vbm-meny-hjem"><a class="vbm-hjem" href="index.html">' + hjemTekst + '</a></div>';
-        (M.seksjoner || []).forEach(function(sk){
+        /* Min fremgang står først i menyen */
+        var seksjoner = (M.seksjoner || []).slice().sort(function(a, b){ return (b.id === 'fremgang') - (a.id === 'fremgang'); });
+        seksjoner.forEach(function(sk){
           var nf = nivaValg(), liste = (M.materialer || []).filter(function(m){ return m.seksjon === sk.id && !m.skjult && (nf === 'alle' || !m.niva || m.niva === nf); });
           if (!liste.length) return;
           html += '<div class="vbm-meny-gruppe"><p class="vbm-meny-tittel">' + menyT(sk.overskrift) + '</p><ul>';
