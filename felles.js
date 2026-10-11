@@ -360,6 +360,7 @@ window.VBM_VERSJON = (function(){ var s = document.currentScript && document.cur
   function merkSpillknapper(rot){
     [].forEach.call((rot || document).querySelectorAll('button, a.btn'), function(b){
       var t = (b.textContent || '').trim();
+      if (b.classList.contains('tn-pil') || b.closest('.tn-piano')) return;   /* pilene ved pianoet blar, de spiller ikke */
       if (t.charAt(0) === '\u25BA' || t.charAt(0) === '\u25B6') b.classList.add('vbm-spillknapp');
     });
   }
@@ -584,6 +585,7 @@ window.VBM_VERSJON = (function(){ var s = document.currentScript && document.cur
      Plassen over notelinjen er alltid satt av (fast minstehøyde), så ingenting flytter seg når lappen kommer.
      Bare når én tone klinger (skalaer, melodier); når en akkord klinger, vises ikke noe navn. Quizene viser ingen navn. */
   function synkFarger(svg){
+    if (!svg.isConnected || !svg.parentNode) return;   /* notelinjen er tatt bort (ny oppgave), så det er ingenting å farge */
     if (svg.closest('[data-uten-navn]')) return;
     var holder = svg.parentNode, lapp = holder.querySelector(':scope > .tn-knapp');
     if (!lapp) { lapp = document.createElement('span'); lapp.className = 'tn-knapp tn-tom'; lapp.setAttribute('aria-hidden', 'true'); holder.appendChild(lapp); }
@@ -665,8 +667,8 @@ window.VBM_VERSJON = (function(){ var s = document.currentScript && document.cur
      Tangenten som klinger får en kraftig kant. Alle tangenter kan spilles. I quizene merkes ingen tangenter
      før tonene spilles etter svaret, så pianoet aldri røper svaret. */
   var PIANO = 'vbm-piano';
-  /* Pianoet under notene er på som standard; bare et lagret «0» slår det av */
-  function pianoPaa(){ try { return localStorage.getItem(PIANO) !== '0'; } catch(e){ return true; } }
+  /* Pianoet under notene er av som standard; det slås på i Innstillinger */
+  function pianoPaa(){ try { return localStorage.getItem(PIANO) === '1'; } catch(e){ return false; } }
   var SVARTE = [1, 3, 6, 8, 10];
   function cNavn(m, langt){
     var o = Math.floor(m / 12) - 1;
@@ -830,7 +832,7 @@ window.VBM_VERSJON = (function(){ var s = document.currentScript && document.cur
       if (!svg.closest('[data-uten-navn]')) { svg.parentNode.classList.add('har-tn'); plassSjekk(svg.parentNode); }
       utvidStav(svg);
       lagPiano(svg);
-      new MutationObserver(function(){ synkFarger(svg); pianoSynk(svg); }).observe(svg, { attributes: true, subtree: true, attributeFilter: ['class'] });
+      new MutationObserver(function(){ if (!svg.isConnected) return; synkFarger(svg); pianoSynk(svg); }).observe(svg, { attributes: true, subtree: true, attributeFilter: ['class'] });
     });
   }
 
@@ -844,7 +846,7 @@ window.VBM_VERSJON = (function(){ var s = document.currentScript && document.cur
   brukTema();
   /* Tempo for hele nettstedet: «raskt» (standard), «middels» eller «sakte». Rytmesidene bruker 100, 65 og 45 slag i minuttet,
      og resten av lyden blir langsommere i samme forhold (lyd.js). */
-  function tempoValg(){ var v = ''; try { v = localStorage.getItem(TEMPO) || ''; } catch(e){} return v === 'sakte' || v === 'middels' ? v : 'raskt'; }
+  function tempoValg(){ var v = ''; try { v = localStorage.getItem(TEMPO) || ''; } catch(e){} return v === 'sakte' || v === 'raskt' ? v : 'middels'; }   /* middels er standard */
   window.VBM_TEMPO = tempoValg;
   window.VBM_TEMPO_BPM = function(){ return { raskt: 100, middels: 65, sakte: 45 }[tempoValg()]; };
   /* Svart-hvitt er standard. Fargene slås på under Innstillinger (lagres som «farger»). */

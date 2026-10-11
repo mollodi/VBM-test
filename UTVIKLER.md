@@ -153,7 +153,9 @@ Funksjonsanalyse: Harmonilære og gehørquizen om kadenser bruker parallellnavne
 
 Bruk `window.VBM_GRUPPER(liste, lag, holder)` (felles.js) når en rekke med mer enn fire akkorder skal på notelinjen. Den tegner alt på én linje når det får plass i full målestokk, og deler på flere linjer (høyst fire i hver) bare på smale skjermer. Kall tegningen på nytt med `window.VBM_VED_BREDDE(fn)`, som bare reagerer når bredden endres.
 
-Tempo (Innstillinger): raskt 100, middels 65 og sakte 45 slag i minuttet. Resten av lyden følger samme forhold (lyd.js).
+Tempo (Innstillinger): raskt 100, middels 65 og sakte 45 slag i minuttet; middels er standard. Resten av lyden følger samme forhold (lyd.js).
+
+Standardinnstillinger: Svart-hvitt, Automatisk utseende, Middels tempo, piano under notene Av, nivå Alle. «Tilbakestill alle innstillinger» går tilbake til disse.
 
 ## Nivå og «Se også»
 
@@ -165,7 +167,7 @@ Løpende tekst bruker norske tonenavn (Ess, Fiss, Ass) med `K.tone()`. Akkordsym
 
 ## Versjonsnummer (hurtigminne)
 
-Alle felles filer lenkes med et versjonsnummer, for eksempel `felles.js?v=44` og `stil.css?v=44`, så nettleseren henter nye utgaver etter en oppdatering. Språkfilene og `materialer.js` får samme nummer automatisk (felles.js leser det fra sin egen lenke). Når en felles fil endres: søk og erstatt `?v=44` med neste nummer i alle sider, og last opp alle sidene.
+Alle felles filer lenkes med et versjonsnummer, for eksempel `felles.js?v=47` og `stil.css?v=47`, så nettleseren henter nye utgaver etter en oppdatering. Språkfilene og `materialer.js` får samme nummer automatisk (felles.js leser det fra sin egen lenke). Når en felles fil endres: søk og erstatt `?v=47` med neste nummer i alle sider, og last opp alle sidene.
 
 ## Omvendinger
 
@@ -177,7 +179,7 @@ Leksjonen Omvendinger er slått sammen med Akkordanalyse (kort 5, `akkordanalyse
 
 ## Innstillinger og lyd
 
-Piano under notene er på som standard. «Tilbakestill alle innstillinger» sletter innstillingene og lydvalgene og laster siden på nytt. Orgel finnes på alle sider med lyd, rett etter piano. Spillknapper (▶) og lenkene i «Se også» har kantfargen #e8b866. Overtonerekken bruker `S.storStav()`, en storsats med enkelttoner (under c¹ i F-nøkkel, resten i G-nøkkel).
+Piano under notene er av som standard. «Tilbakestill alle innstillinger» sletter innstillingene og lydvalgene og laster siden på nytt. Orgel finnes på alle sider med lyd, rett etter piano. Spillknapper (▶) og lenkene i «Se også» har kantfargen #e8b866. Overtonerekken bruker `S.storStav()`, en storsats med enkelttoner (under c¹ i F-nøkkel, resten i G-nøkkel).
 
 ## Toppen og bunnen av sidene
 

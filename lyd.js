@@ -11,10 +11,10 @@
   var cfg = window.VBM_LYD || {};
   var STEP = cfg.step || 0.66, NOTE = cfg.noteDur || 1.4, CHORD = cfg.chordDur || 3.2;
   var GAP1 = cfg.gap1 || 0.33, GAP2 = cfg.gap2 || 0.52;
-  /* Tempo fra Innstillinger (vbm-tempo): «raskt» er standard og dagens fart. «middels» og «sakte» gir
+  /* Tempo fra Innstillinger (vbm-tempo): «middels» er standard. «raskt» er den opprinnelige farten, og «middels» og «sakte» gir
      mer tid mellom tonene, i samme forhold som rytmesidens tempo 100, 65 og 45. Tonelengdene endres ikke. */
   var STEP0 = STEP, GAP10 = GAP1, GAP20 = GAP2, S_STEG0 = 0.5;
-  function tempoFaktor(){ var v = ''; try { v = localStorage.getItem('vbm-tempo') || ''; } catch(e){} return v === 'sakte' ? 100 / 45 : v === 'middels' ? 100 / 65 : 1; }
+  function tempoFaktor(){ var v = ''; try { v = localStorage.getItem('vbm-tempo') || ''; } catch(e){} return v === 'sakte' ? 100 / 45 : v === 'raskt' ? 1 : 100 / 65; }   /* middels (65) er standard */
   function oppdaterTempo(){ var k = tempoFaktor(); STEP = STEP0 * k; GAP1 = GAP10 * k; GAP2 = GAP20 * k; S_STEG = S_STEG0 * k; }
 
   /* ---------- tonenavn <-> MIDI (filnavn bruker s for #, f.eks. Cs4) ---------- */

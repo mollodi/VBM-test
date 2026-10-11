@@ -1368,7 +1368,7 @@ html:where([data-side="index.html"]) {
 :root:where([data-side="melodilesing.html"]) { --vbm-verk: "K7Q4-MELT"; }
 :root:where([data-side="quiz-melodi.html"]) { --vbm-verk: "K7Q4-QMEL"; }
 :root:where([data-side="notasjonstegn.html"]) { --vbm-verk: "K7Q4-NOTT"; }
-:root:where([data-side="quiz-notasjonstegn.html"]) { --vbm-verk: "K7Q4-QNOT"; }
+:root:where([data-side="quiz-notasjonstegn.html"]) { --vbm-verk: "K7Q4-2W68"; }
 :root:where([data-side="fremgang.html"]) { --vbm-verk: "K7Q4-FREM"; }
 :where(html[data-side="quiz-rytme.html"]) .gj-noter { margin-top: 6px; color: var(--text-on-paper); }
 :where(html[data-side="quiz-rytme.html"]) .gjennomgang li { flex-wrap: wrap; }
@@ -2084,10 +2084,10 @@ html.sh .viktig strong { color: var(--ink) !important; }
 @media (forced-colors: active) { .vbm-relatert a.vbm-rel-lenke { background: ButtonFace !important; color: ButtonText !important; border-color: ButtonText; } .vbm-relatert a.vbm-rel-lenke:hover, .vbm-relatert a.vbm-rel-lenke:focus-visible { border-color: Highlight; } .btn.vbm-spillknapp, .btn.vbm-spillknapp:hover { background: ButtonFace !important; color: ButtonText !important; border-color: ButtonText !important; } .btn.vbm-spillknapp.playing { border-color: Highlight !important; box-shadow: none; } }
 /* Mindre luft mellom siste kort og «Se også» */
 main:has(+ .vbm-relatert) { padding-bottom: 16px !important; margin-bottom: 0 !important; }
-/* Spillknappene: svarte med hvit tekst og oransje kant, som Meny-knappen, også når musen er over dem.
+/* Spillknappene: svarte med hvit tekst og lys kant, som Meny-knappen. Kanten blir oransje når du peker på dem.
    Mens lyden spiller, blir teksten oransje og kanten dobbel. */
-.btn.vbm-spillknapp, .btn.vbm-spillknapp:hover, .btn.vbm-spillknapp:focus-visible { background: #16191E !important; color: #FFFFFF !important; border: 2px solid var(--lenke-mork) !important; font-weight: 600; }
-.btn.vbm-spillknapp:hover { background: #262A31 !important; }
+.btn.vbm-spillknapp { background: #16191E !important; color: #FFFFFF !important; border: 2px solid color-mix(in srgb, #FFFFFF 45%, transparent) !important; font-weight: 600; }
+.btn.vbm-spillknapp:hover, .btn.vbm-spillknapp:focus-visible { background: #262A31 !important; color: #FFFFFF !important; border-color: var(--lenke-mork) !important; }
 .btn.vbm-spillknapp.playing { color: var(--lenke-mork) !important; box-shadow: 0 0 0 2px var(--lenke-mork); }
 
 /* ---------- Kortet «Ulike navn og systemer» (alle leksjoner som har det) ---------- */
