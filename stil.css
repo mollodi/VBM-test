@@ -3264,7 +3264,7 @@ svg.vbm-fast-stav { height: auto; }
 /* ---------- Samme utseende på de eldre sidene (juksebøkene, lytteguidene, Akkordhefte og startsiden) ---------- */
 /* Bunnteksten: samme strek over, samme bredde og skrift som på leksjonene */
 html:not([data-stil="ovelse"]) footer {
-  max-width: 980px !important; margin: 24px auto 0 !important; padding: 28px 28px 90px !important; box-sizing: border-box;
+  max-width: 980px !important; margin: 24px auto 0 !important; padding: 28px 28px 56px !important; box-sizing: border-box;
   border-top: 1px solid color-mix(in srgb, currentColor 22%, transparent) !important;
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace !important; font-size: 12px !important; line-height: 1.7 !important;
 }
@@ -3294,3 +3294,11 @@ footer .vbm-fot-mer { font: inherit; color: inherit; background: none; border: 0
 footer .vbm-fot-mer:hover, footer .vbm-fot-mer:focus-visible { color: var(--lenke-mork, #e8b866); outline: none; }
 footer .vbm-fot-ansvar a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
 @media (forced-colors: active) { footer .vbm-fot-mer, footer .vbm-fot-ansvar a { color: LinkText; } }
+
+/* Lite luft under bunnteksten: akkurat nok til lydvelgeren (ca. 29 px høy, 14 px fra kanten) pluss litt mellomrom.
+   Sider uten lydvelger (startsiden, Min fremgang) får enda mindre. */
+footer[data-lyd] { padding-bottom: 56px !important; }
+html body:not(:has(.vbm-instr-float)) footer[data-lyd] { padding-bottom: 28px !important; }
+html[data-stil="bok"] body, html[data-stil="mork"] body { padding-bottom: 0 !important; }
+html[data-stil="mork"] main, html[data-stil="bok"] main { margin-bottom: 0 !important; }
+html[data-stil="bok"] main:has(> footer) { padding-bottom: 0 !important; }   /* bunnteksten ligger inne i boka; ingen ekstra luft under den */
