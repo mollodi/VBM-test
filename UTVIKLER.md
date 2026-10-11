@@ -167,7 +167,7 @@ Løpende tekst bruker norske tonenavn (Ess, Fiss, Ass) med `K.tone()`. Akkordsym
 
 ## Versjonsnummer (hurtigminne)
 
-Alle felles filer lenkes med et versjonsnummer, for eksempel `felles.js?v=47` og `stil.css?v=47`, så nettleseren henter nye utgaver etter en oppdatering. Språkfilene og `materialer.js` får samme nummer automatisk (felles.js leser det fra sin egen lenke). Når en felles fil endres: søk og erstatt `?v=47` med neste nummer i alle sider, og last opp alle sidene.
+Alle felles filer lenkes med et versjonsnummer, for eksempel `felles.js?v=49` og `stil.css?v=49`, så nettleseren henter nye utgaver etter en oppdatering. Språkfilene og `materialer.js` får samme nummer automatisk (felles.js leser det fra sin egen lenke). Når en felles fil endres: søk og erstatt `?v=49` med neste nummer i alle sider, og last opp alle sidene.
 
 ## Omvendinger
 
