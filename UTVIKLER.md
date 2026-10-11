@@ -165,7 +165,7 @@ Løpende tekst bruker norske tonenavn (Ess, Fiss, Ass) med `K.tone()`. Akkordsym
 
 ## Versjonsnummer (hurtigminne)
 
-Alle felles filer lenkes med et versjonsnummer, for eksempel `felles.js?v=43` og `stil.css?v=43`, så nettleseren henter nye utgaver etter en oppdatering. Språkfilene og `materialer.js` får samme nummer automatisk (felles.js leser det fra sin egen lenke). Når en felles fil endres: søk og erstatt `?v=43` med neste nummer i alle sider, og last opp alle sidene.
+Alle felles filer lenkes med et versjonsnummer, for eksempel `felles.js?v=44` og `stil.css?v=44`, så nettleseren henter nye utgaver etter en oppdatering. Språkfilene og `materialer.js` får samme nummer automatisk (felles.js leser det fra sin egen lenke). Når en felles fil endres: søk og erstatt `?v=44` med neste nummer i alle sider, og last opp alle sidene.
 
 ## Omvendinger
 
@@ -185,7 +185,7 @@ Linjen øverst har «Alle ressurser», Meny og Innstillinger på alle sider (unn
 
 ## Søkemotorer og sitemap
 
-Sidene har ingen «noindex»-linje. Testkopien VBM-test skjules for søk av `felles.js` (adressen begynner med /VBM-test/), så de samme filene kan lastes opp begge steder. `sitemap.xml` lister alle sider på alle tre språk; når du legger til en side, legger du til tre `<url>`-blokker (no, en, pl). Videresendingen `omvendinger.html` og `fremgang.html` står ikke i sitemap.
+Sidene har ingen «noindex»-linje. `felles.js` gir hver side hovedadressen (canonical) på verdensbestemusikkskole.no, gir søkemotorer sidens eget språk (eller språket i `?sprak=`), og skjuler alle kopier som ikke ligger på verdensbestemusikkskole.no, også VBM-test. De samme filene kan derfor lastes opp begge steder. `sitemap.xml` lister alle sider på alle tre språk; når du legger til en side, legger du til tre `<url>`-blokker (no, en, pl). Videresendingen `omvendinger.html` og `fremgang.html` står ikke i sitemap.
 
 ## Søk på startsiden
 

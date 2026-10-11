@@ -36,13 +36,7 @@ window.VBM_VERSJON = (function(){ var s = document.currentScript && document.cur
      og testsiden VBM-test ligger der). */
   var EGNE = ['verdensbestemusikkskole.no', 'www.verdensbestemusikkskole.no', 'mollodi.github.io'];
 
-  /* Testkopien (mollodi.github.io/VBM-test) skjules for søkemotorer her, så de samme filene kan lastes opp
-     både på testsiden og på hovedsiden uten endringer. */
-  (function skjulTest(){
-    if (/^\/VBM-test(\/|$)/i.test(location.pathname) && !document.querySelector('meta[name="robots"]')) {
-      var m = document.createElement('meta'); m.name = 'robots'; m.content = 'noindex, nofollow'; document.head.appendChild(m);
-    }
-  })();
+
 
   /* Bunnteksten. Navnene står alltid på norsk. De andre delene oversettes
      i sprak-XX.js, så husk å endre dem der også hvis du endrer dem her. */
@@ -64,10 +58,15 @@ window.VBM_VERSJON = (function(){ var s = document.currentScript && document.cur
   function kort(k){ k = String(k || '').toLowerCase().slice(0, 2); return (k === 'nb' || k === 'nn') ? 'no' : k; }
   var kilde = kort(root.getAttribute('lang') || 'no');   // språket siden er skrevet på
 
+  /* Språkadresser: side.html er sidens eget språk, side.html?sprak=en og ?sprak=pl er de andre språkene.
+     Valget lagres ikke, så adressen kan deles og testes. */
+  var ADRESSE = (location.search.match(/[?&]sprak=(\w+)/) || [])[1];
+  if (SPRAK.indexOf(ADRESSE) < 0) ADRESSE = null;
+  /* Søkemotorer og lenkeforhåndsvisninger får alltid språket i adressen, ikke et gjettet språk */
+  var ROBOT = /bot|crawl|spider|slurp|facebookexternalhit|embedly|whatsapp|telegram|skype|pinterest|bingpreview|lighthouse/i.test(navigator.userAgent);
   function finnSprak(){
-    /* For testing: side.html?sprak=en viser siden på engelsk uten å lagre valget. */
-    var m = location.search.match(/[?&]sprak=(\w+)/);
-    if (m && SPRAK.indexOf(m[1]) >= 0) return m[1];
+    if (ADRESSE) return ADRESSE;
+    if (ROBOT) return kilde;
     try { var s = localStorage.getItem(NOKKEL); if (SPRAK.indexOf(s) >= 0) return s; } catch(e){}
     var liste = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || ''];
     for (var i = 0; i < liste.length; i++) { var k = kort(liste[i]); if (SPRAK.indexOf(k) >= 0) return k; }
@@ -79,6 +78,21 @@ window.VBM_VERSJON = (function(){ var s = document.currentScript && document.cur
   root.setAttribute('data-sprak', sprak);
 
   var side = root.getAttribute('data-side') || (location.pathname.split('/').pop() || 'index.html');
+
+  /* Søkemotorer: hovedadressen for siden og språket (uten ?svart-hvitt), og alle kopier av nettsiden
+     (VBM-test og andre) skjules for søk. Bare verdensbestemusikkskole.no vises i søkeresultatene. */
+  (function(){
+    if (!document.querySelector('link[rel="canonical"]')) {
+      var l = document.createElement('link'); l.rel = 'canonical';
+      l.href = ORIGINAL + (side === 'index.html' ? '' : side) + (ADRESSE && ADRESSE !== kilde ? '?sprak=' + ADRESSE : '');
+      document.head.appendChild(l);
+    }
+    var host = location.hostname.replace(/^www\./, '');
+    if (host !== 'verdensbestemusikkskole.no' && !document.querySelector('meta[name="robots"]')) {
+      var r = document.createElement('meta'); r.name = 'robots'; r.content = 'noindex, nofollow';
+      document.head.appendChild(r);
+    }
+  })();
   var ord = {}, menyOrd = {};
   /* Ordbøkene (sprak-XX.js) kaller denne funksjonen. Menyen bruker startsidens oversettelser av titlene. */
   window.VBM_ORDBOK = function(sp, bok){
@@ -373,13 +387,13 @@ window.VBM_VERSJON = (function(){ var s = document.currentScript && document.cur
       /* Leksjonene i Musikkteori henger sammen som et kurs: forrige og neste leksjon i rekkefølgen fra materialer.js */
       var kurs = alle.filter(function(m){ return m.seksjon === meg.seksjon && meg.seksjon === 'teori' && !m.skjult; }), nr = kurs.indexOf(meg), steg = '';
       if (nr >= 0) {
-        if (nr > 0) steg += '<a class="vbm-rel-lenke vbm-kurs-lenke" href="' + kurs[nr - 1].fil + '"><span class="vbm-kurs-retning">&larr; ' + T('Forrige leksjon') + '</span><span>' + menyT(kurs[nr - 1].tittel) + '</span></a>';
-        if (nr < kurs.length - 1) steg += '<a class="vbm-rel-lenke vbm-kurs-lenke vbm-kurs-neste" href="' + kurs[nr + 1].fil + '"><span class="vbm-kurs-retning">' + T('Neste leksjon') + ' &rarr;</span><span>' + menyT(kurs[nr + 1].tittel) + '</span></a>';
+        if (nr > 0) steg += '<a class="vbm-rel-lenke" href="' + kurs[nr - 1].fil + '" aria-label="' + T('Forrige leksjon') + ': ' + menyT(kurs[nr - 1].tittel) + '"><span aria-hidden="true">&larr;</span> ' + menyT(kurs[nr - 1].tittel) + '</a>';
+        if (nr < kurs.length - 1) steg += '<a class="vbm-rel-lenke vbm-kurs-neste" href="' + kurs[nr + 1].fil + '" aria-label="' + T('Neste leksjon') + ': ' + menyT(kurs[nr + 1].tittel) + '">' + menyT(kurs[nr + 1].tittel) + ' <span aria-hidden="true">&rarr;</span></a>';
       }
       /* Rekkefølgen nederst på alle sider: «Se også», så forrige og neste leksjon, så bunnteksten */
       nav.innerHTML = '<p class="vbm-relatert-tittel">' + T('Se også') + '</p><ul>' + rel.map(function(m){
-        return '<li><a class="vbm-rel-lenke" href="' + m.fil + '"><span>' + menyT(m.tittel) + '</span>' + (m.niva ? '<span class="vbm-niva niva-' + m.niva + '">' + T(NIVANAVN[m.niva]) + '</span>' : '') + '</a></li>';
-      }).join('') + '</ul>' + (steg ? '<div class="vbm-kurs">' + steg + '</div>' : '');
+        return '<li><a class="vbm-rel-lenke" href="' + m.fil + '">' + menyT(m.tittel) + '</a></li>';
+      }).join('') + '</ul>' + (steg ? '<p class="vbm-relatert-tittel vbm-kurs-tittel">' + T('Leksjonene i rekkefølge') + '</p><div class="vbm-kurs">' + steg + '</div>' : '');
       /* Rett over bunnteksten på alle sider, i samme bredde som innholdet */
       var fot = document.querySelector('footer'), hoved = document.querySelector('main');
       if (fot) fot.parentNode.insertBefore(nav, fot);

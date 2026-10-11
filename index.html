@@ -16,8 +16,8 @@
 <meta name="author" content="Verdens Beste Musikklærer">
 <meta name="copyright" content="© 2026 Verdens Beste Musikkskole. Alle rettigheter forbeholdt.">
 <title>Verdens Beste Musikkskole: juksebøker, leksjoner og quizer</title>
-<script src="felles.js?v=43"></script>
-<link rel="stylesheet" href="stil.css?v=43">
+<script src="felles.js?v=44"></script>
+<link rel="stylesheet" href="stil.css?v=44">
 <meta name="description" content="Gratis ressurser i musikkteori og øretrening fra Verdens Beste Musikklærer.">
 </head>
 <body>
@@ -37,7 +37,7 @@
 <noscript><p class="empty">Slå på JavaScript i nettleseren for å se innholdet.</p></noscript>
 </main>
 <!-- Innholdet på startsiden kommer fra materialer.js. Denne filen trenger du ikke endre. -->
-<script src="materialer.js?v=43"></script>
+<script src="materialer.js?v=44"></script>
 <script>/* VBM K7Q4-VZFC */
 (function(){
   var main = document.getElementById('innhold');
@@ -64,27 +64,44 @@
       '<div class="card-foot"><span class="open">Åpne</span></div></article>';
   }
   var NIVANAVN = { grunnleggende: 'Grunnleggende', avansert: 'Avansert', ekspert: 'Ekspert' };
-  /* Søk: filtrerer kortene mens du skriver, i teksten slik den står på siden (også på engelsk og polsk) */
-  var sokRad = document.createElement('div'); sokRad.className = 'vbm-sok';
-  sokRad.innerHTML = '<label class="vbm-sok-label" for="vbm-sok">Søk</label>'
-    + '<input type="search" id="vbm-sok" placeholder="Søk i leksjoner, juksebøker og quizer" autocomplete="off">'
-    + '<p class="vbm-sok-info" id="vbm-sok-info" aria-live="polite"></p>';
-  main.insertBefore(sokRad, main.firstChild);
-  function sok(){
-    var q = (document.getElementById('vbm-sok').value || '').trim().toLowerCase(), treff = 0;
-    var ord = q.split(/\s+/).filter(Boolean);
-    [].forEach.call(main.querySelectorAll('.vbm-innhold-seksjon'), function(sek){
-      var synlige = 0;
-      [].forEach.call(sek.querySelectorAll('.card'), function(k){
-        var tekst = (k.textContent || '').toLowerCase(), ok = ord.every(function(o){ return tekst.indexOf(o) >= 0; });
-        k.hidden = !ok; if (ok) synlige++;
-      });
-      sek.hidden = synlige === 0; treff += synlige;
-    });
-    var info = document.getElementById('vbm-sok-info');
-    info.textContent = !q ? '' : treff ? (treff === 1 ? T1('1 treff') : T1('{n} treff').replace('{n}', treff)) : T1('Ingen treff. Prøv et annet ord.');
-  }
+  /* Søk: nederst i banneret. Treffene vises som én liste med de enkelte kortene, sortert etter hvor godt de passer
+     (tittel først, så merkelapp, så beskrivelse). Søket bruker teksten slik den står på siden, også på engelsk og polsk. */
   function T1(s){ return window.VBM_T ? window.VBM_T(s) : s; }
+  var sokRad = document.createElement('div'); sokRad.className = 'vbm-sok'; sokRad.setAttribute('role', 'search');
+  var sokTekst = T1('Søk i leksjoner, juksebøker og quizer');
+  sokRad.innerHTML = '<input type="search" id="vbm-sok" placeholder="' + esc(sokTekst) + '" aria-label="' + esc(sokTekst) + '" autocomplete="off">'
+    + '<p class="vbm-sok-info" id="vbm-sok-info" aria-live="polite"></p>';
+  var cover = document.querySelector('.hero .cover') || document.querySelector('.hero');
+  cover.appendChild(sokRad);
+  function poeng(kort, ord){
+    var tittel = ((kort.querySelector('h3') || {}).textContent || '').toLowerCase(),
+        merke = ((kort.querySelector('.card-eyebrow') || {}).textContent || '').toLowerCase(),
+        beskr = ((kort.querySelector('.card-desc') || {}).textContent || '').toLowerCase(), p = 0;
+    for (var i = 0; i < ord.length; i++) {
+      var o = ord[i];
+      if (tittel.indexOf(o) === 0) p += 8; else if (tittel.indexOf(o) >= 0) p += 5;
+      else if (merke.indexOf(o) >= 0) p += 3;
+      else if (beskr.indexOf(o) >= 0) p += 1;
+      else return 0;   // alle ordene må finnes
+    }
+    return p;
+  }
+  function sok(){
+    var q = (document.getElementById('vbm-sok').value || '').trim().toLowerCase(), ord = q.split(/\s+/).filter(Boolean);
+    var gml = main.querySelector('.vbm-sok-treff'); if (gml) gml.parentNode.removeChild(gml);
+    var seksjoner = main.querySelectorAll('.vbm-innhold-seksjon, .niva-info'), info = document.getElementById('vbm-sok-info');
+    [].forEach.call(seksjoner, function(s){ s.hidden = !!q; });
+    if (!q) { info.textContent = ''; return; }
+    var treff = [];
+    [].forEach.call(main.querySelectorAll('.vbm-innhold-seksjon .card'), function(k, n){ var p = poeng(k, ord); if (p) treff.push({ k: k, p: p, n: n }); });
+    treff.sort(function(a, b){ return b.p - a.p || a.n - b.n; });
+    info.textContent = treff.length ? (treff.length === 1 ? T1('1 treff') : T1('{n} treff').replace('{n}', treff.length)) : T1('Ingen treff. Prøv et annet ord.');
+    if (!treff.length) return;
+    var sek = document.createElement('section'); sek.className = 'vbm-sok-treff';
+    var grid = document.createElement('div'); grid.className = 'grid';
+    treff.forEach(function(t){ grid.appendChild(t.k.cloneNode(true)); });
+    sek.appendChild(grid); main.insertBefore(sek, main.firstChild);
+  }
   document.getElementById('vbm-sok').addEventListener('input', sok);
   /* Nivåfilteret fra Innstillinger (vbm-niva): tom eller «alle» viser alt */
   function valgtNiva(){ try { return localStorage.getItem('vbm-niva') || 'alle'; } catch(e){ return 'alle'; } }

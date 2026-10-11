@@ -2069,24 +2069,26 @@ html.sh .viktig strong { color: var(--ink) !important; }
 .vbm-meny-niva { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 10px; text-transform: uppercase; letter-spacing: .05em; opacity: .75; margin-left: 4px; }
 .vbm-relatert { box-sizing: border-box; max-width: 980px; margin: 8px auto 0; padding: 18px 28px 6px; color: inherit; background: transparent; }
 .vbm-relatert-tittel { font: 700 11px/1.3 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; letter-spacing: .1em; text-transform: uppercase; opacity: .8; margin: 0 0 10px; }
-.vbm-relatert ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; }
-/* Lenkene nederst ser ut som knappene i linjen øverst (Meny og Innstillinger), med kantfargen #e8b866 */
-.vbm-relatert a.vbm-rel-lenke { display: inline-flex; align-items: center; gap: 8px; flex-wrap: wrap;
-  font: 600 14px/1.25 -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-  color: inherit; text-decoration: none; background: transparent; border: 2px solid #e8b866; border-radius: 999px; padding: 8px 14px; }
-.vbm-relatert a.vbm-rel-lenke:hover, .vbm-relatert a.vbm-rel-lenke:focus-visible { background: color-mix(in srgb, #e8b866 22%, transparent); outline: none; }
-.vbm-relatert .vbm-niva { font-size: 9.5px; padding: 2px 6px; }
-.vbm-kurs { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; margin: 18px 0 0; padding: 16px 0 0; border-top: 1px solid color-mix(in srgb, currentColor 18%, transparent); }
-.vbm-relatert a.vbm-kurs-lenke { flex-direction: column; align-items: flex-start; gap: 3px; border-radius: 999px; padding: 8px 18px; }
-.vbm-relatert a.vbm-kurs-neste { margin-left: auto; align-items: flex-end; text-align: right; }
-.vbm-kurs-retning { font: 600 10.5px/1.2 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; letter-spacing: .06em; text-transform: uppercase; opacity: .8; }
+.vbm-relatert ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+/* Lenkene nederst ser ut som knappene i linjen øverst («Alle ressurser», Meny og Innstillinger) */
+.vbm-relatert a.vbm-rel-lenke { display: inline-flex; align-items: center; gap: 8px;
+  font: 600 14px/1.2 -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  /* samme mørke flate og lyse tekst som linjen øverst, så knappene ser helt like ut i lys og mørk visning */
+  color: #F6F1E7 !important; text-decoration: none !important; background: #12151A !important; cursor: pointer;
+  border: 1.5px solid color-mix(in srgb, #F6F1E7 45%, transparent); border-radius: 999px; padding: 8px 14px; }
+.vbm-relatert a.vbm-rel-lenke:hover, .vbm-relatert a.vbm-rel-lenke:focus-visible { border-color: var(--lenke-mork); outline: none; }
+.vbm-kurs-tittel { margin-top: 22px; }
+.vbm-kurs { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; }
+.vbm-relatert a.vbm-kurs-neste { margin-left: auto; }
 @media (max-width: 520px) { .vbm-relatert { padding: 16px 16px 4px; } }
+@media (forced-colors: active) { .vbm-relatert a.vbm-rel-lenke { background: ButtonFace !important; color: ButtonText !important; border-color: ButtonText; } .vbm-relatert a.vbm-rel-lenke:hover, .vbm-relatert a.vbm-rel-lenke:focus-visible { border-color: Highlight; } .btn.vbm-spillknapp, .btn.vbm-spillknapp:hover { background: ButtonFace !important; color: ButtonText !important; border-color: ButtonText !important; } .btn.vbm-spillknapp.playing { border-color: Highlight !important; box-shadow: none; } }
 /* Mindre luft mellom siste kort og «Se også» */
 main:has(+ .vbm-relatert) { padding-bottom: 16px !important; margin-bottom: 0 !important; }
-/* Spillknappene skal synes godt: kant og en svak flate i #e8b866 */
-.btn.vbm-spillknapp { border: 2px solid #e8b866 !important; font-weight: 600; }
-.btn.vbm-spillknapp:not(.playing):not([aria-pressed="true"]) { background: #FBF0DC; color: #22252A; }
-.btn.vbm-spillknapp:not(.playing):not([aria-pressed="true"]):hover { background: #F5E2BE; }
+/* Spillknappene: svarte med hvit tekst og oransje kant, som Meny-knappen, også når musen er over dem.
+   Mens lyden spiller, blir teksten oransje og kanten dobbel. */
+.btn.vbm-spillknapp, .btn.vbm-spillknapp:hover, .btn.vbm-spillknapp:focus-visible { background: #16191E !important; color: #FFFFFF !important; border: 2px solid var(--lenke-mork) !important; font-weight: 600; }
+.btn.vbm-spillknapp:hover { background: #262A31 !important; }
+.btn.vbm-spillknapp.playing { color: var(--lenke-mork) !important; box-shadow: 0 0 0 2px var(--lenke-mork); }
 
 /* ---------- Kortet «Ulike navn og systemer» (alle leksjoner som har det) ---------- */
 :where([data-stil="ovelse"]) .ulike-kort { grid-column: 1 / -1; }
@@ -3242,12 +3244,12 @@ html[data-tema="lys"] .vbm-instr-float { background: #DCD6C6 !important; color: 
 svg.vbm-fast-stav { height: auto; }
 :where(html[data-side="notasjonstegn.html"], html[data-side="quiz-notasjonstegn.html"]) .noter svg.vbm-fast-stav { width: auto; }
 
-/* Søk på startsiden */
-:where(html[data-side="index.html"]) .vbm-sok { margin: 0 0 28px; }
-:where(html[data-side="index.html"]) .vbm-sok-label { display: block; font: 700 11px/1.3 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; letter-spacing: .1em; text-transform: uppercase; margin: 0 0 8px; }
-:where(html[data-side="index.html"]) #vbm-sok { width: 100%; max-width: 560px; box-sizing: border-box; font: 16px/1.3 -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-  padding: 11px 18px; border-radius: 999px; border: 2px solid #e8b866; background: #FFFFFF; color: #22252A; }
+/* Søk på startsiden: nederst i banneret, midtstilt */
+:where(html[data-side="index.html"]) .vbm-sok { margin: 18px auto 0; max-width: 520px; text-align: center; }
+:where(html[data-side="index.html"]) #vbm-sok { width: 100%; box-sizing: border-box; font: 16px/1.3 -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  padding: 11px 18px; border-radius: 999px; border: 2px solid var(--lenke-mork); background: #FFFFFF; color: #22252A; }
 :where(html[data-side="index.html"]) #vbm-sok::placeholder { color: #6B6558; opacity: 1; }
 :where(html[data-side="index.html"]) #vbm-sok:focus-visible { outline: 3px solid color-mix(in srgb, #e8b866 60%, transparent); outline-offset: 2px; }
 :where(html[data-side="index.html"]) .vbm-sok-info { margin: 8px 0 0; font-size: 14px; min-height: 1.2em; }
+:where(html[data-side="index.html"]) .vbm-sok-treff h2 { margin-top: 0; }
 @media (forced-colors: active) { :where(html[data-side="index.html"]) #vbm-sok { border-color: CanvasText; background: Field; color: FieldText; } }
