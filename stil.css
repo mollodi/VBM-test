@@ -1370,6 +1370,7 @@ html:where([data-side="index.html"]) {
 :root:where([data-side="notasjonstegn.html"]) { --vbm-verk: "K7Q4-NOTT"; }
 :root:where([data-side="quiz-notasjonstegn.html"]) { --vbm-verk: "K7Q4-2W68"; }
 :root:where([data-side="fremgang.html"]) { --vbm-verk: "K7Q4-FREM"; }
+:root:where([data-side="404.html"]) { --vbm-verk: "K7Q4-GJGA"; }
 :where(html[data-side="quiz-rytme.html"]) .gj-noter { margin-top: 6px; color: var(--text-on-paper); }
 :where(html[data-side="quiz-rytme.html"]) .gjennomgang li { flex-wrap: wrap; }
 :root:where([data-stil="ovelse"]) {
@@ -3302,3 +3303,17 @@ html body:not(:has(.vbm-instr-float)) footer[data-lyd] { padding-bottom: 28px !i
 html[data-stil="bok"] body, html[data-stil="mork"] body { padding-bottom: 0 !important; }
 html[data-stil="mork"] main, html[data-stil="bok"] main { margin-bottom: 0 !important; }
 html[data-stil="bok"] main:has(> footer) { padding-bottom: 0 !important; }   /* bunnteksten ligger inne i boka; ingen ekstra luft under den */
+
+/* Lenken i meldingen om lydopptak som ikke kunne lastes */
+.vbm-melding a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+@media (forced-colors: active) { .vbm-melding a { color: LinkText; } }
+
+/* Intervaller: raden for intervallet som er valgt, er markert i tabellen */
+:where(html[data-side="intervaller-teori.html"]) .iv-tabell tr.valgt td { background: color-mix(in srgb, #e8b866 38%, transparent); font-weight: 700; }
+:where(html[data-side="intervaller-teori.html"]) .iv-tabell tr.valgt td:first-child { box-shadow: inset 4px 0 0 #e8b866; }
+:where(html[data-side="intervaller-teori.html"]) .iv-tabell tr.samme-klang td { background: color-mix(in srgb, #e8b866 16%, transparent); }
+:where(html[data-side="intervaller-teori.html"]) .iv-tabell-merk { font-size: 14px; margin-top: 8px; min-height: 1em; }
+@media (forced-colors: active) {
+  :where(html[data-side="intervaller-teori.html"]) .iv-tabell tr.valgt td { background: Highlight; color: HighlightText; forced-color-adjust: none; box-shadow: none; }
+  :where(html[data-side="intervaller-teori.html"]) .iv-tabell tr.samme-klang td { outline: 1px dashed CanvasText; outline-offset: -2px; }
+}
